@@ -1,0 +1,1301 @@
+body
+{
+	margin: 0px;
+	padding:0px;
+	line-height: 20px;
+	font-family:stratum;
+	/*font-family: 'Titillium Web', sans-serif;*/
+}
+@font-face {
+	src:url(stratum-2-web.woff);
+	font-family:stratum;
+}
+@font-face {
+	src:url(stratum-2-web-bold.woff);
+	font-family:stratum-bold
+}
+a
+{
+	text-decoration: none;
+}
+.nav
+{
+	background-color: #ee7230;
+	width: 100%;
+	min-width: 1100px;
+	height:60px;
+	position: fixed;
+}
+.left
+{
+	width:400px;
+	margin-left: 30px;
+	text-align: center;
+	margin-top: 25px;
+	float: left;
+	font-size: 30px;
+	color:#ffffbf;
+}
+.right
+{
+	width:500px;
+	margin-right: 30px;
+	margin-top: 10px;
+	text-align: center;
+	float: right;
+	color: #ffffbf;
+}
+.right ul
+{
+	list-style: none;
+}
+.right ul li
+{
+	display: inline;
+	margin-left: 20px;
+	padding: 1px;
+}
+.right ul li a
+{
+	color:#ffffbf;
+}
+.right ul li:hover
+{
+	border-bottom: 2px solid #ffffbf;
+}
+.headpart
+{
+	width:100%;
+	min-width: 1100px;
+	height:280px;
+	background-color: #ee7230;
+}
+.sub
+{
+	width:1000px;
+	color: #ffffbf;
+	font-size: 95px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 205px;
+}
+.timepart
+{
+	width:100%;
+	min-width: 1100px;
+	height:85px;
+	background-color: #ee7230;
+	padding-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cen
+{
+	width:925px;
+	margin-left: auto;
+	margin-right: auto;
+	height:50px;
+
+}
+.line
+{
+	width:150px;
+	height:0.5px;
+	background-color: #ffffbf;
+	float: left;
+}
+.date
+{
+	float: left;
+	width:625px;
+	margin-top: -30px;
+}
+.date ul 
+{
+	list-style: none;
+}
+.date ul li
+{
+	float: left;
+	color: #ffffbf;
+}
+.date ul li span
+{
+	color: #ffffbf;
+	font-size: 30px;
+	padding-left: 15px;
+} 
+.date ul li i
+{
+	margin-top: -15px;
+	float: left;
+	color: #ffffbf;
+}
+.register
+{
+	width:100%;
+	min-width: 1100px;
+	height:40px;
+	background-color: #ee7230;
+}
+button
+{
+	width: 250px;
+	height:65px;
+	background-color: #ee7230;
+	border: 2px solid #ffffbf;
+	font-size: 28px;
+	margin-top: -10px;
+	font-family:stratum;
+	color: #ffffbf;
+	border-radius: 5px;
+}
+button:hover
+{
+	background-color: #ffffbf;
+	color: #ee7230;
+}
+.icons
+{
+	width:100%;
+	min-width: 1100px;
+	height:380px;
+	background-color: #ee7230;
+}
+.check
+{
+	width:1100px;
+	height:120px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: -18px;
+	padding-top: 110px;
+}
+.check ul
+{
+	list-style:none;
+}
+.check ul li
+{
+	display: inline;
+	margin-left: 100px;
+}
+.check ul li img
+{
+	width:55px;
+	height:55px;
+  	justify-content: space-between;
+	-webkit-transition: -webkit-transform .5s ease-in-out;
+  	transition: transform .5s ease-in-out;
+}
+.check ul li img:hover
+{
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.content
+{
+	width:100%;
+	min-width:1100px;
+	background-color: #ffffbf;
+	margin-top: -28px;
+	height:500px;
+}
+.content p
+{
+	text-align: left;
+	font-size: 25px;
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 40px;
+	color:#ee7230;
+	padding-top: 100px;
+	letter-spacing: 2px;
+}
+.events
+{
+	width:100%;
+	height:100%;
+	min-width: 1100px;
+	background-color: #303030;
+	padding-top: 80px;
+}
+.heading
+{
+	width:300px;
+	height:50px;
+	font-size: 45px;
+	color:#ddd;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/*-------------------------------- for event display section ---    1    --------------------------------------------------*/
+.fade
+{
+	padding-top: 18px;
+}
+.fclass
+{
+	padding-top:0px;
+}
+.eventssub
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass
+{
+	height:195px;
+}
+.eventleft
+{
+	width:170px;
+	float: left;
+}
+.eventleft span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft span i
+{
+	font-size: 18px;
+}
+.eventright
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+}
+.eventright span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+/*---------------------------------------- --------------------------- --------------------------------------------------*/
+
+
+
+
+
+
+
+/*-------------------------------- for event display section ---   2    --------------------------------------------------*/
+
+.fade2
+{
+	padding-top: 18px;
+}
+.fclass2
+{
+	padding-top:0px;
+}
+.eventssub2
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass2
+{
+	height:195px;
+}
+.eventleft2
+{
+	width:170px;
+	float: left;
+}
+.eventleft2 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft2 span i
+{
+	font-size: 18px;
+}
+.eventright2
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+}
+.eventright2 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline2
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright2 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+
+/*-------------------------------- for event display section ---   3    --------------------------------------------------*/
+
+.fade3
+{
+	padding-top: 18px;
+}
+.fclass3
+{
+	padding-top:0px;
+}
+.eventssub3
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass3
+{
+	height:195px;
+}
+.eventleft3
+{
+	width:170px;
+	float: left;
+}
+.eventleft3 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft3 span i
+{
+	font-size: 18px;
+}
+.eventright3
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright3 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline3
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright3 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+/*-------------------------------- for event display section ---   4    --------------------------------------------------*/
+
+.fade4
+{
+	padding-top: 18px;
+}
+.fclass4
+{
+	padding-top:0px;
+}
+.eventssub4
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass4
+{
+	height:195px;
+}
+.eventleft4
+{
+	width:170px;
+	float: left;
+}
+.eventleft4 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft4 span i
+{
+	font-size: 18px;
+}
+.eventright4
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright4 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline4
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright4 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+/*-------------------------------- for event display section ---   5    --------------------------------------------------*/
+
+.fade5
+{
+	padding-top: 18px;
+}
+.fclass5
+{
+	padding-top:0px;
+}
+.eventssub5
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass5
+{
+	height:195px;
+}
+.eventleft5
+{
+	width:170px;
+	float: left;
+}
+.eventleft5 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft5 span i
+{
+	font-size: 18px;
+}
+.eventright5
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright5 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline5
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright5 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+
+/*-------------------------------- for event display section ---   6    --------------------------------------------------*/
+
+.fade6
+{
+	padding-top: 18px;
+}
+.fclass6
+{
+	padding-top:0px;
+}
+.eventssub6
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass6
+{
+	height:195px;
+}
+.eventleft6
+{
+	width:170px;
+	float: left;
+}
+.eventleft6 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft6 span i
+{
+	font-size: 18px;
+}
+.eventright6
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright6 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline6
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright6 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+/*-------------------------------- for event display section ---   7    --------------------------------------------------*/
+
+.fade7
+{
+	padding-top: 18px;
+}
+.fclass7
+{
+	padding-top:0px;
+}
+.eventssub7
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass7
+{
+	height:195px;
+}
+.eventleft7
+{
+	width:170px;
+	float: left;
+}
+.eventleft7 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft7 span i
+{
+	font-size: 18px;
+}
+.eventright7
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright7 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline7
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright7 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+
+/*-------------------------------- for event display section ---   8    --------------------------------------------------*/
+
+.fade8
+{
+	padding-top: 18px;
+}
+.fclass8
+{
+	padding-top:0px;
+}
+.eventssub8
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass8
+{
+	height:195px;
+}
+.eventleft8
+{
+	width:170px;
+	float: left;
+}
+.eventleft8 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft8 span i
+{
+	font-size: 18px;
+}
+.eventright8
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright8 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline8
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright8 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+/*-------------------------------- for event display section ---   9    --------------------------------------------------*/
+
+.fade9
+{
+	padding-top: 18px;
+}
+.fclass9
+{
+	padding-top:0px;
+}
+.eventssub9
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass9
+{
+	height:195px;
+}
+.eventleft9
+{
+	width:170px;
+	float: left;
+}
+.eventleft9 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft9 span i
+{
+	font-size: 18px;
+}
+.eventright9
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright9 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline9
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright9 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}/*-------------------------------- for event display section ---   10    --------------------------------------------------*/
+
+.fade10
+{
+	padding-top: 18px;
+}
+.fclass10
+{
+	padding-top:0px;
+}
+.eventssub10
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass10
+{
+	height:195px;
+}
+.eventleft10
+{
+	width:170px;
+	float: left;
+}
+.eventleft10 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft10 span i
+{
+	font-size: 18px;
+}
+.eventright10
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright10 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline10
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright10 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}/*-------------------------------- for event display section ---   11    --------------------------------------------------*/
+
+.fade11
+{
+	padding-top: 18px;
+}
+.fclass11
+{
+	padding-top:0px;
+}
+.eventssub11
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass11
+{
+	height:195px;
+}
+.eventleft11
+{
+	width:170px;
+	float: left;
+}
+.eventleft11 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft11 span i
+{
+	font-size: 18px;
+}
+.eventright11
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright11 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline11
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright11 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+/*-------------------------------- for event display section ---   12    --------------------------------------------------*/
+
+.fade12
+{
+	padding-top: 18px;
+}
+.fclass12
+{
+	padding-top:0px;
+}
+.eventssub12
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass12
+{
+	height:195px;
+}
+.eventleft12
+{
+	width:170px;
+	float: left;
+}
+.eventleft12 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft12 span i
+{
+	font-size: 18px;
+}
+.eventright12
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright12 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline12
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright12 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+
+/*-------------------------------- for event display section ---   13    --------------------------------------------------*/
+
+.fade13
+{
+	padding-top: 18px;
+}
+.fclass13
+{
+	padding-top:0px;
+}
+.eventssub13
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass13
+{
+	height:195px;
+}
+.eventleft13
+{
+	width:170px;
+	float: left;
+}
+.eventleft13 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft13 span i
+{
+	font-size: 18px;
+}
+.eventright13
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright13 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline13
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright13 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}/*-------------------------------- for event display section ---   14    --------------------------------------------------*/
+
+.fade14
+{
+	padding-top: 18px;
+}
+.fclass14
+{
+	padding-top:0px;
+}
+.eventssub14
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass14
+{
+	height:195px;
+}
+.eventleft14
+{
+	width:170px;
+	float: left;
+}
+.eventleft14 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft14 span i
+{
+	font-size: 18px;
+}
+.eventright14
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright14 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline14
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright14 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}/*-------------------------------- for event display section ---   15    --------------------------------------------------*/
+
+.fade15
+{
+	padding-top: 18px;
+}
+.fclass15
+{
+	padding-top:0px;
+}
+.eventssub15
+{
+	width:1050px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family:stratum-bold;
+	height:60px;
+}
+.eclass15
+{
+	height:195px;
+}
+.eventleft15
+{
+	width:170px;
+	float: left;
+}
+.eventleft15 span
+{
+	color:#eee;
+	padding: 10px;
+	font-family:stratum-bold;
+}
+.eventleft15 span i
+{
+	font-size: 18px;
+}
+.eventright15
+{
+	width:845px;
+	border-left: 5px solid #ee7230;
+	float:right;
+
+}
+.eventright15 span
+{
+	color:#eee;
+	padding-left: 20px;
+	font-size: 20px;
+	font-family:stratum-bold;
+}
+.hrline15
+{
+	width:800px;
+	height:0.5px;
+	background-color: #444;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+.eventright15 p
+{
+	margin-top: -30px;
+	padding-left: 20px;
+	color: #eee;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+/* ------------------------------ for grey strip --------------------------------------*/ 
+.greybar
+{
+
+	width:845px;
+	height:40px;
+	border-left: 2px solid #aaa;
+	float:right;
+}
+.waste
+{
+	width:1050px;
+	height:40px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.space
+{
+	width:170px;
+	float: left;
+	height:40px;
+
+}
+/* ------------------------------ -------------------- --------------------------------------*/ 
