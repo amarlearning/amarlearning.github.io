@@ -1,0 +1,75 @@
+/*-------- Amar Prakash Pandey --------*/
+
+
+
+#main
+{
+font-size: 60px;
+	color:#fff;
+	font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+	
+	background-color: #ffcc00;
+	box-shadow: 0px 0px 50px #000; 
+	text-align: center;
+}
+#sub
+{
+	width:100%;
+	margin: auto;
+	background-color: #059;
+	color:#fff;
+	font-size: 25px;
+	font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+	text-align: center;
+
+}
+button
+{
+	width:180px;
+	height:40px;
+	margin: auto;
+	color:#fff;
+	background-color: #f05;
+	border: 1px solid #f01;
+	font-size: 25px;
+	font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+	font-weight: bold;
+}
+#msg
+{
+background-color:#ffcc00;
+
+color:#fff;
+font-size: 20px;
+font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+
+text-align:left;
+padding-left:10px;
+width:100%;
+max-width:300px;
+}
+
+
+#prgs
+{
+
+text-align:left;
+padding-left:10px;
+background-color:#ffcc00;
+
+color:#fff;
+max-width:300px;
+font-size: 20px;
+font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+
+width:100%;
+
+}
+h3
+{
+text-align:center;
+color:#ff6347;
+font-size: 20px;
+font-family:Calibri,Tahoma,'Shift',Sans-serif,Trebuchet MS,Verdana,Arial;
+
+}
