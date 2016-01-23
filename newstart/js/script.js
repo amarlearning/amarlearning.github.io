@@ -24,3 +24,26 @@ $(document).ready(function(){
     $('#hide').css({'display':'none'});
   },22100);
 });
+$(document).ready(function(){
+  $('#github').hover(function(){
+    $('.github-text').toggleClass('show');
+  });
+  $('#twitter').hover(function(){
+    $('.twitter-text').toggleClass('show');
+  });
+  $('#codepen').hover(function(){
+    $('.codepen-text').toggleClass('show');
+  });
+  $('#linkedin').hover(function(){
+    $('.linkedin-text').toggleClass('show');
+  });
+  $('#stack').hover(function(){
+    $('.stack-text').toggleClass('show');
+  });
+  $('#quora').hover(function(){
+    $('.quora-text').toggleClass('show');
+  });
+  $('#facebook').hover(function(){
+    $('.facebook-text').toggleClass('show');
+  });
+});
