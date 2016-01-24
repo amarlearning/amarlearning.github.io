@@ -1,21 +1,3 @@
-/*
-function small() {
-    var a = document.getElementById('name').value;
-    window.open('http://'+a, "_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=382.40, height=750");
-}
-function medium() {
-    var a = document.getElementById('name').value;
-    window.open('http://'+a, "_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=665.68, height=750");
-}
-function large() {
-    var a = document.getElementById('name').value;
-    window.open('http://'+a, "_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=997.18, height=750");
-}
-function full() {
-    var a = document.getElementById('name').value;
-    window.open('http://'+a, "_blank","toolbar=yes, location=yes, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no, copyhistory=yes, width=, height=750");
-}
-*/
 
 $(document).ready(function(){
     $('#small').click(function(){
@@ -46,10 +28,8 @@ $(document).ready(function(){
     $('#increase').click(function(){
 
        setTimeout( function(){
-        $('iframe').css('width','366'); 
-              },500);  
-
-
+        $('iframe').css('width','366');
+              },500);
        setTimeout( function()
        {
         $('iframe').css('width','416');
@@ -124,7 +104,7 @@ $(document).ready(function(){
        {
         $('iframe').css('width','1116');
             },8000);
-       
+
        setTimeout( function()
        {
         $('iframe').css('width','1166');
@@ -149,8 +129,8 @@ $(document).ready(function(){
               {
             $('iframe').css('width','1366');
                 },10500);
-    
-            
+
+
     });
 });
 
@@ -161,8 +141,8 @@ $(document).ready(function(){
     $('#decrease').click(function(){
 
        setTimeout( function(){
-        $('iframe').css('width','1366'); 
-              },500);  
+        $('iframe').css('width','1366');
+              },500);
 
 
        setTimeout( function()
@@ -239,7 +219,7 @@ $(document).ready(function(){
        {
         $('iframe').css('width','616');
             },8000);
-       
+
        setTimeout( function()
        {
         $('iframe').css('width','566');
@@ -264,8 +244,8 @@ $(document).ready(function(){
               {
             $('iframe').css('width','366');
                 },10500);
-    
-            
+
+
     });
 });
 
@@ -277,8 +257,8 @@ $(document).ready(function(){
     $('#dance').click(function(){
 
        setTimeout( function(){
-        $('iframe').css('width','1366'); 
-              },500);  
+        $('iframe').css('width','1366');
+              },500);
 
 
        setTimeout( function()
@@ -355,7 +335,7 @@ $(document).ready(function(){
        {
         $('iframe').css('width','328');
             },8000);
-       
+
        setTimeout( function()
        {
         $('iframe').css('width','1250');
@@ -380,23 +360,21 @@ $(document).ready(function(){
               {
             $('iframe').css('width','888');
                 },10500);
-    
+
 
           setTimeout( function()
               {
             $('iframe').css('width','999');
                 },11000);
-          
+
           setTimeout( function()
               {
             $('iframe').css('width','350');
                 },11500);
-    
+
           setTimeout( function()
               {
             $('iframe').css('width','1366');
                 },12000);
-    
-            
     });
 });
