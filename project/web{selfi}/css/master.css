@@ -1,0 +1,46 @@
+*
+{
+  margin: 0px;
+  padding: 0px;
+}
+.container
+{
+  width:90vw;
+  background-color: #636287;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}
+a
+{
+  width:400px;
+  height:30px;
+  margin: 10px auto;
+  padding-top: 15px;
+  background-color:cornflowerblue;
+  color:#fff;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+video
+{
+  width:90vw;
+  height:500px;
+}
+img
+{
+  width:200px;
+  height:200px;
+  border: 10px solid #217657;
+}
+.snap
+{
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  width:90vw;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
