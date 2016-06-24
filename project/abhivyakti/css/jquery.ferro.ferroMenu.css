@@ -1,0 +1,85 @@
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.ferromenu-controller{
+  position: absolute;
+  display:block;
+  box-shadow: 1px 0 5px rgba(0,0,0,1);
+  width:40px;
+  height:40px;
+  background-color: #D32F2F;
+  border-radius: 5px;
+  text-align:center;
+  color:#fff;
+  font-family: 'Lato', sans-serif;
+  font-size:35px;
+  line-height:36px;
+  text-decoration:none;
+}
+.ferromenu-controller:hover {
+  -webkit-animation-name: wobble-vertical;
+   animation-name: wobble-vertical;
+   -moz-animation-name: wobble-vertical;
+   -ms-animation-name: wobble-vertical;
+   -o-animation-name: wobble-vertical;
+   -webkit-animation-duration: 1s;
+   animation-duration: 1s;
+   -moz-animation-duration: 1s;
+   -ms-animation-duration: 1s;
+   -o-animation-duration: 1s;
+   -webkit-animation-timing-function: ease-in-out;
+   animation-timing-function: ease-in-out;
+   -moz-animation-timing-function: ease-in-out;
+   -ms-animation-timing-function: ease-in-out;
+   -o-animation-timing-function: ease-in-out;
+   -webkit-animation-iteration-count: 1;
+   animation-iteration-count: 1;
+   -moz-animation-iteration-count: 1;
+   -ms-animation-iteration-count: 1;
+   -o-animation-iteration-count: 1;
+}
+.ferromenu-controller .label{
+	-webkit-transition : all 0.2s linear;
+	-moz-transition : all 0.2s linear;
+	-ms-transition : all 0.2s linear;
+	-o-transition : all 0.2s linear;
+	transition : all 0.2s linear;
+}
+
+.ferromenu-controller.open .label{
+	-webkit-transform : rotate(45deg);
+	-moz-transform : rotate(45deg);
+	-ms-transform : rotate(45deg);
+	-o-transform : rotate(45deg);
+	transform : rotate(45deg);
+}
+
+.ferromenu-controller.desktop:hover,
+.ferromenu-controller.mobile:active{
+	background-color: #D32F2F;
+}
+
+#nav li,#nav2 li{
+	color:#f2f2f2;
+	text-align:center;
+
+}
+
+#nav li a,#nav2 li a{
+	font-size:20px;
+	color:#f2f2f2;
+	text-decoration:none;
+	width:40px;
+	height:40px;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	background: #45484d;
+	line-height:40px;
+	display:block;
+}
+
+#nav li.desktop a:hover,#nav2 li.desktop a:hover,
+#nav li.mobile a:active,#nav2 li.mobile a:active{
+	opacity:0.7;
+}

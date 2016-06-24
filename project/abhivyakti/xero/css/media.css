@@ -1,0 +1,50 @@
+@media screen and (max-width:1000px) {
+  .main-svg
+  {
+    height:70vh;
+  }
+}
+@media screen and (max-width:650px) {
+  .main-svg
+  {
+    height:50vh;
+  }
+  .container h1
+  {
+    font-size: 60px;
+  }
+}
+@media screen and (max-width:550px) {
+  .main-svg
+  {
+    height:40vh;
+  }
+}
+@media screen and (max-width:450px) {
+  .main-svg
+  {
+    height:34vh;
+  }
+  .container h1
+  {
+    font-size: 40px;
+  }
+  .container p
+  {
+    font-size: 17px;
+  }
+  .sub-logo
+  {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:350px) {
+  .main-svg
+  {
+    height:25vh;
+  }
+  .copyright
+  {
+    font-size: 13px;
+  }
+}

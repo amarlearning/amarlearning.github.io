@@ -1,0 +1,216 @@
+* {
+	font-family: 'Didact Gothic', sans-serif;
+	/*font-family: trebuchet ms;*/
+}
+*::selection
+{
+ 	background: #aaa;
+}
+section {
+	min-height:100vh;
+	height : 100%;
+}
+.section {
+	min-height:100vh;
+	height:100%;
+	background-image: url('../img/banner.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+#tab-one {
+	background-image: url('../img/one.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+.shift {
+	padding-top: 100px;
+	color:#fff;
+	font-family: 'Raleway', sans-serif;
+	text-shadow: 0 0 5px #999;
+	font-size: 62px;
+	font-weight: bolder;
+}
+.small {
+	padding-top: 100px;
+	color:#fff;
+	font-family: 'Raleway', sans-serif;
+	text-shadow: 0 0 5px #999;
+	font-size: 40px;
+	line-height: 50px;
+	font-weight: bolder;
+}
+.backview {
+	background-color: rgba(230,230,230,0.2);
+}
+#backviews {
+	background-color: rgba(10,10,10,0.4);
+}
+.card-content .card-title {
+	font-weight: bold;
+	color:white;
+	font-size: 30px;
+	text-shadow: 1px 1px 3px #555;
+}
+.card-content p {
+	color :black;
+	font-weight: 0;
+	line-height: 30px;
+	font-size: 18px;
+	letter-spacing: 0.4px;
+	text-shadow: 1px 1px 3px #333;
+}
+.contain {
+	width: 80%;
+	height:100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	margin-top: 5%;
+}
+.extra {
+	width:200px;
+}
+.collection li {
+	color: #ffffff;
+	font-size: 16px;
+	text-shadow: 0 0 2px #444;
+}
+#tab-two {
+	background-image: url('../img/two.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+#tab-three {
+	background-image: url('../img/three.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+#tab-four {
+	background-image: url('../img/four.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+#tab-five {
+	background-color: #ffffff;
+	color:#666;	
+}
+#footer {
+	min-height: 100%;
+}
+.blur {
+	background-color:rgba(0,0,0,0.3);
+	width: 100%;
+	height:100%;
+	min-height: 100vh;
+}
+.remove {
+	width:50%;
+	min-width: 300px;
+}
+.form-head {
+	color :#000;
+	line-height: 50px;
+}
+.outline {
+	background-color: #fefefe;
+	padding:30px;
+	box-shadow: 0 0 2px #999;
+}
+.outline:hover {
+	box-shadow: 0 0 10px #777;
+	transition: all 0.5s ease-in-out;
+}
+.input-field label {
+ color: #000;
+}
+.input-field input[type=text]:focus + label {
+ color: #00c853 ;
+}
+.input-field input[type=password]:focus + label {
+ color: #00c853 ;
+}
+.input-field input[type=email]:focus + label {
+ color: #00c853 ;
+}
+.input-field textarea:focus + label {
+ color: #00c853 ;
+}
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #00c853;
+ box-shadow: 0 1px 0 0 #00c853;
+}
+.input-field input[type=password]:focus {
+ border-bottom: 1px solid #00c853;
+ box-shadow: 0 1px 0 0 #00c853;
+}
+.input-field input[type=email]:focus {
+ border-bottom: 1px solid #00c853;
+ box-shadow: 0 1px 0 0 #00c853;
+}
+.input-field textarea:focus {
+ border-bottom: 1px solid #00c853;
+ box-shadow: 0 1px 0 0 #00c853;
+}
+.input-field input[type=email].valid {
+ border-bottom: 1px solid #00c853;
+ box-shadow: 0 1px 0 0 #00c853;
+}
+.input-field input[type=email].invalid {
+ border-bottom: 1px solid red;
+ box-shadow: 0 1px 0 0 red;
+}
+.input-field .prefix.active {
+ color: #000;
+}
+.header {
+	width: 100%;
+	height:60px;
+}
+.submit {
+	width :100%;
+}
+.main {
+	font-size: 55px;
+	color:#fff;
+	text-shadow: 0 0 2px #000;
+	font-weight: bold;
+	background-color: rgba(1,1,1,0);
+}
+.mainp {
+	font-size: 20px;
+	color:#fff;
+	text-shadow: 0 0 2px #000;
+	font-weight: bold;
+	background-color: rgba(1,1,1,0);
+	margin-top: -10px;
+}
+.main-sub {
+	font-size: 45px;
+	color:#fff;
+	text-shadow: 0 0 2px #000;
+	font-weight: bold;
+	background-color: rgba(1,1,1,0);
+}
+.left {
+	padding-left: 100px;
+}
+.gap-50 {
+	height: 50px;
+}
+.gap-40 {
+	height: 40px;
+}
+.gap-30 {
+	height: 30px;
+}
+.gap-20 {
+	height: 20px;
+}
+.gap-10 {
+	height: 10px;
+}
