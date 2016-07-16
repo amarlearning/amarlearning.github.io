@@ -6,12 +6,10 @@ var opts = {
   loop: false,
   postfix: ''
 };
-malarkey(elem, opts).type('Amar.').pause(700).delete(100)
+malarkey(elem, opts).type('Amar.').pause(1000).delete(100)
 .type('a nerd.').pause(700).delete(100)
-.type('sexy.').pause(700).delete(100)
 .type('Quora addict.').pause(700).delete(100)
 .type('Introvert.').pause(700).delete(100)
-.type('Sapiosexual.').pause(700).delete(100)
 .type('a Geek.').pause(700).delete(100)
 .type('a Web Developer.').pause(700).delete(100)
 .type('a Hacker.').pause(700).delete(100)
@@ -21,7 +19,7 @@ malarkey(elem, opts).type('Amar.').pause(700).delete(100)
 $(document).ready(function(){
   setTimeout(function(){
     $('#hide').css({'display':'none'});
-  },21000);
+  },20000);
 });
 
 $(document).ready(function()
