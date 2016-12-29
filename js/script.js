@@ -1,10 +1,10 @@
 var elem = document.querySelector('.malarkey');
 var opts = {
-  typeSpeed: 50,
-  deleteSpeed: 50,
-  pauseDelay: 2000,
-  loop: false,
-  postfix: ''
+	typeSpeed: 50,
+	deleteSpeed: 50,
+	pauseDelay: 2000,
+	loop: false,
+	postfix: ''
 };
 malarkey(elem, opts).type('Amar.').pause(1000).delete(100)
 .type('a nerd.').pause(700).delete(100)
@@ -17,46 +17,26 @@ malarkey(elem, opts).type('Amar.').pause(1000).delete(100)
 .type('Amar.').pause(700).type(' And I love building things with code.');
 
 $(document).ready(function(){
-  setTimeout(function(){
-    $('#hide').css({'display':'none'});
-  },20000);
+	setTimeout(function(){
+		$('#trade-mark').css({'display':'none'});
+	},20000);
 });
 
-$(document).ready(function()
-{
-  $('#github').hover(function()
-  {
-    $('.github-text').toggle();
-  });
+var online = new Object();
+online.github = "I dump code on Github.";
+online.duckduckgo  = "Open Source Community Member!";
+online.twitter  = "Mostly retweet on Twitter.";
+online.linkedin  = "Be professional on LinkedIn.";
+online.quora  = "Ask questions on Quora.";
+online.facebook  = "Make friends on Facebook.";
+online.googleplus  = "Circle me here.";
 
-  $('#twitter').hover(function()
-  {
-    $('.twitter-text').toggle();
-  });
-
-  $('#codepen').hover(function()
-  {
-    $('.codepen-text').toggle();
-  });
-
-  $('#linkedin').hover(function()
-  {
-    $('.linkedin-text').toggle();
-  });
-
-  $('#stack').hover(function()
-  {
-    $('.stack-text').toggle();
-  });
-
-  $('#quora').hover(function()
-  {
-    $('.quora-text').toggle();
-  });
-
-  $('#facebook').hover(function()
-  {
-    $('.facebook-text').toggle();
-  });
-
+$(document).ready(function(){
+	$(".online").hover(function() {
+		var method = $(this).attr("id");
+		$(".fill-text").text(online[method]);
+	});
+	$(".online").mouseleave(function(){
+	    $(".fill-text").text("");
+	});
 });
