@@ -13,6 +13,7 @@ malarkey(elem, opts).type('Amar.').pause(1000).delete(100)
 .type('a Geek.').pause(700).delete(100)
 .type('a Web Developer.').pause(700).delete(100)
 .type('a Hacker.').pause(700).delete(100)
+.type('GSoCer.').pause(700).delete(100)
 .type('that guy.').pause(700).delete(100)
 .type('Amar.').pause(700).type(' And I love building things with code.');
 

@@ -4,15 +4,15 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport'>
-		<link rel="icon"  type="image/png"  href="img/favicon.ico" />
+		<link rel="icon"  type="image/png"  href="http://amarpandey.me/img/favicon.ico" />
 		<title>Amar Prakash Pandey | Personal Portfolio</title>
 		<meta name="author" content="Amar Prakash Pandey">
 		<meta property="og:url" content="http://amarpandey.me"/>
 		<meta property="og:site_name" content="Amar Prakash Pandey (amarpandey)"/>
 		<meta property="og:title" content="Amar Prakash Pandey (amarpandey)"/>
 		<meta property="og:type" content="website"/>
-		<meta property="og:description" content="Amar Prakash Pandey is an undergraduate student, pursuing bachelor of technology degree in Computer Science and Engineering. I expect to graduate with a Bachelors degree in May 2017. I love to play with web technologies and create great user experiences. Feel free to contact me. "/>
-		<meta name="description" content="Amar Prakash Pandey is an undergraduate student, pursuing bachelor of technology degree in Computer Science and Engineering. I expect to graduate with a Bachelors degree in May 2017. I love to play with web technologies and create great user experiences. Feel free to contact me. ">
+		<meta property="og:description" content="Graduate Software Developer. Past GSoC 2017. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community."/>
+		<meta name="description" content="Graduate Software Developer. Past GSoC 2017. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
 		<meta name="keywords" content="Amar Prakash Pandey, Amar Pandey, amarpandey, amar pandey, amar prakash pandey, amarpandey007, amar.om1994, amar srmcem, web developer, amar lucknow, amarlearning, Github, python, javascript, electron, nodejs, html5, css3, API, developer, pingetron, desktop application, pystalker, recipejaar, codechef, dfeojm, php game, abhivyakti, movie catalog, laptop selfi, make it short, gantavya, technopedia, desktop notification, speedometer, responsinator, CS 2017">
 		<link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="http://amarpandey.me/css/master.css" media="screen" title="no title" charset="utf-8">
@@ -36,14 +36,14 @@
 					<a class="theme" href="http://amarpandey.me/projects">Projects</a>
 					/
 					<a class="theme" href="http://amarpandey.me/resume" target="_blank">Resumé</a>
-					/ 
+					/
 					<a class="theme" href="mailto:amar.om1994@gmail.com" target="_blank">Email</a>
 				</span>
 				<p class="resume-email-900">
 					<a class="theme" href="http://amarpandey.me/projects">Projects</a>
 					/
 					<a class="theme" href="http://amarpandey.me/resume" target="_blank">Resumé</a>
-					 / 
+					 /
 					<a class="theme" href="mailto:amar.om1994@gmail.com" target="_blank">Email</a>
 				</p>
 			</div>

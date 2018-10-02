@@ -1,0 +1,86 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+.sidebar {
+	width:60px;
+	height:100vh;
+	background-color: #263238;
+	position: fixed;
+	display: block;
+	overflow : hidden;
+	z-index: 1;
+}
+.head {
+	width:100%;
+	height:50px;
+	padding-top: 14px;
+	cursor: pointer;
+	text-align: center;
+	color: #fafafa;
+	font-size: 12px;
+	background-color: #455a64;
+}
+.gap30 {
+	width:100;
+	height:30px;
+}
+.icons {
+	width:100%;
+	height:45px;
+	padding-left: 21px;
+	padding-top: 13px;
+	color:#ffffff;
+	cursor: pointer;
+
+}
+.span {
+	padding-left: 1px;
+	font-weight: 500;
+	display: block !important;
+	float: right;
+	text-align: left;
+	width:150px;
+	margin-right: 50px;
+}
+.icons:hover {
+	background-color: #37474f; 
+}
+.main-body {
+	width:100%;
+	height:200vh;
+	padding-left:70px;
+	padding-top: 10px;
+	background-color: #eeeeee;
+}
+header {
+	height:40px;
+	margin-right: 10px;
+	background-color: #fff;
+	padding-left: 10px;
+	border-radius: 10px;
+}
+.left {
+	float: left;
+}
+.right {
+	float:right;
+}
+.logo-image {
+	width:170px;
+	height:40px;
+	padding-top: 5px;
+}
+.username {
+	color : #000;
+	font-weight: 500;
+}
+.down {
+	padding-top: 10px;
+	padding-right: 10px;
+}
+.heading {
+	width :100%;
+	height:50px;
+	background-color: #ffcc00;
+}

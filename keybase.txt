@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/amarpandey
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://amarpandey.me
+  * I am amarpandey (https://keybase.io/amarpandey) on keybase.
+  * I have a public key ASDz_PhYUFrI1Z9PP8rsC1MfNWfwKoiw5LYptdfg9_4qcAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f3fcf858505ac8d59f4f3fcaec0b531f3567f02a88b0e4b629b5d7e0f7fe2a700a",
+      "host": "keybase.io",
+      "kid": "0120f3fcf858505ac8d59f4f3fcaec0b531f3567f02a88b0e4b629b5d7e0f7fe2a700a",
+      "uid": "e699a6730c66edfa5814ab96795d7019",
+      "username": "amarpandey"
+    },
+    "merkle_root": {
+      "ctime": 1531861856,
+      "hash": "e9b5ed741f7eb0b7b813429a85dddfe7fa9e35b0e81b2fa9613f89c7411d470ef915e228251ce12ec3c5046db3af5c32deb77a5f99723dcbc792c26788c65170",
+      "hash_meta": "bea5c8015cf8e59a091f8c2aaddb2fd666ae427155e28380e3bee4f690f5cbe3",
+      "seqno": 3281164
+    },
+    "service": {
+      "entropy": "G7okRBRg5uISrMnRoxLSBs1+",
+      "hostname": "amarpandey.me",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "2.4.0"
+  },
+  "ctime": 1531861870,
+  "expire_in": 504576000,
+  "prev": "a1052d417e573dd735a80c899a4ae6f0b0670e146cd3bb8257e7dea58da01aaf",
+  "seqno": 37,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg8/z4WFBayNWfTz/K7AtTHzVn8CqIsOS2KbXX4Pf+KnAKp3BheWxvYWTESpcCJcQgoQUtQX5XPdc1qAyJmkrm8LBnDhRs07uCV+fepY2gGq/EIHHu+o10oq8qhf/BVqYHJG0c/G6Y7IuKp11tSiz08gaHAgHCo3NpZ8RAMZuvRRU3ra2WJkQp4rQGI1miFPirNtd87D454wC3VxsQ0wHF1w3qzY2a2dHOGzTpYVyvh+aWpVyBEghaPTGxCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIC68172DijpUS9MZnhNbqHkBTEEDl2m7oJ8WCPvF7vfso3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/amarpandey
+
+==================================================================
