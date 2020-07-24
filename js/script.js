@@ -19,7 +19,7 @@ malarkey(elem, opts).type('Amar.').pause(1000).delete(100)
 
 var online = new Object();
 online.github = "I dump code on Github.";
-online.duckduckgo  = "Open Source Community Member!";
+online.dev  = "Sometimes I write ;)";
 online.twitter  = "Mostly retweet on Twitter.";
 online.linkedin  = "Be professional on LinkedIn.";
 online.quora  = "Ask questions on Quora.";
