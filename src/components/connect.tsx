@@ -32,7 +32,10 @@ const connect = [
 var connectList = connect.map(function (element) {
     return (
         <Link href={element.link} target="_blank">
-            <Avatar sx={{ mr: 3, cursor: 'pointer' }} src={element.image} />
+            <Avatar
+                sx={{ p: [2, 1, 0], mr: 3, cursor: 'pointer' }}
+                src={element.image}
+            />
         </Link>
     );
 });
