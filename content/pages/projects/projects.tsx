@@ -19,14 +19,6 @@ const projectDetails = [
         demo: 'https://www.youtube.com/watch?v=P3dUePye_-k',
     },
     {
-        image: '/projects/images/maven-version.png',
-        title: 'Maven Repository Verison',
-        description:
-            'Now update the repository version of all maven dependency in just a click!',
-        code: 'https://github.com/amarlearning/maven-repository-version',
-        demo: 'https://maven-repository-version.herokuapp.com/',
-    },
-    {
         image: '/projects/images/2fa.png',
         title: 'Two Factor Authentication (2FA)',
         description:
@@ -51,52 +43,12 @@ const projectDetails = [
         demo: 'https://footstep.herokuapp.com',
     },
     {
-        image: '/projects/images/smartsupport.jpg',
-        title: 'Smart Support',
-        description:
-            'Web application which allows users to talk to customer support in over 43 languages.',
-        code: 'https://github.com/Herokux/smart_support',
-        demo: 'http://devpost.com/software/smart-support',
-    },
-    {
-        image: '/projects/images/pingetron.png',
-        title: 'Pingetron',
-        description:
-            'Pingetron is a very basic cross platform desktop application built using Electron and NodeJs.',
-        code: 'https://github.com/Herokux/smart_support',
-        demo: 'http://devpost.com/software/smart-support',
-    },
-    {
         image: '/projects/images/pystalker.png',
         title: 'PyStalker',
         description:
             'Python script to check what your friend are doing on coding sites like last visit, last contest given.',
         code: 'https://github.com/Herokux/smart_support',
         demo: 'http://devpost.com/software/smart-support',
-    },
-    {
-        image: '/projects/images/tasklist.gif',
-        title: 'TaskList',
-        description:
-            'TaskList is a very simple web & Android application built using Meteor, Blaze and MongoDB.',
-        code: 'https://github.com/Herokux/smart_support',
-        demo: 'http://devpost.com/software/smart-support',
-    },
-    {
-        image: '/projects/images/plaked.gif',
-        title: 'Plaked',
-        description:
-            'Classic Snake Game named Plaked | Beyond the Apple using Pygame Library of Python.',
-        code: 'https://github.com/amarlearning/Plaked',
-        demo: 'https://youtu.be/67en0hRGUvc',
-    },
-    {
-        image: '/projects/images/recipejaar.png',
-        title: 'RecipeJaar',
-        description:
-            'Recipejaar is blogging application using CakePhp. I wrote this code as a part of my freelancing project.',
-        code: 'https://github.com/amarlearning/Plaked',
-        demo: 'https://youtu.be/67en0hRGUvc',
     },
     {
         image: '/projects/images/dfeojm.png',
