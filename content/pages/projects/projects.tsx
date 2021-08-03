@@ -47,16 +47,16 @@ const projectDetails = [
         title: 'PyStalker',
         description:
             'Python script to check what your friend are doing on coding sites like last visit, last contest given.',
-        code: 'https://github.com/Herokux/smart_support',
-        demo: 'http://devpost.com/software/smart-support',
+        code: 'https://github.com/amarlearning/PyStalker',
+        demo: 'https://youtu.be/HeY2f43b59s',
     },
     {
         image: '/projects/images/dfeojm.png',
         title: 'DFEOJM',
         description:
             'A PHP Script which helps you find whether a website is Up or Down with just one function call.',
-        code: 'https://github.com/amarlearning/Plaked',
-        demo: 'https://youtu.be/67en0hRGUvc',
+        code: 'https://github.com/amarlearning/Down-for-everyone-or-just-me',
+        demo: '#',
     },
     {
         image: '/projects/images/abhivyakti.jpg',
