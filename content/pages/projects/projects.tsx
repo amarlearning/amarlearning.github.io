@@ -27,7 +27,7 @@ const projectDetails = [
         demo: 'https://github.com/amarlearning/two-factor-auth#two-factor-authentication-2fa',
     },
     {
-        image: '/projects/images/sreencast.gif',
+        image: '/projects/images/github-sectory.gif',
         title: 'Github Sectory',
         description:
             'CLI for downloading sub-directory of any Github repository using Github Content API!',
