@@ -1,12 +1,17 @@
 ---
 title: About
 slug: '/about'
-banner: ./images/cover.jpeg
+banner: /images/about/cover.jpeg
 ---
 
-import { Divider } from 'theme-ui';
+import { AspectImage, Divider } from 'theme-ui';
 
-![A photo from my trip to Himachal Pradesh](./images/cover.jpeg)
+<AspectImage
+    ratio={16 / 9}
+    sx={{ mx: 'auto', display: 'block' }}
+    alt="A photo from my trip to Sethan, Himachal Pradesh"
+    src="/images/about/cover.jpeg"
+/>
 
 <Divider />
 
