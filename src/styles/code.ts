@@ -35,11 +35,11 @@ const code = {
     display: `inline-block`,
   },
   "p > code, li > code": {
-    bg: `gray.2`,
-    color: `gray.8`,
+    bg: `gray.3`,
+    color: `gray.10`,
     px: 2,
     py: 1,
-    borderRadius: `2px`,
+    borderRadius: `3px`,
   },
   ".gatsby-highlight": {
     fontSize: [1, 1, 2],
