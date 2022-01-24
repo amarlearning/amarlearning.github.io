@@ -7,7 +7,7 @@ tags:
     - image-processing
     - finger-detection
     - open-source-software
-banner: ./banner.jpg
+banner: /images/finger-detection-and-tracking-using-opencv-and-python/banner.jpg
 ---
 
 import { Embed, AspectImage } from 'theme-ui';
@@ -33,7 +33,7 @@ The problem with the above approach is that changing light conditions and skin c
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt=" Place hand over the rectangles"
-    src="/images/1/aaijxoqwmrkyx8epxq4t.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/aaijxoqwmrkyx8epxq4t.png"
 />
 
 Green rectangles are drawn on the frame and the user places their hand inside these rectangles. Application is taking skin color samples from the user’s hand and then creates a histogram.
@@ -112,14 +112,14 @@ In the first two lines, I changed the input frame to HSV and then applied `cv2.c
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Hand seperated from background (1)"
-    src="/images/1/mcgp59fqr03d6bnsln1o.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/mcgp59fqr03d6bnsln1o.png"
 />
 
 <AspectImage
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Hand seperated from background (2)"
-    src="/images/1/orqapdym6iw05gake3wo.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/orqapdym6iw05gake3wo.png"
 />
 
 Now we have a frame with skin color regions only, but what we really want is to find the location of a fingertip. Using OpenCV you can find contours in a frame if you don’t know what contour is you can read [here](https://docs.opencv.org/3.4.2/d3/d05/tutorial_py_table_of_contents_contours.html). Using contours you can find convexity defects, which will be potential fingertip location.
@@ -154,14 +154,14 @@ def manage_image_opr(frame, hand_hist):
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Contour in Frame (1)"
-    src="/images/1/bj7cm00cs5phg5u3hscg.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/bj7cm00cs5phg5u3hscg.png"
 />
 
 <AspectImage
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Contour in Frame (2)"
-    src="/images/1/ovzk2u78ibfg05ajlbp3.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/ovzk2u78ibfg05ajlbp3.png"
 />
 
 Then it determines the largest contour. For the largest contour, it finds the hull, centroid, and defects.
@@ -170,7 +170,7 @@ Then it determines the largest contour. For the largest contour, it finds the hu
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Defects in red circle and Centroid in purple circle"
-    src="/images/1/erv2ixq4v28qd51kv7du.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/erv2ixq4v28qd51kv7du.png"
 />
 
 Now that you have all these defects you find the one that is farthest from the center of the contour. This point is assumed to be the pointing finger. The center is purple and the farthest point is red. And there you have it, you’ve found a fingertip.
@@ -179,7 +179,7 @@ Now that you have all these defects you find the one that is farthest from the c
     ratio={4 / 3}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4], width: 1200 }}
     alt="Centroid in purple color and Farthest point in red color"
-    src="/images/1/3bbqd3amg0wdp2xevuo4.png"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/3bbqd3amg0wdp2xevuo4.png"
 />
 
 All hard part is done up until now, now all we have to do is to create a `list` to store the changed location of the `farthest_point` in the frame. It’s up to you that how many changed points you want to store. I am storing only `20` points.
@@ -188,7 +188,7 @@ All hard part is done up until now, now all we have to do is to create a `list` 
     ratio={16 / 9}
     sx={{ mt: [2, 3, 4], mb: [2, 3, 4] }}
     alt="Finger Detection and Tracking using OpenCV and Python"
-    src="/images/1/1l1xyvsi3g0h4gpm23nt.jpg"
+    src="/images/finger-detection-and-tracking-using-opencv-and-python/banner.jpg"
 />
 
 ---
