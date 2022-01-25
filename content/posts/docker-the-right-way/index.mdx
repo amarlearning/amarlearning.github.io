@@ -53,7 +53,8 @@ FROM openjdk
 As you see from the previous script we have chosen `OpenJDK` as our base image, but now when we build our application image from the above docker file, it will always use the **latest** tag of the `OpenJDK` image.
 
 ```shell:title=Dockerfile
-"FROM openjdk" == "FROM openjdk:latest"
+# Is same as FROM openjdk:latest
+FROM openjdk
 ```
 
 ---
