@@ -6,7 +6,7 @@ tags:
     - code
     - cleancode
     - codesmells
-banner: /images/docker-the-right-way/banner.png
+banner: /images/symptoms-of-bad-code/banner.jpg
 ---
 
 import { AspectImage } from 'theme-ui';
@@ -14,13 +14,15 @@ import { AspectImage } from 'theme-ui';
 <AspectImage
 ratio={16 / 9}
 sx={{ mx: 'auto', display: 'block' }}
-alt="Google Summer of Code"
-src="/images/docker-the-right-way/banner.png"
+alt="symptoms of clean code"
+src="/images/symptoms-of-bad-code/banner.jpg"
 />
 
 ---
 
 # Symptoms of Bad Code
+
+---
 
 1. #### Rigidity
 
@@ -28,11 +30,15 @@ src="/images/docker-the-right-way/banner.png"
     - Code that has dependencies that snake out in so many directions and you cannot make an isolated change without changing everything around it.
     - Rigidity causes compile time error.
 
+---
+
 2. #### Fragility
 
     - A system is fragile when a small change in one module causes other unrelated modules to misbehave.
     - It is the tendency of the code to break in many places even when you make changes in one place. You make a simple change and a whole bunch of things break. But they break into parts of the code that have no relationship to what you changed.
     - Fragility causes runtime error.
+
+---
 
 3. #### Immobility
 
@@ -47,6 +53,13 @@ src="/images/docker-the-right-way/banner.png"
 
     > You want a banana but what you get is a gorilla holding a banana and the entire jungle with it  — Joe Armstrong
 
+---
+
 4. #### Viscosity
     - A system is viscous when necessary operations like building and testing are difficult to perform and take a long time to execute.
     - The cause of viscosity is irresponsible tolerance. Developers tolerate conditions they know to be bad and do nothing to correct them.
+
+---
+
+Lastly, thank you for reading this post. For more awesome posts, you can also
+follow me on Twitter — [iamarpandey](https://twitter.com/iamarpandey), Github — [amarlearning](https://github.com/amarlearning).
