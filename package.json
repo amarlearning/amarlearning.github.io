@@ -16,11 +16,11 @@
     "deploy:ci": "gatsby build --prefix-paths && gh-pages -b master -d public -r https://$GH_TOKEN@github.com/amarlearning/amarlearning.github.io.git"
   },
   "dependencies": {
-    "@lekoarts/gatsby-theme-minimal-blog": "^2.2.1",
+    "@lekoarts/gatsby-theme-minimal-blog": "^5.0.1",
     "bootstrap": "^5.0.1",
     "gatsby": "^2.13.3",
     "gatsby-plugin-google-analytics": "^2.1.4",
-    "gatsby-plugin-manifest": "^2.2.3",
+    "gatsby-plugin-manifest": "^4.24.0",
     "gatsby-plugin-netlify": "^2.1.3",
     "gatsby-plugin-offline": "^3.3.3",
     "gatsby-plugin-sitemap": "^2.2.19",
