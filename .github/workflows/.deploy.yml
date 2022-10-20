@@ -5,12 +5,21 @@ on:
         branches:
             - develop
 
+env:
+    GH_TOKEN: ${{ secrets.DEPLOY_PERSONAL_SITE }}
+
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: enriikke/gatsby-gh-pages-action@v2
-              with:
-                  access-token: ${{ secrets.DEPLOY_PERSONAL_SITE }}
-                  deploy-branch: master
+            - name: GitHub Config
+              run: |
+                  git config --global user.email "amar.om1994@gmail.com"
+                  git config --global user.name "amarlearning"
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Install dependencies
+              run: |
+                  npm install
+            - name: Deploy
+              run: npm run deploy:ci
