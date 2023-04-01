@@ -262,7 +262,7 @@ ENTRYPOINT ["java", "-jar", "/usr/local/tomcat/webapps/file.war"]
 
 ---
 
-Let's also look at the size comparion between two stages:
+Let's also look at the size comparison between two stages:
 
 ```shell:title=Console
 REPOSITORY                 TAG                    IMAGE ID       CREATED          SIZE
@@ -279,7 +279,7 @@ By default, Docker runs container processes as root inside of a container. Howev
 -   Copying sensitive info from the host's filesystem to the container.
 -   Executing remote commands.
 
-To prevent this, we should run container processes with a non-root user or less previliged user.
+To prevent this, we should run container processes with a non-root user or less privileged user.
 
 ```shell:title=Dockerfile
 ...
@@ -348,7 +348,7 @@ In the background, Docker uses called [Snyk](https://snyk.io/) to do the vulnera
 6. Use .dockerignore to Exclude Files and Folder.
     - Use .dockerignore to explicitly exclude files and folders
 7. Make use of Multi-stage builds.
-    - Multi-stage builds can decerease the size of our production images.
+    - Multi-stage builds can decrease the size of our production images.
     - Small image size potentially means small attack surface.
 8. Use the Least Privileged User or Non-Root User
 9. Scan Images for Vulnerabilities
