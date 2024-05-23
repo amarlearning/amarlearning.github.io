@@ -257,7 +257,8 @@
 </p>
 
 <content>
-  <p>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:</p>
+  <p><img src="/images/handling-large-broadcast-joins-in-apache-spark/banner.png" alt="banner"></p>
+<p>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: <span style="color:#ae81ff">13</span> GB
 </span></span></code></pre></div><p>This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&rsquo;s threshold for broadcasting is set to 8GB. If a dataset exceeds this limit, Spark will throw an exception and the job will fail. Here, we will discuss two ways to resolve this issue.</p>
 <h3 id="solution-1-adjusting-the-broadcast-join-threshold">Solution 1: Adjusting the Broadcast Join Threshold</h3>
