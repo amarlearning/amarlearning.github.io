@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Broadcast on Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</title>
+    <link>http://localhost:1313/tags/broadcast/</link>
+    <description>Recent content in Broadcast on Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/broadcast/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Handling Large Broadcast Joins in Apache Spark</title>
+      <link>http://localhost:1313/blog/handling-large-broadcast-joins-in-apache-spark/</link>
+      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
+      <description>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&#xA;Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: 13 GB This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB.</description>
+    </item>
+  </channel>
+</rss>
