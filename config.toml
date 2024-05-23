@@ -5,6 +5,7 @@ theme = 'hugo-bearblog'
 
 [params]
 	Description = "Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community."
+  hideMadeWithLine = true
 
 [params.analytics]
   measurement_id = "G-649QMBQG52"
