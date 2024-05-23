@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</title>
+    <link>https://amarpandey.me/</link>
+    <description>Recent content on Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Handling Large Broadcast Joins in Apache Spark</title>
+      <link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
+      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
+      <description>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&#xA;Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: 13 GB This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB.</description>
+    </item>
+    <item>
+      <title>Symptoms of Bad Code</title>
+      <link>https://amarpandey.me/blog/symptoms-of-bad-code/</link>
+      <pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/symptoms-of-bad-code/</guid>
+      <description>1. Rigidity Rigidity is the tendency of the system to be hard to change. Code that has dependencies that snake out in so many directions and you cannot make an isolated change without changing everything around it. Rigidity causes compile time error. 2. Fragility A system is fragile when a small change in one module causes other unrelated modules to misbehave.&#xA;It is the tendency of the code to break in many places even when you make changes in one place.</description>
+    </item>
+    <item>
+      <title>Docker - the right way</title>
+      <link>https://amarpandey.me/blog/docker---the-right-way/</link>
+      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/docker---the-right-way/</guid>
+      <description>Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.&#xA;1. Use Official Docker Image as Base Image Always use the official or verified base image when writing the docker file. Let&amp;rsquo;s say you are developing a java application and want to build it and run it as a docker image.</description>
+    </item>
+    <item>
+      <title>GitOps - the easy way</title>
+      <link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
+      <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
+      <description>What is GitOps? Treat the infrastructure as code the same way as application code.&#xA;Separate repository for Infrastructure as code. DevOps pipeline. How does GitOps works? Infrastructure as Code hosted on Git repository.&#xA;Version controlled. Team collaboration. Use branching strategy to merge code in git repository. With CI pipeline to test the code. With CD pipeline to apply the changes to the Infrastructure. With the above steps we achieve: Automated Process.</description>
+    </item>
+    <item>
+      <title>Finger Detection and Tracking using OpenCV and Python</title>
+      <link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
+      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
+      <description>TL;DR. Code is here.&#xA;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&#xA;One of the challenges that I faced in detecting fingers is differentiating a hand from the background and identifying the tip of a finger.</description>
+    </item>
+    <item>
+      <title>What is Google Summer of Code? How to prepare for it?</title>
+      <link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
+      <pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
+      <description>We will talk about Google Summer of Code but before that let’s talk about what Open Source Development is. Yes, it’s very important.&#xA;What is open source development? Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an open-source license to study, change, and improve its design.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://amarpandey.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/about/</guid>
+      <description>Hello, I&amp;rsquo;m Amar Prakash Pandey :)&#xA;I’m a developer, hacker, driven by genuine curiosity, and have an optimistic attitude. I believe that I’m passionate about software development and writing simple, readable code. I love to learn new things and grow. I’ve spent the last 3 years growing as a developer through experience and education.&#xA;I prefer to think of myself as an open-minded, down to earth and outgoing person. I care very much for people who I come across in my life and try to make their lives easier.</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>https://amarpandey.me/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/projects/</guid>
+      <description>Here are some of the projects that I have worked on. You can find the source code and demo link for each project below.&#xA;geohashviz.com - A web application that lets you visualize geohashes in bulk. code demo&#xA;Chat Rooms - Real time public/private chat application using spring boot web-sockets. code</description>
+    </item>
+  </channel>
+</rss>

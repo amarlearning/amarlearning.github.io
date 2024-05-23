@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Finger Detection and Tracking using OpenCV and Python | Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</title>
+<meta name="title" content="Finger Detection and Tracking using OpenCV and Python" />
+<meta name="description" content="Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time." />
+<meta name="keywords" content="gitops,devops,infrastructure,iac," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ">
+  <meta property="og:title" content="Finger Detection and Tracking using OpenCV and Python">
+  <meta property="og:description" content="Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2018-07-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-07-28T00:00:00+00:00">
+    <meta property="article:tag" content="Gitops">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="Infrastructure">
+    <meta property="article:tag" content="Iac">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Finger Detection and Tracking using OpenCV and Python">
+  <meta name="twitter:description" content="Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time.">
+
+
+
+
+  <meta itemprop="name" content="Finger Detection and Tracking using OpenCV and Python">
+  <meta itemprop="description" content="Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time.">
+  <meta itemprop="datePublished" content="2018-07-28T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2018-07-28T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1106">
+  <meta itemprop="keywords" content="Gitops,Devops,Infrastructure,Iac">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-649QMBQG52"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-649QMBQG52');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Finger Detection and Tracking using OpenCV and Python</h1>
+<p>
+  <i>
+    <time datetime='2018-07-28' pubdate>
+      28 Jul, 2018
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><a href="https://www.youtube.com/watch?v=P3dUePye_-k"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/banner.jpeg" alt="Video Title"></a></p>
+<blockquote>
+<p><strong>TL;DR. Code is <a href="https://github.com/amarlearning/Finger-Detection-and-Tracking">here</a></strong>.</p>
+</blockquote>
+<hr>
+<p>Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.</p>
+<p>One of the challenges that I faced in detecting fingers is differentiating a hand from the background and identifying the tip of a finger. I’ll show you my technique for tracking a finger, which I used in this project. To see finger detection and tracking in action check out this video.</p>
+<p>In an application where you want to track a user’s hand movement, skin color histogram will be very useful. This histogram is then used to subtracts the background from an image, only leaving parts of the image that contain skin tone.</p>
+<p>A much simpler method to detect skin would be to find pixels that are in a certain RGB or HSV range. If you want to know more about this approach follow <a href="https://docs.opencv.org/3.4.2/df/d9d/tutorial_py_colorspaces.html">here</a>.</p>
+<p>The problem with the above approach is that changing light conditions and skin colors can really mess with the skin detection. While on the other hand, Histogram tends to be more accurate and takes into account the current light conditions.</p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/1.png" alt="Place hand over the rectangles"></p>
+<p>Green rectangles are drawn on the frame and the user places their hand inside these rectangles. Application is taking skin color samples from the user’s hand and then creates a histogram.</p>
+<p><em>The rectangles are drawn with the following function:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python:title=draw_rectangles_in_frame.py" data-lang="python:title=draw_rectangles_in_frame.py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">draw_rect</span>(frame):
+</span></span><span style="display:flex;"><span>    rows, cols, _ <span style="color:#f92672">=</span> frame<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> total_rectangle, hand_rect_one_x, hand_rect_one_y, hand_rect_two_x, hand_rect_two_y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    hand_rect_one_x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">6</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">12</span> <span style="color:#f92672">*</span> rows <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint32)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    hand_rect_one_y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(
+</span></span><span style="display:flex;"><span>        [<span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">11</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">11</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">9</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">11</span> <span style="color:#f92672">*</span> cols <span style="color:#f92672">/</span> <span style="color:#ae81ff">20</span>], dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint32)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    hand_rect_two_x <span style="color:#f92672">=</span> hand_rect_one_x <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>    hand_rect_two_y <span style="color:#f92672">=</span> hand_rect_one_y <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(total_rectangle):
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>rectangle(frame, (hand_rect_one_y[i], hand_rect_one_x[i]),
+</span></span><span style="display:flex;"><span>                      (hand_rect_two_y[i], hand_rect_two_x[i]),
+</span></span><span style="display:flex;"><span>                      (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> frame
+</span></span></code></pre></div><p>There’s nothing too complicated going on here. I have created four arrays <code>hand_rect_one_x</code>, <code>hand_rect_one_y</code>, <code>hand_rect_two_x</code>, <code>hand_rect_two_y</code> to hold the coordinates of each rectangle. The code then iterates over these arrays and draws them on the frame using <code>cv2.rectangle</code>. Here <code>total_rectangle</code> is just the length of the array i.e. <code>9</code>.</p>
+<p>Now that the user understands where to place his or her palm, the succeeding step is to extract pixels from these rectangles and use them to generate an HSV histogram.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python:title=generate_hsv_histogram.py" data-lang="python:title=generate_hsv_histogram.py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hand_histogram</span>(frame):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> hand_rect_one_x, hand_rect_one_y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    hsv_frame <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(frame, cv2<span style="color:#f92672">.</span>COLOR_BGR2HSV)
+</span></span><span style="display:flex;"><span>    roi <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros([<span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">3</span>], dtype<span style="color:#f92672">=</span>hsv_frame<span style="color:#f92672">.</span>dtype)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(total_rectangle):
+</span></span><span style="display:flex;"><span>        roi[i <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>: i <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">0</span>: <span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> hsv_frame[hand_rect_one_x[i]:hand_rect_one_x[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                                          hand_rect_one_y[i]:hand_rect_one_y[i] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    hand_hist <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>calcHist([roi], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], <span style="color:#66d9ef">None</span>, [<span style="color:#ae81ff">180</span>, <span style="color:#ae81ff">256</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">180</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">256</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cv2<span style="color:#f92672">.</span>normalize(hand_hist, hand_hist, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, cv2<span style="color:#f92672">.</span>NORM_MINMAX)
+</span></span></code></pre></div><p>Here function transforms the input frame to HSV. Using Numpy, we create an image of size <code>[90 * 10]</code> with <code>3</code> color channels and we name it as <strong>ROI</strong> <em>(Region of Intrest)</em>. It then takes the 900-pixel values from the green rectangles and puts them in the ROI matrix.</p>
+<p>The <code>cv2.calcHist</code> creates a histogram using the ROI matrix for the skin color and <code>cv2.normalize</code> normalizes this matrix using the norm Type <code>cv2.NORM_MINMAX</code>. Now we have a histogram to detect skin regions in the frames.</p>
+<p>Now that the user understands where to place his or her palm, the succeeding step is to extract pixels from these rectangles and use them to generate an HSV histogram.</p>
+<p>Now that we hold a skin color histogram we can use it to find the components of the frame that contains skin. OpenCV provides us with a convenient method, <code>cv2.calcBackProject</code>, that uses a histogram to separate features in an image. I used this function to apply the skin color histogram to a frame. If you want to read more about back projection, you can read from <a href="https://docs.opencv.org/master/dc/df6/tutorial_py_histogram_backprojection.html">here</a> and <a href="https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/back_projection/back_projection.html">here</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python:title=histogram_masking.py" data-lang="python:title=histogram_masking.py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hist_masking</span>(frame, hist):
+</span></span><span style="display:flex;"><span>    hsv <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(frame, cv2<span style="color:#f92672">.</span>COLOR_BGR2HSV)
+</span></span><span style="display:flex;"><span>    dst <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>calcBackProject([hsv], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], hist, [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">180</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">256</span>], <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    disc <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>getStructuringElement(cv2<span style="color:#f92672">.</span>MORPH_ELLIPSE, (<span style="color:#ae81ff">31</span>, <span style="color:#ae81ff">31</span>))
+</span></span><span style="display:flex;"><span>    cv2<span style="color:#f92672">.</span>filter2D(dst, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, disc, dst)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ret, thresh <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>threshold(dst, <span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">255</span>, cv2<span style="color:#f92672">.</span>THRESH_BINARY)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    thresh <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>merge((thresh, thresh, thresh))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> cv2<span style="color:#f92672">.</span>bitwise_and(frame, thresh)
+</span></span></code></pre></div><p>In the first two lines, I changed the input frame to HSV and then applied <code>cv2.calcBackProject</code> with the skin color histogram <code>hist</code>. Following that, I have used Filtering and Thresholding function to smoothen the image. Lastly, I masked the input frame using the <code>cv2.bitwise_and</code> function. This final frame should just contain skin color regions of the frame.</p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/2.png" alt="Hand seperated from background (1)"></p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/3.png" alt="Hand seperated from background (2)"></p>
+<p>Now we have a frame with skin color regions only, but what we really want is to find the location of a fingertip. Using OpenCV you can find contours in a frame if you don’t know what contour is you can read <a href="https://docs.opencv.org/3.4.2/d3/d05/tutorial_py_table_of_contents_contours.html">here</a>. Using contours you can find convexity defects, which will be potential fingertip location.</p>
+<p>In my application, I needed to find the tip of a finger with which a user is aiming. To do this I determined the convexity defect, which is furthest from the centroid of the contour. This is done by the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python:title=fingertip_point.py" data-lang="python:title=fingertip_point.py"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">manage_image_opr</span>(frame, hand_hist):
+</span></span><span style="display:flex;"><span>    hist_mask_image <span style="color:#f92672">=</span> hist_masking(frame, hand_hist)
+</span></span><span style="display:flex;"><span>    contour_list <span style="color:#f92672">=</span> contours(hist_mask_image)
+</span></span><span style="display:flex;"><span>    max_cont <span style="color:#f92672">=</span> max_contour(contour_list)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cnt_centroid <span style="color:#f92672">=</span> centroid(max_cont)
+</span></span><span style="display:flex;"><span>    cv2<span style="color:#f92672">.</span>circle(frame, cnt_centroid, <span style="color:#ae81ff">5</span>, [<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> max_cont <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        hull <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>convexHull(max_cont, returnPoints<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        defects <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>convexityDefects(max_cont, hull)
+</span></span><span style="display:flex;"><span>        far_point <span style="color:#f92672">=</span> farthest_point(defects, max_cont, cnt_centroid)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;Centroid : &#34;</span> <span style="color:#f92672">+</span> str(cnt_centroid) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, farthest Point : &#34;</span> <span style="color:#f92672">+</span> str(far_point))
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>circle(frame, far_point, <span style="color:#ae81ff">5</span>, [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(traverse_point) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">20</span>:
+</span></span><span style="display:flex;"><span>            traverse_point<span style="color:#f92672">.</span>append(far_point)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            traverse_point<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            traverse_point<span style="color:#f92672">.</span>append(far_point)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        draw_circles(frame, traverse_point)
+</span></span></code></pre></div><p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/4.png" alt="Contour in Frame (1)"></p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/5.png" alt="Contour in Frame (2)"></p>
+<p>Then it determines the largest contour. For the largest contour, it finds the hull, centroid, and defects.</p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/6.png" alt="Defects in red circle and Centroid in purple circle"></p>
+<p>Now that you have all these defects you find the one that is farthest from the center of the contour. This point is assumed to be the pointing finger. The center is purple and the farthest point is red. And there you have it, you’ve found a fingertip.</p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/7.png" alt="Centroid in purple color and Farthest point in red color"></p>
+<p>All hard part is done up until now, now all we have to do is to create a <code>list</code> to store the changed location of the <code>farthest_point</code> in the frame. It’s up to you that how many changed points you want to store. I am storing only <code>20</code> points.</p>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/8.jpeg" alt="Finger Detection and Tracking using OpenCV and Python"></p>
+<hr>
+<p>Lastly, thank you for reading this post. For more awesome posts, you can also
+follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.</p>
+
+</content>
+<p>
+  
+  <a href="https://amarpandey.me/tags/gitops/">#Gitops</a>
+  
+  <a href="https://amarpandey.me/tags/devops/">#Devops</a>
+  
+  <a href="https://amarpandey.me/tags/infrastructure/">#Infrastructure</a>
+  
+  <a href="https://amarpandey.me/tags/iac/">#Iac</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>

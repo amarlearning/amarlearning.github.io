@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Symptoms of Bad Code | Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</title>
+<meta name="title" content="Symptoms of Bad Code" />
+<meta name="description" content="Symptoms of Bad Code - How to Identify and Address Code Quality Issues" />
+<meta name="keywords" content="cleancode,codesmells,softwareengineering,softwarequality," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/symptoms-of-bad-code/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ">
+  <meta property="og:title" content="Symptoms of Bad Code">
+  <meta property="og:description" content="Symptoms of Bad Code - How to Identify and Address Code Quality Issues">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2022-07-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-07-19T00:00:00+00:00">
+    <meta property="article:tag" content="Cleancode">
+    <meta property="article:tag" content="Codesmells">
+    <meta property="article:tag" content="Softwareengineering">
+    <meta property="article:tag" content="Softwarequality">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Symptoms of Bad Code">
+  <meta name="twitter:description" content="Symptoms of Bad Code - How to Identify and Address Code Quality Issues">
+
+
+
+
+  <meta itemprop="name" content="Symptoms of Bad Code">
+  <meta itemprop="description" content="Symptoms of Bad Code - How to Identify and Address Code Quality Issues">
+  <meta itemprop="datePublished" content="2022-07-19T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2022-07-19T00:00:00+00:00">
+  <meta itemprop="wordCount" content="317">
+  <meta itemprop="keywords" content="Cleancode,Codesmells,Softwareengineering,Softwarequality">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-649QMBQG52"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-649QMBQG52');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - (づ｡◕‿‿◕｡)づ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>Symptoms of Bad Code</h1>
+<p>
+  <i>
+    <time datetime='2022-07-19' pubdate>
+      19 Jul, 2022
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/symptoms-of-bad-code/banner.jpg" alt="banner"></p>
+<h2 id="1-rigidity">1. Rigidity</h2>
+<ul>
+<li>Rigidity is the tendency of the system to be hard to change.</li>
+<li>Code that has dependencies that snake out in so many directions and you cannot make an isolated change without changing everything around it.</li>
+<li>Rigidity causes compile time error.</li>
+</ul>
+<h2 id="2-fragility">2. Fragility</h2>
+<ul>
+<li>
+<p>A system is fragile when a small change in one module causes other unrelated modules to misbehave.</p>
+</li>
+<li>
+<p>It is the tendency of the code to break in many places even when you make changes in one place. You make a simple change and a whole bunch of things break. But they break into parts of the code that have no relationship to what you changed.</p>
+</li>
+<li>
+<p>Fragility causes runtime error.</p>
+</li>
+</ul>
+<h2 id="3-immobility">3. Immobility</h2>
+<ul>
+<li>
+<p>A system is immobile when its internal components cannot be extracted and reused in a new environment.</p>
+</li>
+<li>
+<p>The desirable part of the code is so horribly coupled with the undesirable parts of the code that you cannot use the desirable part of the code somewhere else.</p>
+</li>
+</ul>
+<p>For instance, You are trying to write a module that I wrote sometime back. But the module that I wrote does more than what you need. It couples to some framework, some database.</p>
+<p>You found out that you could use my code, but the problem that you are going to bring in with that code is just too much.</p>
+<p>This is the famous <a href="https://www.johndcook.com/blog/2011/07/19/you-wanted-banana/">Gorilla-Banana problem</a>:</p>
+<blockquote>
+<p>You want a banana but what you get is a gorilla holding a banana and the entire jungle with it  — Joe Armstrong</p>
+</blockquote>
+<h2 id="4-viscosity">4. Viscosity</h2>
+<ul>
+<li>A system is viscous when necessary operations like building and testing are difficult to perform and take a long time to execute.</li>
+<li>The cause of viscosity is irresponsible tolerance. Developers tolerate conditions they know to be bad and do nothing to correct them.</li>
+</ul>
+<hr>
+<p>Lastly, thank you for reading this post. For more awesome posts, you can also
+follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.</p>
+
+</content>
+<p>
+  
+  <a href="https://amarpandey.me/tags/cleancode/">#Cleancode</a>
+  
+  <a href="https://amarpandey.me/tags/codesmells/">#Codesmells</a>
+  
+  <a href="https://amarpandey.me/tags/softwareengineering/">#Softwareengineering</a>
+  
+  <a href="https://amarpandey.me/tags/softwarequality/">#Softwarequality</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>
