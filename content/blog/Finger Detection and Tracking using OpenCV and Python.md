@@ -143,8 +143,3 @@ Now that you have all these defects you find the one that is farthest from the c
 All hard part is done up until now, now all we have to do is to create a `list` to store the changed location of the `farthest_point` in the frame. It’s up to you that how many changed points you want to store. I am storing only `20` points.
 
 ![Finger Detection and Tracking using OpenCV and Python](/images/finger-detection-and-tracking-using-opencv-and-python/8.jpeg)
-
----
-
-Lastly, thank you for reading this post. For more awesome posts, you can also
-follow me on Twitter — [iamarpandey](https://twitter.com/iamarpandey), Github — [amarlearning](https://github.com/amarlearning).

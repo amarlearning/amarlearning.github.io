@@ -119,5 +119,3 @@ You should always ask the concerned mentor to review your proposal before submit
 - [Frequently Asked Questions](https://developers.google.com/open-source/gsoc/faq) about GSoC.
 - [Open Source Internship Programs](https://github.com/tapasweni-pathak/SOC-Programs/blob/master/README.md).
 - [Quora Reads](https://github.com/tapasweni-pathak/Getting-Started-With-Contributing-to-Open-Sources/blob/master/QuoraReads.md) about GSoC.
-
-Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — [iamarpandey](https://twitter.com/iamarpandey), Github — [amarlearning](https://github.com/amarlearning).

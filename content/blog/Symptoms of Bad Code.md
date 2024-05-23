@@ -39,8 +39,3 @@ This is the famous [Gorilla-Banana problem](https://www.johndcook.com/blog/2011/
 
 - A system is viscous when necessary operations like building and testing are difficult to perform and take a long time to execute.
 - The cause of viscosity is irresponsible tolerance. Developers tolerate conditions they know to be bad and do nothing to correct them.
-
----
-
-Lastly, thank you for reading this post. For more awesome posts, you can also
-follow me on Twitter — [iamarpandey](https://twitter.com/iamarpandey), Github — [amarlearning](https://github.com/amarlearning).

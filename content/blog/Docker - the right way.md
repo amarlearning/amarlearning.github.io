@@ -341,8 +341,3 @@ In the background, Docker uses called [Snyk](https://snyk.io/) to do the vulnera
 9. Scan Images for Vulnerabilities
 
 Follow all the above mentioned practices to make your Docker image leaner and more secure.
-
----
-
-Lastly, thank you for reading this post. For more awesome posts, you can also
-follow me on Twitter — [iamarpandey](https://twitter.com/iamarpandey), Github — [amarlearning](https://github.com/amarlearning).

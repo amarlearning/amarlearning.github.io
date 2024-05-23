@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ if eq .Type "blog" }}{{ if not .Params.menu }}
+<h1>{{ .Title }}</h1>
+<p>
+  <i>
+    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+      {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
+    </time>
+  </i>
+</p>
+{{ end }}{{ end }}
+<content>
+  {{ .Content }}
+</content>
+<hr>
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+<p>
+  {{ range (.GetTerms "tags") }}
+  <a href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
+  {{ end }}
+</p>
+{{ end }}
