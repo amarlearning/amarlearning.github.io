@@ -6,20 +6,13 @@
     <description>Recent content in Tags on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apache</title>
       <link>https://amarpandey.me/tags/apache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/apache/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Broadcast</title>
-      <link>https://amarpandey.me/tags/broadcast/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/broadcast/</guid>
       <description></description>
     </item>
     <item>
@@ -30,10 +23,24 @@
       <description></description>
     </item>
     <item>
-      <title>Join</title>
-      <link>https://amarpandey.me/tags/join/</link>
+      <title>Partitions</title>
+      <link>https://amarpandey.me/tags/partitions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/join/</guid>
+      <guid>https://amarpandey.me/tags/partitions/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://amarpandey.me/tags/performance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shuffle</title>
+      <link>https://amarpandey.me/tags/shuffle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/shuffle/</guid>
       <description></description>
     </item>
     <item>
@@ -41,6 +48,20 @@
       <link>https://amarpandey.me/tags/spark/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/spark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Broadcast</title>
+      <link>https://amarpandey.me/tags/broadcast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/broadcast/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Join</title>
+      <link>https://amarpandey.me/tags/join/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/join/</guid>
       <description></description>
     </item>
     <item>
