@@ -6,7 +6,7 @@ description = "Finger Detection and Tracking using OpenCV and Python is a projec
 tags = [ "gitops", "devops", "infrastructure", "iac"]
 +++
 
-[![Video Title](/images/finger-detection-and-tracking-using-opencv-and-python/banner.jpeg)](https://www.youtube.com/watch?v=P3dUePye_-k)
+{{< youtube P3dUePye_-k >}}
 
 > **TL;DR. Code is [here](https://github.com/amarlearning/Finger-Detection-and-Tracking)**.
 
