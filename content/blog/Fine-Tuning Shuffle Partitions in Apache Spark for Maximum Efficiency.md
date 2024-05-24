@@ -2,11 +2,11 @@
 title = "Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency"
 date = "2024-05-24T00:00:00-00:00"
 description = "Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources."
-
 tags = ["data", "apache", "spark", "shuffle", "partitions", "performance"]
+math = "katex"
 +++
 
-![banner](/images/optimizing-shuffle-partitions-in-apache-spark/banner.png)
+![banner](/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png)
 
 Apache Spark's shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.
 
@@ -23,9 +23,9 @@ To optimize performance, it's crucial to determine the appropriate number of shu
 1. **Identify the Largest Shuffle Stage:** Determine the size of the largest shuffle stage.
 2. **Set a Target Partition Size:** Aim for less than 200 MB per partition.
 3. **Calculate the Partition Count:**
-   ```plaintext
-   Partition Count = Stage Input Data (MB) / Target Partition Size (MB)
-   ```
+   $$
+   \text{Partition Count} = \frac{\text{Stage Input Data (MB)}}{\text{Target Size (MB)}}
+   $$
 
 ---
 
@@ -38,11 +38,11 @@ To optimize performance, it's crucial to determine the appropriate number of shu
 
 **Calculate the number of partitions use the formula:**
 
-> **`Partition Count = Stage Input Data (MB) / Target Partition Size (MB)`**
+Partition Count = Stage Input Data (MB) / Target Partition Size (MB)
 
-```plaintext
-Partition Count = 210,000 MB / 200 MB = 1050 partitions
-```
+$$
+  \frac{210,000 \text{ MB}}{200 \text{ MB}} = 1,050 \text{ partitions}
+$$
 
 In this case, you should set the shuffle partition count to 1050.
 
@@ -67,24 +67,26 @@ spark.conf.set("spark.sql.shuffle.partitions", 2000)
 
 **Calculate partition size with default partitions:**
 
-```plaintext
-1,200,000 MB / 200 partitions ≈ 6,000 MB/partition
-```
+$$
+\frac{1,200,000 \text{ MB}}{200 \text{ partitions}} = 6,000 \text{ MB/partition}
+$$
 
 **Optimized Calculation:**
 
 - Target Partition Size: ~100 MB
 - Calculate desired number of partitions:
-  ```plaintext
-  1,200,000 MB / 100 MB ≈ 12,000 partitions
-  ```
+  $$
+  \frac{1,200,000 \text{ MB}}{100 \text{ MB}} = 12,000 \text{ partitions}
+  $$
 
 **Batch Calculation:**
 
 - Calculate batches to process partitions with given cores:
-  ```plaintext
-  12,000 partitions / 400 cores = 30 batches
-  ```
+
+  $$
+  \frac{12,000 \text{ partitions}}{400 \text{ cores}} = 30 \text{ batches}
+  $$
+
 - Since the batch calculation results in an integer value, no need to adjust the number of batches. The final partition count remains 12,000.
 
 This partition size of 100 MB meets the target, ensuring efficient processing and full utilization of the cluster's resources.
@@ -98,36 +100,38 @@ This partition size of 100 MB meets the target, ensuring efficient processing an
 
 **Current Partition Size with Default Settings of 200 shuffle partitons:**
 
-```plaintext
-54,000 MB / 200 partitions ≈ 270 MB/partition
-```
+$$
+\frac{54,000 \text{ MB}}{200 \text{ partitions}} \approx 270 \text{ MB/partition}
+$$
 
 **Optimized Calculation:**
 
 - Target Partition Size: 100 MB
 - Calculate desired number of partitions:
-  ```plaintext
-  54,000 MB / 100 MB ≈ 540 partitions
-  ```
+  $$
+  \frac{54,000 \text{ MB}}{100 \text{ MB}} = 540 \text{ partitions}
+  $$
 
 **Batch Calculation:**
 
 - Calculate batches to process partitions with given cores:
-  ```plaintext
-  540 partitions / 96 cores ≈ 5.625 batches
-  ```
-- Round down to 5 batches.
+
+  $$
+  \frac{540 \text{ partitions}}{96 \text{ cores}} \approx 5.625 \text{ batches}
+  $$
+
+- Let's round up to 5 batches for better resource utilization.
 - Calculate final partition count:
-  ```plaintext
-  96 cores×5 batches=480 partitions
-  ```
+  $$
+  96 \text{ cores} \times 5 \text{ batches} = 480 \text{ partitions}
+  $$
 
 **Resulting Partition Size:**
 
 - Calculate new partition size:
-  ```plaintext
-  54,000 MB / 480 partitions = 112.5 MB/partition
-  ```
+  $$
+  \frac{54,000 \text{ MB}}{480 \text{ partitions}} \approx 112.5 \text{ MB/partition}
+  $$
 
 This partition size is close to the target of 100 MB, ensuring efficient processing.
 

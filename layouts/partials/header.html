@@ -1,3 +1,9 @@
+{{ if (eq $.Page.Params.math "katex") }}
+  {{ partial "helpers/katex.html" . }}
+{{ else if (eq $.Page.Params.math "mathjax") }}
+  {{ partial "helpers/mathjax.html" . }}
+{{ end }}
+
 {{ with .Site.Params.analytics.measurement_id }}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
   <script>
@@ -12,3 +18,4 @@
   <h2>{{ .Site.Title }}</h2>
 </a>
 <nav>{{- partial "nav.html" . -}}</nav>
+
