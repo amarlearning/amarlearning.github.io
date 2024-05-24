@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources.">
   <meta itemprop="datePublished" content="2024-05-24T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-05-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="616">
+  <meta itemprop="wordCount" content="657">
   <meta itemprop="keywords" content="Data,Apache,Spark,Shuffle,Partitions,Performance">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -325,16 +325,16 @@ $$</li>
 <h3 id="example-1">Example 1:</h3>
 <ul>
 <li>Shuffle Data Size: 210 GB</li>
-<li>Target Partition Size: 200 MB</li>
+<li>Target Partition Size: 128 MB</li>
 </ul>
 <p><strong>Calculate the number of partitions use the formula:</strong></p>
 <p>Partition Count = Stage Input Data (MB) / Target Partition Size (MB)</p>
 <p>$$
-\frac{210,000 \text{ MB}}{200 \text{ MB}} = 1,050 \text{ partitions}
+\frac{210,000 \text{ MB}}{128 \text{ MB}} = 1,640 \text{ partitions}
 $$</p>
 <p>In this case, you should set the shuffle partition count to 1050.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>set<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spark.sql.shuffle.partitions&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1050</span><span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>Sound good, right? But what if you have around 2000 core counts, would you still go with 1050 partitions? Let&rsquo;s tweak out partition count based on the number of cores.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>set<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spark.sql.shuffle.partitions&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1640</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>Sound good, right? But what if you have around 2000 core counts, would you still go with 1640 partitions? Let&rsquo;s tweak out partition count based on the number of cores.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>set<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spark.sql.shuffle.partitions&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2000</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><p><strong>Note:</strong> Ensure the number of shuffle partitions is at least equal to the core count to maximize resource utilization.</p>
 <hr>
@@ -414,7 +414,13 @@ $$</li>
 <p>This partition size is close to the target of 100 MB, ensuring efficient processing.</p>
 <hr>
 <h3 id="summary">Summary</h3>
-<p>Optimizing shuffle partitions is crucial for enhancing Spark performance. By calculating the right number of partitions based on data size and cluster resources, you can significantly improve processing speed and resource utilization. Ensure your partitions are appropriately sized and fully utilize your cluster’s cores for optimal performance.</p>
+<p>Optimizing shuffle partitions is crucial for enhancing Spark performance. Here are the key points to remember:</p>
+<ul>
+<li><strong>Right-sizing Partitions:</strong> Calculate the appropriate number of partitions based on data size and cluster resources.</li>
+<li><strong>Target Partition Size:</strong> Aim for partitions smaller than 128 MB to avoid memory issues and ensure efficient processing.</li>
+<li><strong>Resource Utilization:</strong> Ensure all cluster cores are effectively utilized by adjusting partition counts accordingly.</li>
+</ul>
+<p>By following these guidelines, you can significantly improve processing speed and resource utilization in Apache Spark, resulting in optimized performance for your data processing tasks.</p>
 
 </content>
 
