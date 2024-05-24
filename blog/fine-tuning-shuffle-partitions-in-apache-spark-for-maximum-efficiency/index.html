@@ -12,7 +12,7 @@
 <meta name="keywords" content="data,apache,spark,shuffle,partitions,performance," />
 
 
-<meta property="og:url" content="https://amarpandey.me/blog/optimizing-shuffle-partitions-in-apache-spark/">
+<meta property="og:url" content="https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/">
   <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
   <meta property="og:title" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency">
   <meta property="og:description" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources.">
@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources.">
   <meta itemprop="datePublished" content="2024-05-24T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-05-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="514">
+  <meta itemprop="wordCount" content="548">
   <meta itemprop="keywords" content="Data,Apache,Spark,Shuffle,Partitions,Performance">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -224,6 +224,50 @@
 
 <body>
   <header>
+  <style>
+  .katex {
+      margin: 25px 0;
+  }
+</style>
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+    integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+
+<script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"
+    integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    type="text/javascript"></script>
+
+<script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    type="text/javascript"></script>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "\\[", right: "\\]", display: true},
+        {left: "$", right: "$", display: false},
+        {left: "\\(", right: "\\)", display: false},
+      ],
+    });
+  });
+</script>
+
+
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -246,6 +290,7 @@
 <a href="/blog">Blog</a>
 
 </nav>
+
 </header>
   <main>
 
@@ -259,7 +304,7 @@
 </p>
 
 <content>
-  <p><img src="/images/optimizing-shuffle-partitions-in-apache-spark/banner.png" alt="banner"></p>
+  <p><img src="/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png" alt="banner"></p>
 <p>Apache Spark&rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.</p>
 <h3 id="default-shuffle-partition-count">Default Shuffle Partition Count</h3>
 <p>By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</p>
@@ -270,8 +315,9 @@
 <li><strong>Identify the Largest Shuffle Stage:</strong> Determine the size of the largest shuffle stage.</li>
 <li><strong>Set a Target Partition Size:</strong> Aim for less than 200 MB per partition.</li>
 <li><strong>Calculate the Partition Count:</strong>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Partition Count = Stage Input Data (MB) / Target Partition Size (MB)
-</span></span></code></pre></div></li>
+$$
+\text{Partition Count} = \frac{\text{Stage Input Data (MB)}}{\text{Target Size (MB)}}
+$$</li>
 </ol>
 <hr>
 <h3 id="lets-understand-this-with-some-examples">Let&rsquo;s understand this with some examples:</h3>
@@ -281,11 +327,11 @@
 <li>Target Partition Size: 200 MB</li>
 </ul>
 <p><strong>Calculate the number of partitions use the formula:</strong></p>
-<blockquote>
-<p><strong><code>Partition Count = Stage Input Data (MB) / Target Partition Size (MB)</code></strong></p>
-</blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>Partition Count = 210,000 MB / 200 MB = 1050 partitions
-</span></span></code></pre></div><p>In this case, you should set the shuffle partition count to 1050.</p>
+<p>Partition Count = Stage Input Data (MB) / Target Partition Size (MB)</p>
+<p>$$
+\frac{210,000 \text{ MB}}{200 \text{ MB}} = 1,050 \text{ partitions}
+$$</p>
+<p>In this case, you should set the shuffle partition count to 1050.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>set<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spark.sql.shuffle.partitions&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">1050</span><span style="color:#f92672">)</span>
 </span></span></code></pre></div><p>Sound good, right? But what if you have around 2000 core counts, would you still go with 1050 partitions? Let&rsquo;s tweak out partition count based on the number of cores.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>conf<span style="color:#f92672">.</span>set<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;spark.sql.shuffle.partitions&#34;</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2000</span><span style="color:#f92672">)</span>
@@ -297,20 +343,28 @@
 <li>Shuffle Data Size: 1.2 TB</li>
 </ul>
 <p><strong>Calculate partition size with default partitions:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>1,200,000 MB / 200 partitions ≈ 6,000 MB/partition
-</span></span></code></pre></div><p><strong>Optimized Calculation:</strong></p>
+<p>$$
+\frac{1,200,000 \text{ MB}}{200 \text{ partitions}} = 6,000 \text{ MB/partition}
+$$</p>
+<p><strong>Optimized Calculation:</strong></p>
 <ul>
 <li>Target Partition Size: ~100 MB</li>
 <li>Calculate desired number of partitions:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>1,200,000 MB / 100 MB ≈ 12,000 partitions
-</span></span></code></pre></div></li>
+$$
+\frac{1,200,000 \text{ MB}}{100 \text{ MB}} = 12,000 \text{ partitions}
+$$</li>
 </ul>
 <p><strong>Batch Calculation:</strong></p>
 <ul>
-<li>Calculate batches to process partitions with given cores:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>12,000 partitions / 400 cores = 30 batches
-</span></span></code></pre></div></li>
-<li>Since the batch calculation results in an integer value, no need to adjust the number of batches. The final partition count remains 12,000.</li>
+<li>
+<p>Calculate batches to process partitions with given cores:</p>
+<p>$$
+\frac{12,000 \text{ partitions}}{400 \text{ cores}} = 30 \text{ batches}
+$$</p>
+</li>
+<li>
+<p>Since the batch calculation results in an integer value, no need to adjust the number of batches. The final partition count remains 12,000.</p>
+</li>
 </ul>
 <p>This partition size of 100 MB meets the target, ensuring efficient processing and full utilization of the cluster&rsquo;s resources.</p>
 <hr>
@@ -320,29 +374,41 @@
 <li>Shuffle Data Size: 54 GB</li>
 </ul>
 <p><strong>Current Partition Size with Default Settings of 200 shuffle partitons:</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>54,000 MB / 200 partitions ≈ 270 MB/partition
-</span></span></code></pre></div><p><strong>Optimized Calculation:</strong></p>
+<p>$$
+\frac{54,000 \text{ MB}}{200 \text{ partitions}} \approx 270 \text{ MB/partition}
+$$</p>
+<p><strong>Optimized Calculation:</strong></p>
 <ul>
 <li>Target Partition Size: 100 MB</li>
 <li>Calculate desired number of partitions:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>54,000 MB / 100 MB ≈ 540 partitions
-</span></span></code></pre></div></li>
+$$
+\frac{54,000 \text{ MB}}{100 \text{ MB}} = 540 \text{ partitions}
+$$</li>
 </ul>
 <p><strong>Batch Calculation:</strong></p>
 <ul>
-<li>Calculate batches to process partitions with given cores:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>540 partitions / 96 cores ≈ 5.625 batches
-</span></span></code></pre></div></li>
-<li>Round down to 5 batches.</li>
-<li>Calculate final partition count:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>96 cores×5 batches=480 partitions
-</span></span></code></pre></div></li>
+<li>
+<p>Calculate batches to process partitions with given cores:</p>
+<p>$$
+\frac{540 \text{ partitions}}{96 \text{ cores}} \approx 5.625 \text{ batches}
+$$</p>
+</li>
+<li>
+<p>Let&rsquo;s round up to 5 batches for better resource utilization.</p>
+</li>
+<li>
+<p>Calculate final partition count:
+$$
+96 \text{ cores} \times 5 \text{ batches} = 480 \text{ partitions}
+$$</p>
+</li>
 </ul>
 <p><strong>Resulting Partition Size:</strong></p>
 <ul>
 <li>Calculate new partition size:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-plaintext" data-lang="plaintext"><span style="display:flex;"><span>54,000 MB / 480 partitions = 112.5 MB/partition
-</span></span></code></pre></div></li>
+$$
+\frac{54,000 \text{ MB}}{480 \text{ partitions}} \approx 112.5 \text{ MB/partition}
+$$</li>
 </ul>
 <p>This partition size is close to the target of 100 MB, ensuring efficient processing.</p>
 <hr>
