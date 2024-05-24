@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources.">
   <meta itemprop="datePublished" content="2024-05-24T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-05-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="548">
+  <meta itemprop="wordCount" content="616">
   <meta itemprop="keywords" content="Data,Apache,Spark,Shuffle,Partitions,Performance">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -319,6 +319,7 @@ $$
 \text{Partition Count} = \frac{\text{Stage Input Data (MB)}}{\text{Target Size (MB)}}
 $$</li>
 </ol>
+<p><strong>Note:</strong> It&rsquo;s important to keep the shuffle partition size under 200 MB to avoid excessive memory usage and potential out-of-memory errors during shuffle operations. Smaller partitions help in better parallelism and more efficient processing.</p>
 <hr>
 <h3 id="lets-understand-this-with-some-examples">Let&rsquo;s understand this with some examples:</h3>
 <h3 id="example-1">Example 1:</h3>
@@ -394,7 +395,7 @@ $$</li>
 $$</p>
 </li>
 <li>
-<p>Let&rsquo;s round up to 5 batches for better resource utilization.</p>
+<p>Since 5.625 is not an integer, this means that in the last batch (the 0.625 part), only a fraction of the cores will be utilized while the rest will sit idle. To ensure efficient utilization of all resources, we round down to 5 batches.</p>
 </li>
 <li>
 <p>Calculate final partition count:
