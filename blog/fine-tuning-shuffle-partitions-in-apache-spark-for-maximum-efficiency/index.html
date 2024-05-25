@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources.">
   <meta itemprop="datePublished" content="2024-05-24T00:00:00+00:00">
   <meta itemprop="dateModified" content="2024-05-24T00:00:00+00:00">
-  <meta itemprop="wordCount" content="657">
+  <meta itemprop="wordCount" content="718">
   <meta itemprop="keywords" content="Data,Apache,Spark,Shuffle,Partitions,Performance">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -327,7 +327,7 @@ $$</li>
 <li>Shuffle Data Size: 210 GB</li>
 <li>Target Partition Size: 128 MB</li>
 </ul>
-<p><strong>Calculate the number of partitions use the formula:</strong></p>
+<p><strong>Calculate the number of partitions using the formula:</strong></p>
 <p>Partition Count = Stage Input Data (MB) / Target Partition Size (MB)</p>
 <p>$$
 \frac{210,000 \text{ MB}}{128 \text{ MB}} = 1,640 \text{ partitions}
@@ -340,45 +340,15 @@ $$</p>
 <hr>
 <h3 id="example-2">Example 2:</h3>
 <ul>
-<li>Cluster Core Count: 400 cores</li>
-<li>Shuffle Data Size: 1.2 TB</li>
-</ul>
-<p><strong>Calculate partition size with default partitions:</strong></p>
-<p>$$
-\frac{1,200,000 \text{ MB}}{200 \text{ partitions}} = 6,000 \text{ MB/partition}
-$$</p>
-<p><strong>Optimized Calculation:</strong></p>
-<ul>
-<li>Target Partition Size: ~100 MB</li>
-<li>Calculate desired number of partitions:
-$$
-\frac{1,200,000 \text{ MB}}{100 \text{ MB}} = 12,000 \text{ partitions}
-$$</li>
-</ul>
-<p><strong>Batch Calculation:</strong></p>
-<ul>
-<li>
-<p>Calculate batches to process partitions with given cores:</p>
-<p>$$
-\frac{12,000 \text{ partitions}}{400 \text{ cores}} = 30 \text{ batches}
-$$</p>
-</li>
-<li>
-<p>Since the batch calculation results in an integer value, no need to adjust the number of batches. The final partition count remains 12,000.</p>
-</li>
-</ul>
-<p>This partition size of 100 MB meets the target, ensuring efficient processing and full utilization of the cluster&rsquo;s resources.</p>
-<hr>
-<h3 id="example-3">Example 3:</h3>
-<ul>
 <li>Cluster Core Count: 96 cores</li>
 <li>Shuffle Data Size: 54 GB</li>
 </ul>
-<p><strong>Current Partition Size with Default Settings of 200 shuffle partitons:</strong></p>
+<p><strong>Calculate partition size with Spark&rsquo;s default partition count:</strong></p>
 <p>$$
 \frac{54,000 \text{ MB}}{200 \text{ partitions}} \approx 270 \text{ MB/partition}
 $$</p>
-<p><strong>Optimized Calculation:</strong></p>
+<p>270 MB is larger than the recommended 128 MB per partition, which can lead to memory issues and inefficient processing.</p>
+<p><strong>Optimized calculation with smaller partition size for efficient processing:</strong></p>
 <ul>
 <li>Target Partition Size: 100 MB</li>
 <li>Calculate desired number of partitions:
@@ -386,7 +356,7 @@ $$
 \frac{54,000 \text{ MB}}{100 \text{ MB}} = 540 \text{ partitions}
 $$</li>
 </ul>
-<p><strong>Batch Calculation:</strong></p>
+<p><strong>Core Utilization and Partition Adjustment:</strong></p>
 <ul>
 <li>
 <p>Calculate batches to process partitions with given cores:</p>
@@ -412,6 +382,38 @@ $$
 $$</li>
 </ul>
 <p>This partition size is close to the target of 100 MB, ensuring efficient processing.</p>
+<hr>
+<h3 id="example-3">Example 3:</h3>
+<ul>
+<li>Cluster Core Count: 400 cores</li>
+<li>Shuffle Data Size: 1.2 TB</li>
+</ul>
+<p><strong>Calculate partition size with Spark&rsquo;s default partition count:</strong></p>
+<p>$$
+\frac{1,200,000 \text{ MB}}{200 \text{ partitions}} = 6,000 \text{ MB/partition}
+$$</p>
+<p>6,000 MB is much larger than the recommended 128 MB per partition, which can lead to memory issues and inefficient processing.</p>
+<p><strong>Optimized calculation with smaller partition size for efficient processing:</strong></p>
+<ul>
+<li>Target Partition Size: ~100 MB</li>
+<li>Calculate desired number of partitions:
+$$
+\frac{1,200,000 \text{ MB}}{100 \text{ MB}} = 12,000 \text{ partitions}
+$$</li>
+</ul>
+<p><strong>Core Utilization and Partition Adjustment:</strong></p>
+<ul>
+<li>
+<p>Calculate batches to process partitions with given cores:</p>
+<p>$$
+\frac{12,000 \text{ partitions}}{400 \text{ cores}} = 30 \text{ batches}
+$$</p>
+</li>
+<li>
+<p>Since the batch calculation results in an integer value, no need to adjust the number of batches. The final partition count remains 12,000.</p>
+</li>
+</ul>
+<p>This partition size of 100 MB meets the target, ensuring efficient processing and full utilization of the cluster&rsquo;s resources.</p>
 <hr>
 <h3 id="summary">Summary</h3>
 <p>Optimizing shuffle partitions is crucial for enhancing Spark performance. Here are the key points to remember:</p>
