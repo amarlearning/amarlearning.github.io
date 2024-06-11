@@ -275,16 +275,16 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean;
 </span></span></code></pre></div><hr>
 <p>Use the official Java image for your application. This will not only make your docker file cleaner but also let you use an official and verified image which is already built using the best practices.</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">FROM openjdk
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM openjdk
+</span></span></code></pre></div><hr>
 <h3 id="2-use-specific-image-version">2. Use specific Image Version</h3>
 <p>As you see from the previous script we have chosen <code>OpenJDK</code> as our base image, but now when we build our application image from the above docker file, it will always use the <strong>latest</strong> tag of the <code>OpenJDK</code> image.</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile"># Is same as FROM openjdk:latest
-FROM openjdk
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Is same as FROM openjdk:latest</span>
+</span></span><span style="display:flex;"><span>FROM openjdk
+</span></span></code></pre></div><hr>
 <p>The problem here is that we might get a different image version as in the previous build and the new image version may break stuff or cause unexpected behavior, so the <strong>latest</strong> tag is unpredictable, we don&rsquo;t know exactly which image we are getting. So instead of the random latest image tag, we need to fixate the version. <strong>We should be as specific as possible with the image version.</strong></p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">FROM openjdk:11-alpine
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM openjdk:11-alpine
+</span></span></code></pre></div><hr>
 <h3 id="3-use-small-sized-official-image">3. Use small sized Official Image</h3>
 <p>There are multiple official images of <code>openjdk</code> not only with different version numbers but also with the different operating system distribution, so the question here is <strong>which one to choose?</strong> and <strong>does it even matter?</strong></p>
 <p>If the image is based on a <strong>full-blown operating system distribution</strong> like ubuntu or centos which has a bunch of tools already packaged in, which makes the <strong>image size large</strong>. But most of the time, we don&rsquo;t need these tools in our application image.</p>
@@ -295,84 +295,84 @@ FROM openjdk
 <h3 id="4-minimize-the-number-of-layers">4. Minimize the Number of Layers</h3>
 <p>Every line in our <code>Dockerfile</code> will be treated as an image layer. Each layer increases the size of images since they are cached. Therefore, as the number of layers increases, the size also increases. It&rsquo;s always a good idea to combine <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> commands as much as possible since they create layers.</p>
 <p>You can test this out with the <code>docker history</code> command:</p>
-<pre tabindex="0"><code class="language-shell:title=Console" data-lang="shell:title=Console">$ docker images
-REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
-dockerfile   latest    194f98552a02   37 seconds ago   218MB
-
-$ docker history 194f98552a02
-
-IMAGE            CREATED BY                                       SIZE
-194f98552a02     COPY . . # buildkit                              6.71kB
-&lt;missing&gt;        RUN /bin/sh -c pip install -r requirem..         35.5MB
-&lt;missing&gt;        COPY requirements.txt . # buildkit               58B
-&lt;missing&gt;        WORKDIR /app
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker images
+</span></span><span style="display:flex;"><span>REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+</span></span><span style="display:flex;"><span>dockerfile   latest    194f98552a02   <span style="color:#ae81ff">37</span> seconds ago   218MB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ docker history 194f98552a02
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IMAGE            CREATED BY                                       SIZE
+</span></span><span style="display:flex;"><span>194f98552a02     COPY . . <span style="color:#75715e"># buildkit                              6.71kB</span>
+</span></span><span style="display:flex;"><span>&lt;missing&gt;        RUN /bin/sh -c pip install -r requirem..         35.5MB
+</span></span><span style="display:flex;"><span>&lt;missing&gt;        COPY requirements.txt . <span style="color:#75715e"># buildkit               58B</span>
+</span></span><span style="display:flex;"><span>&lt;missing&gt;        WORKDIR /app
+</span></span></code></pre></div><hr>
 <p>If we see the above logs carefully, we can notice only the <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> command adds size to the image. we can reduce the image size by combining commands wherever possible. For example:</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">RUN apt-get update
-RUN apt-get install -y openjdk-8-jdk
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>RUN apt-get update
+</span></span><span style="display:flex;"><span>RUN apt-get install -y openjdk-8-jdk
+</span></span></code></pre></div><hr>
 <p>Can be combined into a single <code>RUN</code> command:</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">RUN apt-get update &amp;&amp; apt-get install -y openjdk-8-jdk
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>RUN apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y openjdk-8-jdk
+</span></span></code></pre></div><hr>
 <p>Thus, creating a single layer instead of multiple, which reduces the size of the final image.</p>
 <hr>
 <h3 id="5-optimize-caching-image-layers">5. Optimize Caching Image Layers</h3>
 <p>Docker images are built based on Dockerfile. In Dockerfile, each line generates its layer during the building process. The layers are also cached and reused between different building processes if no changes are detected.</p>
 <p>Let&rsquo;s take a look at the dockerfile based on a node alpine image:</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">FROM node:17.0.1-alpine
-
-WORKDIR /app
-
-COPY project /app
-
-RUN npm install --production
-
-CMD [&#34;node&#34;, &#34;src/index.js&#34;]
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM node:17.0.1-alpine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY project /app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN npm install --production
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;src/index.js&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><hr>
 <p>As we discussed before each line creates its cached layer. Let&rsquo;s build this docker image and see what is happening.</p>
-<pre tabindex="0"><code class="language-shell:title=Console" data-lang="shell:title=Console">Step 1/5 : FROM node:17.0.1-alpine
-17.0.1-alpine: Pulling from library/node
-Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
-Status: Downloaded newer image for node:17.0.1-alpine
- ---&gt; c0fc1c9c473b
-Step 2/5 : WORKDIR /app
- ---&gt; Using cache
- ---&gt; f665e3b63c98
-Step 3/5 : COPY project /app
- ---&gt; 8d4971fa2f3b
-Step 4/5 : RUN npm install --production
- ---&gt; Running in a5eac87912ce
-
-up to date, audited 1 package in 371ms
-
-found 0 vulnerabilities
-Removing intermediate container a5eac87912ce
- ---&gt; 9c21576cad06
-Step 5/5 : CMD [&#34;node&#34;, &#34;src/index.js&#34;]
- ---&gt; Running in 1ff9c5bb72e7
-Removing intermediate container 1ff9c5bb72e7
- ---&gt; 9783eef2c1d3
-Successfully built 9783eef2c1d3
-Successfully tagged dockerfile:latest
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Step 1/5 : FROM node:17.0.1-alpine
+</span></span><span style="display:flex;"><span>17.0.1-alpine: Pulling from library/node
+</span></span><span style="display:flex;"><span>Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
+</span></span><span style="display:flex;"><span>Status: Downloaded newer image <span style="color:#66d9ef">for</span> node:17.0.1-alpine
+</span></span><span style="display:flex;"><span> ---&gt; c0fc1c9c473b
+</span></span><span style="display:flex;"><span>Step 2/5 : WORKDIR /app
+</span></span><span style="display:flex;"><span> ---&gt; Using cache
+</span></span><span style="display:flex;"><span> ---&gt; f665e3b63c98
+</span></span><span style="display:flex;"><span>Step 3/5 : COPY project /app
+</span></span><span style="display:flex;"><span> ---&gt; 8d4971fa2f3b
+</span></span><span style="display:flex;"><span>Step 4/5 : RUN npm install --production
+</span></span><span style="display:flex;"><span> ---&gt; Running in a5eac87912ce
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>up to date, audited <span style="color:#ae81ff">1</span> package in 371ms
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>found <span style="color:#ae81ff">0</span> vulnerabilities
+</span></span><span style="display:flex;"><span>Removing intermediate container a5eac87912ce
+</span></span><span style="display:flex;"><span> ---&gt; 9c21576cad06
+</span></span><span style="display:flex;"><span>Step 5/5 : CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;src/index.js&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> ---&gt; Running in 1ff9c5bb72e7
+</span></span><span style="display:flex;"><span>Removing intermediate container 1ff9c5bb72e7
+</span></span><span style="display:flex;"><span> ---&gt; 9783eef2c1d3
+</span></span><span style="display:flex;"><span>Successfully built 9783eef2c1d3
+</span></span><span style="display:flex;"><span>Successfully tagged dockerfile:latest
+</span></span></code></pre></div><hr>
 <p>Docker image from docker file was built completely from scratch, so it took 1 minute to build. Let&rsquo;s try to build again and see.</p>
-<pre tabindex="0"><code class="language-shell:title=Console" data-lang="shell:title=Console">Step 1/5 : FROM node:17.0.1-alpine
- ---&gt; c0fc1c9c473b
-Step 2/5 : WORKDIR /app
- ---&gt; Using cache
- ---&gt; f665e3b63c98
-Step 3/5 : COPY project /app
- ---&gt; Using cache
- ---&gt; 8d4971fa2f3b
-Step 4/5 : RUN npm install --production
- ---&gt; Using cache
- ---&gt; 9c21576cad06
-Step 5/5 : CMD [&#34;node&#34;, &#34;src/index.js&#34;]
- ---&gt; Using cache
- ---&gt; 9783eef2c1d3
-Successfully built 9783eef2c1d3
-Successfully tagged dockerfile:latest
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Step 1/5 : FROM node:17.0.1-alpine
+</span></span><span style="display:flex;"><span> ---&gt; c0fc1c9c473b
+</span></span><span style="display:flex;"><span>Step 2/5 : WORKDIR /app
+</span></span><span style="display:flex;"><span> ---&gt; Using cache
+</span></span><span style="display:flex;"><span> ---&gt; f665e3b63c98
+</span></span><span style="display:flex;"><span>Step 3/5 : COPY project /app
+</span></span><span style="display:flex;"><span> ---&gt; Using cache
+</span></span><span style="display:flex;"><span> ---&gt; 8d4971fa2f3b
+</span></span><span style="display:flex;"><span>Step 4/5 : RUN npm install --production
+</span></span><span style="display:flex;"><span> ---&gt; Using cache
+</span></span><span style="display:flex;"><span> ---&gt; 9c21576cad06
+</span></span><span style="display:flex;"><span>Step 5/5 : CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;node&#34;</span>, <span style="color:#e6db74">&#34;src/index.js&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span> ---&gt; Using cache
+</span></span><span style="display:flex;"><span> ---&gt; 9783eef2c1d3
+</span></span><span style="display:flex;"><span>Successfully built 9783eef2c1d3
+</span></span><span style="display:flex;"><span>Successfully tagged dockerfile:latest
+</span></span></code></pre></div><hr>
 <p>A few lines of logs. As you can see this is <strong>Using cache</strong> text in multiple lines and the whole process took less than 1 sec. This is the power of layer caching. Nothing here was built from scratch, every layer comes from the cache.</p>
 <p><strong>Important thing is,</strong> If any layer is created from scratch because of some changes in the source file, every next layer is built from scratch too.</p>
 <p>The best practice here is to order docker file commands from least to most frequently change to take advantage of caching and this way we can optimize how fast the image gets built.</p>
@@ -381,47 +381,47 @@ Successfully tagged dockerfile:latest
 <p>We should use the <code>.dockerignore</code> file to list all the files and folders that we want to exclude. we can create the <code>.dockerignore</code> file in the root directory and list all the files and folders we want to ignore.</p>
 <p>When building the image, docker will look at the contents and ignore anything specified inside. Matching is done using <a href="https://go.dev/">Go</a>&rsquo;s <code>filepath.Match</code> rules.</p>
 <p>A sample <code>.dockerignore</code> file would look like:</p>
-<pre tabindex="0"><code class="language-shell:title=.dockerignore" data-lang="shell:title=.dockerignore"># ignore .git and .cache folders
-.git
-.cache
-
-# ignore all markdown files
-*.md
-
-# ignore sensitive files
-private.key
-settings.json
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># ignore .git and .cache folders</span>
+</span></span><span style="display:flex;"><span>.git
+</span></span><span style="display:flex;"><span>.cache
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ignore all markdown files</span>
+</span></span><span style="display:flex;"><span>*.md
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ignore sensitive files</span>
+</span></span><span style="display:flex;"><span>private.key
+</span></span><span style="display:flex;"><span>settings.json
+</span></span></code></pre></div><hr>
 <h3 id="7-make-use-of-multi-stage-builds">7. Make use of Multi-stage builds</h3>
 <p>Let&rsquo;s assume that there are some contents in our project, that we need for building the image so during the build process but we don&rsquo;t need them in the final image itself to run the application.</p>
 <p>For example in a Java-based application, we need JDK to compile the Java source code but JDK is not needed to run the Java application. In addition to that, we also use build tools like Maven or Gradle to build our Java application and those are also not needed in the final image.</p>
 <p>Multi-stage builds allow us to use multiple temporary images during the build process but keep only the latest image as the final image. Let&rsquo;s see how it is done.</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile"># Build stage
-FROM tomcat AS build
-
-RUN apt-get update \
-    &amp;&amp; apt-get -y install maven
-
-WORKDIR /app
-
-copy project /app
-
-RUN mvn package
-
-# Runtime stage
-FROM tomcat
-
-COPY --from=build /app/target/file.war /usr/local/tomcat/webapps
-
-EXPOSE 8080
-
-ENTRYPOINT [&#34;java&#34;, &#34;-jar&#34;, &#34;/usr/local/tomcat/webapps/file.war&#34;]
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># Build stage</span>
+</span></span><span style="display:flex;"><span>FROM tomcat AS build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN apt-get update <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> apt-get -y install maven
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>WORKDIR /app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>copy project /app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN mvn package
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Runtime stage</span>
+</span></span><span style="display:flex;"><span>FROM tomcat
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY --from<span style="color:#f92672">=</span>build /app/target/file.war /usr/local/tomcat/webapps
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">8080</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ENTRYPOINT <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;-jar&#34;</span>, <span style="color:#e6db74">&#34;/usr/local/tomcat/webapps/file.war&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><hr>
 <p>Let&rsquo;s also look at the size comparison between two stages:</p>
-<pre tabindex="0"><code class="language-shell:title=Console" data-lang="shell:title=Console">REPOSITORY                 TAG         IMAGE ID          SIZE
-docker-single              latest      8d6b6a4d7fb6      259MB
-docker-multi               latest      813c2fa9b114      156MB
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>REPOSITORY                 TAG         IMAGE ID          SIZE
+</span></span><span style="display:flex;"><span>docker-single              latest      8d6b6a4d7fb6      259MB
+</span></span><span style="display:flex;"><span>docker-multi               latest      813c2fa9b114      156MB
+</span></span></code></pre></div><hr>
 <h3 id="8-use-the-least-privileged-user-or-non-root-user">8. Use the Least Privileged User or Non-Root User</h3>
 <p>By default, Docker runs container processes as root inside of a container. However, this is a bad practice since a process running as root inside the container is running root in the docker host. Thus, if an attacker gains access to our container, they have access to all the root privileges and can perform several attacks on the Docker host, like:</p>
 <ul>
@@ -429,39 +429,39 @@ docker-multi               latest      813c2fa9b114      156MB
 <li>Executing remote commands.</li>
 </ul>
 <p>To prevent this, we should run container processes with a non-root user or less privileged user.</p>
-<pre tabindex="0"><code class="language-shell:title=Dockerfile" data-lang="shell:title=Dockerfile">...
-
-# create group and user
-RUN groupadd -r amar &amp;&amp; useradd -g amar amar
-
-# set ownership and permissions
-RUN chown -R amar:amar /app
-
-# switch to user
-USER amar
-
-...
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># create group and user</span>
+</span></span><span style="display:flex;"><span>RUN groupadd -r amar <span style="color:#f92672">&amp;&amp;</span> useradd -g amar amar
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># set ownership and permissions</span>
+</span></span><span style="display:flex;"><span>RUN chown -R amar:amar /app
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># switch to user</span>
+</span></span><span style="display:flex;"><span>USER amar
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><hr>
 <blockquote>
 <p>Some base images already have a generic user bundled in which we can use. For example, the node image already bundles a user called a <code>node</code>.</p>
 </blockquote>
 <hr>
 <h3 id="9-scan-images-for-vulnerabilities">9. Scan Images for Vulnerabilities</h3>
 <p>Once we build the image, we should scan the image for security vulnerabilities using the <code>docker scan</code> command. We need to be logged in to the Docker Hub to run the docker scan command to scan our images.</p>
-<pre tabindex="0"><code class="language-shell:title=Console" data-lang="shell:title=Console">$ docker scan hello-world
-
-Testing hello-world...
-
-Organization:      docker-desktop-test
-Package manager:   linux
-Project name:      docker-image|hello-world
-Docker image:      hello-world
-Licenses:          enabled
-
-✓ Tested 0 dependencies for known issues, no vulnerable paths found.
-
-Note that we do not currently have vulnerability data for your image.
-</code></pre><hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker scan hello-world
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Testing hello-world...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Organization:      docker-desktop-test
+</span></span><span style="display:flex;"><span>Package manager:   linux
+</span></span><span style="display:flex;"><span>Project name:      docker-image|hello-world
+</span></span><span style="display:flex;"><span>Docker image:      hello-world
+</span></span><span style="display:flex;"><span>Licenses:          enabled
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>✓ Tested <span style="color:#ae81ff">0</span> dependencies <span style="color:#66d9ef">for</span> known issues, no vulnerable paths found.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Note that we <span style="color:#66d9ef">do</span> not currently have vulnerability data <span style="color:#66d9ef">for</span> your image.
+</span></span></code></pre></div><hr>
 <p>In the background, Docker uses called <a href="https://snyk.io/">Snyk</a> to do the vulnerability scanning of the images. The scan uses a database of vulnerabilities that gets constantly updated so new ones get discovered and added all the time for different images.</p>
 <hr>
 <h3 id="summary">Summary</h3>
