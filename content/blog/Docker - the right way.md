@@ -16,7 +16,7 @@ Docker is a software framework for building, running, and managing containers on
 
 Always use the official or verified base image when writing the docker file. Let's say you are developing a java application and want to build it and run it as a docker image. Instead of taking a base operating system image and installing java, maven, and other tools you need for your application.
 
-```shell:title=Dockerfile
+```shell
 FROM ubuntu
 
 RUN apt-get update && \
@@ -29,7 +29,7 @@ RUN apt-get update && \
 
 Use the official Java image for your application. This will not only make your docker file cleaner but also let you use an official and verified image which is already built using the best practices.
 
-```shell:title=Dockerfile
+```shell
 FROM openjdk
 ```
 
@@ -39,7 +39,7 @@ FROM openjdk
 
 As you see from the previous script we have chosen `OpenJDK` as our base image, but now when we build our application image from the above docker file, it will always use the **latest** tag of the `OpenJDK` image.
 
-```shell:title=Dockerfile
+```shell
 # Is same as FROM openjdk:latest
 FROM openjdk
 ```
@@ -48,7 +48,7 @@ FROM openjdk
 
 The problem here is that we might get a different image version as in the previous build and the new image version may break stuff or cause unexpected behavior, so the **latest** tag is unpredictable, we don't know exactly which image we are getting. So instead of the random latest image tag, we need to fixate the version. **We should be as specific as possible with the image version.**
 
-```shell:title=Dockerfile
+```shell
 FROM openjdk:11-alpine
 ```
 
@@ -74,7 +74,7 @@ Every line in our `Dockerfile` will be treated as an image layer. Each layer inc
 
 You can test this out with the `docker history` command:
 
-```shell:title=Console
+```shell
 $ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
 dockerfile   latest    194f98552a02   37 seconds ago   218MB
@@ -92,7 +92,7 @@ IMAGE            CREATED BY                                       SIZE
 
 If we see the above logs carefully, we can notice only the `RUN`, `COPY`, and `ADD` command adds size to the image. we can reduce the image size by combining commands wherever possible. For example:
 
-```shell:title=Dockerfile
+```shell
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 ```
@@ -101,7 +101,7 @@ RUN apt-get install -y openjdk-8-jdk
 
 Can be combined into a single `RUN` command:
 
-```shell:title=Dockerfile
+```shell
 RUN apt-get update && apt-get install -y openjdk-8-jdk
 ```
 
@@ -117,7 +117,7 @@ Docker images are built based on Dockerfile. In Dockerfile, each line generates 
 
 Let's take a look at the dockerfile based on a node alpine image:
 
-```shell:title=Dockerfile
+```shell
 FROM node:17.0.1-alpine
 
 WORKDIR /app
@@ -133,7 +133,7 @@ CMD ["node", "src/index.js"]
 
 As we discussed before each line creates its cached layer. Let's build this docker image and see what is happening.
 
-```shell:title=Console
+```shell
 Step 1/5 : FROM node:17.0.1-alpine
 17.0.1-alpine: Pulling from library/node
 Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
@@ -164,7 +164,7 @@ Successfully tagged dockerfile:latest
 
 Docker image from docker file was built completely from scratch, so it took 1 minute to build. Let's try to build again and see.
 
-```shell:title=Console
+```shell
 Step 1/5 : FROM node:17.0.1-alpine
  ---> c0fc1c9c473b
 Step 2/5 : WORKDIR /app
@@ -201,7 +201,7 @@ When building the image, docker will look at the contents and ignore anything sp
 
 A sample `.dockerignore` file would look like:
 
-```shell:title=.dockerignore
+```shell
 # ignore .git and .cache folders
 .git
 .cache
@@ -224,7 +224,7 @@ For example in a Java-based application, we need JDK to compile the Java source 
 
 Multi-stage builds allow us to use multiple temporary images during the build process but keep only the latest image as the final image. Let's see how it is done.
 
-```shell:title=Dockerfile
+```shell
 # Build stage
 FROM tomcat AS build
 
@@ -251,7 +251,7 @@ ENTRYPOINT ["java", "-jar", "/usr/local/tomcat/webapps/file.war"]
 
 Let's also look at the size comparison between two stages:
 
-```shell:title=Console
+```shell
 REPOSITORY                 TAG         IMAGE ID          SIZE
 docker-single              latest      8d6b6a4d7fb6      259MB
 docker-multi               latest      813c2fa9b114      156MB
@@ -268,7 +268,7 @@ By default, Docker runs container processes as root inside of a container. Howev
 
 To prevent this, we should run container processes with a non-root user or less privileged user.
 
-```shell:title=Dockerfile
+```shell
 ...
 
 # create group and user
@@ -293,7 +293,7 @@ USER amar
 
 Once we build the image, we should scan the image for security vulnerabilities using the `docker scan` command. We need to be logged in to the Docker Hub to run the docker scan command to scan our images.
 
-```shell:title=Console
+```shell
 $ docker scan hello-world
 
 Testing hello-world...
