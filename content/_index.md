@@ -1,8 +1,8 @@
 ## Hi.
 
-I'm Amar - currently working as a Solutions Consultant at Sahaj Software, Pune. I like to build things and, more importantly, I like to fix things. I've worked on a bunch of different kinds of software, and am always interested in learning new technologies.
+Hi, I'm Amar, currently working as a Solutions Consultant at Sahaj Software in Pune, with a focus on data engineering. I enjoy building and fixing things, particularly when it involves working on large-scale data processing jobs and optimizing Spark workloads.
 
-Past [Google Summer of Code](https://summerofcode.withgoogle.com/). Open Source Community Member at [DuckDuckGo](duckduckgo.com). Maintainer at [Open Source Help Community](https://github.com/OpenSourceHelpCommunity).
+Over the years, I've worked on various software projects and continuously explore new technologies. I've also contributed as a past maintainer at [CRI-O](https://cri-o.io/), [DuckDuckGo](duckduckgo.com), and [Google Summer of Code](https://summerofcode.withgoogle.com/).
 
 - [Github](https://github.com/amarlearning)
 - [Stackoverflow](https://stackoverflow.com/users/5816974/amar-prakash-pandey)
