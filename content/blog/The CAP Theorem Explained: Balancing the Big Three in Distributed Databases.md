@@ -6,7 +6,7 @@ description = "An introduction to the CAP theorem, explaining the trade-offs bet
 tags = ["CAP Theorem", "Distributed Systems", "Consistency", "Availability", "Partition Tolerance", "System Design", "Network Partitions", "Brewers Theorem"]
 +++
 
-![banner](/images/docker-the-right-way/banner.png)
+![banner](/images/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/banner.png)
 
 The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:
 
@@ -44,3 +44,7 @@ But in distributed systems spanning large areas, where partitions are expected, 
 The CAP theorem is a powerful framework that forces us to acknowledge and navigate the inherent trade-offs in distributed system design. Understanding how these three factors—consistency, availability, and partition tolerance—interact allows engineers to make informed decisions based on their system’s requirements and the expected network conditions.
 
 In the end, the key takeaway is that in distributed systems, especially those operating globally, the reality of network partitions means that we must carefully balance between consistency and availability depending on what matters most for the application.
+
+## Reference
+
+- [Inside Cloud Spanner and the CAP Theorem](https://cloud.google.com/blog/products/databases/inside-cloud-spanner-and-the-cap-theorem)
