@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>The CAP Theorem Explained: Balancing the Big Three in Distributed Databases | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="The CAP Theorem Explained: Balancing the Big Three in Distributed Databases" />
+<meta name="description" content="An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems." />
+<meta name="keywords" content="CAP Theorem,Distributed Systems,Consistency,Availability,Partition Tolerance,System Design,Network Partitions,Brewers Theorem," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="The CAP Theorem Explained: Balancing the Big Three in Distributed Databases">
+  <meta property="og:description" content="An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-10-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-15T00:00:00+00:00">
+    <meta property="article:tag" content="CAP Theorem">
+    <meta property="article:tag" content="Distributed Systems">
+    <meta property="article:tag" content="Consistency">
+    <meta property="article:tag" content="Availability">
+    <meta property="article:tag" content="Partition Tolerance">
+    <meta property="article:tag" content="System Design">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The CAP Theorem Explained: Balancing the Big Three in Distributed Databases">
+  <meta name="twitter:description" content="An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems.">
+
+
+
+
+  <meta itemprop="name" content="The CAP Theorem Explained: Balancing the Big Three in Distributed Databases">
+  <meta itemprop="description" content="An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems.">
+  <meta itemprop="datePublished" content="2024-10-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-10-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="470">
+  <meta itemprop="keywords" content="CAP Theorem,Distributed Systems,Consistency,Availability,Partition Tolerance,System Design,Network Partitions,Brewers Theorem">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>The CAP Theorem Explained: Balancing the Big Three in Distributed Databases</h1>
+<p>
+  <i>
+    <time datetime='2024-10-15' pubdate>
+      15 Oct, 2024
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/docker-the-right-way/banner.png" alt="banner"></p>
+<p>The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:</p>
+<ul>
+<li><strong>C</strong>: Consistency</li>
+<li><strong>A</strong>: Availability</li>
+<li><strong>P</strong>: Partition Tolerance</li>
+</ul>
+<h2 id="what-do-these-terms-mean">What Do These Terms Mean?</h2>
+<ul>
+<li><strong>Consistency (C):</strong> Every read receives the most recent write or an error. This means that the data you access is guaranteed to be the latest version, or the system will notify you that something went wrong.</li>
+<li><strong>Availability (A):</strong> Every request receives a response, but without the guarantee that it contains the most recent write. In other words, you’ll always get a reply, but it may not always reflect the latest state of the system.</li>
+<li><strong>Partition Tolerance (P):</strong> The system continues to operate even if there is a network partition—essentially, when some nodes in the system cannot communicate with others due to network failures.</li>
+</ul>
+<h2 id="the-cap-theorem-trilemma-pick-two">The CAP Theorem Trilemma: &ldquo;Pick Two&rdquo;</h2>
+<p>A common phrase used to describe the CAP theorem is: &ldquo;You can only pick two out of the three.&rdquo; However, this description is a bit of an oversimplification. Here&rsquo;s the real crux of the matter:</p>
+<p>When a network partition occurs (i.e., a logical split between different parts of the network), a system must make a choice:</p>
+<ol>
+<li><strong>Cancel the operation</strong> to maintain data consistency, sacrificing availability.</li>
+<li><strong>Proceed with the operation</strong> to maintain availability, but at the risk of inconsistent data.</li>
+</ol>
+<p>In the absence of network partitions (meaning the system is fully connected), it is possible to achieve both consistency and availability simultaneously.</p>
+<h2 id="a-closer-look-at-partition-tolerance">A Closer Look at Partition Tolerance</h2>
+<p>In practice, especially for distributed systems that operate over a wide area network (WAN), network partitions are considered inevitable. Systems spread across large geographical distances or across continents are more prone to partitions due to network failures or latency issues.</p>
+<p>However, for systems operating within a local network (like a single data center or region), the likelihood of network partitions is significantly reduced. In such cases, a system can often be both consistent and available, since partitioning is rare.</p>
+<p>But in distributed systems spanning large areas, where partitions are expected, the system must be designed with the CAP trade-offs in mind. If you anticipate that partitions are inevitable, your system will have to forfeit either consistency or availability during those failures.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The CAP theorem is a powerful framework that forces us to acknowledge and navigate the inherent trade-offs in distributed system design. Understanding how these three factors—consistency, availability, and partition tolerance—interact allows engineers to make informed decisions based on their system’s requirements and the expected network conditions.</p>
+<p>In the end, the key takeaway is that in distributed systems, especially those operating globally, the reality of network partitions means that we must carefully balance between consistency and availability depending on what matters most for the application.</p>
+
+</content>
+
+<hr>
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/cap-theorem/">#CAP Theorem</a>
+  
+  <a href="https://amarpandey.me/tags/distributed-systems/">#Distributed Systems</a>
+  
+  <a href="https://amarpandey.me/tags/consistency/">#Consistency</a>
+  
+  <a href="https://amarpandey.me/tags/availability/">#Availability</a>
+  
+  <a href="https://amarpandey.me/tags/partition-tolerance/">#Partition Tolerance</a>
+  
+  <a href="https://amarpandey.me/tags/system-design/">#System Design</a>
+  
+  <a href="https://amarpandey.me/tags/network-partitions/">#Network Partitions</a>
+  
+  <a href="https://amarpandey.me/tags/brewers-theorem/">#Brewers Theorem</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>

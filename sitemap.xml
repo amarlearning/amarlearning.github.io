@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amarpandey.me/</loc>
-    <lastmod>2024-05-24T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/tags/apache/</loc>
-    <lastmod>2024-05-24T00:00:00+00:00</lastmod>
+    <loc>https://amarpandey.me/tags/availability/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/brewers-theorem/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/cap-theorem/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/consistency/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/distributed-systems/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/network-partitions/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/partition-tolerance/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/system-design/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/apache/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/data/</loc>
@@ -27,9 +57,6 @@
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/spark/</loc>
-    <lastmod>2024-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/broadcast/</loc>

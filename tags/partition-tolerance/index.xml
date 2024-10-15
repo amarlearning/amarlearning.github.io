@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Partition Tolerance on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/partition-tolerance/</link>
+    <description>Recent content in Partition Tolerance on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/partition-tolerance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The CAP Theorem Explained: Balancing the Big Three in Distributed Databases</title>
+      <link>https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/</link>
+      <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/</guid>
+      <description>The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:&#xA;C: Consistency A: Availability P: Partition Tolerance What Do These Terms Mean? Consistency (C): Every read receives the most recent write or an error. This means that the data you access is guaranteed to be the latest version, or the system will notify you that something went wrong.</description>
+    </item>
+  </channel>
+</rss>
