@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/system-design/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>The CAP Theorem Explained: Balancing the Big Three in Distributed Databases</title>
-      <link>https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/</link>
+      <title>The CAP Theorem: Balancing the Big Three in Distributed Databases</title>
+      <link>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</link>
       <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/</guid>
+      <guid>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</guid>
       <description>The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:&#xA;C: Consistency A: Availability P: Partition Tolerance What Do These Terms Mean? Consistency (C): Every read receives the most recent write or an error. This means that the data you access is guaranteed to be the latest version, or the system will notify you that something went wrong.</description>
     </item>
   </channel>
