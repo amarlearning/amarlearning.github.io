@@ -1,12 +1,12 @@
 +++
-title = "The CAP Theorem Explained: Balancing the Big Three in Distributed Databases"
+title = "The CAP Theorem: Balancing the Big Three in Distributed Databases"
 date = "2024-10-15T00:00:00-00:00"
 description = "An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems."
 
 tags = ["CAP Theorem", "Distributed Systems", "Consistency", "Availability", "Partition Tolerance", "System Design", "Network Partitions", "Brewers Theorem"]
 +++
 
-![banner](/images/the-cap-theorem-explained-balancing-the-big-three-in-distributed-databases/banner.png)
+![banner](/images/the-cap-theorem-balancing-the-big-three-in-distributed-databases/banner.png)
 
 The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:
 
