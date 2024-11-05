@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Balancing the RUM Conjecture: Navigating Database Trade-Offs | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Balancing the RUM Conjecture: Navigating Database Trade-Offs" />
+<meta name="description" content="An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory." />
+<meta name="keywords" content="RUM Conjecture,Database Design,Data Engineering,Tech Tradeoffs," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Balancing the RUM Conjecture: Navigating Database Trade-Offs">
+  <meta property="og:description" content="An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-11-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-05T00:00:00+00:00">
+    <meta property="article:tag" content="RUM Conjecture">
+    <meta property="article:tag" content="Database Design">
+    <meta property="article:tag" content="Data Engineering">
+    <meta property="article:tag" content="Tech Tradeoffs">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Balancing the RUM Conjecture: Navigating Database Trade-Offs">
+  <meta name="twitter:description" content="An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory.">
+
+
+
+
+  <meta itemprop="name" content="Balancing the RUM Conjecture: Navigating Database Trade-Offs">
+  <meta itemprop="description" content="An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory.">
+  <meta itemprop="datePublished" content="2024-11-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-05T00:00:00+00:00">
+  <meta itemprop="wordCount" content="329">
+  <meta itemprop="keywords" content="RUM Conjecture,Database Design,Data Engineering,Tech Tradeoffs">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>Balancing the RUM Conjecture: Navigating Database Trade-Offs</h1>
+<p>
+  <i>
+    <time datetime='2024-11-05' pubdate>
+      05 Nov, 2024
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png" alt="banner"></p>
+<p>When designing databases, there&rsquo;s a constant balancing act among three main factors:</p>
+<ol>
+<li>Read times</li>
+<li>Update cost</li>
+<li>Memory/storage overhead</li>
+</ol>
+<p>The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.</p>
+<h3 id="example-log-structured-databases">Example: Log-Structured Databases</h3>
+<p>Consider a log-structured database:</p>
+<ul>
+<li>Update-optimized: Records are appended at the end of the file, allowing efficient updates.</li>
+<li>Low memory/storage overhead: There’s no additional indexing, saving on storage.</li>
+<li>Trade-off on reads: Without indexes, lookups become slower, negatively impacting read times.</li>
+</ul>
+<p>This trade-off forms a triangular relationship among read efficiency, update costs, and storage overhead.</p>
+<h2 id="visualizing-rum">Visualizing RUM</h2>
+<p>Databases are often optimized around specific workflows, focusing on either read, write, or storage efficiencies:</p>
+<p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-visualized.png" alt="rum-visualized"></p>
+<ol>
+<li><strong>Read-Optimized</strong></li>
+</ol>
+<ul>
+<li>These databases are designed to minimize read latency, often by increasing storage and write costs (sometimes both).</li>
+<li>Examples: B-trees, hash-based indexes, tries, and skiplists.</li>
+<li>Trade-off: To provide fast read times, data is often duplicated or structured in ways that require more storage or additional writes.</li>
+</ul>
+<ol start="2">
+<li><strong>Write-Optimized</strong></li>
+</ol>
+<ul>
+<li>These systems prioritize efficient writes, typically by reducing write complexity and minimizing disk overhead.</li>
+<li>Examples: Log-Structured Merge (LSM) trees, partitioned B-trees, and LA/FO trees.</li>
+<li>Trade-off: While these structures offer low-latency writes, they generally sacrifice read speed and increase memory or storage requirements.</li>
+</ul>
+<ol start="3">
+<li><strong>Storage-Optimized</strong></li>
+</ol>
+<ul>
+<li>These databases aim to conserve storage space by trading off write costs (through compression) or read performance (by requiring multiple lookups).</li>
+<li>Examples: Bloom filters, count-min sketches, and sparse indexes.</li>
+<li>Trade-off: Although these structures are space-efficient, they often compromise on write efficiency or retrieval speed.</li>
+</ul>
+<h3 id="beyond-the-rum-corners-adaptive-access-methods">Beyond the RUM Corners: Adaptive Access Methods</h3>
+<p>Some database structures are designed to adapt dynamically, balancing the RUM trade-offs based on access patterns:</p>
+<p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-adaptive.png" alt="rum-adaptive"></p>
+<ul>
+<li>Adaptive access methods: These structures include tunable parameters or are inherently adaptive, allowing them to adjust based on workload.</li>
+<li>Examples: Techniques like database cracking and adaptive merging use workload information to find an optimal balance among read, update, and memory costs.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://stratos.seas.harvard.edu/files/stratos/files/rum.pdf">The RUM Conjecture paper</a></li>
+<li><a href="http://daslab.seas.harvard.edu/rum-conjecture/">The RUM Conjecture blog</a></li>
+</ul>
+
+</content>
+
+<hr>
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/rum-conjecture/">#RUM Conjecture</a>
+  
+  <a href="https://amarpandey.me/tags/database-design/">#Database Design</a>
+  
+  <a href="https://amarpandey.me/tags/data-engineering/">#Data Engineering</a>
+  
+  <a href="https://amarpandey.me/tags/tech-tradeoffs/">#Tech Tradeoffs</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>

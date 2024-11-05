@@ -6,8 +6,15 @@
     <description>Recent content in Blogs on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
+      <link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
+      <description>When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&#xA;Read times Update cost Memory/storage overhead The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&#xA;Example: Log-Structured Databases Consider a log-structured database:&#xA;Update-optimized: Records are appended at the end of the file, allowing efficient updates. Low memory/storage overhead: There’s no additional indexing, saving on storage.</description>
+    </item>
     <item>
       <title>The CAP Theorem: Balancing the Big Three in Distributed Databases</title>
       <link>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</link>

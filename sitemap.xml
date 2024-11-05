@@ -3,10 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amarpandey.me/</loc>
-    <lastmod>2024-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/</loc>
-    <lastmod>2024-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/data-engineering/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/database-design/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/rum-conjecture/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/tech-tradeoffs/</loc>
+    <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/availability/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
@@ -30,9 +48,6 @@
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/system-design/</loc>
-    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</loc>
