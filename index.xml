@@ -83,7 +83,7 @@
       <link>https://amarpandey.me/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/projects/</guid>
-      <description>Here are some of the projects that I have worked on. You can find the source code and demo link for each project below.&#xA;spot-optimizer - Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling.. code&#xA;geohashviz.com - A web application that lets you visualize geohashes in bulk. code demo&#xA;Chat Rooms - Real time public/private chat application using spring boot web-sockets. code</description>
+      <description>Here are some of the projects that I have worked on. You can find the source code and demo link for each project below.&#xA;spot-optimizer - Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling. code&#xA;geohashviz.com - A web application that lets you visualize geohashes in bulk. code demo&#xA;chat rooms - Real time public/private chat application using spring boot web-sockets. code</description>
     </item>
   </channel>
 </rss>
