@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing.">
   <meta itemprop="datePublished" content="2025-03-23T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-23T00:00:00+00:00">
-  <meta itemprop="wordCount" content="624">
+  <meta itemprop="wordCount" content="626">
   <meta itemprop="keywords" content="Apache-Spark,Big-Data,Data-Processing,Performance-Optimization,Distributed-Computing,Spark-Optimization">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -295,17 +295,18 @@
 </span></span><span style="display:flex;"><span>    sum(<span style="color:#e6db74">&#34;value&#34;</span>)<span style="color:#f92672">.</span>over(Window<span style="color:#f92672">.</span>partitionBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>orderBy(<span style="color:#e6db74">&#34;value&#34;</span>))
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><p>Example 3: Understanding Jobs and Stages</p>
-<h1 id="action-1-reading-data">Action 1: Reading data</h1>
-<p>df = spark.read.parquet(&rsquo;/path/to/parquet')</p>
-<h1 id="multiple-transformations-leading-to-multiple-stages">Multiple transformations leading to multiple stages</h1>
-<p>result = (df
-.repartition(numPartitions=2)                    # Wide transformation (shuffle)
-.where(&ldquo;age &gt; 25&rdquo;)                              # Narrow transformation
-.select(&ldquo;name&rdquo;, &ldquo;age&rdquo;, &ldquo;gender&rdquo;, &ldquo;country&rdquo;)      # Narrow transformation
-.groupBy(&ldquo;country&rdquo;)                             # Wide transformation (shuffle)
-.count()                                        # Action 2: triggers job execution
-)</p>
-<h2 id="jobs-and-stages">Jobs and Stages</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Action 1: Reading data</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>parquet(<span style="color:#e6db74">&#39;/path/to/parquet&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Multiple transformations leading to multiple stages</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> (df
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>repartition(numPartitions<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)                    <span style="color:#75715e"># Wide ransformation (shuffle)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>where(<span style="color:#e6db74">&#34;age &gt; 25&#34;</span>)                              <span style="color:#75715e"># Narrow transformation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;age&#34;</span>, <span style="color:#e6db74">&#34;gender&#34;</span>, <span style="color:#e6db74">&#34;country&#34;</span>)      <span style="color:#75715e"># Narrow transformation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;country&#34;</span>)                             <span style="color:#75715e"># Wide transformation (shuffle)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>count()                                        <span style="color:#75715e"># Action 2: triggers job execution</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><h2 id="jobs-and-stages">Jobs and Stages</h2>
 <p>Spark creates a job for each action called. A single job can contain a series of actions, but Spark will optimize these actions into a single logical plan before executing it. The logical plan is then broken into physical stages based on wide dependencies. If no wide dependency exists, the entire logical plan results in a single stage.</p>
 <p>The key to understanding stages is recognizing that each wide dependency (like a shuffle) creates a boundary between stages. Therefore, if a Spark job has <strong>N wide dependencies</strong>, the logical plan will have <strong>N+1 stages</strong>. Data movement between stages occurs via shuffle and sort operations.</p>
 <p>To better understand how Spark organizes jobs and stages, let&rsquo;s break down the flow:</p>
