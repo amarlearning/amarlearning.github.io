@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing.">
   <meta itemprop="datePublished" content="2025-03-23T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-23T00:00:00+00:00">
-  <meta itemprop="wordCount" content="665">
+  <meta itemprop="wordCount" content="624">
   <meta itemprop="keywords" content="Apache-Spark,Big-Data,Data-Processing,Performance-Optimization,Distributed-Computing,Spark-Optimization">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -267,20 +267,13 @@
 <h2 id="spark-transformations-and-actions">Spark Transformations and Actions</h2>
 <p>In Spark, operations are classified into two main categories: Transformations and Actions.</p>
 <ul>
-<li>
-<p><strong>Transformations:</strong> These operations do not trigger execution but define a new dataset from an existing one. Transformations are further categorized into:</p>
+<li><strong>Transformations:</strong> These operations do not trigger execution but define a new dataset from an existing one. Transformations are further categorized into:
 <ul>
-<li>
-<p><strong>Narrow Dependency:</strong> Performed in parallel on data partitions. Examples include <code>select()</code>, <code>filter()</code>, <code>withColumn()</code>, <code>drop()</code>, and <code>count()</code>. These transformations are efficient as they do not involve shuffling.</p>
-</li>
-<li>
-<p><strong>Wide Dependency:</strong> Require data from multiple partitions to be grouped or aggregated, leading to shuffle operations. Examples include <code>groupBy()</code>, <code>join()</code>, <code>cube()</code>, <code>rollup()</code>, <code>agg()</code>, and <code>repartition()</code>. These operations can be costly due to data movement between nodes.</p>
-</li>
+<li><strong>Narrow Dependency:</strong> Performed in parallel on data partitions. Examples include <code>select()</code>, <code>filter()</code>, <code>withColumn()</code>, <code>drop()</code>. These transformations are efficient as they do not involve shuffling.</li>
+<li><strong>Wide Dependency:</strong> Require data from multiple partitions to be grouped or aggregated, leading to shuffle operations. Examples include <code>groupBy()</code>, <code>join()</code>, <code>cube()</code>, <code>rollup()</code>, <code>agg()</code>, and <code>repartition()</code>. These operations can be costly due to data movement between nodes.</li>
 </ul>
 </li>
-<li>
-<p><strong>Actions:</strong> These trigger the execution of the transformations and produce an output. Examples include <code>read()</code>, <code>write()</code>, <code>collect()</code>, <code>take()</code>, and <code>count()</code>. Each action triggers a separate job in Spark.</p>
-</li>
+<li><strong>Actions:</strong> These trigger the execution of the transformations and produce an output. Examples include <code>read()</code>, <code>write()</code>, <code>collect()</code>, <code>take()</code>, and <code>count()</code>. Each action triggers a separate job in Spark.</li>
 </ul>
 <h3 id="examples">Examples</h3>
 <p>Let&rsquo;s look at some code examples to understand these concepts better:</p>
@@ -301,24 +294,18 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;running_total&#34;</span>,
 </span></span><span style="display:flex;"><span>    sum(<span style="color:#e6db74">&#34;value&#34;</span>)<span style="color:#f92672">.</span>over(Window<span style="color:#f92672">.</span>partitionBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>orderBy(<span style="color:#e6db74">&#34;value&#34;</span>))
 </span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><p>Example 3: Action triggering a job with multiple stages</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Execution Flow:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Stage 1: Read → Filter (narrow)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Stage 2: GroupBy → Aggregate (wide, requires shuffle)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> (df
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>filter(col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">200</span>)     <span style="color:#75715e"># Stage 1: Narrow transformation</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;category&#34;</span>)            <span style="color:#75715e"># Wide transformation - creates shuffle boundary</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>agg(sum(<span style="color:#e6db74">&#34;value&#34;</span>))             
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>collect()                      <span style="color:#75715e"># ACTION: Triggers job execution, returns data to driver</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Other common actions</span>
-</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>count()                         <span style="color:#75715e"># Returns count of rows</span>
-</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>show()                          <span style="color:#75715e"># Displays first n rows</span>
-</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>write<span style="color:#f92672">.</span>parquet(<span style="color:#e6db74">&#34;path&#34;</span>)           <span style="color:#75715e"># Saves DataFrame</span>
-</span></span></code></pre></div><h2 id="jobs-and-stages">Jobs and Stages</h2>
+</span></span></code></pre></div><p>Example 3: Understanding Jobs and Stages</p>
+<h1 id="action-1-reading-data">Action 1: Reading data</h1>
+<p>df = spark.read.parquet(&rsquo;/path/to/parquet')</p>
+<h1 id="multiple-transformations-leading-to-multiple-stages">Multiple transformations leading to multiple stages</h1>
+<p>result = (df
+.repartition(numPartitions=2)                    # Wide transformation (shuffle)
+.where(&ldquo;age &gt; 25&rdquo;)                              # Narrow transformation
+.select(&ldquo;name&rdquo;, &ldquo;age&rdquo;, &ldquo;gender&rdquo;, &ldquo;country&rdquo;)      # Narrow transformation
+.groupBy(&ldquo;country&rdquo;)                             # Wide transformation (shuffle)
+.count()                                        # Action 2: triggers job execution
+)</p>
+<h2 id="jobs-and-stages">Jobs and Stages</h2>
 <p>Spark creates a job for each action called. A single job can contain a series of actions, but Spark will optimize these actions into a single logical plan before executing it. The logical plan is then broken into physical stages based on wide dependencies. If no wide dependency exists, the entire logical plan results in a single stage.</p>
 <p>The key to understanding stages is recognizing that each wide dependency (like a shuffle) creates a boundary between stages. Therefore, if a Spark job has <strong>N wide dependencies</strong>, the logical plan will have <strong>N+1 stages</strong>. Data movement between stages occurs via shuffle and sort operations.</p>
 <p>To better understand how Spark organizes jobs and stages, let&rsquo;s break down the flow:</p>
@@ -334,7 +321,7 @@
 <h2 id="tasks-and-parallelism">Tasks and Parallelism</h2>
 <p>Inside each stage, Spark divides the workload into multiple tasks, with each task processing a single partition. These tasks are executed in parallel by the Spark executors. The number of tasks within a stage equals the number of input partitions.</p>
 <p>Tasks are the smallest unit of execution within a Spark job. The Spark driver assigns these tasks to executors and monitors their progress. It is essential to balance the number of tasks and partition sizes to avoid performance bottlenecks.</p>
-<p>If you want to read about how to optimize spark partions for performance, you can read about it <a href="./Fine-Tuning%20Shuffle%20Partitions%20in%20Apache%20Spark%20for%20Maximum%20Efficiency.md">here</a>.</p>
+<p>If you want to read about how to optimize spark partions for performance, you can read about it <a href="https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/">here</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Understanding Spark&rsquo;s execution model - particularly how jobs break into stages at shuffle boundaries - is fundamental to writing efficient Spark applications. Key takeaways:</p>
 <ul>
@@ -343,7 +330,6 @@
 <li>Minimize shuffles when possible by reducing wide transformations</li>
 <li>Monitor your job&rsquo;s stages through Spark UI to identify performance bottlenecks</li>
 </ul>
-<p>Got more optimization tips or interesting Spark stories? Share them in the comments below!</p>
 
 </content>
 
