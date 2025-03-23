@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache-Spark on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/apache-spark/</link>
+    <description>Recent content in Apache-Spark on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/apache-spark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deep Dive into Spark Jobs and Stages</title>
+      <link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
+      <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
+      <description>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&#xA;Spark Transformations and Actions In Spark, operations are classified into two main categories: Transformations and Actions.&#xA;Transformations: These operations do not trigger execution but define a new dataset from an existing one.</description>
+    </item>
+  </channel>
+</rss>

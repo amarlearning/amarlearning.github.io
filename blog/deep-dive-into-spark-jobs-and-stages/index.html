@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Deep Dive into Spark Jobs and Stages | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Deep Dive into Spark Jobs and Stages" />
+<meta name="description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing." />
+<meta name="keywords" content="apache-spark,big-data,data-processing,performance-optimization,distributed-computing,spark-optimization," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Deep Dive into Spark Jobs and Stages">
+  <meta property="og:description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-03-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-23T00:00:00+00:00">
+    <meta property="article:tag" content="Apache-Spark">
+    <meta property="article:tag" content="Big-Data">
+    <meta property="article:tag" content="Data-Processing">
+    <meta property="article:tag" content="Performance-Optimization">
+    <meta property="article:tag" content="Distributed-Computing">
+    <meta property="article:tag" content="Spark-Optimization">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Deep Dive into Spark Jobs and Stages">
+  <meta name="twitter:description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing.">
+
+
+
+
+  <meta itemprop="name" content="Deep Dive into Spark Jobs and Stages">
+  <meta itemprop="description" content="Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing.">
+  <meta itemprop="datePublished" content="2025-03-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-23T00:00:00+00:00">
+  <meta itemprop="wordCount" content="665">
+  <meta itemprop="keywords" content="Apache-Spark,Big-Data,Data-Processing,Performance-Optimization,Distributed-Computing,Spark-Optimization">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>Deep Dive into Spark Jobs and Stages</h1>
+<p>
+  <i>
+    <time datetime='2025-03-23' pubdate>
+      23 Mar, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/deep-dive-into-spark-jobs-and-stages/banner.png" alt="banner"></p>
+<p>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.</p>
+<h2 id="spark-transformations-and-actions">Spark Transformations and Actions</h2>
+<p>In Spark, operations are classified into two main categories: Transformations and Actions.</p>
+<ul>
+<li>
+<p><strong>Transformations:</strong> These operations do not trigger execution but define a new dataset from an existing one. Transformations are further categorized into:</p>
+<ul>
+<li>
+<p><strong>Narrow Dependency:</strong> Performed in parallel on data partitions. Examples include <code>select()</code>, <code>filter()</code>, <code>withColumn()</code>, <code>drop()</code>, and <code>count()</code>. These transformations are efficient as they do not involve shuffling.</p>
+</li>
+<li>
+<p><strong>Wide Dependency:</strong> Require data from multiple partitions to be grouped or aggregated, leading to shuffle operations. Examples include <code>groupBy()</code>, <code>join()</code>, <code>cube()</code>, <code>rollup()</code>, <code>agg()</code>, and <code>repartition()</code>. These operations can be costly due to data movement between nodes.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Actions:</strong> These trigger the execution of the transformations and produce an output. Examples include <code>read()</code>, <code>write()</code>, <code>collect()</code>, <code>take()</code>, and <code>count()</code>. Each action triggers a separate job in Spark.</p>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<p>Let&rsquo;s look at some code examples to understand these concepts better:</p>
+<p>Example 1: Narrow Transformations</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>createDataFrame([
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#ae81ff">100</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#ae81ff">200</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#ae81ff">300</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#ae81ff">400</span>)
+</span></span><span style="display:flex;"><span>], [<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;category&#34;</span>, <span style="color:#e6db74">&#34;value&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df_filtered <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>filter(col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">200</span>)
+</span></span><span style="display:flex;"><span>df_mapped <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>withColumn(<span style="color:#e6db74">&#34;ratio&#34;</span>, col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><p>Example 2: Wide Transformations</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># These operations require data shuffle between partitions</span>
+</span></span><span style="display:flex;"><span>df_grouped <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>agg(sum(<span style="color:#e6db74">&#34;value&#34;</span>))  <span style="color:#75715e"># Wide: requires shuffle/sort </span>
+</span></span><span style="display:flex;"><span>df_windowed <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>withColumn( 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;running_total&#34;</span>,
+</span></span><span style="display:flex;"><span>    sum(<span style="color:#e6db74">&#34;value&#34;</span>)<span style="color:#f92672">.</span>over(Window<span style="color:#f92672">.</span>partitionBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>orderBy(<span style="color:#e6db74">&#34;value&#34;</span>))
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Example 3: Action triggering a job with multiple stages</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Execution Flow:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Stage 1: Read → Filter (narrow)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Stage 2: GroupBy → Aggregate (wide, requires shuffle)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> (df
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>filter(col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">200</span>)     <span style="color:#75715e"># Stage 1: Narrow transformation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;category&#34;</span>)            <span style="color:#75715e"># Wide transformation - creates shuffle boundary</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>agg(sum(<span style="color:#e6db74">&#34;value&#34;</span>))             
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>collect()                      <span style="color:#75715e"># ACTION: Triggers job execution, returns data to driver</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Other common actions</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>count()                         <span style="color:#75715e"># Returns count of rows</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>show()                          <span style="color:#75715e"># Displays first n rows</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>write<span style="color:#f92672">.</span>parquet(<span style="color:#e6db74">&#34;path&#34;</span>)           <span style="color:#75715e"># Saves DataFrame</span>
+</span></span></code></pre></div><h2 id="jobs-and-stages">Jobs and Stages</h2>
+<p>Spark creates a job for each action called. A single job can contain a series of actions, but Spark will optimize these actions into a single logical plan before executing it. The logical plan is then broken into physical stages based on wide dependencies. If no wide dependency exists, the entire logical plan results in a single stage.</p>
+<p>The key to understanding stages is recognizing that each wide dependency (like a shuffle) creates a boundary between stages. Therefore, if a Spark job has <strong>N wide dependencies</strong>, the logical plan will have <strong>N+1 stages</strong>. Data movement between stages occurs via shuffle and sort operations.</p>
+<p>To better understand how Spark organizes jobs and stages, let&rsquo;s break down the flow:</p>
+<ol>
+<li>Action (e.g., write(), collect()) → Triggers a Job</li>
+<li>Job → Creates a Logical Plan</li>
+<li>Logical Plan → Breaks down into Stages based on wide dependencies</li>
+<li>Stage → Contains multiple Tasks, one per partition</li>
+<li>Shuffle/Sort → Connects Stages when wide dependencies are present</li>
+<li>Tasks → Smallest unit of execution within each stage</li>
+</ol>
+<p><img src="/images/deep-dive-into-spark-jobs-and-stages/spark_execution.png" alt="spark-task-execution"></p>
+<h2 id="tasks-and-parallelism">Tasks and Parallelism</h2>
+<p>Inside each stage, Spark divides the workload into multiple tasks, with each task processing a single partition. These tasks are executed in parallel by the Spark executors. The number of tasks within a stage equals the number of input partitions.</p>
+<p>Tasks are the smallest unit of execution within a Spark job. The Spark driver assigns these tasks to executors and monitors their progress. It is essential to balance the number of tasks and partition sizes to avoid performance bottlenecks.</p>
+<p>If you want to read about how to optimize spark partions for performance, you can read about it <a href="./Fine-Tuning%20Shuffle%20Partitions%20in%20Apache%20Spark%20for%20Maximum%20Efficiency.md">here</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Understanding Spark&rsquo;s execution model - particularly how jobs break into stages at shuffle boundaries - is fundamental to writing efficient Spark applications. Key takeaways:</p>
+<ul>
+<li>Actions trigger jobs, not transformations</li>
+<li>Wide transformations create stage boundaries due to data shuffling</li>
+<li>Minimize shuffles when possible by reducing wide transformations</li>
+<li>Monitor your job&rsquo;s stages through Spark UI to identify performance bottlenecks</li>
+</ul>
+<p>Got more optimization tips or interesting Spark stories? Share them in the comments below!</p>
+
+</content>
+
+<hr>
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/apache-spark/">#Apache-Spark</a>
+  
+  <a href="https://amarpandey.me/tags/big-data/">#Big-Data</a>
+  
+  <a href="https://amarpandey.me/tags/data-processing/">#Data-Processing</a>
+  
+  <a href="https://amarpandey.me/tags/performance-optimization/">#Performance-Optimization</a>
+  
+  <a href="https://amarpandey.me/tags/distributed-computing/">#Distributed-Computing</a>
+  
+  <a href="https://amarpandey.me/tags/spark-optimization/">#Spark-Optimization</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>
