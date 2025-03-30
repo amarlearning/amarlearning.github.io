@@ -35,57 +35,53 @@ Our first instinct? Increase the cluster size. But was that really the right app
 
 ## Debugging Process: What Went Wrong?
 
-1. Initial Assumption: Not Enough Resources
+1. **Initial Assumption: Not Enough Resources**
 
-At first, we assumed our cluster was too small. More nodes mean more memory, right? But with 63 nodes and a total of 4TB RAM, this didn’t add up. Something else was at play.
+   At first, we assumed our cluster was too small. More nodes mean more memory, right? But with 63 nodes and a total of 4TB RAM, this didn’t add up. Something else was at play.
 
-2. Heap Allocation Problems
-Each executor was given 64GB heap. While this seems like a good idea (more memory per executor), it actually led to heap inefficiencies:
-- Large heaps increase fragmentation.
-- Memory allocation within a single executor becomes harder for the OS.
-- Longer GC pauses, slowing down the job.
+2. **Heap Allocation Problems**
 
-3. JVM Garbage Collection (GC) Bottlenecks
-Garbage collection should ideally free up unused memory quickly. However, with a large heap size, we observed:
-- Major GC pauses due to excessive memory usage.
-- Inefficient cleanup cycles, causing out-of-memory errors.
-- We tried tuning GC with:
-   ```shell
-   -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:OnOutOfMemoryError='kill -9 %p'
-   -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=30
-   ```
-But the job still failed.
+   Each executor was given 64GB heap. While this seems like a good idea (more memory per executor), it actually led to heap inefficiencies:
+   - Large heaps increase fragmentation.
+   - Memory allocation within a single executor becomes harder for the OS.
+   - Longer GC pauses, slowing down the job.
 
-4. OS Memory Allocation Struggles
-Even though Linux can allocate large memory chunks, it prefers multiple smaller allocations. A single large executor (64GB heap) struggled to get contiguous memory from the OS, leading to failures.
+3. **JVM Garbage Collection (GC) Bottlenecks**
 
-At this point, we realized that adding more hardware wouldn’t fix the issue—we needed a smarter approach.
+   Garbage collection should ideally free up unused memory quickly. However, with a large heap size, we observed:
+   - Major GC pauses due to excessive memory usage.
+   - Inefficient cleanup cycles, causing out-of-memory errors.
+   - We tried tuning GC with:
+      ```shell
+      -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:OnOutOfMemoryError='kill -9 %p'
+      -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=30
+      ```
+   **But the job still failed.**
+
 
 ## The Fix: More Executors, Smaller Heaps
 
 Instead of increasing the cluster size, we changed:
-- 63 executors → 252 executors
-- Each executor now had 2 CPU, 16GB RAM (instead of 8 CPU, 64GB RAM)
+   - 63 executors → 252 executors
+   - Each executor now had 2 CPU, 16GB RAM (instead of 8 CPU, 64GB RAM)
 
 Result? The job passed. ✅
 
 ## Why This Worked
 
-1. Smaller Containers, Better Efficiency
-JVM memory management becomes inefficient with extremely large heap sizes. By reducing the heap size from 64GB to 16GB, memory allocation became more efficient and predictable.
+1. **Smaller Containers, Better Efficiency**
 
-2. Improved Garbage Collection (GC)
-- Large heaps cause longer GC pauses, delaying memory cleanup.
-- Smaller heaps = shorter GC pauses = better performance.
-- With more executors, GC cycles ran faster and in parallel.
+   JVM memory management becomes inefficient with extremely large heap sizes. By reducing the heap size from 64GB to 16GB, memory allocation became more efficient and predictable.
 
-3. OS-Friendly Memory Allocation
-- Linux struggles to allocate huge memory chunks, causing failures.
-- Splitting memory across more executors made it easier for the OS to handle.
+2. **Improved Garbage Collection (GC)**
+   - Large heaps cause longer GC pauses, delaying memory cleanup.
+   - Smaller heaps = shorter GC pauses = better performance.
+   - With more executors, GC cycles ran faster and in parallel.
 
-4.Better Load Distribution
-- Before: Some nodes were underutilized, while others struggled.
-- After: More executors meant better workload balance.
+3. **Better Load Distribution**
+   - Before: Some nodes were underutilized, while others struggled.
+   - After: More executors meant better workload balance.
+
 
 ## Benchmarking: Before vs. After
 
