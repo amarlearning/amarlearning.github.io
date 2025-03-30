@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Partitions on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>http://localhost:1313/tags/partitions/</link>
+    <link>https://amarpandey.me/tags/partitions/</link>
     <description>Recent content in Partitions on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/partitions/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://amarpandey.me/tags/partitions/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>http://localhost:1313/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
       <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
       <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Open-Source on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>http://localhost:1313/tags/open-source/</link>
+    <link>https://amarpandey.me/tags/open-source/</link>
     <description>Recent content in Open-Source on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Jul 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://amarpandey.me/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is Google Summer of Code? How to prepare for it?</title>
-      <link>http://localhost:1313/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
+      <link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
       <pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
+      <guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
       <description>We will talk about Google Summer of Code but before that let’s talk about what Open Source Development is. Yes, it’s very important.&#xA;What is open source development? Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an open-source license to study, change, and improve its design.</description>
     </item>
   </channel>

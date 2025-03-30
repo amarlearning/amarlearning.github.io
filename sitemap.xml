@@ -2,181 +2,181 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://amarpandey.me/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</loc>
+    <loc>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/apache-spark/</loc>
+    <loc>https://amarpandey.me/tags/apache-spark/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/big-data/</loc>
+    <loc>https://amarpandey.me/tags/big-data/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://amarpandey.me/blog/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-engineering/</loc>
+    <loc>https://amarpandey.me/tags/data-engineering/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data-processing/</loc>
+    <loc>https://amarpandey.me/tags/data-processing/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/distributed-computing/</loc>
+    <loc>https://amarpandey.me/tags/distributed-computing/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/performance/</loc>
+    <loc>https://amarpandey.me/tags/performance/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/performance-optimization/</loc>
+    <loc>https://amarpandey.me/tags/performance-optimization/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spark/</loc>
+    <loc>https://amarpandey.me/tags/spark/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/deep-dive-into-spark-jobs-and-stages/</loc>
+    <loc>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</loc>
     <lastmod>2025-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/spark-optimization/</loc>
+    <loc>https://amarpandey.me/tags/spark-optimization/</loc>
     <lastmod>2025-03-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</loc>
+    <loc>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/database-design/</loc>
+    <loc>https://amarpandey.me/tags/database-design/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/rum-conjecture/</loc>
+    <loc>https://amarpandey.me/tags/rum-conjecture/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tech-tradeoffs/</loc>
+    <loc>https://amarpandey.me/tags/tech-tradeoffs/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/availability/</loc>
+    <loc>https://amarpandey.me/tags/availability/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/brewers-theorem/</loc>
+    <loc>https://amarpandey.me/tags/brewers-theorem/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cap-theorem/</loc>
+    <loc>https://amarpandey.me/tags/cap-theorem/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/consistency/</loc>
+    <loc>https://amarpandey.me/tags/consistency/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/distributed-systems/</loc>
+    <loc>https://amarpandey.me/tags/distributed-systems/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/network-partitions/</loc>
+    <loc>https://amarpandey.me/tags/network-partitions/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/partition-tolerance/</loc>
+    <loc>https://amarpandey.me/tags/partition-tolerance/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/system-design/</loc>
+    <loc>https://amarpandey.me/tags/system-design/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</loc>
+    <loc>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</loc>
     <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/apache/</loc>
+    <loc>https://amarpandey.me/tags/apache/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/data/</loc>
+    <loc>https://amarpandey.me/tags/data/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</loc>
+    <loc>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/partitions/</loc>
+    <loc>https://amarpandey.me/tags/partitions/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/shuffle/</loc>
+    <loc>https://amarpandey.me/tags/shuffle/</loc>
     <lastmod>2024-05-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/broadcast/</loc>
+    <loc>https://amarpandey.me/tags/broadcast/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/handling-large-broadcast-joins-in-apache-spark/</loc>
+    <loc>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/join/</loc>
+    <loc>https://amarpandey.me/tags/join/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/cleancode/</loc>
+    <loc>https://amarpandey.me/tags/cleancode/</loc>
     <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/codesmells/</loc>
+    <loc>https://amarpandey.me/tags/codesmells/</loc>
     <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/softwareengineering/</loc>
+    <loc>https://amarpandey.me/tags/softwareengineering/</loc>
     <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/softwarequality/</loc>
+    <loc>https://amarpandey.me/tags/softwarequality/</loc>
     <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/symptoms-of-bad-code/</loc>
+    <loc>https://amarpandey.me/blog/symptoms-of-bad-code/</loc>
     <lastmod>2022-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/best-practices/</loc>
+    <loc>https://amarpandey.me/tags/best-practices/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/containers/</loc>
+    <loc>https://amarpandey.me/tags/containers/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/devops/</loc>
+    <loc>https://amarpandey.me/tags/devops/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://amarpandey.me/tags/docker/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/docker---the-right-way/</loc>
+    <loc>https://amarpandey.me/blog/docker---the-right-way/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/iac/</loc>
+    <loc>https://amarpandey.me/tags/iac/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/infrastructure/</loc>
+    <loc>https://amarpandey.me/tags/infrastructure/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/security/</loc>
+    <loc>https://amarpandey.me/tags/security/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gitops/</loc>
+    <loc>https://amarpandey.me/tags/gitops/</loc>
     <lastmod>2022-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/gitops---the-easy-way/</loc>
+    <loc>https://amarpandey.me/blog/gitops---the-easy-way/</loc>
     <lastmod>2022-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/finger-detection-and-tracking-using-opencv-and-python/</loc>
+    <loc>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</loc>
     <lastmod>2018-07-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/google/</loc>
+    <loc>https://amarpandey.me/tags/google/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/gsoc/</loc>
+    <loc>https://amarpandey.me/tags/gsoc/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/open-source/</loc>
+    <loc>https://amarpandey.me/tags/open-source/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/open-source-software/</loc>
+    <loc>https://amarpandey.me/tags/open-source-software/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/oss/</loc>
+    <loc>https://amarpandey.me/tags/oss/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</loc>
+    <loc>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</loc>
     <lastmod>2017-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://amarpandey.me/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://amarpandey.me/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
+    <loc>https://amarpandey.me/projects/</loc>
   </url>
 </urlset>

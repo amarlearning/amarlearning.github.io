@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Performance on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>http://localhost:1313/tags/performance/</link>
+    <link>https://amarpandey.me/tags/performance/</link>
     <description>Recent content in Performance on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://amarpandey.me/tags/performance/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
-      <link>http://localhost:1313/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
+      <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
+      <guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
       <description>Introduction Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&#xA;The Data Challenge Our task involved processing three massive datasets:</description>
     </item>
     <item>
       <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>http://localhost:1313/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
       <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
       <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
     </item>
   </channel>

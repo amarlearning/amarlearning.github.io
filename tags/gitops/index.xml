@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gitops on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>http://localhost:1313/tags/gitops/</link>
+    <link>https://amarpandey.me/tags/gitops/</link>
     <description>Recent content in Gitops on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Jan 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://amarpandey.me/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitOps - the easy way</title>
-      <link>http://localhost:1313/blog/gitops---the-easy-way/</link>
+      <link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
       <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/gitops---the-easy-way/</guid>
+      <guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
       <description>What is GitOps? Treat the infrastructure as code the same way as application code.&#xA;Separate repository for Infrastructure as code. DevOps pipeline. How does GitOps works? Infrastructure as Code hosted on Git repository.&#xA;Version controlled. Team collaboration. Use branching strategy to merge code in git repository. With CI pipeline to test the code. With CD pipeline to apply the changes to the Infrastructure. With the above steps we achieve: Automated Process.</description>
     </item>
     <item>
       <title>Finger Detection and Tracking using OpenCV and Python</title>
-      <link>http://localhost:1313/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
+      <link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
+      <guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
       <description>TL;DR. Code is here.&#xA;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&#xA;One of the challenges that I faced in detecting fingers is differentiating a hand from the background and identifying the tip of a finger.</description>
     </item>
   </channel>
