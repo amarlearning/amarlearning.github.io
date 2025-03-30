@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ .Content }}
+{{ range .Pages.GroupByDate "2006" }}
+<h3>{{ .Key }}</h3>
+{{ range .Pages }}
+<div class="posts-list">
+    <div class="post-item">
+        <span style="color: #666; font-size: 0.9rem;">{{ .Date.Format "Jan, 02" }}</span>
+        <a href="{{ .RelPermalink }}" style="margin-left: 1rem;">{{ .Title }}</a>
+    </div>
+</div>
+{{ end }}
+{{ end }}
+
+<div class="tag-cloud" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #eee; position: relative;">
+    <span style="position: absolute; top: -0.8rem; background: white; padding: 0 0.5rem; color: #666; font-size: 0.9rem;">Tags</span>
+    {{ $tags := slice }}
+    {{ range .Site.RegularPages }}
+        {{ range .Params.tags }}
+            {{ $tags = $tags | append . }}
+        {{ end }}
+    {{ end }}
+
+    {{ $uniqueTags := $tags | uniq }}
+    {{ $limitedTags := first 10 $uniqueTags }}
+    {{ range $limitedTags }}
+        <a href="/tags/{{ . | urlize }}" style="margin-right: 0.5rem; color: #1d70b8;">#{{ . }}</a>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,4 +1,4 @@
-baseURL = 'https://amarpandey.me/'
+baseURL = 'http://localhost:1313/'
 languageCode = 'en-us'
 title = 'Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ'
 theme = 'hugo-bearblog'
