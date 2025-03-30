@@ -3,7 +3,9 @@
     {{ .Content }}
 </div>
 
-<div style="margin-top: 2rem; padding-top: 0.1rem; border-top: 1px solid #eee;">
+<hr style="margin-top: 50px;">
+
+<div style="padding-top: 0.1rem;">
     <h2>Recent Posts</h2>
     {{ range first 2 (where .Site.RegularPages "Type" "blog") }}
     <article style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
