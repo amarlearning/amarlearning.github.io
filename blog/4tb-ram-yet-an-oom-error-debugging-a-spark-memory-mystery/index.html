@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
   <meta itemprop="datePublished" content="2025-03-30T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-30T00:00:00+00:00">
-  <meta itemprop="wordCount" content="619">
+  <meta itemprop="wordCount" content="643">
   <meta itemprop="keywords" content="Apache-Spark,Spark,Big-Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data Engineering">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -265,22 +265,21 @@
   <p><img src="/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png" alt="banner"></p>
 <h2 id="introduction">Introduction</h2>
 <p>Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.</p>
-<h2 id="issue">Issue</h2>
-<p>We were processing three datasets:</p>
+<h2 id="the-data-challenge">The Data Challenge</h2>
+<p>Our task involved processing three massive datasets:</p>
 <ul>
-<li>450GB</li>
-<li>5GB</li>
-<li>3GB</li>
+<li>A primary dataset weighing in at 450GB</li>
+<li>Two supplementary datasets of 5GB and 3GB respectively</li>
 </ul>
-<p>Cluster configuration:</p>
+<p>Our Infrastructure:</p>
 <ul>
-<li>63 nodes</li>
-<li>Each node: 8 CPU, 64GB RAM</li>
-<li>1 executor per node → 63 executors in total</li>
+<li>A robust cluster of 63 worker nodes</li>
+<li>Each node packed with 8 CPU cores and 64GB RAM</li>
+<li>Single executor per node, totaling 63 executors cluster-wide</li>
 </ul>
 <p>The job failed with this error:</p>
-<pre tabindex="0"><code>OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00007f0a62000000, 494927872, 0) failed; error=&#39;Not enough space&#39; (errno=12)
-</code></pre><p>At first glance, this error made little sense. Our cluster had plenty of RAM, yet the JVM couldn’t allocate memory properly. The failure suggested that the issue wasn’t a lack of overall memory, but rather how memory was being allocated within the executors.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory<span style="color:#f92672">(</span>0x00007f0a62000000, 494927872, 0<span style="color:#f92672">)</span> failed; error<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Not enough space&#39;</span> <span style="color:#f92672">(</span>errno<span style="color:#f92672">=</span>12<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>At first glance, this error made little sense. Our cluster had plenty of RAM, yet the JVM couldn’t allocate memory properly. The failure suggested that the issue wasn’t a lack of overall memory, but rather how memory was being allocated within the executors.</p>
 <p>Our first instinct? Increase the cluster size. But was that really the right approach?</p>
 <h2 id="debugging-process-what-went-wrong">Debugging Process: What Went Wrong?</h2>
 <ol>
@@ -352,32 +351,32 @@ JVM memory management becomes inefficient with extremely large heap sizes. By re
 <table>
 <thead>
 <tr>
-<th>Configuration</th>
-<th>Executors</th>
-<th>Heap Size per Executor</th>
-<th>GC Pause Time</th>
-<th>Job Status</th>
+<th style="text-align:left">Configuration</th>
+<th style="text-align:left">Executors</th>
+<th style="text-align:left">Heap Size per Executor</th>
+<th style="text-align:left">GC Pause Time</th>
+<th style="text-align:left">Job Status</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Before</strong></td>
-<td>63</td>
-<td>64GB</td>
-<td>Long</td>
-<td>❌ Failed</td>
+<td style="text-align:left">Before</td>
+<td style="text-align:left">63</td>
+<td style="text-align:left">64GB</td>
+<td style="text-align:left">Long</td>
+<td style="text-align:left">❌ Failed</td>
 </tr>
 <tr>
-<td><strong>After</strong></td>
-<td>252</td>
-<td>16GB</td>
-<td>Short</td>
-<td>✅ Passed</td>
+<td style="text-align:left">After</td>
+<td style="text-align:left">252</td>
+<td style="text-align:left">16GB</td>
+<td style="text-align:left">Short</td>
+<td style="text-align:left">✅ Passed</td>
 </tr>
 </tbody>
 </table>
 <p>Although runtime remained the same, memory stability improved significantly.</p>
-<p>Key Takeaways</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li>Bigger heap ≠ better performance. JVM works better with moderate heap sizes.</li>
 <li>More, smaller executors prevent memory fragmentation &amp; GC issues.</li>
