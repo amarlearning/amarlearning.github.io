@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://amarpandey.me/</loc>
+    <loc>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</loc>
+    <loc>https://amarpandey.me/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/apache-spark/</loc>
