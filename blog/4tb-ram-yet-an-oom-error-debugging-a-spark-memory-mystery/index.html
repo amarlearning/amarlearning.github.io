@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery" />
+<meta name="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance." />
+<meta name="keywords" content="Apache-Spark,Spark,Big-Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data-Engineering," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery">
+  <meta property="og:description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-03-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-03-30T00:00:00+00:00">
+    <meta property="article:tag" content="Apache-Spark">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Big-Data">
+    <meta property="article:tag" content="Data-Processing">
+    <meta property="article:tag" content="Performance">
+    <meta property="article:tag" content="Performance-Optimization">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery">
+  <meta name="twitter:description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
+
+
+
+
+  <meta itemprop="name" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery">
+  <meta itemprop="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
+  <meta itemprop="datePublished" content="2025-03-30T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-03-30T00:00:00+00:00">
+  <meta itemprop="wordCount" content="619">
+  <meta itemprop="keywords" content="Apache-Spark,Spark,Big-Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data Engineering">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</h1>
+<p>
+  <i>
+    <time datetime='2025-03-30' pubdate>
+      30 Mar, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png" alt="banner"></p>
+<h2 id="introduction">Introduction</h2>
+<p>Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.</p>
+<h2 id="issue">Issue</h2>
+<p>We were processing three datasets:</p>
+<ul>
+<li>450GB</li>
+<li>5GB</li>
+<li>3GB</li>
+</ul>
+<p>Cluster configuration:</p>
+<ul>
+<li>63 nodes</li>
+<li>Each node: 8 CPU, 64GB RAM</li>
+<li>1 executor per node → 63 executors in total</li>
+</ul>
+<p>The job failed with this error:</p>
+<pre tabindex="0"><code>OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00007f0a62000000, 494927872, 0) failed; error=&#39;Not enough space&#39; (errno=12)
+</code></pre><p>At first glance, this error made little sense. Our cluster had plenty of RAM, yet the JVM couldn’t allocate memory properly. The failure suggested that the issue wasn’t a lack of overall memory, but rather how memory was being allocated within the executors.</p>
+<p>Our first instinct? Increase the cluster size. But was that really the right approach?</p>
+<h2 id="debugging-process-what-went-wrong">Debugging Process: What Went Wrong?</h2>
+<ol>
+<li>Initial Assumption: Not Enough Resources</li>
+</ol>
+<p>At first, we assumed our cluster was too small. More nodes mean more memory, right? But with 63 nodes and a total of 4TB RAM, this didn’t add up. Something else was at play.</p>
+<ol start="2">
+<li>Heap Allocation Problems
+Each executor was given 64GB heap. While this seems like a good idea (more memory per executor), it actually led to heap inefficiencies:</li>
+</ol>
+<ul>
+<li>Large heaps increase fragmentation.</li>
+<li>Memory allocation within a single executor becomes harder for the OS.</li>
+<li>Longer GC pauses, slowing down the job.</li>
+</ul>
+<ol start="3">
+<li>JVM Garbage Collection (GC) Bottlenecks
+Garbage collection should ideally free up unused memory quickly. However, with a large heap size, we observed:</li>
+</ol>
+<ul>
+<li>Major GC pauses due to excessive memory usage.</li>
+<li>Inefficient cleanup cycles, causing out-of-memory errors.</li>
+<li>We tried tuning GC with:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:OnOutOfMemoryError<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kill -9 %p&#39;</span>
+</span></span><span style="display:flex;"><span>-XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>But the job still failed.</p>
+<ol start="4">
+<li>OS Memory Allocation Struggles
+Even though Linux can allocate large memory chunks, it prefers multiple smaller allocations. A single large executor (64GB heap) struggled to get contiguous memory from the OS, leading to failures.</li>
+</ol>
+<p>At this point, we realized that adding more hardware wouldn’t fix the issue—we needed a smarter approach.</p>
+<h2 id="the-fix-more-executors-smaller-heaps">The Fix: More Executors, Smaller Heaps</h2>
+<p>Instead of increasing the cluster size, we changed:</p>
+<ul>
+<li>63 executors → 252 executors</li>
+<li>Each executor now had 2 CPU, 16GB RAM (instead of 8 CPU, 64GB RAM)</li>
+</ul>
+<p>Result? The job passed. ✅</p>
+<h2 id="why-this-worked">Why This Worked</h2>
+<ol>
+<li>
+<p>Smaller Containers, Better Efficiency
+JVM memory management becomes inefficient with extremely large heap sizes. By reducing the heap size from 64GB to 16GB, memory allocation became more efficient and predictable.</p>
+</li>
+<li>
+<p>Improved Garbage Collection (GC)</p>
+</li>
+</ol>
+<ul>
+<li>Large heaps cause longer GC pauses, delaying memory cleanup.</li>
+<li>Smaller heaps = shorter GC pauses = better performance.</li>
+<li>With more executors, GC cycles ran faster and in parallel.</li>
+</ul>
+<ol start="3">
+<li>OS-Friendly Memory Allocation</li>
+</ol>
+<ul>
+<li>Linux struggles to allocate huge memory chunks, causing failures.</li>
+<li>Splitting memory across more executors made it easier for the OS to handle.</li>
+</ul>
+<p>4.Better Load Distribution</p>
+<ul>
+<li>Before: Some nodes were underutilized, while others struggled.</li>
+<li>After: More executors meant better workload balance.</li>
+</ul>
+<h2 id="benchmarking-before-vs-after">Benchmarking: Before vs. After</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Executors</th>
+<th>Heap Size per Executor</th>
+<th>GC Pause Time</th>
+<th>Job Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Before</strong></td>
+<td>63</td>
+<td>64GB</td>
+<td>Long</td>
+<td>❌ Failed</td>
+</tr>
+<tr>
+<td><strong>After</strong></td>
+<td>252</td>
+<td>16GB</td>
+<td>Short</td>
+<td>✅ Passed</td>
+</tr>
+</tbody>
+</table>
+<p>Although runtime remained the same, memory stability improved significantly.</p>
+<p>Key Takeaways</p>
+<ul>
+<li>Bigger heap ≠ better performance. JVM works better with moderate heap sizes.</li>
+<li>More, smaller executors prevent memory fragmentation &amp; GC issues.</li>
+<li>Before adding more hardware, tweak executor count &amp; memory settings.</li>
+<li>If you see memory errors despite having enough RAM, rethink heap size!</li>
+</ul>
+<p>Next time you face a Spark memory issue, don’t just scale up the cluster—try optimizing executors first. It might save you a lot of headaches (and money)! 🚀</p>
+
+</content>
+
+<hr>
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Twitter — <a href="https://twitter.com/iamarpandey">iamarpandey</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/apache-spark/">#Apache-Spark</a>
+  
+  <a href="https://amarpandey.me/tags/spark/">#Spark</a>
+  
+  <a href="https://amarpandey.me/tags/big-data/">#Big-Data</a>
+  
+  <a href="https://amarpandey.me/tags/data-processing/">#Data-Processing</a>
+  
+  <a href="https://amarpandey.me/tags/performance/">#Performance</a>
+  
+  <a href="https://amarpandey.me/tags/performance-optimization/">#Performance-Optimization</a>
+  
+  <a href="https://amarpandey.me/tags/distributed-computing/">#Distributed-Computing</a>
+  
+  <a href="https://amarpandey.me/tags/data-engineering/">#Data Engineering</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>
