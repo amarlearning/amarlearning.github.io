@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
   <meta itemprop="datePublished" content="2025-03-30T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-30T00:00:00+00:00">
-  <meta itemprop="wordCount" content="620">
+  <meta itemprop="wordCount" content="643">
   <meta itemprop="keywords" content="Apache-Spark,Spark,Big-Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data Engineering">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -348,7 +348,33 @@ JVM memory management becomes inefficient with extremely large heap sizes. By re
 <li>After: More executors meant better workload balance.</li>
 </ul>
 <h2 id="benchmarking-before-vs-after">Benchmarking: Before vs. After</h2>
-<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Configuration</th>
+<th style="text-align:left">Executors</th>
+<th style="text-align:left">Heap Size per Executor</th>
+<th style="text-align:left">GC Pause Time</th>
+<th style="text-align:left">Job Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Before</td>
+<td style="text-align:left">63</td>
+<td style="text-align:left">64GB</td>
+<td style="text-align:left">Long</td>
+<td style="text-align:left">❌ Failed</td>
+</tr>
+<tr>
+<td style="text-align:left">After</td>
+<td style="text-align:left">252</td>
+<td style="text-align:left">16GB</td>
+<td style="text-align:left">Short</td>
+<td style="text-align:left">✅ Passed</td>
+</tr>
+</tbody>
+</table>
 <p>Although runtime remained the same, memory stability improved significantly.</p>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
@@ -363,7 +389,7 @@ JVM memory management becomes inefficient with extremely large heap sizes. By re
 
 <hr>
 <p>
-  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium<a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium — <a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
 </p>
 
 <p>
