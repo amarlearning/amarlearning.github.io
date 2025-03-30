@@ -2,7 +2,6 @@
 title = "Amar Prakash"
 +++
 
----
 
 # Hello👋
 

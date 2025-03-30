@@ -8,14 +8,12 @@ tags = [ "Apache-Spark", "Spark", "Big-Data", "Data-Processing", "Performance", 
 
 ![banner](/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png)
 
-## Introduction
-
 Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.
 
 
 ## The Data Challenge
 
-Our task involved processing three massive datasets:
+Our task involved processing three datasets:
 - A primary dataset weighing in at 450GB
 - Two supplementary datasets of 5GB and 3GB respectively
 

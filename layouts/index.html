@@ -1,14 +1,14 @@
 {{ define "main" }}
+<div style="margin-top: 30px; padding-top: 0.1rem; border-top: 1px solid #EEE;"></div>
+
 <div class="intro">
     {{ .Content }}
 </div>
 
-<hr style="margin-top: 50px;">
-
-<div style="padding-top: 0.1rem;">
+<div style="margin-top: 30px; padding-top: 0.1rem; border-top: 2px solid #EEE;">
     <h2>Recent Posts</h2>
     {{ range first 2 (where .Site.RegularPages "Type" "blog") }}
-    <article style="margin-bottom: 1.5rem; padding-bottom: 1rem;">
+    <article>
         <p style="margin-bottom: 0.1rem; font-size: 1.15rem;"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
         <time style="color: #666; font-size: 0.85rem; display: block; margin-bottom: 0.5rem;"><i>{{ .Date.Format "January 2, 2006" }}</i></time>
         <p style="margin: 0.5rem 0; font-size: 0.95rem; line-height: 1.5; color: #444;">{{ .Description }}</p>
