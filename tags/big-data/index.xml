@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Big-Data on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>https://amarpandey.me/tags/big-data/</link>
+    <link>http://localhost:1313/tags/big-data/</link>
     <description>Recent content in Big-Data on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/big-data/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/big-data/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
-      <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
+      <link>http://localhost:1313/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
+      <guid>http://localhost:1313/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
       <description>Introduction Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&#xA;The Data Challenge Our task involved processing three massive datasets:</description>
     </item>
     <item>
       <title>Deep Dive into Spark Jobs and Stages</title>
-      <link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
+      <link>http://localhost:1313/blog/deep-dive-into-spark-jobs-and-stages/</link>
       <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
+      <guid>http://localhost:1313/blog/deep-dive-into-spark-jobs-and-stages/</guid>
       <description>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&#xA;Spark Transformations and Actions In Spark, operations are classified into two main categories: Transformations and Actions.&#xA;Transformations: These operations do not trigger execution but define a new dataset from an existing one.</description>
     </item>
   </channel>
