@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
   <meta itemprop="datePublished" content="2025-03-30T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-30T00:00:00+00:00">
-  <meta itemprop="wordCount" content="643">
+  <meta itemprop="wordCount" content="567">
   <meta itemprop="keywords" content="Apache-Spark,Spark,Big-Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data Engineering">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -300,22 +300,22 @@
 <p>Our first instinct? Increase the cluster size. But was that really the right approach?</p>
 <h2 id="debugging-process-what-went-wrong">Debugging Process: What Went Wrong?</h2>
 <ol>
-<li>Initial Assumption: Not Enough Resources</li>
-</ol>
+<li>
+<p><strong>Initial Assumption: Not Enough Resources</strong></p>
 <p>At first, we assumed our cluster was too small. More nodes mean more memory, right? But with 63 nodes and a total of 4TB RAM, this didn’t add up. Something else was at play.</p>
-<ol start="2">
-<li>Heap Allocation Problems
-Each executor was given 64GB heap. While this seems like a good idea (more memory per executor), it actually led to heap inefficiencies:</li>
-</ol>
+</li>
+<li>
+<p><strong>Heap Allocation Problems</strong></p>
+<p>Each executor was given 64GB heap. While this seems like a good idea (more memory per executor), it actually led to heap inefficiencies:</p>
 <ul>
 <li>Large heaps increase fragmentation.</li>
 <li>Memory allocation within a single executor becomes harder for the OS.</li>
 <li>Longer GC pauses, slowing down the job.</li>
 </ul>
-<ol start="3">
-<li>JVM Garbage Collection (GC) Bottlenecks
-Garbage collection should ideally free up unused memory quickly. However, with a large heap size, we observed:</li>
-</ol>
+</li>
+<li>
+<p><strong>JVM Garbage Collection (GC) Bottlenecks</strong></p>
+<p>Garbage collection should ideally free up unused memory quickly. However, with a large heap size, we observed:</p>
 <ul>
 <li>Major GC pauses due to excessive memory usage.</li>
 <li>Inefficient cleanup cycles, causing out-of-memory errors.</li>
@@ -324,12 +324,9 @@ Garbage collection should ideally free up unused memory quickly. However, with a
 </span></span><span style="display:flex;"><span>-XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>
 </span></span></code></pre></div></li>
 </ul>
-<p>But the job still failed.</p>
-<ol start="4">
-<li>OS Memory Allocation Struggles
-Even though Linux can allocate large memory chunks, it prefers multiple smaller allocations. A single large executor (64GB heap) struggled to get contiguous memory from the OS, leading to failures.</li>
+<p><strong>But the job still failed.</strong></p>
+</li>
 </ol>
-<p>At this point, we realized that adding more hardware wouldn’t fix the issue—we needed a smarter approach.</p>
 <h2 id="the-fix-more-executors-smaller-heaps">The Fix: More Executors, Smaller Heaps</h2>
 <p>Instead of increasing the cluster size, we changed:</p>
 <ul>
@@ -340,30 +337,25 @@ Even though Linux can allocate large memory chunks, it prefers multiple smaller 
 <h2 id="why-this-worked">Why This Worked</h2>
 <ol>
 <li>
-<p>Smaller Containers, Better Efficiency
-JVM memory management becomes inefficient with extremely large heap sizes. By reducing the heap size from 64GB to 16GB, memory allocation became more efficient and predictable.</p>
+<p><strong>Smaller Containers, Better Efficiency</strong></p>
+<p>JVM memory management becomes inefficient with extremely large heap sizes. By reducing the heap size from 64GB to 16GB, memory allocation became more efficient and predictable.</p>
 </li>
 <li>
-<p>Improved Garbage Collection (GC)</p>
-</li>
-</ol>
+<p><strong>Improved Garbage Collection (GC)</strong></p>
 <ul>
 <li>Large heaps cause longer GC pauses, delaying memory cleanup.</li>
 <li>Smaller heaps = shorter GC pauses = better performance.</li>
 <li>With more executors, GC cycles ran faster and in parallel.</li>
 </ul>
-<ol start="3">
-<li>OS-Friendly Memory Allocation</li>
-</ol>
-<ul>
-<li>Linux struggles to allocate huge memory chunks, causing failures.</li>
-<li>Splitting memory across more executors made it easier for the OS to handle.</li>
-</ul>
-<p>4.Better Load Distribution</p>
+</li>
+<li>
+<p><strong>Better Load Distribution</strong></p>
 <ul>
 <li>Before: Some nodes were underutilized, while others struggled.</li>
 <li>After: More executors meant better workload balance.</li>
 </ul>
+</li>
+</ol>
 <h2 id="benchmarking-before-vs-after">Benchmarking: Before vs. After</h2>
 <table>
 <thead>
@@ -404,7 +396,7 @@ JVM memory management becomes inefficient with extremely large heap sizes. By re
 
 </content>
 
-<hr>
+<hr style="margin-top: 50px; margin-bottom: 30px;">
 <p>
   Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium — <a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
 </p>
