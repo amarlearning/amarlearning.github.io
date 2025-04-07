@@ -6,17 +6,10 @@
     <description>Recent content in Tags on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apache-Spark</title>
-      <link>https://amarpandey.me/tags/apache-spark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/apache-spark/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Big-Data</title>
+      <title>Big Data</title>
       <link>https://amarpandey.me/tags/big-data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/big-data/</guid>
@@ -27,6 +20,41 @@
       <link>https://amarpandey.me/tags/data-engineering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/data-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimization</title>
+      <link>https://amarpandey.me/tags/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/optimization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://amarpandey.me/tags/performance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark</title>
+      <link>https://amarpandey.me/tags/spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/spark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Spark-Joins</title>
+      <link>https://amarpandey.me/tags/spark-joins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/spark-joins/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Apache-Spark</title>
+      <link>https://amarpandey.me/tags/apache-spark/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/apache-spark/</guid>
       <description></description>
     </item>
     <item>
@@ -44,24 +72,10 @@
       <description></description>
     </item>
     <item>
-      <title>Performance</title>
-      <link>https://amarpandey.me/tags/performance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/performance/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Performance-Optimization</title>
       <link>https://amarpandey.me/tags/performance-optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/performance-optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spark</title>
-      <link>https://amarpandey.me/tags/spark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/spark/</guid>
       <description></description>
     </item>
     <item>

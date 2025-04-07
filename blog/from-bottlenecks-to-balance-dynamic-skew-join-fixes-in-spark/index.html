@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark" />
+<meta name="description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning" />
+<meta name="keywords" content="spark,big data,optimization,data engineering,performance,spark-joins," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark">
+  <meta property="og:description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-04-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-07T00:00:00+00:00">
+    <meta property="article:tag" content="Spark">
+    <meta property="article:tag" content="Big Data">
+    <meta property="article:tag" content="Optimization">
+    <meta property="article:tag" content="Data Engineering">
+    <meta property="article:tag" content="Performance">
+    <meta property="article:tag" content="Spark-Joins">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark">
+  <meta name="twitter:description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning">
+
+
+
+
+  <meta itemprop="name" content="From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark">
+  <meta itemprop="description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning">
+  <meta itemprop="datePublished" content="2025-04-07T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-04-07T00:00:00+00:00">
+  <meta itemprop="wordCount" content="930">
+  <meta itemprop="keywords" content="Spark,Big Data,Optimization,Data Engineering,Performance,Spark-Joins">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</h1>
+<p>
+  <i>
+    <time datetime='2025-04-07' pubdate>
+      07 Apr, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png" alt="banner"></p>
+<p>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why <strong>dynamic skew join optimization</strong> is not just useful, but often essential.</p>
+<h2 id="the-problem-setup">The Problem Setup</h2>
+<p>Assume we have two large tables and we&rsquo;re trying to join them using the following Spark SQL:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> large_table_one
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">JOIN</span> large_table_two
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">ON</span> large_table_one.<span style="color:#66d9ef">key</span> <span style="color:#f92672">=</span> large_table_two.<span style="color:#66d9ef">key</span>
+</span></span></code></pre></div><p>Or using the equivalent Spark DataFrame API:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df1<span style="color:#f92672">.</span>join(df2, df1<span style="color:#f92672">.</span>key <span style="color:#f92672">==</span> df2<span style="color:#f92672">.</span>key, <span style="color:#e6db74">&#34;inner&#34;</span>)<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#34;value == &#39;random&#39;&#34;</span>)
+</span></span></code></pre></div><p>Since both tables are large, we expect a <strong>sort-merge join</strong> to occur. When you run the job and inspect the execution plan, you’ll notice <code>Exchange</code> nodes — one for each table — indicating shuffle operations. Each table is being <strong>partitioned by the join key</strong>.</p>
+<p>When you run the job and check the execution plan, here is how it looks:</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png" alt="sort-merge-join-spark-plan"></p>
+<hr>
+<h2 id="shuffling-and-partitioning">Shuffling and Partitioning</h2>
+<p>Let’s dig deeper.</p>
+<p>Assume <code>large_table_one</code> initially has two partitions.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.png" alt="table-one-partitions"></p>
+<p>Each partition contains rows with different join keys, represented using different colors (for visualization purposes). After shuffling, Spark redistributes the data such that each partition contains rows with the same join key.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.png" alt="table-one-exchange"></p>
+<p>You’ll see the same happen to <code>large_table_two</code> — it’s shuffled in a similar way so that corresponding keys are aligned for joining.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.png" alt="table-two-exchange"></p>
+<p>Now that both tables are partitioned by key, Spark proceeds with the sort-merge join. If we have four partitions, we’ll get four tasks — each responsible for sorting and merging data for a specific key.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.png" alt="sort-merge-join-tasks"></p>
+<hr>
+<h2 id="but-heres-the-catch">But Here’s the Catch…</h2>
+<p>At a glance, this looks fine. But look closely — one of the partitions (let&rsquo;s say the one with green-colored data) is <strong>much larger than the others</strong>. This means the task handling that partition has a heavier load.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions"></p>
+<p>Let’s say you configured your Spark executor to allocate 4GB of RAM per task. That works well for all other partitions, but <strong>the green partition needs more memory</strong> to complete the  sort/merge. This becomes a problem.</p>
+<hr>
+<h2 id="so-should-we-increase-memory">So, Should We Increase Memory?</h2>
+<p>Sure, you could increase the memory to handle the skewed join. But here’s why that’s a bad idea:</p>
+<h4 id="1-memory-wastage">1. Memory Wastage</h4>
+<p>Most of your joins work fine with 4GB. Only <strong>one task</strong> is failing due to skew. But Spark doesn’t allow configuring memory at task-level granularity, so you&rsquo;d end up increasing memory for the <strong>entire application</strong>, leading to wastage.</p>
+<h4 id="2-not-a-long-term-fix">2. Not a Long-Term Fix</h4>
+<p>Let’s say today the skewed partition needs 6GB. You bump up the memory and move on. But next week the data changes — now it needs 8GB. Your app fails again. You fix it again. This cycle repeats. It&rsquo;s not scalable or reliable.</p>
+<hr>
+<h2 id="enter-adaptive-query-execution-aqe">Enter Adaptive Query Execution (AQE)</h2>
+<p>Spark’s <strong>Adaptive Query Execution (AQE)</strong> provides an elegant solution. Enable AQE and skew join optimization with the following configurations:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>enabled <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>enabled <span style="color:#f92672">=</span> true
+</span></span></code></pre></div><p><strong>Version Note:</strong> AQE was introduced in Spark 3.0 and has been improved in subsequent versions. Make sure you&rsquo;re running Spark 3.0 or later to use these features.</p>
+<p>Now, Spark monitors the actual size of shuffled partitions at runtime. If it detects skew, it dynamically rewrites the execution plan <strong>on the fly</strong>.</p>
+<hr>
+<h2 id="what-happens-under-the-hood">What Happens Under the Hood?</h2>
+<p>Let’s revisit our example. Initially, there are 4 shuffle partitions, hence 4 tasks. One of them is skewed (green). That task struggles and runs longer, maybe even fails.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions"></p>
+<p>But since AQE is enabled, Spark notices the skew and takes the following actions:</p>
+<ol>
+<li><strong>Splits the skewed partition</strong> into two or more smaller partitions.</li>
+<li><strong>Duplicates the matching partition</strong> from the other side of the join (so each split can be joined independently).</li>
+</ol>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt.png" alt="skewed-partitions-opt"></p>
+<p>As a result, we now have 5 tasks instead of 4. But the load is <strong>evenly distributed</strong>, and tasks finish faster and more reliably.</p>
+<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt-tasks.png" alt="skewed-partitions-opt-tasks"></p>
+<hr>
+<h2 id="fine-tuning-skew-detection">Fine-Tuning Skew Detection</h2>
+<p>Two important configurations let you control when Spark considers a partition to be skewed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># default values</span>
+</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>skewedPartitionFactor <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>skewedPartitionThresholdInBytes <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>MB
+</span></span></code></pre></div><p>Let’s break these down:</p>
+<ul>
+<li><strong><code>skewedPartitionFactor = 5</code></strong>: Spark compares the size of each partition with the median partition size. If a partition is <strong>5 times larger than the median</strong>, it is a candidate for being skewed.</li>
+<li><strong><code>skewedPartitionThresholdInBytes = 256MB</code></strong>: This is the minimum size threshold in bytes. Even if the partition is 5x larger, Spark will not treat it as skewed unless it&rsquo;s also larger than 256MB.</li>
+</ul>
+<p>Remember, Spark AQE will initiate the split if and only if both thresholds are broken. This dual-check prevents unnecessary rewrites and ensures only truly skewed partitions are targeted.</p>
+<p>You can fine-tune these values depending on the scale and distribution of your data. For example, on massive datasets, you might want to raise the threshold slightly to avoid over-optimization. Conversely, for smaller datasets where a 200MB skew might still cause trouble, you might lower the threshold.</p>
+<hr>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Dynamic skew join optimization isn’t just a performance tweak — it’s a <strong>fundamental shift</strong> in how Spark handles real-world data.</p>
+<p>Instead of throwing more memory at the problem or endlessly tuning partition sizes, Spark with <strong>Adaptive Query Execution (AQE)</strong> becomes <em>intelligent enough</em> to adapt on the fly. It detects issues as they happen and rewrites plans accordingly — no manual babysitting required.</p>
+<p>Here’s why it matters:</p>
+<ul>
+<li>🧠 <strong>Smarter Execution</strong>: Detects and splits skewed partitions dynamically.</li>
+<li>🚀 <strong>Faster Jobs</strong>: No more stragglers slowing everything down.</li>
+<li>💸 <strong>Cost-Efficient</strong>: Avoids blanket over-provisioning of resources.</li>
+<li>🔁 <strong>Future-Proof</strong>: Adapts to changing data shapes over time.</li>
+</ul>
+<p>So next time you&rsquo;re debugging a painfully slow Spark join — take a step back. Maybe the fix isn’t another config. Maybe it&rsquo;s time to let Spark <strong>adapt</strong>.</p>
+<p>Enable AQE, let it handle the skew, and focus on what actually matters — building pipelines that scale.</p>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium — <a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/spark/">#Spark</a>
+  
+  <a href="https://amarpandey.me/tags/big-data/">#Big Data</a>
+  
+  <a href="https://amarpandey.me/tags/optimization/">#Optimization</a>
+  
+  <a href="https://amarpandey.me/tags/data-engineering/">#Data Engineering</a>
+  
+  <a href="https://amarpandey.me/tags/performance/">#Performance</a>
+  
+  <a href="https://amarpandey.me/tags/spark-joins/">#Spark-Joins</a>
+  
+</p>
+
+  </main>
+  <footer><script>
+    var currentYear = new Date().getFullYear();
+    document.write("© " + currentYear + " by Amar Prakash Pandey. All rights reserved.");
+</script></footer>
+
+    
+</body>
+
+</html>

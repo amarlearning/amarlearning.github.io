@@ -2,22 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://amarpandey.me/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/big-data/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/data-engineering/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/optimization/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/performance/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/spark/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/spark-joins/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/</loc>
+    <lastmod>2025-04-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://amarpandey.me/tags/apache-spark/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/big-data/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/blog/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/data-engineering/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/data-processing/</loc>
@@ -26,16 +44,7 @@
     <loc>https://amarpandey.me/tags/distributed-computing/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/tags/performance/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://amarpandey.me/tags/performance-optimization/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/spark/</loc>
-    <lastmod>2025-03-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2025-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</loc>

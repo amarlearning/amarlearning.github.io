@@ -6,8 +6,15 @@
     <description>Recent content in Data Engineering on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
+      <link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
+      <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
+      <description>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why dynamic skew join optimization is not just useful, but often essential.&#xA;The Problem Setup Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&#xA;SELECT * FROM large_table_one JOIN large_table_two ON large_table_one.key = large_table_two.</description>
+    </item>
     <item>
       <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
       <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
