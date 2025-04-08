@@ -42,7 +42,7 @@
   <meta itemprop="description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning">
   <meta itemprop="datePublished" content="2025-04-07T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-04-07T00:00:00+00:00">
-  <meta itemprop="wordCount" content="930">
+  <meta itemprop="wordCount" content="942">
   <meta itemprop="keywords" content="Spark,Big Data,Optimization,Data Engineering,Performance,Spark-Joins">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
@@ -280,7 +280,7 @@
 <p>Let’s dig deeper.</p>
 <p>Assume <code>large_table_one</code> initially has two partitions.</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.png" alt="table-one-partitions"></p>
-<p>Each partition contains rows with different join keys, represented using different colors (for visualization purposes). After shuffling, Spark redistributes the data such that each partition contains rows with the same join key.</p>
+<p>Each partition contains rows with different join keys, represented using different colors (for visualization purposes). After shuffling, Spark redistributes the data such that each partition contains rows with the same join key. This repartitioning by join key is the primary purpose of the shuffle, resulting in:</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.png" alt="table-one-exchange"></p>
 <p>You’ll see the same happen to <code>large_table_two</code> — it’s shuffled in a similar way so that corresponding keys are aligned for joining.</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.png" alt="table-two-exchange"></p>
@@ -288,7 +288,7 @@
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.png" alt="sort-merge-join-tasks"></p>
 <hr>
 <h2 id="but-heres-the-catch">But Here’s the Catch…</h2>
-<p>At a glance, this looks fine. But look closely — one of the partitions (let&rsquo;s say the one with green-colored data) is <strong>much larger than the others</strong>. This means the task handling that partition has a heavier load.</p>
+<p>At a glance, this looks fine. But look closely — one of the partitions (the one with green-colored data) is <strong>much larger than the others</strong>. This means the task handling that partition has a heavier load.</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions"></p>
 <p>Let’s say you configured your Spark executor to allocate 4GB of RAM per task. That works well for all other partitions, but <strong>the green partition needs more memory</strong> to complete the  sort/merge. This becomes a problem.</p>
 <hr>
