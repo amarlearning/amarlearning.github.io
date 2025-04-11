@@ -14,3 +14,9 @@ enableRobotsTXT = true
 
 [params.analytics]
   measurement_id = "G-CN34V0ZGSQ"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
