@@ -27,8 +27,6 @@ df1.join(df2, df1.key == df2.key, "inner").filter("value == 'random'")
 
 Since both tables are large, we expect a **sort-merge join** to occur. When you run the job and inspect the execution plan, you’ll notice `Exchange` nodes — one for each table — indicating shuffle operations. Each table is being **partitioned by the join key**.
 
-When you run the job and check the execution plan, here is how it looks:
-
 ![sort-merge-join-spark-plan](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png)
 
 ---
