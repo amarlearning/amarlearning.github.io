@@ -13,4 +13,8 @@ I prefer to think of myself as an open-minded, down to earth and outgoing person
 
 I also like to read about the universe and how it all started. I'm not sure if it's true but I like to think that aliens came from other planets and created us.
 
-Right now, I’m working as a Solutions Consultant at Sahaj Software, where I focus on data engineering and building optimized, large-scale data processing solutions. I’ve previously worked with Tata Research Design and Development Center, Tata Consultancy Services, and participated in Google Summer of Code. I’m also an Open Source Community Member at DuckDuckGo.
+Right now, I’m working as a Data Engineer at Citi, where I focus on building scalable, high-performance data processing systems. Previously, I was a Solutions Consultant at Sahaj Software, working on large-scale data engineering solutions.
+
+I’ve participated in Google Summer of Code, contributed to Apache Airflow, and have been involved with open source as a community member and past maintainer at Cri-o and DuckDuckGo.
+
+
