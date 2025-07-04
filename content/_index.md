@@ -9,7 +9,7 @@ title = "Amar Prakash"
 
 Hi, I’m Amar — a Data Engineer at Citi in Pune, where I work on building and fixing things, particularly when it involves working on large-scale data processing jobs and optimizing Spark workloads. Before this, I spent four years at Sahaj Software as a Solutions Consultant, solving complex data problems and delivering reliable engineering solutions.
 
-Over the years, I've worked on various software projects and continuously explore new technologies. I've also contributed as a past maintainer at [CRI-O](https://cri-o.io/), [DuckDuckGo](duckduckgo.com), and [Google Summer of Code](https://summerofcode.withgoogle.com/).
+Over the years, I've worked on various software projects and continuously explore new technologies. I've also contributed to [Apache Airflow](http://airflow.apache.org/) and have been a past maintainer at [CRI-O](https://cri-o.io/), [DuckDuckGo](duckduckgo.com), and [Google Summer of Code](https://summerofcode.withgoogle.com/).
 
 ### find me here
 

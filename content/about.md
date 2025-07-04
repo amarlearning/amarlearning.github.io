@@ -15,6 +15,6 @@ I also like to read about the universe and how it all started. I'm not sure if i
 
 Right now, I’m working as a Data Engineer at Citi, where I focus on building scalable, high-performance data processing systems. Previously, I was a Solutions Consultant at Sahaj Software, working on large-scale data engineering solutions.
 
-I’ve participated in Google Summer of Code, contributed to Apache Airflow, and have been involved with open source as a community member and past maintainer at Cri-o and DuckDuckGo.
+I’ve participated in Google Summer of Code, contributed to [Apache Airflow](http://airflow.apache.org/), and have been involved with open source as a community member and past maintainer at [CRI-O](https://cri-o.io/) and [DuckDuckGo](duckduckgo.com).
 
 
