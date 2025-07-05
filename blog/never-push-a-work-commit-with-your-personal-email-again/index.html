@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Never Push a Work Commit with Your Personal Email Again | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Never Push a Work Commit with Your Personal Email Again" />
+<meta name="description" content="Automatically switch Git identities based on folder path — a clean way to manage personal and work commits" />
+<meta name="keywords" content="git,gitconfig,developer-tips,productivity,multiple-identities,personal-vs-work,version-control,dev-tools," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Never Push a Work Commit with Your Personal Email Again">
+  <meta property="og:description" content="Automatically switch Git identities based on folder path — a clean way to manage personal and work commits">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-07-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-05T00:00:00+00:00">
+    <meta property="article:tag" content="Git">
+    <meta property="article:tag" content="Gitconfig">
+    <meta property="article:tag" content="Developer-Tips">
+    <meta property="article:tag" content="Productivity">
+    <meta property="article:tag" content="Multiple-Identities">
+    <meta property="article:tag" content="Personal-vs-Work">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Never Push a Work Commit with Your Personal Email Again">
+  <meta name="twitter:description" content="Automatically switch Git identities based on folder path — a clean way to manage personal and work commits">
+
+
+
+
+  <meta itemprop="name" content="Never Push a Work Commit with Your Personal Email Again">
+  <meta itemprop="description" content="Automatically switch Git identities based on folder path — a clean way to manage personal and work commits">
+  <meta itemprop="datePublished" content="2025-07-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-07-05T00:00:00+00:00">
+  <meta itemprop="wordCount" content="521">
+  <meta itemprop="keywords" content="Git,Gitconfig,Developer-Tips,Productivity,Multiple-Identities,Personal-vs-Work,Version-Control,Dev-Tools">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+
+<h1>Never Push a Work Commit with Your Personal Email Again</h1>
+<p>
+  <i>
+    <time datetime='2025-07-05' pubdate>
+      05 Jul, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/never-push-a-work-commit-with-your-personal-email-again/banner.png" alt="banner"></p>
+<p>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.</p>
+<p>I used to run into this problem often, especially since I used the same laptop for both work and personal projects. That’s when I came up with a simple but powerful trick — automatically switching Git identities based on folder path using Git’s <code>includeIf</code> feature.</p>
+<hr>
+<h2 id="the-problem">The Problem</h2>
+<p>Let’s say you work at a company and also contribute to open-source projects under your personal GitHub account.</p>
+<p>If your Git config looks like this globally:</p>
+<pre tabindex="0"><code>git config --global user.name &#34;Your Name&#34;
+git config --global user.email &#34;your.personal@email.com&#34;
+</code></pre><p>You might end up pushing commits to your work repository using your personal email — which may be against company policy or at least mildly embarrassing.</p>
+<p>The alternative is to keep manually switching emails every time you move between repos — but that’s error-prone and tedious.</p>
+<hr>
+<h2 id="the-clean-solution--conditional-git-configs">The Clean Solution — Conditional Git Configs</h2>
+<p>Git provides a lesser-known but super useful feature: <code>includeIf</code>, which allows you to include different config files based on directory paths.</p>
+<p>Here’s how I set it up.</p>
+<hr>
+<h3 id="step-1-set-up-your-main-gitconfig">Step 1: Set up your main <code>~/.gitconfig</code></h3>
+<p>This is your base config file. It includes the conditional rules.</p>
+<pre tabindex="0"><code>[user]
+    name = Amar Prakash Pandey
+    email = default@email.com
+
+[includeIf &#34;gitdir:~/Github/&#34;]
+    path = ~/.gitconfig-personal
+
+[includeIf &#34;gitdir:~/Gitlab/&#34;]
+    path = ~/.gitconfig-work
+</code></pre><p><code>gitdir:</code> checks the path prefix of the repo you’re working in. If it matches, Git includes the specified config file.</p>
+<hr>
+<h3 id="step-2-create-gitconfig-personal">Step 2: Create <code>~/.gitconfig-personal</code></h3>
+<pre tabindex="0"><code>[user]
+    email = amar.personal@example.com
+</code></pre><h3 id="step-3-create-gitconfig-work">Step 3: Create <code>~/.gitconfig-work</code></h3>
+<pre tabindex="0"><code>[user]
+    email = amar.work@example.com
+</code></pre><hr>
+<h3 id="the-result">The Result</h3>
+<p>With this setup:</p>
+<ul>
+<li>Any repo inside <code>~/Github/</code> will use your <strong>personal email</strong></li>
+<li>Any repo inside <code>~/Gitlab/</code> will use your <strong>work email</strong></li>
+<li>You don’t have to manually switch anything — Git will do the right thing automatically.</li>
+</ul>
+<p>It’s like <code>magic.env</code> for Git. 🌟</p>
+<hr>
+<h2 id="real-world-example">Real-World Example</h2>
+<p>Let’s say:</p>
+<ul>
+<li>
+<p>You clone an open-source repo:</p>
+<p><code>git clone git@github.com:amar/github-actions-experiments.git</code> into <code>~/Github</code></p>
+</li>
+<li>
+<p>You clone a work repo:</p>
+<p><code>git clone git@gitlab.com:your-company/data-pipeline.git</code> into <code>~/Gitlab</code></p>
+</li>
+</ul>
+<p>Now when you commit:</p>
+<pre tabindex="0"><code>cd ~/Github/github-actions-experiments
+git commit -m &#34;Added custom workflow&#34;
+</code></pre><p>It will be committed with your personal identity.</p>
+<pre tabindex="0"><code>cd ~/Gitlab/data-pipeline
+git commit -m &#34;Refactored ETL logic&#34;
+</code></pre><p>It will be committed with your work identity.</p>
+<p>No need to change any settings or remember to switch emails.</p>
+<hr>
+<h2 id="bonus-tips">Bonus Tips</h2>
+<ul>
+<li>You can also include other things in your sub-configs:
+<ul>
+<li>GPG signing keys</li>
+<li>Custom aliases</li>
+<li>Commit templates</li>
+<li>Different editor preferences</li>
+</ul>
+</li>
+<li>Combine this with per-project SSH keys using <code>~/.ssh/config</code> for complete isolation.</li>
+<li>Use <code>git config --show-origin</code> to debug and see where Git is pulling config from.</li>
+</ul>
+<hr>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>This simple trick has been a lifesaver for me. I no longer worry about mixing up Git identities, and it makes context switching between personal and work projects completely frictionless.</p>
+<p>If you find yourself juggling multiple Git identities — set this up once, and thank yourself every time you <code>git commit</code> without thinking twice.</p>
+<hr>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>Git Docs: <a href="https://git-scm.com/docs/git-config#_conditional_includes">Conditional Includes</a></li>
+<li>Pro Git Book: <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></li>
+</ul>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium — <a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+
+<p>
+  
+  <a href="https://amarpandey.me/tags/git/">#git</a>
+  
+  <a href="https://amarpandey.me/tags/gitconfig/">#gitconfig</a>
+  
+  <a href="https://amarpandey.me/tags/developer-tips/">#developer-tips</a>
+  
+  <a href="https://amarpandey.me/tags/productivity/">#productivity</a>
+  
+  <a href="https://amarpandey.me/tags/multiple-identities/">#multiple-identities</a>
+  
+  <a href="https://amarpandey.me/tags/personal-vs-work/">#personal-vs-work</a>
+  
+  <a href="https://amarpandey.me/tags/version-control/">#version-control</a>
+  
+  <a href="https://amarpandey.me/tags/dev-tools/">#dev-tools</a>
+  
+</p>
+
+  </main>
+  <footer><div class="footer-container">
+    <script>
+      var currentYear = new Date().getFullYear();
+      document.write("© " + currentYear + " by Amar Prakash Pandey");
+    </script>
+    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+      RSS
+    </a>
+  </div>
+  <style>
+    .rss-link {
+      color: #555555;
+      align-items: center;
+      text-decoration: none;
+    }
+    .rss-icon {
+      vertical-align: middle;
+    }
+  </style></footer>
+
+    
+</body>
+
+</html>

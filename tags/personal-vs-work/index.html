@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Personal-vs-Work | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Personal-vs-Work" />
+<meta name="description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community." />
+<meta name="keywords" content="apache,apache-spark,availability,best-practices,big data,brewers theorem,broadcast,cap theorem,cleancode,codesmells,consistency,containers,data,data engineering,data-processing,database design,dev-tools,developer-tips,devops,distributed systems,distributed-computing,docker,git,gitconfig,gitops,google,gsoc,iac,infrastructure,join,multiple-identities,network partitions,open-source,open-source-software,optimization,oss,partition tolerance,partitions,performance,performance-optimization,personal-vs-work,productivity,rum conjecture,security,shuffle,softwareengineering,softwarequality,spark,spark-joins,spark-optimization,system design,tech tradeoffs,version-control," />
+
+
+<meta property="og:url" content="https://amarpandey.me/tags/personal-vs-work/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Personal-vs-Work">
+  <meta property="og:description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Personal-vs-Work">
+  <meta name="twitter:description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+
+
+
+
+  <meta itemprop="name" content="Personal-vs-Work">
+  <meta itemprop="description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+  <meta itemprop="dateModified" content="2025-07-05T00:00:00+00:00">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/rss+xml" href="https://amarpandey.me/tags/personal-vs-work/index.xml" title="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ" />
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+<a href="/about/">About</a>
+
+<a href="/projects/">Projects</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+
+</header>
+  <main>
+<content>
+  
+  <h3 style="margin-bottom:0">Filtering for "Personal-vs-Work"</h3>
+  <small>
+    <a href="/blog">Remove filter</a>
+  </small>
+  
+  <ul class="blog-posts">
+    
+    <li>
+      <span>
+        <i>
+          <time datetime='2025-07-05' pubdate>
+            05 Jul, 2025
+          </time>
+        </i>
+      </span>
+      <a href="https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/">Never Push a Work Commit with Your Personal Email Again</a>
+    </li>
+    
+  </ul>
+  
+  
+</content>
+
+  </main>
+  <footer><div class="footer-container">
+    <script>
+      var currentYear = new Date().getFullYear();
+      document.write("© " + currentYear + " by Amar Prakash Pandey");
+    </script>
+    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+      RSS
+    </a>
+  </div>
+  <style>
+    .rss-link {
+      color: #555555;
+      align-items: center;
+      text-decoration: none;
+    }
+    .rss-icon {
+      vertical-align: middle;
+    }
+  </style></footer>
+
+    
+</body>
+
+</html>

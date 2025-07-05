@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Productivity on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/productivity/</link>
+    <description>Recent content in Productivity on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/productivity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Never Push a Work Commit with Your Personal Email Again</title>
+      <link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
+      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
+      <description>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&#xA;I used to run into this problem often, especially since I used the same laptop for both work and personal projects.</description>
+    </item>
+  </channel>
+</rss>
