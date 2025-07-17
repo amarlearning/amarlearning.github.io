@@ -15,12 +15,18 @@
 {{ if eq .Type "blog" }}
 <hr style="margin-top: 50px; margin-bottom: 30px;">
 <p>
-  Lastly, thank you for reading this post. For more awesome posts, you can also follow me on Medium — <a href="https://medium.com/@amarlearning">amarlearning</a>, Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+  Lastly, thank you for reading this post. For more awesome posts, you can explore my other articles <a href="{{ "blog" | relURL }}">here</a>, and follow me on Github — <a href="https://github.com/amarlearning">amarlearning</a>.
 </p>
-{{ end }}
 <p>
   {{ range (.GetTerms "tags") }}
   <a href="{{ .Permalink }}">#{{ .LinkTitle | lower }}</a>
   {{ end }}
 </p>
+{{ if (and (eq .Type "blog") (not .Params.noComments)) }}
+<div style="margin-top: 50px;">
+  <h2>Comments</h2>
+  {{ partial "comments.html" . }}
+</div>
+{{ end }}
+{{ end }}
 {{ end }}
