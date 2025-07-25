@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>How Not to Open a Pull Request – And How to Do It Right | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="How Not to Open a Pull Request – And How to Do It Right" />
+<meta name="description" content="A comprehensive guide on creating effective pull requests, based on 6&#43; years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices." />
+<meta name="keywords" content="open-source,git,best-practices,collaboration,code-review," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="How Not to Open a Pull Request – And How to Do It Right">
+  <meta property="og:description" content="A comprehensive guide on creating effective pull requests, based on 6&#43; years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-07-25T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-25T00:00:00+00:00">
+    <meta property="article:tag" content="Open-Source">
+    <meta property="article:tag" content="Git">
+    <meta property="article:tag" content="Best-Practices">
+    <meta property="article:tag" content="Collaboration">
+    <meta property="article:tag" content="Code-Review">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How Not to Open a Pull Request – And How to Do It Right">
+  <meta name="twitter:description" content="A comprehensive guide on creating effective pull requests, based on 6&#43; years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices.">
+
+
+
+
+  <meta itemprop="name" content="How Not to Open a Pull Request – And How to Do It Right">
+  <meta itemprop="description" content="A comprehensive guide on creating effective pull requests, based on 6&#43; years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices.">
+  <meta itemprop="datePublished" content="2025-07-25T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-07-25T00:00:00+00:00">
+  <meta itemprop="wordCount" content="773">
+  <meta itemprop="keywords" content="Open-Source,Git,Best-Practices,Collaboration,Code-Review">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+   
+  table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95em;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  th {
+    background-color: #f5f5f5;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    position: relative;
+  }
+
+   
+  th:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.4;
+    position: relative;
+  }
+
+   
+  td:first-child {
+    border-right: 1px solid #eee;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+   
+  @media (min-width: 768px) {
+    tr:hover {
+      background-color: #f8f8f8;
+      transition: background-color 0.2s ease;
+    }
+  }
+
+   
+  @media (max-width: 767px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    
+    th, td {
+      padding: 12px 16px;
+    }
+  }
+
+   
+  @media (prefers-color-scheme: dark) {
+    table {
+      background: #1a1a1a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    th {
+      background-color: #252525;
+      color: #eee;
+      border-bottom-color: #333;
+    }
+
+    th:first-child {
+      border-right-color: #333;
+    }
+    
+    td {
+      border-bottom-color: #333;
+    }
+
+    td:first-child {
+      border-right-color: #333;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #1d1d1d;
+    }
+    
+    tr:hover {
+      background-color: #252525;
+    }
+  }
+</style> 
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a></nav>
+
+</header>
+  <main>
+
+<h1>How Not to Open a Pull Request – And How to Do It Right</h1>
+<p>
+  <i>
+    <time datetime='2025-07-25' pubdate>
+      25 Jul, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/how-not-to-open-a-pull-request-add-how-to-do-it-right/banner.png" alt="banner"></p>
+<p>Picture this: You&rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?</p>
+<p>That&rsquo;s exactly what happened with my project <strong>spot-optimizer</strong>. The contributor was skilled, the intentions were great, but there was one major problem:</p>
+<table>
+<thead>
+<tr>
+<th>Changes</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lines Added</td>
+<td>2,200+</td>
+</tr>
+<tr>
+<td>Lines Removed</td>
+<td>1,200</td>
+</tr>
+<tr>
+<td>Files Changed</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Total Commits</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Despite the valuable improvements it offered, I had to close it. Not because of code quality or the contributor&rsquo;s skills, but because its sheer size made it impossible to review effectively. It tried to solve too many problems at once, altered core design decisions, and would have required days of careful review.</p>
+<p>This is a common scenario in open source, and it&rsquo;s a pattern I&rsquo;ve seen repeatedly over six years of project maintenance. Today, I&rsquo;ll share how to avoid this pitfall and create pull requests that maintainers will love to review and merge.</p>
+<p>This post explains why PR size matters and provides practical guidelines for making your contributions more likely to be merged — in any open source project.</p>
+<hr>
+<h2 id="why-giant-prs-are-a-problem">Why Giant PRs Are a Problem</h2>
+<ul>
+<li>Too much changes at once, making it hard to understand and test.</li>
+<li>Increases the risk of regressions, bugs, or breaking things.</li>
+<li>Hard to give focused feedback.</li>
+<li>Difficult to revert safely later if something goes wrong.</li>
+<li>Slows down reviews, often leading to delays or even abandonment.</li>
+</ul>
+<hr>
+<h2 id="actionable-advice-for-contributors">Actionable Advice for Contributors</h2>
+<h3 id="1-avoid-massive-pull-requests">1. Avoid Massive Pull Requests</h3>
+<ul>
+<li><strong>Keep PRs focused and thematic, with one main purpose per PR.</strong></li>
+<li>If you have a sweeping refactor or design proposal, discuss it in an issue first.</li>
+<li><strong>Split large changes into smaller, independent PRs.</strong> Even if it all feels connected, breaking things up helps everyone.</li>
+</ul>
+<h3 id="2-respect-existing-design-choices">2. Respect Existing Design Choices</h3>
+<ul>
+<li>If the structure surprises you (for example, a script separated from core code), <strong>ask before refactoring.</strong></li>
+<li><strong>Do not assume something is broken</strong> just because you would do it differently.</li>
+<li><strong>Propose, then implement.</strong> Start with a conversation, not code. Don’t bulldoze through existing design choices.</li>
+</ul>
+<h3 id="3-use-clear-logical-atomic-commits">3. Use Clear, Logical, Atomic Commits</h3>
+<ul>
+<li>Each commit should cover one thing and pass tests.</li>
+<li>Write <strong>concise, consistent commit messages</strong> like:<code>fix(logging): centralize log config</code></li>
+<li><strong>Avoid &ldquo;fix again&rdquo; or &ldquo;format again&rdquo; commits</strong>; clean up your history.</li>
+<li>Make sure each commit tells the story of <em>what changed and why</em>.</li>
+</ul>
+<p>Here&rsquo;s an example of good vs bad commit history:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ❌ Bad Commit History</span>
+</span></span><span style="display:flex;"><span>git log --oneline
+</span></span><span style="display:flex;"><span>c345678 final fix
+</span></span><span style="display:flex;"><span>d901234 actually final fix
+</span></span><span style="display:flex;"><span>e567890 formatting
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ✅ Good Commit History</span>
+</span></span><span style="display:flex;"><span>git log --oneline
+</span></span><span style="display:flex;"><span>a123456 feat<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: add OAuth2 support <span style="color:#66d9ef">for</span> Google login
+</span></span><span style="display:flex;"><span>b789012 test<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: add integration tests <span style="color:#66d9ef">for</span> OAuth flow
+</span></span><span style="display:flex;"><span>c345678 refactor<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: extract OAuth config to separate file
+</span></span><span style="display:flex;"><span>d901234 docs<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: update README with OAuth setup steps
+</span></span></code></pre></div><h3 id="4-communicate-before-refactoring">4. Communicate Before Refactoring</h3>
+<ul>
+<li>If you are planning architectural overhauls or things like dependency injection, <strong>open an issue or conversation first.</strong></li>
+<li><strong>Invite maintainers into your process</strong>:<em>&ldquo;Here&rsquo;s the problem I see. Here&rsquo;s a possible approach. What do you think?&rdquo;</em></li>
+<li><strong>Do not spend a week solving a problem that has not been confirmed as a need.</strong></li>
+</ul>
+<h3 id="5-be-empathetic-think-past-the-code">5. Be Empathetic: Think Past the Code</h3>
+<ul>
+<li>Every PR creates work for reviewers: reading, understanding context, checking for regressions.</li>
+<li><strong>Before you open a PR, ask yourself:</strong>
+<ul>
+<li>Is this needed right now?</li>
+<li>Is someone already working on this?</li>
+<li>Can I split this up?</li>
+</ul>
+</li>
+<li><strong>Great contributors don&rsquo;t just write code; they ask good questions early.</strong></li>
+</ul>
+<hr>
+<h2 id="what-maintainers-can-do-to-help">What Maintainers Can Do to Help</h2>
+<p>It&rsquo;s not just about setting rules for contributors. If you&rsquo;re a maintainer, try to:</p>
+<ul>
+<li>Write down design intent clearly (in a README or <a href="http://contributing.md/">CONTRIBUTING.md</a>).</li>
+<li>Use issue and PR templates to set expectations upfront.</li>
+<li>Be specific about what type of contributions are welcome.</li>
+<li>Respect the contributor’s time, even if you have to close a PR — explain why, offer feedback, and thank them for showing up.</li>
+</ul>
+<hr>
+<h2 id="a-simple-checklist-for-great-prs">A Simple Checklist for Great PRs</h2>
+<table>
+<thead>
+<tr>
+<th>Best Practices ✅</th>
+<th>Common Pitfalls ❌</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discuss big changes in issues first</td>
+<td>Launch major rewrites without context</td>
+</tr>
+<tr>
+<td>Respect existing structure</td>
+<td>Assume everything should be changed</td>
+</tr>
+<tr>
+<td>Keep PRs small and focused</td>
+<td>Bundle unrelated changes into one PR</td>
+</tr>
+<tr>
+<td>Write helpful, consistent commit messages</td>
+<td>Use vague or repeated &ldquo;fix&rdquo; commits</td>
+</tr>
+<tr>
+<td>Test each part before submitting</td>
+<td>Submit code that breaks or fails CI</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>Great open source contributions aren’t just about code — they’re about context, communication, and care. The best PRs solve a clear problem, are easy to review, and respect the structure and goals of the project.</p>
+<p>If you care about your contribution getting merged:</p>
+<ul>
+<li>Start small and collaborate early</li>
+<li>Keep things readable and testable</li>
+<li>Ask questions before rewriting major parts</li>
+<li>Focus on helping the maintainer help you</li>
+</ul>
+<p>We’re all here to make things better — together.</p>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can explore my other articles <a href="/blog">here</a>, and follow me on Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+<p>
+  
+  <a href="https://amarpandey.me/tags/open-source/">#open-source</a>
+  
+  <a href="https://amarpandey.me/tags/git/">#git</a>
+  
+  <a href="https://amarpandey.me/tags/best-practices/">#best-practices</a>
+  
+  <a href="https://amarpandey.me/tags/collaboration/">#collaboration</a>
+  
+  <a href="https://amarpandey.me/tags/code-review/">#code-review</a>
+  
+</p>
+
+<div style="margin-top: 50px;">
+  <h2>Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="amarlearning/amarlearning.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
+        data-category-id="DIC_kwDOAo3u484CtGdf"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+  </main>
+  <footer><div class="footer-container">
+    <script>
+      var currentYear = new Date().getFullYear();
+      document.write("© " + currentYear + " by Amar Prakash Pandey");
+    </script>
+    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+      RSS
+    </a>
+  </div>
+  <style>
+    .rss-link {
+      color: #555555;
+      align-items: center;
+      text-decoration: none;
+    }
+    .rss-icon {
+      vertical-align: middle;
+    }
+  </style></footer>
+
+    
+</body>
+
+</html>

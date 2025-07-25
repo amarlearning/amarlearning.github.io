@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Git on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
-    <link>https://amarpandey.me/tags/git/</link>
-    <description>Recent content in Git on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <title>Collaboration on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/collaboration/</link>
+    <description>Recent content in Collaboration on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://amarpandey.me/tags/collaboration/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How Not to Open a Pull Request – And How to Do It Right</title>
       <link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
       <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
       <description>Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&#xA;That&amp;rsquo;s exactly what happened with my project spot-optimizer. The contributor was skilled, the intentions were great, but there was one major problem:&#xA;Changes Count Lines Added 2,200+ Lines Removed 1,200 Files Changed 25 Total Commits 15 Despite the valuable improvements it offered, I had to close it.</description>
-    </item>
-    <item>
-      <title>Never Push a Work Commit with Your Personal Email Again</title>
-      <link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
-      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
-      <description>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&#xA;I used to run into this problem often, especially since I used the same laptop for both work and personal projects.</description>
     </item>
   </channel>
 </rss>

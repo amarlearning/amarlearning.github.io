@@ -6,8 +6,15 @@
     <description>Recent content in Open-Source on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Not to Open a Pull Request – And How to Do It Right</title>
+      <link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
+      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
+      <description>Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&#xA;That&amp;rsquo;s exactly what happened with my project spot-optimizer. The contributor was skilled, the intentions were great, but there was one major problem:&#xA;Changes Count Lines Added 2,200+ Lines Removed 1,200 Files Changed 25 Total Commits 15 Despite the valuable improvements it offered, I had to close it.</description>
+    </item>
     <item>
       <title>What is Google Summer of Code? How to prepare for it?</title>
       <link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>

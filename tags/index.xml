@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Best-Practices</title>
+      <link>https://amarpandey.me/tags/best-practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/best-practices/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Code-Review</title>
+      <link>https://amarpandey.me/tags/code-review/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/code-review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Collaboration</title>
+      <link>https://amarpandey.me/tags/collaboration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/collaboration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://amarpandey.me/tags/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open-Source</title>
+      <link>https://amarpandey.me/tags/open-source/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/open-source/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Dev-Tools</title>
       <link>https://amarpandey.me/tags/dev-tools/</link>
@@ -20,13 +55,6 @@
       <link>https://amarpandey.me/tags/developer-tips/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/developer-tips/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://amarpandey.me/tags/git/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/git/</guid>
       <description></description>
     </item>
     <item>
@@ -289,13 +317,6 @@
       <description></description>
     </item>
     <item>
-      <title>Best-Practices</title>
-      <link>https://amarpandey.me/tags/best-practices/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/best-practices/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Containers</title>
       <link>https://amarpandey.me/tags/containers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -356,13 +377,6 @@
       <link>https://amarpandey.me/tags/gsoc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/gsoc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Open-Source</title>
-      <link>https://amarpandey.me/tags/open-source/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
