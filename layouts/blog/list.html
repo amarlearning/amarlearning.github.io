@@ -4,8 +4,9 @@
 <h3>{{ .Key }}</h3>
 {{ range .Pages }}
 <div class="posts-list">
-    <div class="post-item">
-        <span style="color: #666; font-size: 0.9rem;">{{ .Date.Format "Jan, 02" }}</span>
+    <div class="post-item" style="display: flex; align-items: baseline;">
+        <span style="color: #666; font-size: 0.9rem; min-width: 4rem; flex-shrink: 0;">{{ .Date.Format "Jan, 02"
+            }}</span>
         <a href="{{ .RelPermalink }}" style="margin-left: 1rem;">{{ .Title }}</a>
     </div>
 </div>
@@ -13,18 +14,44 @@
 {{ end }}
 
 <div class="tag-cloud" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #eee; position: relative;">
-    <span style="position: absolute; top: -0.8rem; background: white; padding: 0 0.5rem; color: #666; font-size: 0.9rem;">Tags</span>
-    {{ $tags := slice }}
+    <span
+        style="position: absolute; top: -0.8rem; background: white; padding: 0 0.5rem; color: #666; font-size: 0.9rem;">Tags</span>
+    {{ $tagCounts := dict }}
     {{ range .Site.RegularPages }}
-        {{ range .Params.tags }}
-            {{ $tags = $tags | append . }}
-        {{ end }}
+    {{ range .Params.tags }}
+    {{ $count := index $tagCounts . | default 0 }}
+    {{ $tagCounts = merge $tagCounts (dict . (add $count 1)) }}
+    {{ end }}
     {{ end }}
 
-    {{ $uniqueTags := $tags | uniq }}
-    {{ $limitedTags := first 10 $uniqueTags }}
-    {{ range $limitedTags }}
-        <a href="/tags/{{ . | urlize }}" style="margin-right: 0.5rem; color: #1d70b8;">#{{ . }}</a>
+    {{ $sortedTags := slice }}
+    {{ range $tag, $count := $tagCounts }}
+    {{ $sortedTags = $sortedTags | append (dict "tag" $tag "count" $count) }}
+    {{ end }}
+    {{ $sortedTags = sort $sortedTags "count" "desc" }}
+    {{ $topTags := first 12 $sortedTags }}
+
+    {{ $recentTags := slice }}
+    {{ $mostRecentPost := index .Pages 0 }}
+    {{ if $mostRecentPost }}
+    {{ range $mostRecentPost.Params.tags }}
+    {{ $recentTags = $recentTags | append . }}
+    {{ end }}
+    {{ end }}
+
+    {{ $displayedTags := slice }}
+    {{ range $topTags }}
+    {{ $displayedTags = $displayedTags | append .tag }}
+    {{ end }}
+
+    {{ range first 3 $recentTags }}
+    {{ if not (in $displayedTags .) }}
+    {{ $displayedTags = $displayedTags | append . }}
+    {{ end }}
+    {{ end }}
+
+    {{ range $displayedTags }}
+    <a href="/tags/{{ . | urlize }}" style="margin-right: 0.5rem; color: #1d70b8;">#{{ . | lower }}</a>
     {{ end }}
 </div>
 {{ end }}
