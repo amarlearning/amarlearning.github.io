@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/python/</link>
+    <description>Recent content in Python on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
+      <link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
+      <description>Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&#xA;Here&amp;rsquo;s the clean split that keeps you sane:&#xA;Spot Optimizer is a Python library/CLI that figures out the right instance types and counts for your workload. EC2 Fleet / Spot Fleet are AWS services that launch and maintain that capacity. Short version: Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.</description>
+    </item>
+  </channel>
+</rss>

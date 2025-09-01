@@ -3,12 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amarpandey.me/</loc>
-    <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/tags/best-practices/</loc>
-    <lastmod>2025-07-25T00:00:00+00:00</lastmod>
+    <loc>https://amarpandey.me/tags/aws/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/cli-tools/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/cloud-computing/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/cost-optimization/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/devops/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/ec2/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/infrastructure/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/python/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/spot-instances/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/best-practices/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/code-review/</loc>
@@ -24,9 +57,6 @@
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/open-source/</loc>
-    <lastmod>2025-07-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2025-07-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/dev-tools/</loc>
@@ -176,9 +206,6 @@
     <loc>https://amarpandey.me/tags/containers/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://amarpandey.me/tags/devops/</loc>
-    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://amarpandey.me/tags/docker/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -186,9 +213,6 @@
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/iac/</loc>
-    <lastmod>2022-01-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/infrastructure/</loc>
     <lastmod>2022-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/security/</loc>

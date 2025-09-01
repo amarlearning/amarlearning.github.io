@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Spot Optimizer ≠ Spot Fleet: decide smart, then launch" />
+<meta name="description" content="Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure." />
+<meta name="keywords" content="AWS,EC2,Spot-Instances,Cloud-Computing,Cost-Optimization,Infrastructure,DevOps,Python,CLI-Tools," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Spot Optimizer ≠ Spot Fleet: decide smart, then launch">
+  <meta property="og:description" content="Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-09-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-01T00:00:00+00:00">
+    <meta property="article:tag" content="AWS">
+    <meta property="article:tag" content="EC2">
+    <meta property="article:tag" content="Spot-Instances">
+    <meta property="article:tag" content="Cloud-Computing">
+    <meta property="article:tag" content="Cost-Optimization">
+    <meta property="article:tag" content="Infrastructure">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spot Optimizer ≠ Spot Fleet: decide smart, then launch">
+  <meta name="twitter:description" content="Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure.">
+
+
+
+
+  <meta itemprop="name" content="Spot Optimizer ≠ Spot Fleet: decide smart, then launch">
+  <meta itemprop="description" content="Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure.">
+  <meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-09-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1163">
+  <meta itemprop="keywords" content="AWS,EC2,Spot-Instances,Cloud-Computing,Cost-Optimization,Infrastructure,DevOps,Python,CLI-Tools">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+   
+  table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95em;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  th {
+    background-color: #f5f5f5;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    position: relative;
+  }
+
+   
+  th:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.4;
+    position: relative;
+  }
+
+   
+  td:first-child {
+    border-right: 1px solid #eee;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+
+   
+  @media (min-width: 768px) {
+    tr:hover {
+      background-color: #f8f8f8;
+      transition: background-color 0.2s ease;
+    }
+  }
+
+   
+  @media (max-width: 767px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    
+    th, td {
+      padding: 12px 16px;
+    }
+  }
+
+   
+  @media (prefers-color-scheme: dark) {
+    table {
+      background: #1a1a1a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    th {
+      background-color: #252525;
+      color: #eee;
+      border-bottom-color: #333;
+    }
+
+    th:first-child {
+      border-right-color: #333;
+    }
+    
+    td {
+      border-bottom-color: #333;
+    }
+
+    td:first-child {
+      border-right-color: #333;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #1d1d1d;
+    }
+    
+    tr:hover {
+      background-color: #252525;
+    }
+  }
+</style> 
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a></nav>
+
+</header>
+  <main>
+
+<h1>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</h1>
+<p>
+  <i>
+    <time datetime='2025-09-01' pubdate>
+      01 Sep, 2025
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/spot-optimizer-spot-fleet-decide-smart-then-launch/banner.svg" alt="banner"></p>
+<p>Picking EC2 Spot instances shouldn&rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.</p>
+<p>Here&rsquo;s the clean split that keeps you sane:</p>
+<ul>
+<li><strong>Spot Optimizer</strong> is a Python library/CLI that figures out the right instance types and counts for your workload.</li>
+<li><strong>EC2 Fleet / Spot Fleet</strong> are AWS services that launch and maintain that capacity.</li>
+</ul>
+<p>Short version: <strong>Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.</strong></p>
+<hr>
+<p><strong>📦 Project Links</strong></p>
+<p>🔗 <a href="https://github.com/amarlearning/spot-optimizer"><strong>GitHub Repository</strong></a> — Source code, issues, and contributions<br>
+📋 <a href="https://pypi.org/project/spot-optimizer/"><strong>PyPI Package</strong></a> — Install with <code>pip install spot-optimizer</code></p>
+<hr>
+<h2 id="the-problem-with-manual-spot-instance-selection">The Problem with Manual Spot Instance Selection</h2>
+<p>Manual spot instance selection typically involves:</p>
+<ul>
+<li>Guessing which instance types have low interruption rates</li>
+<li>Trial-and-error testing across regions and families</li>
+<li>Building custom logic to match workload requirements</li>
+<li>Constantly updating interruption rate data</li>
+</ul>
+<p>This leads to over-provisioning, frequent interruptions, or both.</p>
+<hr>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li>Use <strong>Spot Optimizer</strong> to compute a shortlist of instance types that meet your cores/RAM and reliability needs (filters for region, SSD-only, ARM/x86, EMR, families).</li>
+<li>Feed that list to <strong>EC2 Fleet/Spot Fleet</strong> with a capacity‑optimized (or price‑capacity‑optimized) strategy.</li>
+<li>Result: fewer surprises, fewer interruptions, and IaC you don&rsquo;t have to babysit.</li>
+</ul>
+<hr>
+<h2 id="what-spot-optimizer-actually-does">What Spot Optimizer Actually Does</h2>
+<p>Spot Optimizer abstracts away the complexity of spot instance selection.</p>
+<h3 id="inputs">Inputs</h3>
+<ul>
+<li><strong>Required</strong>: <code>cores</code>, <code>memory</code> (GB)</li>
+<li><strong>Optional</strong>: <code>region</code>, <code>ssd_only</code>, <code>arm_instances</code>, <code>instance_family</code> filters (e.g., [&ldquo;m6i&rdquo;, &ldquo;r6i&rdquo;]), <code>emr_version</code>, and <code>mode</code> (<code>latency</code>, <code>fault_tolerance</code>, <code>balanced</code>)</li>
+</ul>
+<h3 id="guarantees">Guarantees</h3>
+<ul>
+<li>Always meets or exceeds requested cores/RAM by rounding up to available shapes</li>
+</ul>
+<h3 id="outputs">Outputs</h3>
+<ul>
+<li>Minimal set of instance type(s) and counts plus reliability hints (spot score, interruption-rate band)</li>
+</ul>
+<h3 id="interfaces">Interfaces</h3>
+<ul>
+<li>Python API and a mirrored CLI</li>
+</ul>
+<h3 id="under-the-hood">Under the hood</h3>
+<ul>
+<li>Fast lookups backed by DuckDB.</li>
+<li><strong>Hourly</strong> refresh of interruption/reliability signals so picks don&rsquo;t go stale.</li>
+<li>Solid test suite (≈98% coverage) covering the decision engine and CLI, so &ldquo;wrong picks&rdquo; get caught early.</li>
+</ul>
+<hr>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="install">Install</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install spot-optimizer
+</span></span></code></pre></div><h3 id="api">API</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> spot_optimizer <span style="color:#f92672">import</span> optimize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>plan <span style="color:#f92672">=</span> optimize(
+</span></span><span style="display:flex;"><span>    cores<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span>,
+</span></span><span style="display:flex;"><span>    memory<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>,
+</span></span><span style="display:flex;"><span>    region<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;us-east-1&#34;</span>,
+</span></span><span style="display:flex;"><span>    ssd_only<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>    arm_instances<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>    instance_family<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;m6i&#34;</span>, <span style="color:#e6db74">&#34;r6i&#34;</span>],
+</span></span><span style="display:flex;"><span>    mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fault_tolerance&#34;</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(plan)  <span style="color:#75715e"># example: {&#34;instances&#34;: {&#34;type&#34;: &#34;m6i.4xlarge&#34;, &#34;count&#34;: 4}, &#34;mode&#34;: &#34;fault_tolerance&#34;, ...}</span>
+</span></span></code></pre></div><h3 id="cli">CLI</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>spot-optimizer <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --cores <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --memory <span style="color:#ae81ff">256</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --region us-east-1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --ssd-only <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --no-arm <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --instance-family m6i r6i <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --mode fault_tolerance
+</span></span></code></pre></div><hr>
+<h2 id="spot-optimizer-vs-ec2spot-fleet">Spot Optimizer vs EC2/Spot Fleet</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Spot Optimizer</th>
+<th>EC2 Fleet / Spot Fleet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Decide instance types and counts</td>
+<td>Launch and maintain capacity</td>
+</tr>
+<tr>
+<td><strong>When to use</strong></td>
+<td>When you&rsquo;re <strong>deciding</strong> what to run</td>
+<td>When you&rsquo;re <strong>launching</strong> and keeping it running</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+<td>A shortlist of types + counts</td>
+<td>Actual EC2 instances</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Fit, stability, cost</td>
+<td>Capacity fulfillment, diversification</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-pair-them">Why Pair Them</h3>
+<ul>
+<li><strong>Smarter diversification</strong>: Start from low-interruption candidates, then let Fleet diversify across pools/AZs</li>
+<li><strong>Fewer interruptions</strong>: Use <code>capacity-optimized</code> or <code>price-capacity-optimized</code> in the Fleet so AWS places you where spare capacity is deeper</li>
+<li><strong>Less thrash</strong>: Stop hand-picking random types and hoping they survive</li>
+</ul>
+<hr>
+<h2 id="integration-with-ec2-fleet">Integration with EC2 Fleet</h2>
+<p>Take Spot Optimizer&rsquo;s output and pass it to <code>LaunchTemplateConfigs[].Overrides</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> boto3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> spot_optimizer <span style="color:#f92672">import</span> optimize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">launch_optimized_fleet</span>(cores: int, memory: int, region: str):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get recommendations from Spot Optimizer</span>
+</span></span><span style="display:flex;"><span>    plan <span style="color:#f92672">=</span> optimize(cores<span style="color:#f92672">=</span>cores, memory<span style="color:#f92672">=</span>memory, region<span style="color:#f92672">=</span>region, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fault_tolerance&#34;</span>)
+</span></span><span style="display:flex;"><span>    itype <span style="color:#f92672">=</span> plan[<span style="color:#e6db74">&#34;instances&#34;</span>][<span style="color:#e6db74">&#34;type&#34;</span>]
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> plan[<span style="color:#e6db74">&#34;instances&#34;</span>][<span style="color:#e6db74">&#34;count&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Diversify across AZs; add sibling instance types if you want more pools</span>
+</span></span><span style="display:flex;"><span>    overrides <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;InstanceType&#34;</span>: itype, <span style="color:#e6db74">&#34;AvailabilityZone&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>region<span style="color:#e6db74">}{</span>az<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> az <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>)
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ec2 <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#34;ec2&#34;</span>, region_name<span style="color:#f92672">=</span>region)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    resp <span style="color:#f92672">=</span> ec2<span style="color:#f92672">.</span>create_fleet(
+</span></span><span style="display:flex;"><span>        LaunchTemplateConfigs<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>            {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;LaunchTemplateSpecification&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;LaunchTemplateName&#34;</span>: <span style="color:#e6db74">&#34;my-workload-template&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;$Latest&#34;</span>,
+</span></span><span style="display:flex;"><span>                },
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Overrides&#34;</span>: overrides,
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        ],
+</span></span><span style="display:flex;"><span>        TargetCapacitySpecification<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;TotalTargetCapacity&#34;</span>: count,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;DefaultTargetCapacityType&#34;</span>: <span style="color:#e6db74">&#34;spot&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        Type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;maintain&#34;</span>,  <span style="color:#75715e"># keep capacity steady</span>
+</span></span><span style="display:flex;"><span>        SpotOptions<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;AllocationStrategy&#34;</span>: <span style="color:#e6db74">&#34;price-capacity-optimized&#34;</span>,  <span style="color:#75715e"># recommended</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;InstanceInterruptionBehavior&#34;</span>: <span style="color:#e6db74">&#34;terminate&#34;</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resp[<span style="color:#e6db74">&#34;FleetId&#34;</span>]
+</span></span></code></pre></div><h3 id="best-practices-for-ec2-fleet-integration">Best practices for EC2 Fleet integration</h3>
+<ul>
+<li><strong>Region‑scoped</strong>: create one fleet per region.</li>
+<li><strong>Request type</strong>: prefer <strong>maintain</strong> for steady capacity; use <strong>instant</strong> when you need immediate placement (EC2 Fleet only).</li>
+<li><strong>Allocation strategy</strong>: prefer <strong>price‑capacity‑optimized</strong> (or <strong>capacity‑optimized</strong>) and be flexible across <strong>many</strong> instance types.</li>
+<li><strong>Diversify across AZs</strong>: include multiple AZs in your overrides; let the allocation strategy do its job.</li>
+<li><strong>Capacity Rebalancing</strong>: enable it and handle interruption/rebalance signals gracefully.</li>
+</ul>
+<hr>
+<h2 id="integration-with-spot-fleet">Integration with Spot Fleet</h2>
+<p>If you&rsquo;re using the older Spot Fleet service, populate Launch Specifications/Overrides with the recommended instance types:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;SpotFleetRequestConfig&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;IamFleetRole&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::&lt;account&gt;:role/aws-ec2-spot-fleet-role&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;TargetCapacity&#34;</span>: <span style="color:#ae81ff">8</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;AllocationStrategy&#34;</span>: <span style="color:#e6db74">&#34;priceCapacityOptimized&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;LaunchSpecifications&#34;</span>: [
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ImageId&#34;</span>: <span style="color:#e6db74">&#34;ami-12345678&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;InstanceType&#34;</span>: <span style="color:#e6db74">&#34;m6i.2xlarge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;SubnetId&#34;</span>: <span style="color:#e6db74">&#34;subnet-12345678&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="when-spot-optimizer-makes-a-difference">When Spot Optimizer Makes a Difference</h2>
+<h3 id="highimpact-scenarios">High‑impact scenarios</h3>
+<ul>
+<li><strong>ML training jobs</strong>: 50+ hour workloads where interruptions are costly</li>
+<li><strong>Spark clusters</strong>: multi‑node jobs requiring stable capacity</li>
+<li><strong>Game server fleets</strong>: when you can drain sessions and scale out</li>
+<li><strong>CI/CD build farms</strong>: interruptions slow teams down</li>
+</ul>
+<h3 id="lowerimpact-scenarios-still-good-spot-candidates">Lower‑impact scenarios (still good Spot candidates)</h3>
+<ul>
+<li>Single‑instance development environments</li>
+<li>Stateless web services with strong auto‑scaling (already resilient; a shortlist still helps)</li>
+<li>Batch jobs that checkpoint frequently</li>
+</ul>
+<h2 id="choosing-the-right-optimization-mode">Choosing the right optimization mode</h2>
+<ul>
+<li><strong>latency</strong> — fewer, larger nodes. Good for chatty services and tight p95/p99.</li>
+<li><strong>fault_tolerance</strong> — more, smaller nodes. Great for batch/Spark and failure isolation.</li>
+<li><strong>balanced</strong> — sensible default when you&rsquo;re not sure.</li>
+</ul>
+<p>Tip: whichever you pick, pair it with <strong>capacity‑optimized</strong> in Fleet to land in deeper capacity pools.</p>
+<hr>
+<h2 id="advanced-filtering-options">Advanced Filtering Options</h2>
+<p>Filter by EMR version, choose ARM (Graviton) or x86, enforce SSD-only storage, and constrain by families like <code>m6i</code>/<code>r6i</code>. The goal: your shortlist is runnable and optimized, not just cheap.</p>
+<h3 id="example-with-all-filters">Example with all filters</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plan <span style="color:#f92672">=</span> optimize(
+</span></span><span style="display:flex;"><span>    cores<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>,
+</span></span><span style="display:flex;"><span>    memory<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>,
+</span></span><span style="display:flex;"><span>    region<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;us-west-2&#34;</span>,
+</span></span><span style="display:flex;"><span>    ssd_only<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,           <span style="color:#75715e"># Only SSD-backed instances</span>
+</span></span><span style="display:flex;"><span>    arm_instances<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,      <span style="color:#75715e"># Include ARM/Graviton instances</span>
+</span></span><span style="display:flex;"><span>    instance_family<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;m6i&#34;</span>, <span style="color:#e6db74">&#34;m6a&#34;</span>, <span style="color:#e6db74">&#34;r6i&#34;</span>],  <span style="color:#75715e"># Specific families</span>
+</span></span><span style="display:flex;"><span>    emr_version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;6.4.0&#34;</span>,     <span style="color:#75715e"># EMR compatibility</span>
+</span></span><span style="display:flex;"><span>    mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;balanced&#34;</span>,
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><hr>
+<h2 id="performance--reliability">Performance &amp; reliability</h2>
+<ul>
+<li><strong>Fast decisions</strong>: the selector is designed to be quick enough for CI or deploy-time.</li>
+<li><strong>Well‑tested</strong>: comprehensive tests around the core decision logic and CLI.</li>
+<li><strong>Fresh data</strong>: interruption and reliability signals are refreshed on a schedule so recommendations don&rsquo;t drift.</li>
+<li><strong>Make targets</strong>: <code>make install</code>, <code>make test</code>, <code>make test-all</code>, <code>make coverage</code>, <code>make clean</code>.</li>
+</ul>
+<p>What this really means is fewer late‑night pages because a random pool went sideways.</p>
+<hr>
+<h2 id="production-checklist">Production Checklist</h2>
+<h3 id="before-deployment">Before Deployment</h3>
+<ol>
+<li>Generate candidates with Spot Optimizer (apply EMR/arch/storage/family filters and choose a mode)</li>
+<li>Test recommendations in a staging environment</li>
+</ol>
+<h3 id="fleet-configuration">Fleet Configuration</h3>
+<ul>
+<li>Set <code>AllocationStrategy</code> to <code>capacity-optimized</code> or <code>price-capacity-optimized</code></li>
+<li>Provide <strong>multiple</strong> instance types as overrides; let AWS diversify</li>
+<li>Use <code>maintain</code> for steady capacity</li>
+<li>Enable Capacity Rebalancing and handle the 2-minute interruption notice</li>
+</ul>
+<h3 id="ongoing-maintenance">Ongoing Maintenance</h3>
+<ul>
+<li>Refresh recommendations regularly so new reliability data is used at deploy time</li>
+<li>Monitor interruption rates and adjust optimization mode if needed</li>
+</ul>
+<hr>
+<h2 id="faq">FAQ</h2>
+<p><strong>Is Spot Optimizer an alternative to Spot Fleet?</strong></p>
+<p>No. It&rsquo;s complementary: Spot Optimizer <strong>chooses</strong> the right instances; EC2/Spot Fleet <strong>launches</strong> and manages them.</p>
+<p><strong>Can it run cross-region?</strong></p>
+<p>Yes—the library analyzes any region. Fleets themselves are region-bound, so you&rsquo;ll need separate fleets per region.</p>
+<p><strong>Why not just pick the lowest-price instances?</strong></p>
+<p>Cheap pools can be fragile. Capacity-oriented strategies prefer deeper capacity pools to reduce interruptions, which often saves more money long-term.</p>
+<p><strong>How often should I refresh recommendations?</strong></p>
+<p>For production workloads, refresh daily or before major deployments. Interruption rates change as AWS capacity shifts.</p>
+<p><strong>Can I use this with Kubernetes/EKS?</strong></p>
+<p>Yes! Use Spot Optimizer to choose node instance types, then configure your node groups or Karpenter with those recommendations.</p>
+<p><strong>What about savings vs on-demand?</strong></p>
+<p>Spot instances typically save 50-90% vs on-demand. Spot Optimizer helps you get those savings without the interruption headaches.</p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Fleets.html">EC2 Fleet/Spot Fleet Overview</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-allocation-strategy.html">Allocation Strategies</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html">Request Types</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/prepare-for-interruptions.html">Spot Interruptions &amp; Rebalancing</a></li>
+</ul>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can explore my other articles <a href="/blog">here</a>, and follow me on Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+<p>
+  
+  <a href="https://amarpandey.me/tags/aws/">#aws</a>
+  
+  <a href="https://amarpandey.me/tags/ec2/">#ec2</a>
+  
+  <a href="https://amarpandey.me/tags/spot-instances/">#spot-instances</a>
+  
+  <a href="https://amarpandey.me/tags/cloud-computing/">#cloud-computing</a>
+  
+  <a href="https://amarpandey.me/tags/cost-optimization/">#cost-optimization</a>
+  
+  <a href="https://amarpandey.me/tags/infrastructure/">#infrastructure</a>
+  
+  <a href="https://amarpandey.me/tags/devops/">#devops</a>
+  
+  <a href="https://amarpandey.me/tags/python/">#python</a>
+  
+  <a href="https://amarpandey.me/tags/cli-tools/">#cli-tools</a>
+  
+</p>
+
+<div style="margin-top: 50px;">
+  <h2>Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="amarlearning/amarlearning.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
+        data-category-id="DIC_kwDOAo3u484CtGdf"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+  </main>
+  <footer><div class="footer-container">
+    <script>
+      var currentYear = new Date().getFullYear();
+      document.write("© " + currentYear + " by Amar Prakash Pandey");
+    </script>
+    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+      RSS
+    </a>
+  </div>
+  <style>
+    .rss-link {
+      color: #555555;
+      align-items: center;
+      text-decoration: none;
+    }
+    .rss-icon {
+      vertical-align: middle;
+    }
+  </style></footer>
+
+    
+</body>
+
+</html>
