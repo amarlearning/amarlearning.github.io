@@ -1,3 +1,19 @@
+# Hugo
 public/
-.DS_Store
+resources/_gen/
 .hugo_build.lock
+
+# System
+.DS_Store
+._*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
