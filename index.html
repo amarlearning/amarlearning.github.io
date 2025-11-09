@@ -233,7 +233,24 @@ Over the years, I’ve worked on various software projects and continuously expl
 
 
 <style>
-   
+  body {
+    background-color: #FFFFFA !important;
+  }
+
+  :root {
+    --horizontal-line: #950505;
+  }
+
+  hr {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    height: 2px;
+    width: 96%;
+    background-image: linear-gradient(to right, transparent, var(--horizontal-line), transparent);
+  }
+
   table {
     width: 100%;
     margin: 2rem 0;
@@ -256,7 +273,6 @@ Over the years, I’ve worked on various software projects and continuously expl
     position: relative;
   }
 
-   
   th:first-child {
     border-right: 1px solid #e0e0e0;
   }
@@ -268,7 +284,6 @@ Over the years, I’ve worked on various software projects and continuously expl
     position: relative;
   }
 
-   
   td:first-child {
     border-right: 1px solid #eee;
   }
@@ -281,7 +296,6 @@ Over the years, I’ve worked on various software projects and continuously expl
     background-color: #fafafa;
   }
 
-   
   @media (min-width: 768px) {
     tr:hover {
       background-color: #f8f8f8;
@@ -289,7 +303,6 @@ Over the years, I’ve worked on various software projects and continuously expl
     }
   }
 
-   
   @media (max-width: 767px) {
     table {
       display: block;
@@ -304,7 +317,6 @@ Over the years, I’ve worked on various software projects and continuously expl
     }
   }
 
-   
   @media (prefers-color-scheme: dark) {
     table {
       background: #1a1a1a;
@@ -337,7 +349,7 @@ Over the years, I’ve worked on various software projects and continuously expl
       background-color: #252525;
     }
   }
-</style> 
+</style>
 
 <a href="/" class="title">
   <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>

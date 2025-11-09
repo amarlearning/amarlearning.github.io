@@ -236,7 +236,24 @@ chat rooms - Real time public/private chat application using spring boot web-soc
 
 
 <style>
-   
+  body {
+    background-color: #FFFFFA !important;
+  }
+
+  :root {
+    --horizontal-line: #950505;
+  }
+
+  hr {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    height: 2px;
+    width: 96%;
+    background-image: linear-gradient(to right, transparent, var(--horizontal-line), transparent);
+  }
+
   table {
     width: 100%;
     margin: 2rem 0;
@@ -259,7 +276,6 @@ chat rooms - Real time public/private chat application using spring boot web-soc
     position: relative;
   }
 
-   
   th:first-child {
     border-right: 1px solid #e0e0e0;
   }
@@ -271,7 +287,6 @@ chat rooms - Real time public/private chat application using spring boot web-soc
     position: relative;
   }
 
-   
   td:first-child {
     border-right: 1px solid #eee;
   }
@@ -284,7 +299,6 @@ chat rooms - Real time public/private chat application using spring boot web-soc
     background-color: #fafafa;
   }
 
-   
   @media (min-width: 768px) {
     tr:hover {
       background-color: #f8f8f8;
@@ -292,7 +306,6 @@ chat rooms - Real time public/private chat application using spring boot web-soc
     }
   }
 
-   
   @media (max-width: 767px) {
     table {
       display: block;
@@ -307,7 +320,6 @@ chat rooms - Real time public/private chat application using spring boot web-soc
     }
   }
 
-   
   @media (prefers-color-scheme: dark) {
     table {
       background: #1a1a1a;
@@ -340,7 +352,7 @@ chat rooms - Real time public/private chat application using spring boot web-soc
       background-color: #252525;
     }
   }
-</style> 
+</style>
 
 <a href="/" class="title">
   <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>

@@ -225,7 +225,24 @@
 
 
 <style>
-   
+  body {
+    background-color: #FFFFFA !important;
+  }
+
+  :root {
+    --horizontal-line: #950505;
+  }
+
+  hr {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    height: 2px;
+    width: 96%;
+    background-image: linear-gradient(to right, transparent, var(--horizontal-line), transparent);
+  }
+
   table {
     width: 100%;
     margin: 2rem 0;
@@ -248,7 +265,6 @@
     position: relative;
   }
 
-   
   th:first-child {
     border-right: 1px solid #e0e0e0;
   }
@@ -260,7 +276,6 @@
     position: relative;
   }
 
-   
   td:first-child {
     border-right: 1px solid #eee;
   }
@@ -273,7 +288,6 @@
     background-color: #fafafa;
   }
 
-   
   @media (min-width: 768px) {
     tr:hover {
       background-color: #f8f8f8;
@@ -281,7 +295,6 @@
     }
   }
 
-   
   @media (max-width: 767px) {
     table {
       display: block;
@@ -296,7 +309,6 @@
     }
   }
 
-   
   @media (prefers-color-scheme: dark) {
     table {
       background: #1a1a1a;
@@ -329,7 +341,7 @@
       background-color: #252525;
     }
   }
-</style> 
+</style>
 
 <a href="/" class="title">
   <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
