@@ -12,7 +12,7 @@ jobs:
       HUGO_VERSION: 0.126.0
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: main
           submodules: recursive

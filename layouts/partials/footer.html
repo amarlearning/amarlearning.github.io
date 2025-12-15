@@ -1,20 +1,12 @@
 <div class="footer-container">
-    <script>
-      var currentYear = new Date().getFullYear();
-      document.write("© " + currentYear + " by Amar Prakash Pandey");
-    </script>
-    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-      RSS
-    </a>
-  </div>
-  <style>
-    .rss-link {
-      color: #555555;
-      align-items: center;
-      text-decoration: none;
-    }
-    .rss-icon {
-      vertical-align: middle;
-    }
-  </style>
+  {{ now.Format "2006" }} © Amar Prakash Pandey
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
+</div>

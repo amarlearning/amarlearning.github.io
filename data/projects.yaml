@@ -1,0 +1,19 @@
+- title: Spot Optimizer
+  description: Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling.
+  links:
+    - name: code
+      url: https://github.com/amarlearning/spot-optimizer
+
+- title: GeohashViz.com
+  description: A web application that lets you visualize geohashes in bulk.
+  links:
+    - name: code
+      url: https://github.com/amarlearning/geohashviz.com
+    - name: demo
+      url: https://geohashviz.com
+
+- title: Chat Rooms
+  description: Real-time public/private chat application using Spring Boot and WebSockets.
+  links:
+    - name: code
+      url: https://github.com/amarlearning/chat-rooms

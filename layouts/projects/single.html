@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="intro">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+</div>
+
+<div class="oss-section">
+    <h2>Open Source Contributions</h2>
+    <div class="divider-thin" style="margin-bottom: 1.5rem;"></div>
+    <div class="oss-grid-container">
+        {{ range .Site.Data.oss }}
+        <div class="oss-card">
+            <div class="oss-card-header">
+                <a href="{{ .url }}" target="_blank" class="oss-card-title">{{ .organization }} ↗</a>
+                <span class="oss-role-badge">{{ .role }}</span>
+            </div>
+            <p class="oss-card-desc">{{ .description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+<div class="projects-section">
+    <h2>Personal Projects</h2>
+    <div class="divider-thin" style="margin-bottom: 2rem;"></div>
+
+    <div class="projects-container">
+        {{ range .Site.Data.projects }}
+        <div class="project-box">
+            <div class="project-header-box">
+                <h3 class="project-title-box">{{ .title }}</h3>
+            </div>
+            <p class="project-description-box">{{ .description }}</p>
+            <div class="project-links-box">
+                {{ range .links }}
+                <a href="{{ .url }}" target="_blank" class="project-link-btn">{{ .name }}</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
