@@ -1,0 +1,302 @@
+/* Global Layout Utility Classes */
+.divider-thin {
+    margin-top: 30px;
+    padding-top: 0.1rem;
+    border-top: 1px solid #EEE;
+}
+
+.divider-thick {
+    margin-top: 30px;
+    padding-top: 0.1rem;
+    border-top: 2px solid #EEE;
+}
+
+/* Post List Items */
+.post-item-title {
+    margin-bottom: 0.1rem;
+    font-size: 1.15rem;
+}
+
+.post-item-date {
+    color: #666;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.post-item-description {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* Footer Components */
+.rss-link {
+    color: #555555;
+    align-items: center;
+    text-decoration: none;
+}
+
+.rss-icon {
+    vertical-align: middle;
+}
+
+/* Previously in custom_style.html */
+body {
+    background-color: #FFFFFA !important;
+}
+
+:root {
+    --horizontal-line: #950505;
+}
+
+hr {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: none;
+    height: 2px;
+    width: 96%;
+    background-image: linear-gradient(to right, transparent, var(--horizontal-line), transparent);
+}
+
+table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95em;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: #f5f5f5;
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #e0e0e0;
+    position: relative;
+}
+
+th:first-child {
+    border-right: 1px solid #e0e0e0;
+}
+
+td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #eee;
+    line-height: 1.4;
+    position: relative;
+}
+
+td:first-child {
+    border-right: 1px solid #eee;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+@media (min-width: 768px) {
+    tr:hover {
+        background-color: #f8f8f8;
+        transition: background-color 0.2s ease;
+    }
+}
+
+@media (max-width: 767px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 6px;
+        font-size: 0.9em;
+    }
+
+    th,
+    td {
+        padding: 12px 16px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    table {
+        background: #1a1a1a;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    th {
+        background-color: #252525;
+        color: #eee;
+        border-bottom-color: #333;
+    }
+
+    th:first-child {
+        border-right-color: #333;
+    }
+
+    td {
+        border-bottom-color: #333;
+    }
+
+    td:first-child {
+        border-right-color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #1d1d1d;
+    }
+
+    tr:hover {
+        background-color: #252525;
+    }
+}
+
+
+/* Boxed Project Layout (2-Column Grid) */
+.projects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+    border-color: #d0d0d0;
+}
+
+.project-header-box {
+    margin-bottom: 1rem;
+}
+
+.project-title-box {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 0.5rem 0;
+}
+
+.project-description-box {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.project-links-box {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Reusing button styles but slightly refined */
+.project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.project-link-btn:hover {
+    background-color: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+/* OSS Section - Table Layout */
+.oss-section {
+    margin-bottom: 4rem;
+}
+
+.oss-table-container {
+    overflow-x: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.oss-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.oss-table th {
+    background: #f9f9f9;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.oss-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    color: #444;
+}
+
+.oss-table tr:last-child td {
+    border-bottom: none;
+}
+
+.oss-table tr:hover {
+    background-color: #fafafa;
+}
+
+.oss-org-link {
+    font-weight: 600;
+    color: #222;
+    text-decoration: none;
+}
+
+.oss-org-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.oss-role-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: #eee;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+}
