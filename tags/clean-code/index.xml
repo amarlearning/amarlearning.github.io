@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clean-Code on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/clean-code/</link>
+    <description>Recent content in Clean-Code on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/clean-code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Choosing Functional Python (Without Forcing It)</title>
+      <link>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</link>
+      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</guid>
+      <description>Why this matters Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, map, filter, reduce, any, sorted, and more.&#xA;For a long time, I knew these tools existed, but I didn’t really know when or why to use them. I could read functional-style code, but writing it confidently was another story.&#xA;This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Choosing Functional Python (Without Forcing It) | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Choosing Functional Python (Without Forcing It)" />
+<meta name="description" content="Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops." />
+<meta name="keywords" content="Python,Functional-Programming,Clean-Code,Software-Design,Programming-Patterns,Pythonic," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Choosing Functional Python (Without Forcing It)">
+  <meta property="og:description" content="Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-01-31T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-31T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Functional-Programming">
+    <meta property="article:tag" content="Clean-Code">
+    <meta property="article:tag" content="Software-Design">
+    <meta property="article:tag" content="Programming-Patterns">
+    <meta property="article:tag" content="Pythonic">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Choosing Functional Python (Without Forcing It)">
+  <meta name="twitter:description" content="Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops.">
+
+
+
+
+  <meta itemprop="name" content="Choosing Functional Python (Without Forcing It)">
+  <meta itemprop="description" content="Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops.">
+  <meta itemprop="datePublished" content="2026-01-31T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-31T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1163">
+  <meta itemprop="keywords" content="Python,Functional-Programming,Clean-Code,Software-Design,Programming-Patterns,Pythonic">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+   
+  body {
+    background-color: #fafafa !important;
+     
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --primary-color: #222;
+    --accent-color: #d8d5d5;
+     
+    --border-color: #eaeaea;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  }
+
+   
+  .divider-thin {
+    height: 1px;
+    background: var(--border-color);
+    margin: 2rem 0;
+    border: none;
+  }
+
+   
+  .oss-section {
+    margin-bottom: 5rem;
+  }
+
+  .oss-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    grid-auto-rows: auto;
+  }
+
+  .oss-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    border-left: 4px solid var(--accent-color);
+     
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .oss-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .oss-card-header {
+    display: flex;
+    flex-wrap: wrap;
+     
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .oss-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: auto;
+     
+  }
+
+  .oss-card-title:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  .oss-card-desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+   
+
+  .oss-role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 9999px;
+     
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+   
+  .projects-section {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+     
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: auto;
+     
+    gap: 5rem;
+     
+    padding-bottom: 2rem;
+  }
+
+  .project-box {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+     
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+     
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+     
+    border-left: 4px solid var(--accent-color);
+     
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+     
+    border-color: #d4d4d4;
+  }
+
+  .project-header-box {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .project-title-box {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+  }
+
+  .project-description-box {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+  }
+
+  .project-links-box {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    min-width: 80px;
+  }
+
+  .project-link-btn:hover {
+    background: #222;
+    color: white;
+    border-color: #222;
+    transform: translateY(-1px);
+  }
+</style>
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a></nav>
+
+</header>
+  <main>
+
+<h1>Choosing Functional Python (Without Forcing It)</h1>
+<p>
+  <i>
+    <time datetime='2026-01-31' pubdate>
+      31 Jan, 2026
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/choosing-functional-python-without-forcing-it/banner.png" alt="banner"></p>
+<h2 id="why-this-matters">Why this matters</h2>
+<p>Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>any</code>, <code>sorted</code>, and more.</p>
+<p>For a long time, I knew these tools existed, but I didn’t really know <strong>when</strong> or <strong>why</strong> to use them. I could read functional-style code, but writing it confidently was another story.</p>
+<p>This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.</p>
+<hr>
+<h2 id="what-i-mean-by-functional-programming-in-python-fpp">What I mean by Functional Programming in Python (FPP)</h2>
+<p>Python is not a purely functional language, and trying to force purity usually makes code worse.</p>
+<p>When I say FPP here, I mean using a functional <em>style</em> where it makes the code clearer.</p>
+<p>In practice, that usually looks like:</p>
+<ul>
+<li>Expressing logic as transformations instead of step-by-step instructions.</li>
+<li>Minimizing mutation when it improves readability.</li>
+<li>Leaning on higher‑order functions when they describe intent better than loops.</li>
+</ul>
+<p>The goal is not purity. The goal is clarity.</p>
+<hr>
+<h2 id="when-to-use-fpp-and-when-not-to">When to use FPP (and when not to)</h2>
+<p>The most important rule I learned:</p>
+<blockquote>
+<p><strong>Use functional style when your problem is about transforming data, not managing evolving state.</strong></p>
+</blockquote>
+<h3 id="when-fpp-works-well">When FPP works well</h3>
+<p>FPP shines when the problem is primarily about <strong>transforming data</strong>.</p>
+<p>Typical cases include:</p>
+<ul>
+<li>Mapping values from one form to another.</li>
+<li>Filtering collections based on conditions.</li>
+<li>Aggregation like <code>sum</code>, <code>max</code>, <code>min</code>, <code>any</code>, or <code>all</code>.</li>
+<li>Sorting with clear, composable rules.</li>
+<li>Counting or grouping values.</li>
+<li>Building lazy pipelines with generators.</li>
+</ul>
+<h3 id="when-fpp-is-a-bad-fit">When FPP is a bad fit</h3>
+<p>Functional style starts to break down when the solution depends on <strong>evolving state or control flow</strong>.</p>
+<p>This usually shows up in problems that:</p>
+<ul>
+<li>Require early exits.</li>
+<li>Depend on remembering what has been seen so far.</li>
+<li>Involve search or traversal logic.</li>
+</ul>
+<p>In these cases, a simple loop is often the most readable solution. Trying to force functional style here often makes the code harder to read, not better.</p>
+<hr>
+<h2 id="patterns-that-unlocked-things-for-me">Patterns that unlocked things for me</h2>
+<h3 id="pattern-1-existence-checks-using-any">Pattern 1: Existence checks using <code>any</code></h3>
+<p>Many problems boil down to a simple question: <em>does something exist?</em></p>
+<p>Instead of writing loops that return early, it’s often clearer to express that intent directly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sqrt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Returns True because 17 has no divisors other than 1 and itself</span>
+</span></span><span style="display:flex;"><span>has_no_divisors <span style="color:#f92672">=</span> <span style="color:#f92672">not</span> any(n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p>This reads almost like English: there does not exist a divisor. Once I started framing problems this way, a lot of validation and checking logic became easier to reason about.</p>
+<hr>
+<h3 id="pattern-2-tuple-keys-in-sorted">Pattern 2: Tuple keys in <code>sorted</code></h3>
+<p>Sorting often involves more than one rule. Python’s tuple comparison makes this surprisingly clean.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">90</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">20</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">90</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">19</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Charlie&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">80</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">21</span>}
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort by score (descending), then by age (ascending)</span>
+</span></span><span style="display:flex;"><span>sorted_students <span style="color:#f92672">=</span> sorted(students, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> s: (<span style="color:#f92672">-</span>s[<span style="color:#e6db74">&#34;score&#34;</span>], s[<span style="color:#e6db74">&#34;age&#34;</span>]))
+</span></span></code></pre></div><p>Here, the intent is encoded directly in the key:</p>
+<ul>
+<li>Score in descending order (negated).</li>
+<li>Age in ascending order.</li>
+</ul>
+<p>Negating values tends to be clearer than mixing <code>reverse=True</code> with complex logic.</p>
+<hr>
+<h3 id="pattern-3-reduce-is-for-building-structure">Pattern 3: <code>reduce</code> is for building structure</h3>
+<p><code>reduce</code> works best when you are <em>accumulating</em> something — a dictionary, a count, or a combined result.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abracadabra&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>counts <span style="color:#f92672">=</span> reduce(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">lambda</span> acc, c: {<span style="color:#f92672">**</span>acc, c: acc<span style="color:#f92672">.</span>get(c, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>},
+</span></span><span style="display:flex;"><span>    s,
+</span></span><span style="display:flex;"><span>    {}
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Result: {&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;r&#39;: 2, &#39;c&#39;: 1, &#39;d&#39;: 1}</span>
+</span></span></code></pre></div><p><em>Note: While this demonstrates the pattern, for simple counting, <code>collections.Counter</code> is usually preferred in production code.</em></p>
+<p>Where <code>reduce</code> tends to fall apart is control flow. If a solution feels hard to read, that’s often a sign the problem wants a loop instead.</p>
+<hr>
+<h2 id="a-quick-before--after-example">A quick before → after example</h2>
+<p>One pattern that helped anchor all of this for me was rewriting a small loop and asking a simple question: <em>is this transformation or state management?</em></p>
+<h3 id="before-imperative-loop">Before: imperative loop</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sqrt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><p>This works, but the intent is buried inside the loop.</p>
+<h3 id="after-functional-style">After: functional style</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">not</span> any(n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p>Here, the logic reads closer to the actual rule: <em>a prime has no divisors</em>. No explicit looping is required.</p>
+<hr>
+<h2 id="generators-the-mental-model-that-helped">Generators: the mental model that helped</h2>
+<p>My confusion with generators wasn’t about syntax. It was about mixing up producers and consumers.</p>
+<p>A key realization:</p>
+<blockquote>
+<p>A <code>for</code> loop doesn’t care about <code>yield</code>. It only cares whether an object is iterable.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_one</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generator expression (lazy)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_two</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Explicit generator delegation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> range(<span style="color:#ae81ff">5</span>)
+</span></span></code></pre></div><p>Both return generator objects. The difference is who controls the iteration. <code>yield from</code> allows you to delegate part of the generation process to another iterable explicitly.</p>
+<hr>
+<h2 id="filtering-vs-conditional-mapping">Filtering vs conditional mapping</h2>
+<p>These two look similar but mean very different things.</p>
+<p><strong>Filtering:</strong> Keep only the even numbers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>evens <span style="color:#f92672">=</span> (i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n) <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p><strong>Conditional mapping:</strong> Keep all numbers, but change the odd ones to 0.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># if / else BEFORE the &#39;for&#39; transforms</span>
+</span></span><span style="display:flex;"><span>transformed <span style="color:#f92672">=</span> (i <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n))
+</span></span></code></pre></div><p>Rule of thumb:</p>
+<ul>
+<li><code>if</code> after the <code>for</code> <strong>filters</strong>.</li>
+<li><code>if / else</code> before the <code>for</code> <strong>transforms</strong>.</li>
+</ul>
+<hr>
+<h2 id="zip-aligning-data-instead-of-indexing"><code>zip</code>: aligning data instead of indexing</h2>
+<p><code>zip</code> became much clearer to me once I stopped thinking about indices and started thinking about <em>alignment</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;amar&#34;</span>, <span style="color:#e6db74">&#34;john&#34;</span>, <span style="color:#e6db74">&#34;alice&#34;</span>]
+</span></span><span style="display:flex;"><span>scores <span style="color:#f92672">=</span> [<span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">85</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>aligned <span style="color:#f92672">=</span> list(zip(names, scores))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Result: [(&#39;amar&#39;, 90), (&#39;john&#39;, 80), (&#39;alice&#39;, 85)]</span>
+</span></span></code></pre></div><p>This expresses the idea that these two collections belong together, position by position.</p>
+<p>A simple mental shortcut I use:</p>
+<ul>
+<li><code>map</code> transforms values.</li>
+<li><code>zip</code> aligns values.</li>
+</ul>
+<h3 id="unzipping-and-the-iterator-gotcha">Unzipping (and the iterator gotcha)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pairs <span style="color:#f92672">=</span> [(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#ae81ff">3</span>)]
+</span></span><span style="display:flex;"><span>letters, numbers <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>pairs)
+</span></span></code></pre></div><p>One important detail: <code>zip</code> returns an iterator. If you consume it once, it’s exhausted. If you need to use the data multiple times, convert it to a list first.</p>
+<hr>
+<h2 id="functoolspartial-pre-filling-intent"><code>functools.partial</code>: pre-filling intent</h2>
+<p>I found <code>partial</code> useful once I stopped seeing it as an optimization and started seeing it as a way to <em>name behavior</em>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multiply</span>(x, factor):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> factor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new function that always multiplies by 2</span>
+</span></span><span style="display:flex;"><span>double <span style="color:#f92672">=</span> partial(multiply, factor<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(double(<span style="color:#ae81ff">10</span>)) <span style="color:#75715e"># 20</span>
+</span></span></code></pre></div><p>Instead of repeating the same lambda everywhere, <code>partial</code> makes the intent explicit and reusable.</p>
+<hr>
+<h2 id="a-closing-thought">A closing thought</h2>
+<p>Functional-style Python didn’t click for me by memorizing APIs or forcing myself to avoid loops. It clicked when I started asking a simpler question: <em>what kind of problem is this?</em></p>
+<p>If the problem is about transforming data, functional tools often make the intent clearer. If it’s about managing state or control flow, a loop is usually the right choice.</p>
+<p>That distinction alone has helped me write Python that is easier to read, easier to reason about, and easier to change later.</p>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can explore my other articles <a href="/blog">here</a>, and follow me on Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+<p>
+  
+  <a href="https://amarpandey.me/tags/python/">#python</a>
+  
+  <a href="https://amarpandey.me/tags/functional-programming/">#functional-programming</a>
+  
+  <a href="https://amarpandey.me/tags/clean-code/">#clean-code</a>
+  
+  <a href="https://amarpandey.me/tags/software-design/">#software-design</a>
+  
+  <a href="https://amarpandey.me/tags/programming-patterns/">#programming-patterns</a>
+  
+  <a href="https://amarpandey.me/tags/pythonic/">#pythonic</a>
+  
+</p>
+
+<div style="margin-top: 50px;">
+  <h2>Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="amarlearning/amarlearning.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
+        data-category-id="DIC_kwDOAo3u484CtGdf"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+  </main>
+  <footer><div class="footer-container">
+  2026 © Amar Prakash Pandey
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
+</div></footer>
+
+    
+</body>
+
+</html>

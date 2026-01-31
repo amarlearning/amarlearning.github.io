@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Clean-Code | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Clean-Code" />
+<meta name="description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community." />
+<meta name="keywords" content="apache,apache-spark,availability,aws,best-practices,big data,brewers theorem,broadcast,cap theorem,clean-code,cleancode,cli-tools,cloud-computing,code-review,codesmells,collaboration,consistency,containers,cost-optimization,data,data engineering,data-processing,database design,dev-tools,developer-tips,devops,distributed systems,distributed-computing,docker,ec2,functional-programming,git,gitconfig,gitops,google,gsoc,iac,infrastructure,join,multiple-identities,network partitions,open-source,open-source-software,optimization,oss,partition tolerance,partitions,performance,performance-optimization,personal-vs-work,productivity,programming-patterns,python,pythonic,rum conjecture,security,shuffle,software-design,softwareengineering,softwarequality,spark,spark-joins,spark-optimization,spot-instances,system design,tech tradeoffs,version-control," />
+
+
+<meta property="og:url" content="https://amarpandey.me/tags/clean-code/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Clean-Code">
+  <meta property="og:description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Clean-Code">
+  <meta name="twitter:description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+
+
+
+
+  <meta itemprop="name" content="Clean-Code">
+  <meta itemprop="description" content="Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community.">
+  <meta itemprop="dateModified" content="2026-01-31T00:00:00+00:00">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <link rel="alternate" type="application/rss+xml" href="https://amarpandey.me/tags/clean-code/index.xml" title="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ" />
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+   
+  body {
+    background-color: #fafafa !important;
+     
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --primary-color: #222;
+    --accent-color: #d8d5d5;
+     
+    --border-color: #eaeaea;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --card-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  }
+
+   
+  .divider-thin {
+    height: 1px;
+    background: var(--border-color);
+    margin: 2rem 0;
+    border: none;
+  }
+
+   
+  .oss-section {
+    margin-bottom: 5rem;
+  }
+
+  .oss-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    grid-auto-rows: auto;
+  }
+
+  .oss-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    border-left: 4px solid var(--accent-color);
+     
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .oss-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .oss-card-header {
+    display: flex;
+    flex-wrap: wrap;
+     
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .oss-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: auto;
+     
+  }
+
+  .oss-card-title:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+  }
+
+  .oss-card-desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+   
+
+  .oss-role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 9999px;
+     
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+   
+  .projects-section {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+     
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: auto;
+     
+    gap: 5rem;
+     
+    padding-bottom: 2rem;
+  }
+
+  .project-box {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+     
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+     
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+     
+    border-left: 4px solid var(--accent-color);
+     
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+     
+    border-color: #d4d4d4;
+  }
+
+  .project-header-box {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+
+  .project-title-box {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+  }
+
+  .project-description-box {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    flex-grow: 1;
+    margin-bottom: 2rem;
+  }
+
+  .project-links-box {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #333;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    min-width: 80px;
+  }
+
+  .project-link-btn:hover {
+    background: #222;
+    color: white;
+    border-color: #222;
+    transform: translateY(-1px);
+  }
+</style>
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a></nav>
+
+</header>
+  <main>
+<content>
+  
+  <h3 style="margin-bottom:0">Filtering for "Clean-Code"</h3>
+  <small>
+    <a href="/blog">Remove filter</a>
+  </small>
+  
+  <ul class="blog-posts">
+    
+    <li>
+      <span>
+        <i>
+          <time datetime='2026-01-31' pubdate>
+            31 Jan, 2026
+          </time>
+        </i>
+      </span>
+      <a href="https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/">Choosing Functional Python (Without Forcing It)</a>
+    </li>
+    
+  </ul>
+  
+  
+</content>
+
+  </main>
+  <footer><div class="footer-container">
+  2026 © Amar Prakash Pandey
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
+</div></footer>
+
+    
+</body>
+
+</html>

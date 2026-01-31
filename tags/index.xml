@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clean-Code</title>
+      <link>https://amarpandey.me/tags/clean-code/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/clean-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Functional-Programming</title>
+      <link>https://amarpandey.me/tags/functional-programming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Programming-Patterns</title>
+      <link>https://amarpandey.me/tags/programming-patterns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/programming-patterns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://amarpandey.me/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pythonic</title>
+      <link>https://amarpandey.me/tags/pythonic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/pythonic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software-Design</title>
+      <link>https://amarpandey.me/tags/software-design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/tags/software-design/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AWS</title>
       <link>https://amarpandey.me/tags/aws/</link>
@@ -55,13 +97,6 @@
       <link>https://amarpandey.me/tags/infrastructure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://amarpandey.me/tags/infrastructure/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://amarpandey.me/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/python/</guid>
       <description></description>
     </item>
     <item>
