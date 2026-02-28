@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Refactoring on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+    <link>https://amarpandey.me/tags/refactoring/</link>
+    <description>Recent content in Refactoring on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://amarpandey.me/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Currying and Partial Application: Shaping Intent</title>
+      <link>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</guid>
+      <description>Why this topic is confusing Currying and partial application are concepts that almost every Python developer has seen, but very few feel confident using. For a long time, I understood what they did, but I didn&amp;rsquo;t know when using them actually made code better.&#xA;A clear distinction: currying vs partial application Currying transforms a function that takes multiple arguments into a chain of functions that each take a single argument:</description>
+    </item>
+  </channel>
+</rss>
