@@ -1,6 +1,6 @@
 +++
 title = "Currying and Partial Application: Shaping Intent"
-date = "2026-02-02T00:00:00-00:00"
+date = "2026-02-28T00:00:00-00:00"
 description = "Move beyond functional tricks. Learn how to use currying and partial application in Python to name behaviors, reduce noise, and separate configuration from execution."
 
 tags = [ 
