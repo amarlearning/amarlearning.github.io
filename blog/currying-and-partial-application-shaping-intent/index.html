@@ -403,108 +403,108 @@
 <hr>
 <h2 id="a-clear-distinction-currying-vs-partial-application">A clear distinction: currying vs partial application</h2>
 <p><strong>Currying</strong> transforms a function that takes multiple arguments into a chain of functions that each take a single argument:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multiply</span>(a):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">by</span>(b):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> by
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">multiply</span>(a):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">def</span> <span style="color:#0a0">by</span>(b):
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">return</span> a * b
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> by
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage: multiply(3)(4) returns 12</span>
-</span></span><span style="display:flex;"><span>triple <span style="color:#f92672">=</span> multiply(<span style="color:#ae81ff">3</span>)
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> triple(<span style="color:#ae81ff">4</span>)  <span style="color:#75715e"># 12</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Usage: multiply(3)(4) returns 12</span>
+</span></span><span style="display:flex;"><span>triple = multiply(<span style="color:#099">3</span>)
+</span></span><span style="display:flex;"><span>result = triple(<span style="color:#099">4</span>)  <span style="color:#aaa;font-style:italic"># 12</span>
 </span></span></code></pre></div><p><strong>Partial application</strong> fixes some arguments of an existing function and returns a new callable:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multiply</span>(a, b):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">multiply</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> a * b
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create specialized functions</span>
-</span></span><span style="display:flex;"><span>double <span style="color:#f92672">=</span> partial(multiply, <span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>triple <span style="color:#f92672">=</span> partial(multiply, <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create specialized functions</span>
+</span></span><span style="display:flex;"><span>double = partial(multiply, <span style="color:#099">2</span>)
+</span></span><span style="display:flex;"><span>triple = partial(multiply, <span style="color:#099">3</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(double(<span style="color:#ae81ff">5</span>))  <span style="color:#75715e"># 10</span>
-</span></span><span style="display:flex;"><span>print(triple(<span style="color:#ae81ff">4</span>))  <span style="color:#75715e"># 12</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(double(<span style="color:#099">5</span>))  <span style="color:#aaa;font-style:italic"># 10</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(triple(<span style="color:#099">4</span>))  <span style="color:#aaa;font-style:italic"># 12</span>
 </span></span></code></pre></div><p><strong>Currying changes the shape</strong> of a function; <strong>partial application configures</strong> a function.</p>
 <hr>
 <h2 id="where-functoolspartial-actually-helps">Where <code>functools.partial</code> actually helps</h2>
 <p>Partial application became useful to me once I started seeing it as a way to <strong>name behavior</strong>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Instead of repeating the same sorting logic</span>
-</span></span><span style="display:flex;"><span>fruits <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;apple&#34;</span>, <span style="color:#e6db74">&#34;banana&#34;</span>, <span style="color:#e6db74">&#34;cherry&#34;</span>, <span style="color:#e6db74">&#34;date&#34;</span>]
-</span></span><span style="display:flex;"><span>words <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>, <span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;code&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Instead of repeating the same sorting logic</span>
+</span></span><span style="display:flex;"><span>fruits = [<span style="color:#a50">&#34;apple&#34;</span>, <span style="color:#a50">&#34;banana&#34;</span>, <span style="color:#a50">&#34;cherry&#34;</span>, <span style="color:#a50">&#34;date&#34;</span>]
+</span></span><span style="display:flex;"><span>words = [<span style="color:#a50">&#34;hello&#34;</span>, <span style="color:#a50">&#34;world&#34;</span>, <span style="color:#a50">&#34;python&#34;</span>, <span style="color:#a50">&#34;code&#34;</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create reusable, named behaviors</span>
-</span></span><span style="display:flex;"><span>sort_by_length <span style="color:#f92672">=</span> partial(sorted, key<span style="color:#f92672">=</span>len)
-</span></span><span style="display:flex;"><span>sort_reverse <span style="color:#f92672">=</span> partial(sorted, reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create reusable, named behaviors</span>
+</span></span><span style="display:flex;"><span>sort_by_length = partial(<span style="color:#0aa">sorted</span>, key=<span style="color:#0aa">len</span>)
+</span></span><span style="display:flex;"><span>sort_reverse = partial(<span style="color:#0aa">sorted</span>, reverse=<span style="color:#00a">True</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(sort_by_length(fruits))   <span style="color:#75715e"># [&#39;date&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;]</span>
-</span></span><span style="display:flex;"><span>print(sort_reverse(words))      <span style="color:#75715e"># [&#39;world&#39;, &#39;python&#39;, &#39;hello&#39;, &#39;code&#39;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(sort_by_length(fruits))   <span style="color:#aaa;font-style:italic"># [&#39;date&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(sort_reverse(words))      <span style="color:#aaa;font-style:italic"># [&#39;world&#39;, &#39;python&#39;, &#39;hello&#39;, &#39;code&#39;]</span>
 </span></span></code></pre></div><p><code>sort_by_length</code> and <code>sort_reverse</code> communicate purpose clearly - no mental parsing required.</p>
 <hr>
 <h2 id="reducing-lambda-noise">Reducing lambda noise</h2>
 <p>Partial application helps clean up <code>map</code> and <code>filter</code> operations:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_tax</span>(price, tax_rate):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> price <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> tax_rate)
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">add_tax</span>(price, tax_rate):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> price * (<span style="color:#099">1</span> + tax_rate)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>prices <span style="color:#f92672">=</span> [<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">300</span>]
+</span></span><span style="display:flex;"><span>prices = [<span style="color:#099">100</span>, <span style="color:#099">200</span>, <span style="color:#099">150</span>, <span style="color:#099">300</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Before - lambda creates noise and repetition</span>
-</span></span><span style="display:flex;"><span>with_sales_tax <span style="color:#f92672">=</span> list(map(<span style="color:#66d9ef">lambda</span> p: add_tax(p, <span style="color:#ae81ff">0.08</span>), prices))
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Before - lambda creates noise and repetition</span>
+</span></span><span style="display:flex;"><span>with_sales_tax = <span style="color:#0aa">list</span>(<span style="color:#0aa">map</span>(<span style="color:#00a">lambda</span> p: add_tax(p, <span style="color:#099">0.08</span>), prices))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># After - partial creates clarity and reusability</span>
-</span></span><span style="display:flex;"><span>add_sales_tax <span style="color:#f92672">=</span> partial(add_tax, tax_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.08</span>)
-</span></span><span style="display:flex;"><span>with_sales_tax <span style="color:#f92672">=</span> list(map(add_sales_tax, prices))
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># After - partial creates clarity and reusability</span>
+</span></span><span style="display:flex;"><span>add_sales_tax = partial(add_tax, tax_rate=<span style="color:#099">0.08</span>)
+</span></span><span style="display:flex;"><span>with_sales_tax = <span style="color:#0aa">list</span>(<span style="color:#0aa">map</span>(add_sales_tax, prices))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(with_sales_tax)  <span style="color:#75715e"># [108.0, 216.0, 162.0, 324.0]</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(with_sales_tax)  <span style="color:#aaa;font-style:italic"># [108.0, 216.0, 162.0, 324.0]</span>
 </span></span></code></pre></div><p>The <code>add_sales_tax</code> function can be reused anywhere, and the intent is crystal clear.</p>
 <hr>
 <h2 id="configuration-now-execution-later">Configuration now, execution later</h2>
 <p>One of the most practical uses of <code>partial</code> is separating configuration from execution:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">logging</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Set up logger</span>
-</span></span><span style="display:flex;"><span>logger <span style="color:#f92672">=</span> logging<span style="color:#f92672">.</span>getLogger(<span style="color:#e6db74">&#34;PaymentService&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Set up logger</span>
+</span></span><span style="display:flex;"><span>logger = logging.getLogger(<span style="color:#a50">&#34;PaymentService&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configure different log levels with context</span>
-</span></span><span style="display:flex;"><span>log_payment_error <span style="color:#f92672">=</span> partial(logger<span style="color:#f92672">.</span>error, extra<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;payment&#34;</span>})
-</span></span><span style="display:flex;"><span>log_payment_info <span style="color:#f92672">=</span> partial(logger<span style="color:#f92672">.</span>info, extra<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;service&#34;</span>: <span style="color:#e6db74">&#34;payment&#34;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Configure different log levels with context</span>
+</span></span><span style="display:flex;"><span>log_payment_error = partial(logger.error, extra={<span style="color:#a50">&#34;service&#34;</span>: <span style="color:#a50">&#34;payment&#34;</span>})
+</span></span><span style="display:flex;"><span>log_payment_info = partial(logger.info, extra={<span style="color:#a50">&#34;service&#34;</span>: <span style="color:#a50">&#34;payment&#34;</span>})
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Usage throughout your code - clean and consistent</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">process_payment</span>(amount):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># payment logic here</span>
-</span></span><span style="display:flex;"><span>        log_payment_info(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Payment processed: $</span><span style="color:#e6db74">{</span>amount<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
-</span></span><span style="display:flex;"><span>        log_payment_error(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Payment failed: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Usage throughout your code - clean and consistent</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">process_payment</span>(amount):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#aaa;font-style:italic"># payment logic here</span>
+</span></span><span style="display:flex;"><span>        log_payment_info(<span style="color:#a50">f</span><span style="color:#a50">&#34;Payment processed: $</span><span style="color:#a50">{</span>amount<span style="color:#a50">}</span><span style="color:#a50">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">except</span> Exception <span style="color:#00a">as</span> e:
+</span></span><span style="display:flex;"><span>        log_payment_error(<span style="color:#a50">f</span><span style="color:#a50">&#34;Payment failed: </span><span style="color:#a50">{</span>e<span style="color:#a50">}</span><span style="color:#a50">&#34;</span>)
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Another example: API client configuration</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Another example: API client configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">requests</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Configure once</span>
-</span></span><span style="display:flex;"><span>api_get <span style="color:#f92672">=</span> partial(requests<span style="color:#f92672">.</span>get, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>, headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;MyApp/1.0&#34;</span>})
-</span></span><span style="display:flex;"><span>api_post <span style="color:#f92672">=</span> partial(requests<span style="color:#f92672">.</span>post, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>, headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;MyApp/1.0&#34;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Configure once</span>
+</span></span><span style="display:flex;"><span>api_get = partial(requests.get, timeout=<span style="color:#099">30</span>, headers={<span style="color:#a50">&#34;User-Agent&#34;</span>: <span style="color:#a50">&#34;MyApp/1.0&#34;</span>})
+</span></span><span style="display:flex;"><span>api_post = partial(requests.post, timeout=<span style="color:#099">30</span>, headers={<span style="color:#a50">&#34;User-Agent&#34;</span>: <span style="color:#a50">&#34;MyApp/1.0&#34;</span>})
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Use everywhere without repeating configuration</span>
-</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> api_get(<span style="color:#e6db74">&#34;https://api.example.com/users&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Use everywhere without repeating configuration</span>
+</span></span><span style="display:flex;"><span>response = api_get(<span style="color:#a50">&#34;https://api.example.com/users&#34;</span>)
 </span></span></code></pre></div><p>This keeps call sites clean and configuration centralized.</p>
 <hr>
 <h2 id="when-not-to-use-these-tools">When NOT to use these tools</h2>
 <p>Don&rsquo;t use partial application when it makes code harder to understand:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># BAD - Over-engineered for simple cases</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
-</span></span><span style="display:flex;"><span>add_one <span style="color:#f92672">=</span> partial(<span style="color:#66d9ef">lambda</span> x, y: x <span style="color:#f92672">+</span> y, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> add_one(<span style="color:#ae81ff">5</span>)  <span style="color:#75715e"># Just write: result = 5 + 1</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># BAD - Over-engineered for simple cases</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
+</span></span><span style="display:flex;"><span>add_one = partial(<span style="color:#00a">lambda</span> x, y: x + y, <span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span>result = add_one(<span style="color:#099">5</span>)  <span style="color:#aaa;font-style:italic"># Just write: result = 5 + 1</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># BAD - Too many layers of abstraction</span>
-</span></span><span style="display:flex;"><span>process_data <span style="color:#f92672">=</span> partial(partial(map, str<span style="color:#f92672">.</span>upper), [<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># BAD - Too many layers of abstraction</span>
+</span></span><span style="display:flex;"><span>process_data = partial(partial(<span style="color:#0aa">map</span>, <span style="color:#0aa">str</span>.upper), [<span style="color:#a50">&#34;hello&#34;</span>, <span style="color:#a50">&#34;world&#34;</span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># GOOD - Simple and direct</span>
-</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;hello&#34;</span>, <span style="color:#e6db74">&#34;world&#34;</span>]
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> [item<span style="color:#f92672">.</span>upper() <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> data]
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># GOOD - Simple and direct</span>
+</span></span><span style="display:flex;"><span>data = [<span style="color:#a50">&#34;hello&#34;</span>, <span style="color:#a50">&#34;world&#34;</span>]
+</span></span><span style="display:flex;"><span>result = [item.upper() <span style="color:#00a">for</span> item <span style="color:#00a">in</span> data]
 </span></span></code></pre></div><p>Use partial application when it <strong>names intent</strong> and <strong>reduces repetition</strong>. Skip it when a direct approach is clearer.</p>
 
 </content>

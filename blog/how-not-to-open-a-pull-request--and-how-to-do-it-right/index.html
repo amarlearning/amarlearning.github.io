@@ -460,18 +460,18 @@
 <li>Make sure each commit tells the story of <em>what changed and why</em>.</li>
 </ul>
 <p>Here&rsquo;s an example of good vs bad commit history:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ❌ Bad Commit History</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># ❌ Bad Commit History</span>
 </span></span><span style="display:flex;"><span>git log --oneline
 </span></span><span style="display:flex;"><span>c345678 final fix
 </span></span><span style="display:flex;"><span>d901234 actually final fix
 </span></span><span style="display:flex;"><span>e567890 formatting
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ✅ Good Commit History</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># ✅ Good Commit History</span>
 </span></span><span style="display:flex;"><span>git log --oneline
-</span></span><span style="display:flex;"><span>a123456 feat<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: add OAuth2 support <span style="color:#66d9ef">for</span> Google login
-</span></span><span style="display:flex;"><span>b789012 test<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: add integration tests <span style="color:#66d9ef">for</span> OAuth flow
-</span></span><span style="display:flex;"><span>c345678 refactor<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: extract OAuth config to separate file
-</span></span><span style="display:flex;"><span>d901234 docs<span style="color:#f92672">(</span>auth<span style="color:#f92672">)</span>: update README with OAuth setup steps
+</span></span><span style="display:flex;"><span>a123456 feat(auth): add OAuth2 support <span style="color:#00a">for</span> Google login
+</span></span><span style="display:flex;"><span>b789012 test(auth): add integration tests <span style="color:#00a">for</span> OAuth flow
+</span></span><span style="display:flex;"><span>c345678 refactor(auth): extract OAuth config to separate file
+</span></span><span style="display:flex;"><span>d901234 docs(auth): update README with OAuth setup steps
 </span></span></code></pre></div><h3 id="4-communicate-before-refactoring">4. Communicate Before Refactoring</h3>
 <ul>
 <li>If you are planning architectural overhauls or things like dependency injection, <strong>open an issue or conversation first.</strong></li>

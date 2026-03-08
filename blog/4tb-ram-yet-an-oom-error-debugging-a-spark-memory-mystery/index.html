@@ -413,7 +413,7 @@
 <li>Single executor per node, totaling 63 executors cluster-wide</li>
 </ul>
 <p>The job failed with this error:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory<span style="color:#f92672">(</span>0x00007f0a62000000, 494927872, 0<span style="color:#f92672">)</span> failed; error<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Not enough space&#39;</span> <span style="color:#f92672">(</span>errno<span style="color:#f92672">=</span>12<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00007f0a62000000, 494927872, 0) failed; <span style="color:#a00">error</span>=<span style="color:#a50">&#39;Not enough space&#39;</span> (<span style="color:#a00">errno</span>=12)
 </span></span></code></pre></div><p>At first glance, this error made little sense. Our cluster had plenty of RAM, yet the JVM couldn’t allocate memory properly. The failure suggested that the issue wasn’t a lack of overall memory, but rather how memory was being allocated within the executors.</p>
 <p>Our first instinct? Increase the cluster size. But was that really the right approach?</p>
 <h2 id="debugging-process-what-went-wrong">Debugging Process: What Went Wrong?</h2>
@@ -438,8 +438,8 @@
 <li>Major GC pauses due to excessive memory usage.</li>
 <li>Inefficient cleanup cycles, causing out-of-memory errors.</li>
 <li>We tried tuning GC with:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:OnOutOfMemoryError<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;kill -9 %p&#39;</span>
-</span></span><span style="display:flex;"><span>-XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:OnOutOfMemoryError=<span style="color:#a50">&#39;kill -9 %p&#39;</span>
+</span></span><span style="display:flex;"><span>-XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=<span style="color:#099">30</span>
 </span></span></code></pre></div></li>
 </ul>
 <p><strong>But the job still failed.</strong></p>

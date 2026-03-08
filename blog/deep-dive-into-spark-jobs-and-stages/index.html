@@ -414,33 +414,33 @@
 <h3 id="examples">Examples</h3>
 <p>Let&rsquo;s look at some code examples to understand these concepts better:</p>
 <p>Example 1: Narrow Transformations</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>createDataFrame([
-</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#ae81ff">100</span>),
-</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#ae81ff">200</span>),
-</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#ae81ff">300</span>),
-</span></span><span style="display:flex;"><span>    (<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#ae81ff">400</span>)
-</span></span><span style="display:flex;"><span>], [<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;category&#34;</span>, <span style="color:#e6db74">&#34;value&#34;</span>])
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df = spark.createDataFrame([
+</span></span><span style="display:flex;"><span>    (<span style="color:#099">1</span>, <span style="color:#a50">&#34;A&#34;</span>, <span style="color:#099">100</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#099">2</span>, <span style="color:#a50">&#34;B&#34;</span>, <span style="color:#099">200</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#099">3</span>, <span style="color:#a50">&#34;A&#34;</span>, <span style="color:#099">300</span>),
+</span></span><span style="display:flex;"><span>    (<span style="color:#099">4</span>, <span style="color:#a50">&#34;B&#34;</span>, <span style="color:#099">400</span>)
+</span></span><span style="display:flex;"><span>], [<span style="color:#a50">&#34;id&#34;</span>, <span style="color:#a50">&#34;category&#34;</span>, <span style="color:#a50">&#34;value&#34;</span>])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>df_filtered <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>filter(col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">200</span>)
-</span></span><span style="display:flex;"><span>df_mapped <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>withColumn(<span style="color:#e6db74">&#34;ratio&#34;</span>, col(<span style="color:#e6db74">&#34;value&#34;</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>df_filtered = df.filter(col(<span style="color:#a50">&#34;value&#34;</span>) &gt; <span style="color:#099">200</span>)
+</span></span><span style="display:flex;"><span>df_mapped = df.withColumn(<span style="color:#a50">&#34;ratio&#34;</span>, col(<span style="color:#a50">&#34;value&#34;</span>) / <span style="color:#099">100</span>)
 </span></span></code></pre></div><p>Example 2: Wide Transformations</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># These operations require data shuffle between partitions</span>
-</span></span><span style="display:flex;"><span>df_grouped <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>agg(sum(<span style="color:#e6db74">&#34;value&#34;</span>))  <span style="color:#75715e"># Wide: requires shuffle/sort </span>
-</span></span><span style="display:flex;"><span>df_windowed <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>withColumn( 
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;running_total&#34;</span>,
-</span></span><span style="display:flex;"><span>    sum(<span style="color:#e6db74">&#34;value&#34;</span>)<span style="color:#f92672">.</span>over(Window<span style="color:#f92672">.</span>partitionBy(<span style="color:#e6db74">&#34;category&#34;</span>)<span style="color:#f92672">.</span>orderBy(<span style="color:#e6db74">&#34;value&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># These operations require data shuffle between partitions</span>
+</span></span><span style="display:flex;"><span>df_grouped = df.groupBy(<span style="color:#a50">&#34;category&#34;</span>).agg(<span style="color:#0aa">sum</span>(<span style="color:#a50">&#34;value&#34;</span>))  <span style="color:#aaa;font-style:italic"># Wide: requires shuffle/sort </span>
+</span></span><span style="display:flex;"><span>df_windowed = df.withColumn( 
+</span></span><span style="display:flex;"><span>    <span style="color:#a50">&#34;running_total&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#0aa">sum</span>(<span style="color:#a50">&#34;value&#34;</span>).over(Window.partitionBy(<span style="color:#a50">&#34;category&#34;</span>).orderBy(<span style="color:#a50">&#34;value&#34;</span>))
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><p>Example 3: Understanding Jobs and Stages</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Action 1: Reading data</span>
-</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> spark<span style="color:#f92672">.</span>read<span style="color:#f92672">.</span>parquet(<span style="color:#e6db74">&#39;/path/to/parquet&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Action 1: Reading data</span>
+</span></span><span style="display:flex;"><span>df = spark.read.parquet(<span style="color:#a50">&#39;/path/to/parquet&#39;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Multiple transformations leading to multiple stages</span>
-</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> (df
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>repartition(numPartitions<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)       <span style="color:#75715e"># Wide ransformation (shuffle)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>where(<span style="color:#e6db74">&#34;age &gt; 25&#34;</span>)                       <span style="color:#75715e"># Narrow transformation</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>select(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;country&#34;</span>)         <span style="color:#75715e"># Narrow transformation</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>groupBy(<span style="color:#e6db74">&#34;country&#34;</span>)                  <span style="color:#75715e"># Wide transformation (shuffle)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">.</span>count()                                       <span style="color:#75715e"># Action 2: triggers job execution</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Multiple transformations leading to multiple stages</span>
+</span></span><span style="display:flex;"><span>result = (df
+</span></span><span style="display:flex;"><span>    .repartition(numPartitions=<span style="color:#099">2</span>)       <span style="color:#aaa;font-style:italic"># Wide ransformation (shuffle)</span>
+</span></span><span style="display:flex;"><span>    .where(<span style="color:#a50">&#34;age &gt; 25&#34;</span>)                       <span style="color:#aaa;font-style:italic"># Narrow transformation</span>
+</span></span><span style="display:flex;"><span>    .select(<span style="color:#a50">&#34;name&#34;</span>, <span style="color:#a50">&#34;country&#34;</span>)         <span style="color:#aaa;font-style:italic"># Narrow transformation</span>
+</span></span><span style="display:flex;"><span>    .groupBy(<span style="color:#a50">&#34;country&#34;</span>)                  <span style="color:#aaa;font-style:italic"># Wide transformation (shuffle)</span>
+</span></span><span style="display:flex;"><span>    .count()                                       <span style="color:#aaa;font-style:italic"># Action 2: triggers job execution</span>
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><h2 id="jobs-and-stages">Jobs and Stages</h2>
 <p>Spark creates a job for each action called. A single job can contain a series of actions, but Spark will optimize these actions into a single logical plan before executing it. The logical plan is then broken into physical stages based on wide dependencies. If no wide dependency exists, the entire logical plan results in a single stage.</p>

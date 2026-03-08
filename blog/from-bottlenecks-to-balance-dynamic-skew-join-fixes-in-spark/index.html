@@ -402,12 +402,12 @@
 <p>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why <strong>dynamic skew join optimization</strong> is not just useful, but often essential.</p>
 <h2 id="the-problem-setup">The Problem Setup</h2>
 <p>Assume we have two large tables and we&rsquo;re trying to join them using the following Spark SQL:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> large_table_one
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">JOIN</span> large_table_two
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">ON</span> large_table_one.<span style="color:#66d9ef">key</span> <span style="color:#f92672">=</span> large_table_two.<span style="color:#66d9ef">key</span>
-</span></span></code></pre></div><p>Or using the equivalent Spark DataFrame API:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df1<span style="color:#f92672">.</span>join(df2, df1<span style="color:#f92672">.</span>key <span style="color:#f92672">==</span> df2<span style="color:#f92672">.</span>key, <span style="color:#e6db74">&#34;inner&#34;</span>)<span style="color:#f92672">.</span>filter(<span style="color:#e6db74">&#34;value == &#39;random&#39;&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#00a">SELECT</span><span style="color:#bbb"> </span>*<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#00a">FROM</span><span style="color:#bbb"> </span>large_table_one<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">	</span><span style="color:#00a">JOIN</span><span style="color:#bbb"> </span>large_table_two<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">	</span><span style="color:#00a">ON</span><span style="color:#bbb"> </span>large_table_one.<span style="color:#00a">key</span><span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>large_table_two.<span style="color:#00a">key</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>Or using the equivalent Spark DataFrame API:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df1.join(df2, df1.key == df2.key, <span style="color:#a50">&#34;inner&#34;</span>).filter(<span style="color:#a50">&#34;value == &#39;random&#39;&#34;</span>)
 </span></span></code></pre></div><p>Since both tables are large, we expect a <strong>sort-merge join</strong> to occur. When you run the job and inspect the execution plan, you’ll notice <code>Exchange</code> nodes — one for each table — indicating shuffle operations. Each table is being <strong>partitioned by the join key</strong>.</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png" alt="sort-merge-join-spark-plan"></p>
 <hr>
@@ -436,8 +436,8 @@
 <hr>
 <h2 id="enter-adaptive-query-execution-aqe">Enter Adaptive Query Execution (AQE)</h2>
 <p>Spark’s <strong>Adaptive Query Execution (AQE)</strong> provides an elegant solution. Enable AQE and skew join optimization with the following configurations:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>enabled <span style="color:#f92672">=</span> true
-</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>enabled <span style="color:#f92672">=</span> true
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>spark.sql.adaptive.enabled = true
+</span></span><span style="display:flex;"><span>spark.sql.adaptive.skewjoin.enabled = true
 </span></span></code></pre></div><p><strong>Version Note:</strong> AQE was introduced in Spark 3.0 and has been improved in subsequent versions. Make sure you&rsquo;re running Spark 3.0 or later to use these features.</p>
 <p>Now, Spark monitors the actual size of shuffled partitions at runtime. If it detects skew, it dynamically rewrites the execution plan <strong>on the fly</strong>.</p>
 <hr>
@@ -455,9 +455,9 @@
 <hr>
 <h2 id="fine-tuning-skew-detection">Fine-Tuning Skew Detection</h2>
 <p>Two important configurations let you control when Spark considers a partition to be skewed:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># default values</span>
-</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>skewedPartitionFactor <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>spark<span style="color:#f92672">.</span>sql<span style="color:#f92672">.</span>adaptive<span style="color:#f92672">.</span>skewjoin<span style="color:#f92672">.</span>skewedPartitionThresholdInBytes <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>MB
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># default values</span>
+</span></span><span style="display:flex;"><span>spark.sql.adaptive.skewjoin.skewedPartitionFactor = <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span>spark.sql.adaptive.skewjoin.skewedPartitionThresholdInBytes = <span style="color:#099">256</span>MB
 </span></span></code></pre></div><p>Let’s break these down:</p>
 <ul>
 <li><strong><code>skewedPartitionFactor = 5</code></strong>: Spark compares the size of each partition with the median partition size. If a partition is <strong>5 times larger than the median</strong>, it is a candidate for being skewed.</li>

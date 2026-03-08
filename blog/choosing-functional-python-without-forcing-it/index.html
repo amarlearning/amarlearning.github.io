@@ -445,23 +445,23 @@
 <h3 id="pattern-1-existence-checks-using-any">Pattern 1: Existence checks using <code>any</code></h3>
 <p>Many problems boil down to a simple question: <em>does something exist?</em></p>
 <p>Instead of writing loops that return early, it’s often clearer to express that intent directly:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sqrt
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">math</span> <span style="color:#00a">import</span> sqrt
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">17</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Returns True because 17 has no divisors other than 1 and itself</span>
-</span></span><span style="display:flex;"><span>has_no_divisors <span style="color:#f92672">=</span> <span style="color:#f92672">not</span> any(n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>n = <span style="color:#099">17</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Returns True because 17 has no divisors other than 1 and itself</span>
+</span></span><span style="display:flex;"><span>has_no_divisors = <span style="color:#00a">not</span> <span style="color:#0aa">any</span>(n % i == <span style="color:#099">0</span> <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(<span style="color:#099">2</span>, <span style="color:#0aa">int</span>(sqrt(n)) + <span style="color:#099">1</span>))
 </span></span></code></pre></div><p>This reads almost like English: there does not exist a divisor. Once I started framing problems this way, a lot of validation and checking logic became easier to reason about.</p>
 <hr>
 <h3 id="pattern-2-tuple-keys-in-sorted">Pattern 2: Tuple keys in <code>sorted</code></h3>
 <p>Sorting often involves more than one rule. Python’s tuple comparison makes this surprisingly clean.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Alice&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">90</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">20</span>},
-</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Bob&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">90</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">19</span>},
-</span></span><span style="display:flex;"><span>    {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Charlie&#34;</span>, <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#ae81ff">80</span>, <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">21</span>}
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>students = [
+</span></span><span style="display:flex;"><span>    {<span style="color:#a50">&#34;name&#34;</span>: <span style="color:#a50">&#34;Alice&#34;</span>, <span style="color:#a50">&#34;score&#34;</span>: <span style="color:#099">90</span>, <span style="color:#a50">&#34;age&#34;</span>: <span style="color:#099">20</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a50">&#34;name&#34;</span>: <span style="color:#a50">&#34;Bob&#34;</span>, <span style="color:#a50">&#34;score&#34;</span>: <span style="color:#099">90</span>, <span style="color:#a50">&#34;age&#34;</span>: <span style="color:#099">19</span>},
+</span></span><span style="display:flex;"><span>    {<span style="color:#a50">&#34;name&#34;</span>: <span style="color:#a50">&#34;Charlie&#34;</span>, <span style="color:#a50">&#34;score&#34;</span>: <span style="color:#099">80</span>, <span style="color:#a50">&#34;age&#34;</span>: <span style="color:#099">21</span>}
 </span></span><span style="display:flex;"><span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Sort by score (descending), then by age (ascending)</span>
-</span></span><span style="display:flex;"><span>sorted_students <span style="color:#f92672">=</span> sorted(students, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> s: (<span style="color:#f92672">-</span>s[<span style="color:#e6db74">&#34;score&#34;</span>], s[<span style="color:#e6db74">&#34;age&#34;</span>]))
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Sort by score (descending), then by age (ascending)</span>
+</span></span><span style="display:flex;"><span>sorted_students = <span style="color:#0aa">sorted</span>(students, key=<span style="color:#00a">lambda</span> s: (-s[<span style="color:#a50">&#34;score&#34;</span>], s[<span style="color:#a50">&#34;age&#34;</span>]))
 </span></span></code></pre></div><p>Here, the intent is encoded directly in the key:</p>
 <ul>
 <li>Score in descending order (negated).</li>
@@ -471,37 +471,37 @@
 <hr>
 <h3 id="pattern-3-reduce-is-for-building-structure">Pattern 3: <code>reduce</code> is for building structure</h3>
 <p><code>reduce</code> works best when you are <em>accumulating</em> something — a dictionary, a count, or a combined result.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> reduce
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>s <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;abracadabra&#34;</span>
+</span></span><span style="display:flex;"><span>s = <span style="color:#a50">&#34;abracadabra&#34;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>counts <span style="color:#f92672">=</span> reduce(
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">lambda</span> acc, c: {<span style="color:#f92672">**</span>acc, c: acc<span style="color:#f92672">.</span>get(c, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>},
+</span></span><span style="display:flex;"><span>counts = reduce(
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">lambda</span> acc, c: {**acc, c: acc.get(c, <span style="color:#099">0</span>) + <span style="color:#099">1</span>},
 </span></span><span style="display:flex;"><span>    s,
 </span></span><span style="display:flex;"><span>    {}
 </span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Result: {&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;r&#39;: 2, &#39;c&#39;: 1, &#39;d&#39;: 1}</span>
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Result: {&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;r&#39;: 2, &#39;c&#39;: 1, &#39;d&#39;: 1}</span>
 </span></span></code></pre></div><p><em>Note: While this demonstrates the pattern, for simple counting, <code>collections.Counter</code> is usually preferred in production code.</em></p>
 <p>Where <code>reduce</code> tends to fall apart is control flow. If a solution feels hard to read, that’s often a sign the problem wants a loop instead.</p>
 <hr>
 <h2 id="a-quick-before--after-example">A quick before → after example</h2>
 <p>One pattern that helped anchor all of this for me was rewriting a small loop and asking a simple question: <em>is this transformation or state management?</em></p>
 <h3 id="before-imperative-loop">Before: imperative loop</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> math <span style="color:#f92672">import</span> sqrt
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">math</span> <span style="color:#00a">import</span> sqrt
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">is_prime</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">if</span> n &lt; <span style="color:#099">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">return</span> <span style="color:#00a">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(<span style="color:#099">2</span>, <span style="color:#0aa">int</span>(sqrt(n)) + <span style="color:#099">1</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">if</span> n % i == <span style="color:#099">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#00a">return</span> <span style="color:#00a">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> <span style="color:#00a">True</span>
 </span></span></code></pre></div><p>This works, but the intent is buried inside the loop.</p>
 <h3 id="after-functional-style">After: functional style</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#f92672">not</span> any(n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, int(sqrt(n)) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">is_prime</span>(n):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">if</span> n &lt; <span style="color:#099">2</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">return</span> <span style="color:#00a">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> <span style="color:#00a">not</span> <span style="color:#0aa">any</span>(n % i == <span style="color:#099">0</span> <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(<span style="color:#099">2</span>, <span style="color:#0aa">int</span>(sqrt(n)) + <span style="color:#099">1</span>))
 </span></span></code></pre></div><p>Here, the logic reads closer to the actual rule: <em>a prime has no divisors</em>. No explicit looping is required.</p>
 <hr>
 <h2 id="generators-the-mental-model-that-helped">Generators: the mental model that helped</h2>
@@ -510,23 +510,23 @@
 <blockquote>
 <p>A <code>for</code> loop doesn’t care about <code>yield</code>. It only cares whether an object is iterable.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_one</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Generator expression (lazy)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">gen_one</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Generator expression (lazy)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> (i <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(<span style="color:#099">5</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_two</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Explicit generator delegation</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> range(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">gen_two</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Explicit generator delegation</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">yield from</span> <span style="color:#0aa">range</span>(<span style="color:#099">5</span>)
 </span></span></code></pre></div><p>Both return generator objects. The difference is who controls the iteration. <code>yield from</code> allows you to delegate part of the generation process to another iterable explicitly.</p>
 <hr>
 <h2 id="filtering-vs-conditional-mapping">Filtering vs conditional mapping</h2>
 <p>These two look similar but mean very different things.</p>
 <p><strong>Filtering:</strong> Keep only the even numbers.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>evens <span style="color:#f92672">=</span> (i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n) <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n = <span style="color:#099">10</span>
+</span></span><span style="display:flex;"><span>evens = (i <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(n) <span style="color:#00a">if</span> i % <span style="color:#099">2</span> == <span style="color:#099">0</span>)
 </span></span></code></pre></div><p><strong>Conditional mapping:</strong> Keep all numbers, but change the odd ones to 0.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># if / else BEFORE the &#39;for&#39; transforms</span>
-</span></span><span style="display:flex;"><span>transformed <span style="color:#f92672">=</span> (i <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n))
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># if / else BEFORE the &#39;for&#39; transforms</span>
+</span></span><span style="display:flex;"><span>transformed = (i <span style="color:#00a">if</span> i % <span style="color:#099">2</span> == <span style="color:#099">0</span> <span style="color:#00a">else</span> <span style="color:#099">0</span> <span style="color:#00a">for</span> i <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(n))
 </span></span></code></pre></div><p>Rule of thumb:</p>
 <ul>
 <li><code>if</code> after the <code>for</code> <strong>filters</strong>.</li>
@@ -535,11 +535,11 @@
 <hr>
 <h2 id="zip-aligning-data-instead-of-indexing"><code>zip</code>: aligning data instead of indexing</h2>
 <p><code>zip</code> became much clearer to me once I stopped thinking about indices and started thinking about <em>alignment</em>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;amar&#34;</span>, <span style="color:#e6db74">&#34;john&#34;</span>, <span style="color:#e6db74">&#34;alice&#34;</span>]
-</span></span><span style="display:flex;"><span>scores <span style="color:#f92672">=</span> [<span style="color:#ae81ff">90</span>, <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">85</span>]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>names = [<span style="color:#a50">&#34;amar&#34;</span>, <span style="color:#a50">&#34;john&#34;</span>, <span style="color:#a50">&#34;alice&#34;</span>]
+</span></span><span style="display:flex;"><span>scores = [<span style="color:#099">90</span>, <span style="color:#099">80</span>, <span style="color:#099">85</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>aligned <span style="color:#f92672">=</span> list(zip(names, scores))
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Result: [(&#39;amar&#39;, 90), (&#39;john&#39;, 80), (&#39;alice&#39;, 85)]</span>
+</span></span><span style="display:flex;"><span>aligned = <span style="color:#0aa">list</span>(<span style="color:#0aa">zip</span>(names, scores))
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Result: [(&#39;amar&#39;, 90), (&#39;john&#39;, 80), (&#39;alice&#39;, 85)]</span>
 </span></span></code></pre></div><p>This expresses the idea that these two collections belong together, position by position.</p>
 <p>A simple mental shortcut I use:</p>
 <ul>
@@ -547,21 +547,21 @@
 <li><code>zip</code> aligns values.</li>
 </ul>
 <h3 id="unzipping-and-the-iterator-gotcha">Unzipping (and the iterator gotcha)</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pairs <span style="color:#f92672">=</span> [(<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#34;c&#34;</span>, <span style="color:#ae81ff">3</span>)]
-</span></span><span style="display:flex;"><span>letters, numbers <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>pairs)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pairs = [(<span style="color:#a50">&#34;a&#34;</span>, <span style="color:#099">1</span>), (<span style="color:#a50">&#34;b&#34;</span>, <span style="color:#099">2</span>), (<span style="color:#a50">&#34;c&#34;</span>, <span style="color:#099">3</span>)]
+</span></span><span style="display:flex;"><span>letters, numbers = <span style="color:#0aa">zip</span>(*pairs)
 </span></span></code></pre></div><p>One important detail: <code>zip</code> returns an iterator. If you consume it once, it’s exhausted. If you need to use the data multiple times, convert it to a list first.</p>
 <hr>
 <h2 id="functoolspartial-pre-filling-intent"><code>functools.partial</code>: pre-filling intent</h2>
 <p>I found <code>partial</code> useful once I stopped seeing it as an optimization and started seeing it as a way to <em>name behavior</em>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> partial
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">functools</span> <span style="color:#00a">import</span> partial
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">multiply</span>(x, factor):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> factor
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">multiply</span>(x, factor):
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> x * factor
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create a new function that always multiplies by 2</span>
-</span></span><span style="display:flex;"><span>double <span style="color:#f92672">=</span> partial(multiply, factor<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Create a new function that always multiplies by 2</span>
+</span></span><span style="display:flex;"><span>double = partial(multiply, factor=<span style="color:#099">2</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(double(<span style="color:#ae81ff">10</span>)) <span style="color:#75715e"># 20</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(double(<span style="color:#099">10</span>)) <span style="color:#aaa;font-style:italic"># 20</span>
 </span></span></code></pre></div><p>Instead of repeating the same lambda everywhere, <code>partial</code> makes the intent explicit and reusable.</p>
 <hr>
 <h2 id="a-closing-thought">A closing thought</h2>

@@ -456,30 +456,30 @@
 <hr>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="install">Install</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install spot-optimizer
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pip install spot-optimizer
 </span></span></code></pre></div><h3 id="api">API</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> spot_optimizer <span style="color:#f92672">import</span> optimize
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">spot_optimizer</span> <span style="color:#00a">import</span> optimize
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>plan <span style="color:#f92672">=</span> optimize(
-</span></span><span style="display:flex;"><span>    cores<span style="color:#f92672">=</span><span style="color:#ae81ff">64</span>,
-</span></span><span style="display:flex;"><span>    memory<span style="color:#f92672">=</span><span style="color:#ae81ff">256</span>,
-</span></span><span style="display:flex;"><span>    region<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;us-east-1&#34;</span>,
-</span></span><span style="display:flex;"><span>    ssd_only<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span>    arm_instances<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>,
-</span></span><span style="display:flex;"><span>    instance_family<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;m6i&#34;</span>, <span style="color:#e6db74">&#34;r6i&#34;</span>],
-</span></span><span style="display:flex;"><span>    mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fault_tolerance&#34;</span>,
+</span></span><span style="display:flex;"><span>plan = optimize(
+</span></span><span style="display:flex;"><span>    cores=<span style="color:#099">64</span>,
+</span></span><span style="display:flex;"><span>    memory=<span style="color:#099">256</span>,
+</span></span><span style="display:flex;"><span>    region=<span style="color:#a50">&#34;us-east-1&#34;</span>,
+</span></span><span style="display:flex;"><span>    ssd_only=<span style="color:#00a">True</span>,
+</span></span><span style="display:flex;"><span>    arm_instances=<span style="color:#00a">False</span>,
+</span></span><span style="display:flex;"><span>    instance_family=[<span style="color:#a50">&#34;m6i&#34;</span>, <span style="color:#a50">&#34;r6i&#34;</span>],
+</span></span><span style="display:flex;"><span>    mode=<span style="color:#a50">&#34;fault_tolerance&#34;</span>,
 </span></span><span style="display:flex;"><span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(plan)  <span style="color:#75715e"># example: {&#34;instances&#34;: {&#34;type&#34;: &#34;m6i.4xlarge&#34;, &#34;count&#34;: 4}, &#34;mode&#34;: &#34;fault_tolerance&#34;, ...}</span>
+</span></span><span style="display:flex;"><span><span style="color:#0aa">print</span>(plan)  <span style="color:#aaa;font-style:italic"># example: {&#34;instances&#34;: {&#34;type&#34;: &#34;m6i.4xlarge&#34;, &#34;count&#34;: 4}, &#34;mode&#34;: &#34;fault_tolerance&#34;, ...}</span>
 </span></span></code></pre></div><h3 id="cli">CLI</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>spot-optimizer <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --cores <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --memory <span style="color:#ae81ff">256</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --region us-east-1 <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --ssd-only <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --no-arm <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --instance-family m6i r6i <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --mode fault_tolerance
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>spot-optimizer <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --cores <span style="color:#099">64</span> <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --memory <span style="color:#099">256</span> <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --region us-east-1 <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --ssd-only <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --no-arm <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --instance-family m6i r6i <span style="color:#a50">\
+</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>  --mode fault_tolerance
 </span></span></code></pre></div><hr>
 <h2 id="spot-optimizer-vs-ec2spot-fleet">Spot Optimizer vs EC2/Spot Fleet</h2>
 <table>
@@ -522,45 +522,45 @@
 <hr>
 <h2 id="integration-with-ec2-fleet">Integration with EC2 Fleet</h2>
 <p>Take Spot Optimizer&rsquo;s output and pass it to <code>LaunchTemplateConfigs[].Overrides</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> boto3
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> spot_optimizer <span style="color:#f92672">import</span> optimize
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">boto3</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">spot_optimizer</span> <span style="color:#00a">import</span> optimize
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">launch_optimized_fleet</span>(cores: int, memory: int, region: str):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Get recommendations from Spot Optimizer</span>
-</span></span><span style="display:flex;"><span>    plan <span style="color:#f92672">=</span> optimize(cores<span style="color:#f92672">=</span>cores, memory<span style="color:#f92672">=</span>memory, region<span style="color:#f92672">=</span>region, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fault_tolerance&#34;</span>)
-</span></span><span style="display:flex;"><span>    itype <span style="color:#f92672">=</span> plan[<span style="color:#e6db74">&#34;instances&#34;</span>][<span style="color:#e6db74">&#34;type&#34;</span>]
-</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> plan[<span style="color:#e6db74">&#34;instances&#34;</span>][<span style="color:#e6db74">&#34;count&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#00a">def</span> <span style="color:#0a0">launch_optimized_fleet</span>(cores: <span style="color:#0aa">int</span>, memory: <span style="color:#0aa">int</span>, region: <span style="color:#0aa">str</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Get recommendations from Spot Optimizer</span>
+</span></span><span style="display:flex;"><span>    plan = optimize(cores=cores, memory=memory, region=region, mode=<span style="color:#a50">&#34;fault_tolerance&#34;</span>)
+</span></span><span style="display:flex;"><span>    itype = plan[<span style="color:#a50">&#34;instances&#34;</span>][<span style="color:#a50">&#34;type&#34;</span>]
+</span></span><span style="display:flex;"><span>    count = plan[<span style="color:#a50">&#34;instances&#34;</span>][<span style="color:#a50">&#34;count&#34;</span>]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Diversify across AZs; add sibling instance types if you want more pools</span>
-</span></span><span style="display:flex;"><span>    overrides <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>        {<span style="color:#e6db74">&#34;InstanceType&#34;</span>: itype, <span style="color:#e6db74">&#34;AvailabilityZone&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>region<span style="color:#e6db74">}{</span>az<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>}
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> az <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#aaa;font-style:italic"># Diversify across AZs; add sibling instance types if you want more pools</span>
+</span></span><span style="display:flex;"><span>    overrides = [
+</span></span><span style="display:flex;"><span>        {<span style="color:#a50">&#34;InstanceType&#34;</span>: itype, <span style="color:#a50">&#34;AvailabilityZone&#34;</span>: <span style="color:#a50">f</span><span style="color:#a50">&#34;</span><span style="color:#a50">{</span>region<span style="color:#a50">}{</span>az<span style="color:#a50">}</span><span style="color:#a50">&#34;</span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#00a">for</span> az <span style="color:#00a">in</span> (<span style="color:#a50">&#34;a&#34;</span>, <span style="color:#a50">&#34;b&#34;</span>, <span style="color:#a50">&#34;c&#34;</span>)
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ec2 <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#34;ec2&#34;</span>, region_name<span style="color:#f92672">=</span>region)
+</span></span><span style="display:flex;"><span>    ec2 = boto3.client(<span style="color:#a50">&#34;ec2&#34;</span>, region_name=region)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    resp <span style="color:#f92672">=</span> ec2<span style="color:#f92672">.</span>create_fleet(
-</span></span><span style="display:flex;"><span>        LaunchTemplateConfigs<span style="color:#f92672">=</span>[
+</span></span><span style="display:flex;"><span>    resp = ec2.create_fleet(
+</span></span><span style="display:flex;"><span>        LaunchTemplateConfigs=[
 </span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;LaunchTemplateSpecification&#34;</span>: {
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;LaunchTemplateName&#34;</span>: <span style="color:#e6db74">&#34;my-workload-template&#34;</span>,
-</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;Version&#34;</span>: <span style="color:#e6db74">&#34;$Latest&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#a50">&#34;LaunchTemplateSpecification&#34;</span>: {
+</span></span><span style="display:flex;"><span>                    <span style="color:#a50">&#34;LaunchTemplateName&#34;</span>: <span style="color:#a50">&#34;my-workload-template&#34;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#a50">&#34;Version&#34;</span>: <span style="color:#a50">&#34;$Latest&#34;</span>,
 </span></span><span style="display:flex;"><span>                },
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Overrides&#34;</span>: overrides,
+</span></span><span style="display:flex;"><span>                <span style="color:#a50">&#34;Overrides&#34;</span>: overrides,
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>        ],
-</span></span><span style="display:flex;"><span>        TargetCapacitySpecification<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;TotalTargetCapacity&#34;</span>: count,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;DefaultTargetCapacityType&#34;</span>: <span style="color:#e6db74">&#34;spot&#34;</span>,
+</span></span><span style="display:flex;"><span>        TargetCapacitySpecification={
+</span></span><span style="display:flex;"><span>            <span style="color:#a50">&#34;TotalTargetCapacity&#34;</span>: count,
+</span></span><span style="display:flex;"><span>            <span style="color:#a50">&#34;DefaultTargetCapacityType&#34;</span>: <span style="color:#a50">&#34;spot&#34;</span>,
 </span></span><span style="display:flex;"><span>        },
-</span></span><span style="display:flex;"><span>        Type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;maintain&#34;</span>,  <span style="color:#75715e"># keep capacity steady</span>
-</span></span><span style="display:flex;"><span>        SpotOptions<span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;AllocationStrategy&#34;</span>: <span style="color:#e6db74">&#34;price-capacity-optimized&#34;</span>,  <span style="color:#75715e"># recommended</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;InstanceInterruptionBehavior&#34;</span>: <span style="color:#e6db74">&#34;terminate&#34;</span>,
+</span></span><span style="display:flex;"><span>        Type=<span style="color:#a50">&#34;maintain&#34;</span>,  <span style="color:#aaa;font-style:italic"># keep capacity steady</span>
+</span></span><span style="display:flex;"><span>        SpotOptions={
+</span></span><span style="display:flex;"><span>            <span style="color:#a50">&#34;AllocationStrategy&#34;</span>: <span style="color:#a50">&#34;price-capacity-optimized&#34;</span>,  <span style="color:#aaa;font-style:italic"># recommended</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a50">&#34;InstanceInterruptionBehavior&#34;</span>: <span style="color:#a50">&#34;terminate&#34;</span>,
 </span></span><span style="display:flex;"><span>        },
 </span></span><span style="display:flex;"><span>    )
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> resp[<span style="color:#e6db74">&#34;FleetId&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#00a">return</span> resp[<span style="color:#a50">&#34;FleetId&#34;</span>]
 </span></span></code></pre></div><h3 id="best-practices-for-ec2-fleet-integration">Best practices for EC2 Fleet integration</h3>
 <ul>
 <li><strong>Region‑scoped</strong>: create one fleet per region.</li>
@@ -572,16 +572,16 @@
 <hr>
 <h2 id="integration-with-spot-fleet">Integration with Spot Fleet</h2>
 <p>If you&rsquo;re using the older Spot Fleet service, populate Launch Specifications/Overrides with the recommended instance types:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;SpotFleetRequestConfig&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;IamFleetRole&#34;</span>: <span style="color:#e6db74">&#34;arn:aws:iam::&lt;account&gt;:role/aws-ec2-spot-fleet-role&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;TargetCapacity&#34;</span>: <span style="color:#ae81ff">8</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;AllocationStrategy&#34;</span>: <span style="color:#e6db74">&#34;priceCapacityOptimized&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;LaunchSpecifications&#34;</span>: [
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#1e90ff;font-weight:bold">&#34;SpotFleetRequestConfig&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#1e90ff;font-weight:bold">&#34;IamFleetRole&#34;</span>: <span style="color:#a50">&#34;arn:aws:iam::&lt;account&gt;:role/aws-ec2-spot-fleet-role&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#1e90ff;font-weight:bold">&#34;TargetCapacity&#34;</span>: <span style="color:#099">8</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#1e90ff;font-weight:bold">&#34;AllocationStrategy&#34;</span>: <span style="color:#a50">&#34;priceCapacityOptimized&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#1e90ff;font-weight:bold">&#34;LaunchSpecifications&#34;</span>: [
 </span></span><span style="display:flex;"><span>      {
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;ImageId&#34;</span>: <span style="color:#e6db74">&#34;ami-12345678&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;InstanceType&#34;</span>: <span style="color:#e6db74">&#34;m6i.2xlarge&#34;</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;SubnetId&#34;</span>: <span style="color:#e6db74">&#34;subnet-12345678&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#1e90ff;font-weight:bold">&#34;ImageId&#34;</span>: <span style="color:#a50">&#34;ami-12345678&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#1e90ff;font-weight:bold">&#34;InstanceType&#34;</span>: <span style="color:#a50">&#34;m6i.2xlarge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#1e90ff;font-weight:bold">&#34;SubnetId&#34;</span>: <span style="color:#a50">&#34;subnet-12345678&#34;</span>
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>  }
@@ -612,15 +612,15 @@
 <h2 id="advanced-filtering-options">Advanced Filtering Options</h2>
 <p>Filter by EMR version, choose ARM (Graviton) or x86, enforce SSD-only storage, and constrain by families like <code>m6i</code>/<code>r6i</code>. The goal: your shortlist is runnable and optimized, not just cheap.</p>
 <h3 id="example-with-all-filters">Example with all filters</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plan <span style="color:#f92672">=</span> optimize(
-</span></span><span style="display:flex;"><span>    cores<span style="color:#f92672">=</span><span style="color:#ae81ff">128</span>,
-</span></span><span style="display:flex;"><span>    memory<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span>,
-</span></span><span style="display:flex;"><span>    region<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;us-west-2&#34;</span>,
-</span></span><span style="display:flex;"><span>    ssd_only<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,           <span style="color:#75715e"># Only SSD-backed instances</span>
-</span></span><span style="display:flex;"><span>    arm_instances<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,      <span style="color:#75715e"># Include ARM/Graviton instances</span>
-</span></span><span style="display:flex;"><span>    instance_family<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;m6i&#34;</span>, <span style="color:#e6db74">&#34;m6a&#34;</span>, <span style="color:#e6db74">&#34;r6i&#34;</span>],  <span style="color:#75715e"># Specific families</span>
-</span></span><span style="display:flex;"><span>    emr_version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;6.4.0&#34;</span>,     <span style="color:#75715e"># EMR compatibility</span>
-</span></span><span style="display:flex;"><span>    mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;balanced&#34;</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plan = optimize(
+</span></span><span style="display:flex;"><span>    cores=<span style="color:#099">128</span>,
+</span></span><span style="display:flex;"><span>    memory=<span style="color:#099">512</span>,
+</span></span><span style="display:flex;"><span>    region=<span style="color:#a50">&#34;us-west-2&#34;</span>,
+</span></span><span style="display:flex;"><span>    ssd_only=<span style="color:#00a">True</span>,           <span style="color:#aaa;font-style:italic"># Only SSD-backed instances</span>
+</span></span><span style="display:flex;"><span>    arm_instances=<span style="color:#00a">True</span>,      <span style="color:#aaa;font-style:italic"># Include ARM/Graviton instances</span>
+</span></span><span style="display:flex;"><span>    instance_family=[<span style="color:#a50">&#34;m6i&#34;</span>, <span style="color:#a50">&#34;m6a&#34;</span>, <span style="color:#a50">&#34;r6i&#34;</span>],  <span style="color:#aaa;font-style:italic"># Specific families</span>
+</span></span><span style="display:flex;"><span>    emr_version=<span style="color:#a50">&#34;6.4.0&#34;</span>,     <span style="color:#aaa;font-style:italic"># EMR compatibility</span>
+</span></span><span style="display:flex;"><span>    mode=<span style="color:#a50">&#34;balanced&#34;</span>,
 </span></span><span style="display:flex;"><span>)
 </span></span></code></pre></div><hr>
 <h2 id="performance--reliability">Performance &amp; reliability</h2>
