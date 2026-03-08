@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420">
+  <defs>
+    <!-- Cream/paper background texture -->
+    <filter id="roughen">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="sketch">
+      <feTurbulence type="turbulence" baseFrequency="0.025" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5"/>
+    </filter>
+    <!-- Soft drop shadow -->
+    <filter id="softshadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#b0a090" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Stroke style for hand-drawn look -->
+    <style>
+      .hand { font-family: 'Segoe UI', Georgia, serif; }
+      .mono { font-family: 'Courier New', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="420" fill="#F5F0E8"/>
+  <!-- Subtle paper texture overlay -->
+  <rect width="1200" height="420" fill="none" stroke="#E8E0D0" stroke-width="0"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- LEFT: Box/container concept (the wrapper idea) -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Outer dashed box - "the container" -->
+  <rect x="48" y="120" width="120" height="90" rx="8"
+        fill="#D6E8D8" fill-opacity="0.5"
+        stroke="#7AAB84" stroke-width="2.2" stroke-dasharray="6,4"
+        filter="url(#sketch)"/>
+  <!-- Inner value -->
+  <rect x="68" y="138" width="80" height="54" rx="5"
+        fill="#FDEFC3" fill-opacity="0.85"
+        stroke="#C8A83A" stroke-width="1.8"/>
+  <text x="108" y="168" text-anchor="middle" font-size="18" fill="#7A6010" font-family="Georgia, serif" font-weight="bold">42</text>
+  <text x="108" y="183" text-anchor="middle" font-size="9" fill="#9A8030" font-family="'Courier New', monospace">value</text>
+  <!-- Label -->
+  <text x="108" y="228" text-anchor="middle" font-size="11" fill="#5A7A5C" font-family="Georgia, serif" font-style="italic">container</text>
+
+  <!-- Wobbly arrow right from box -->
+  <path d="M 172 165 C 195 155, 205 175, 228 165"
+        fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round"
+        marker-end="url(#arr-green)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- CENTER-LEFT: f(x) lambda + map concept -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Lambda symbol - big hand-drawn style -->
+  <text x="255" y="190" text-anchor="middle" font-size="68" fill="#7AAABB"
+        font-family="Georgia, serif" font-weight="bold" opacity="0.85"
+        filter="url(#sketch)">λ</text>
+
+  <!-- .map label underneath -->
+  <rect x="228" y="200" width="54" height="22" rx="4"
+        fill="#C8E0EA" fill-opacity="0.7" stroke="#5A9AAB" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="255" y="215" text-anchor="middle" font-size="11"
+        fill="#2A6A7A" font-family="'Courier New', monospace">.map(f)</text>
+
+  <!-- Arrow out of map -->
+  <path d="M 285 168 C 310 155, 320 175, 345 165"
+        fill="none" stroke="#8BA88E" stroke-width="2" stroke-linecap="round"
+        marker-end="url(#arr-green)"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FUNCTOR box - same shape, transformed value -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Outer box same shape -->
+  <rect x="348" y="120" width="120" height="90" rx="8"
+        fill="#D6E8D8" fill-opacity="0.5"
+        stroke="#7AAB84" stroke-width="2.2" stroke-dasharray="6,4"
+        filter="url(#sketch)"/>
+  <!-- Inner value transformed -->
+  <rect x="368" y="138" width="80" height="54" rx="5"
+        fill="#F7D4A8" fill-opacity="0.85"
+        stroke="#C87A3A" stroke-width="1.8"/>
+  <text x="408" y="165" text-anchor="middle" font-size="16" fill="#7A3010" font-family="Georgia, serif" font-weight="bold">43</text>
+  <text x="408" y="180" text-anchor="middle" font-size="9" fill="#9A5030" font-family="'Courier New', monospace">f(value)</text>
+  <!-- Label -->
+  <text x="408" y="228" text-anchor="middle" font-size="11" fill="#5A7A5C" font-family="Georgia, serif" font-style="italic">same shape!</text>
+
+  <!-- Big F badge -->
+  <circle cx="408" cy="92" r="26" fill="#A8D4A8" fill-opacity="0.7" stroke="#5A9A6A" stroke-width="2.2" filter="url(#sketch)"/>
+  <text x="408" y="100" text-anchor="middle" font-size="26" fill="#2A6A3A" font-family="Georgia, serif" font-weight="bold">F</text>
+  <text x="408" y="68" text-anchor="middle" font-size="10" fill="#4A8A5A" font-family="Georgia, serif" font-style="italic">Functor</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SNAKE / pipe metaphor - data flowing  -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Curvy pipeline snake - sage green -->
+  <path d="M 510 165 C 540 140, 570 190, 600 165 C 630 140, 660 190, 690 165"
+        fill="none" stroke="#8FC4A8" stroke-width="14" stroke-linecap="round" opacity="0.6"
+        filter="url(#sketch)"/>
+  <!-- Snake eye -->
+  <circle cx="698" cy="163" r="7" fill="#7AAABB" stroke="#3A7A8A" stroke-width="1.5"/>
+  <circle cx="700" cy="161" r="2.5" fill="#1A3A4A"/>
+  <!-- Tongue -->
+  <path d="M 705 165 L 716 162 M 705 165 L 716 168" stroke="#D07070" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Small dots on snake = data flowing -->
+  <circle cx="535" cy="158" r="4" fill="#FDEFC3" stroke="#C8A83A" stroke-width="1.2"/>
+  <circle cx="565" cy="172" r="4" fill="#FDEFC3" stroke="#C8A83A" stroke-width="1.2"/>
+  <circle cx="598" cy="158" r="4" fill="#F7D4A8" stroke="#C87A3A" stroke-width="1.2"/>
+  <circle cx="630" cy="172" r="4" fill="#F7D4A8" stroke="#C87A3A" stroke-width="1.2"/>
+  <circle cx="660" cy="158" r="4" fill="#E8A0A0" stroke="#C05050" stroke-width="1.2"/>
+
+  <!-- .map chain labels -->
+  <text x="543" y="195" text-anchor="middle" font-size="9" fill="#4A8A6A" font-family="'Courier New', monospace">.map</text>
+  <text x="622" y="195" text-anchor="middle" font-size="9" fill="#4A8A6A" font-family="'Courier New', monospace">.map</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MONAD section - right side -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Nested box problem indicator -->
+  <rect x="745" y="90" width="95" height="70" rx="7"
+        fill="#D0D8F0" fill-opacity="0.5"
+        stroke="#6878B8" stroke-width="2" stroke-dasharray="5,3"
+        filter="url(#sketch)"/>
+  <rect x="762" y="104" width="62" height="44" rx="5"
+        fill="#BCC8EA" fill-opacity="0.7"
+        stroke="#4858A0" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="774" y="114" width="38" height="26" rx="4"
+        fill="#AABAE0" fill-opacity="0.85"
+        stroke="#3848A8" stroke-width="1.5"/>
+  <text x="793" y="131" text-anchor="middle" font-size="9" fill="#1A2868" font-family="'Courier New', monospace">val</text>
+  <!-- Nesting label -->
+  <text x="793" y="176" text-anchor="middle" font-size="9.5" fill="#4858A0" font-family="Georgia, serif" font-style="italic">nested 😬</text>
+
+  <!-- Bind arrow (dashed, special) -->
+  <path d="M 843 127 C 865 110, 878 120, 895 127"
+        fill="none" stroke="#9868C0" stroke-width="2.2" stroke-dasharray="7,3"
+        stroke-linecap="round" marker-end="url(#arr-purple)"/>
+  <text x="867" y="106" text-anchor="middle" font-size="10" fill="#7848A8" font-family="'Courier New', monospace">.bind(f)</text>
+  <text x="867" y="118" text-anchor="middle" font-size="8.5" fill="#9868C0" font-family="Georgia, serif" font-style="italic">flatten!</text>
+
+  <!-- Monad result - clean single box -->
+  <rect x="898" y="100" width="100" height="70" rx="7"
+        fill="#E8D0F0" fill-opacity="0.6"
+        stroke="#9868C0" stroke-width="2.2"
+        filter="url(#sketch)"/>
+  <rect x="916" y="116" width="64" height="38" rx="5"
+        fill="#F0E0F8" fill-opacity="0.9"
+        stroke="#7848A8" stroke-width="1.8"/>
+  <text x="948" y="138" text-anchor="middle" font-size="14" fill="#4A1878" font-family="Georgia, serif" font-weight="bold">val</text>
+
+  <!-- M badge -->
+  <circle cx="948" cy="72" r="24" fill="#C8A8E0" fill-opacity="0.8" stroke="#7848A8" stroke-width="2.2" filter="url(#sketch)"/>
+  <text x="948" y="80" text-anchor="middle" font-size="22" fill="#3A1068" font-family="Georgia, serif" font-weight="bold">M</text>
+  <text x="948" y="50" text-anchor="middle" font-size="10" fill="#7848A8" font-family="Georgia, serif" font-style="italic">Monad</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- BOTTOM STRIP - pipeline log/errors concept -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Log strip left -->
+  <rect x="48" y="290" width="180" height="80" rx="6"
+        fill="#FDEFC3" fill-opacity="0.6"
+        stroke="#C8A83A" stroke-width="1.8" stroke-dasharray="5,3"
+        filter="url(#sketch)"/>
+  <text x="138" y="308" text-anchor="middle" font-size="10" fill="#7A6010" font-family="'Courier New', monospace" font-weight="bold">PipelineResult</text>
+  <line x1="60" y1="315" x2="218" y2="315" stroke="#C8A83A" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="65" y="330" font-size="9" fill="#6A5020" font-family="'Courier New', monospace">value: [records]</text>
+  <text x="65" y="344" font-size="9" fill="#A04030" font-family="'Courier New', monospace">errors: ["dropped 2"]</text>
+  <text x="65" y="358" font-size="9" fill="#507A50" font-family="'Courier New', monospace">dropped: 2</text>
+
+  <!-- Arrow right from log strip -->
+  <path d="M 232 330 C 255 318, 265 342, 290 330"
+        fill="none" stroke="#8BA88E" stroke-width="1.8"
+        stroke-linecap="round" marker-end="url(#arr-green)"/>
+
+  <!-- remove_nulls step -->
+  <rect x="295" y="303" width="100" height="34" rx="5"
+        fill="#D8EED8" fill-opacity="0.8" stroke="#5A9A6A" stroke-width="1.8"/>
+  <text x="345" y="318" text-anchor="middle" font-size="9.5" fill="#2A6A3A" font-family="'Courier New', monospace">remove_nulls</text>
+  <text x="345" y="330" text-anchor="middle" font-size="8.5" fill="#4A8A5A" font-family="'Courier New', monospace">.bind()</text>
+
+  <!-- Arrow -->
+  <path d="M 398 320 C 418 308, 428 332, 448 320"
+        fill="none" stroke="#8BA88E" stroke-width="1.8"
+        stroke-linecap="round" marker-end="url(#arr-green)"/>
+
+  <!-- remove_negatives step -->
+  <rect x="452" y="303" width="110" height="34" rx="5"
+        fill="#EED8D8" fill-opacity="0.8" stroke="#AA5A5A" stroke-width="1.8"/>
+  <text x="507" y="318" text-anchor="middle" font-size="9" fill="#6A2A2A" font-family="'Courier New', monospace">remove_negatives</text>
+  <text x="507" y="330" text-anchor="middle" font-size="8.5" fill="#8A4A4A" font-family="'Courier New', monospace">.bind()</text>
+
+  <!-- Arrow -->
+  <path d="M 565 320 C 585 308, 595 332, 615 320"
+        fill="none" stroke="#8BA88E" stroke-width="1.8"
+        stroke-linecap="round" marker-end="url(#arr-green)"/>
+
+  <!-- scale_values step -->
+  <rect x="618" y="303" width="95" height="34" rx="5"
+        fill="#D8D8EE" fill-opacity="0.8" stroke="#5A5A9A" stroke-width="1.8"/>
+  <text x="665" y="318" text-anchor="middle" font-size="9.5" fill="#2A2A6A" font-family="'Courier New', monospace">scale_values</text>
+  <text x="665" y="330" text-anchor="middle" font-size="8.5" fill="#4A4A8A" font-family="'Courier New', monospace">.map()</text>
+
+  <!-- Arrow to final result -->
+  <path d="M 716 320 C 738 308, 748 332, 768 320"
+        fill="none" stroke="#8BA88E" stroke-width="1.8"
+        stroke-linecap="round" marker-end="url(#arr-green)"/>
+
+  <!-- Final result box -->
+  <rect x="772" y="290" width="150" height="80" rx="6"
+        fill="#E8F4E8" fill-opacity="0.7"
+        stroke="#5A9A6A" stroke-width="2.2"
+        filter="url(#sketch)"/>
+  <text x="847" y="308" text-anchor="middle" font-size="10" fill="#2A6A3A" font-family="'Courier New', monospace" font-weight="bold">Result ✓</text>
+  <line x1="784" y1="315" x2="910" y2="315" stroke="#5A9A6A" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="784" y="330" font-size="9" fill="#3A8A4A" font-family="'Courier New', monospace">rows: 2</text>
+  <text x="784" y="344" font-size="9" fill="#A04030" font-family="'Courier New', monospace">errors: logged</text>
+  <text x="784" y="358" font-size="9" fill="#507A50" font-family="'Courier New', monospace">context intact</text>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- TOP DECORATIVE ELEMENTS -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Code snippet doodle top-right -->
+  <rect x="1020" y="70" width="130" height="70" rx="5"
+        fill="#E0EEE8" fill-opacity="0.7" stroke="#7AAB84" stroke-width="1.8" stroke-dasharray="5,3"
+        filter="url(#sketch)"/>
+  <rect x="1020" y="70" width="130" height="16" rx="5" fill="#A8C8B0" fill-opacity="0.5"/>
+  <circle cx="1032" cy="78" r="4" fill="#E87070" opacity="0.8"/>
+  <circle cx="1044" cy="78" r="4" fill="#E8C870" opacity="0.8"/>
+  <circle cx="1056" cy="78" r="4" fill="#70C870" opacity="0.8"/>
+  <line x1="1030" y1="98" x2="1130" y2="98" stroke="#7AAB84" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.6"/>
+  <line x1="1030" y1="110" x2="1110" y2="110" stroke="#7AAB84" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.6"/>
+  <line x1="1040" y1="122" x2="1120" y2="122" stroke="#7AAB84" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.6"/>
+
+  <!-- Small Python logo doodle top -->
+  <ellipse cx="1090" cy="200" rx="22" ry="12" fill="#7AAABB" fill-opacity="0.7" stroke="#3A7A8A" stroke-width="1.8" filter="url(#sketch)"/>
+  <ellipse cx="1090" cy="224" rx="22" ry="12" fill="#C8A83A" fill-opacity="0.6" stroke="#886820" stroke-width="1.8" filter="url(#sketch)"/>
+  <path d="M 1080 205 L 1080 224 Q 1080 232 1090 232 Q 1100 232 1100 224"
+        fill="none" stroke="#3A5A6A" stroke-width="1.5"/>
+  <path d="M 1100 219 L 1100 200 Q 1100 192 1090 192 Q 1080 192 1080 200"
+        fill="none" stroke="#5A4010" stroke-width="1.5"/>
+  <circle cx="1087" cy="200" r="3" fill="#F5F0E8"/>
+  <circle cx="1093" cy="224" r="3" fill="#F5F0E8"/>
+
+  <!-- Dashed connection from python to M -->
+  <path d="M 1068 208 C 1040 210, 1010 175, 990 165"
+        fill="none" stroke="#9868C0" stroke-width="1.5" stroke-dasharray="5,4"
+        marker-end="url(#arr-purple)" opacity="0.6"/>
+
+  <!-- Small floating elements -->
+  <!-- Starburst / badge for "compose" -->
+  <path d="M 490 285 L 496 273 L 502 285 L 515 282 L 508 293 L 514 305 L 502 300 L 496 312 L 490 300 L 477 305 L 483 293 L 477 282 Z"
+        fill="#A8D4A8" fill-opacity="0.7" stroke="#5A9A6A" stroke-width="1.5" filter="url(#sketch)"/>
+  <text x="496" y="295" text-anchor="middle" font-size="9" fill="#2A6A3A" font-family="Georgia, serif" font-weight="bold">∘</text>
+
+  <!-- Small starburst top left area -->
+  <path d="M 160 68 L 165 56 L 170 68 L 182 65 L 175 75 L 181 86 L 170 82 L 165 93 L 160 82 L 149 86 L 155 75 L 149 65 Z"
+        fill="#F7D4A8" fill-opacity="0.8" stroke="#C87A3A" stroke-width="1.5" filter="url(#sketch)"/>
+  <text x="165" y="78" text-anchor="middle" font-size="9" fill="#7A3010" font-family="Georgia, serif" font-weight="bold">T</text>
+
+  <!-- TypeVar floating -->
+  <rect x="575" y="62" width="72" height="26" rx="4"
+        fill="#E8D0F0" fill-opacity="0.7" stroke="#9868C0" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="611" y="79" text-anchor="middle" font-size="11" fill="#4A1878" font-family="'Courier New', monospace">TypeVar</text>
+
+  <!-- Generic[T] floating -->
+  <rect x="850" y="300" width="90" height="24" rx="4"
+        fill="#D0D8F0" fill-opacity="0.7" stroke="#6878B8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="895" y="316" text-anchor="middle" font-size="10.5" fill="#2A3878" font-family="'Courier New', monospace">Generic[T]</text>
+
+  <!-- Dashed circle around main functor concept -->
+  <ellipse cx="300" cy="170" rx="240" ry="110"
+           fill="none" stroke="#8BA88E" stroke-width="1.2" stroke-dasharray="8,5" opacity="0.4"/>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- ARROW MARKERS -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <defs>
+    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#5A9A6A"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#7848A8"/>
+    </marker>
+    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3A7A8A"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SUBTLE GRID DOTS (paper feel) -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+    <circle cx="14" cy="14" r="1" fill="#C8BEA8" opacity="0.4"/>
+  </pattern>
+  <rect width="1200" height="420" fill="url(#dots)"/>
+
+</svg>
