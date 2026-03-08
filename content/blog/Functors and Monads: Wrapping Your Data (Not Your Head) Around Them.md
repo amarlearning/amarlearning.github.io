@@ -1,6 +1,6 @@
 +++
 title = "Functors and Monads: Wrapping Your Data (Not Your Head) Around Them"
-date = "2026-03-08T00:00:00-00:00"
+date = "2026-03-15T00:00:00-00:00"
 description = "Move beyond functional tricks. Learn how to use currying and partial application in Python to name behaviors, reduce noise, and separate configuration from execution."
 
 tags = [ 
