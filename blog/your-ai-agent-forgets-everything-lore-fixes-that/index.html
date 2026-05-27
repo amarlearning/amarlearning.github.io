@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Your AI Agent Forgets Everything. Lore Fixes That. | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title>
+<meta name="title" content="Your AI Agent Forgets Everything. Lore Fixes That." />
+<meta name="description" content="You&rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.
+Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.
+You explain again.
+This isn&rsquo;t a bug. It&rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one." />
+<meta name="keywords" content="claude-code,ai,developer-tools,open-source,python," />
+
+
+<meta property="og:url" content="https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Your AI Agent Forgets Everything. Lore Fixes That.">
+  <meta property="og:description" content="You’re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.
+Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.
+You explain again.
+This isn’t a bug. It’s just how LLM sessions work — every session starts completely fresh. No memory of the last one.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-05-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-27T00:00:00+00:00">
+    <meta property="article:tag" content="Claude-Code">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Developer-Tools">
+    <meta property="article:tag" content="Open-Source">
+    <meta property="article:tag" content="Python">
+
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Your AI Agent Forgets Everything. Lore Fixes That.">
+  <meta name="twitter:description" content="You’re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.
+Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.
+You explain again.
+This isn’t a bug. It’s just how LLM sessions work — every session starts completely fresh. No memory of the last one.">
+
+
+
+
+  <meta itemprop="name" content="Your AI Agent Forgets Everything. Lore Fixes That.">
+  <meta itemprop="description" content="You’re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.
+Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.
+You explain again.
+This isn’t a bug. It’s just how LLM sessions work — every session starts completely fresh. No memory of the last one.">
+  <meta itemprop="datePublished" content="2026-05-27T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-05-27T00:00:00+00:00">
+  <meta itemprop="wordCount" content="756">
+  <meta itemprop="keywords" content="Claude-Code,Ai,Developer-Tools,Open-Source,Python">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+  body {
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --primary-color: #222;
+    --border-color: #eaeaea;
+  }
+
+   
+  .oss-section {
+    margin-bottom: 3rem;
+  }
+
+  .oss-list-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .oss-list-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .oss-list-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .oss-list-title:hover {
+    text-decoration: underline;
+  }
+
+  .oss-list-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .oss-role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.6rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 9999px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+   
+  .projects-section {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+
+  .project-list-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .project-list-title {
+    margin: 0 0 0.4rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.01em;
+  }
+
+  .project-list-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .project-list-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .project-list-link {
+    font-size: 0.85rem;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .project-list-link:hover {
+    color: #222;
+    text-decoration: underline;
+  }
+
+   
+  @media (prefers-color-scheme: dark) {
+    .oss-list-item,
+    .project-list-item {
+      border-bottom-color: #333;
+    }
+
+    .oss-list-title,
+    .project-list-title {
+      color: #eee;
+    }
+
+    .oss-list-desc,
+    .project-list-desc {
+      color: #999;
+    }
+
+    .oss-role-badge {
+      background: #2a2a2a;
+      color: #999;
+    }
+
+    .project-list-link {
+      color: #999;
+    }
+
+    .project-list-link:hover {
+      color: #eee;
+    }
+  }
+</style>
+
+
+<a href="/" class="title">
+  <h2>Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</h2>
+</a>
+<nav><a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a></nav>
+
+</header>
+  <main>
+
+<h1>Your AI Agent Forgets Everything. Lore Fixes That.</h1>
+<p>
+  <i>
+    <time datetime='2026-05-27' pubdate>
+      27 May, 2026
+    </time>
+  </i>
+</p>
+
+<content>
+  <p><img src="/images/your-ai-agent-forgets-everything-lore-fixes-that/banner.png" alt="banner"></p>
+<hr>
+<p>You&rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.</p>
+<p>Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.</p>
+<p>You explain again.</p>
+<p>This isn&rsquo;t a bug. It&rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one. The reasoning that shaped your codebase? Gone the moment you close the tab.</p>
+<hr>
+<h2 id="the-problem-has-a-name">The problem has a name</h2>
+<p>It&rsquo;s called <strong>institutional amnesia</strong>. Every company has it in some form — the engineer who leaves and takes years of context with them. The decision that made sense at the time but nobody remembers why.</p>
+<p>With AI agents, it happens at the speed of a session.</p>
+<p>You commit a change. The <em>what</em> is in git. But the <em>why</em> — the three approaches you considered, the one that broke the deploy pipeline, the constraint that ruled out the obvious solution — none of that survives.</p>
+<p><code>git log</code> shows you what changed. Nothing shows you why.</p>
+<hr>
+<h2 id="what-lore-does">What Lore does</h2>
+<p>Lore captures the reasoning behind your code as it happens, and feeds it back to Claude when it&rsquo;s relevant.</p>
+<p>It sits alongside your project like <code>.git</code> — silent, local, automatic. You don&rsquo;t write anything. You don&rsquo;t change how you work. You just stop losing context.</p>
+<p>When you commit, Lore distills what Claude was thinking during that session into a decision record:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#1e90ff;font-weight:bold">summary</span>:<span style="color:#bbb"> </span>Use snake_case for all column names<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#1e90ff;font-weight:bold">why</span>:<span style="color:#bbb"> </span>downstream Spark jobs break on camelCase — found this the hard way in prod<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#1e90ff;font-weight:bold">alternatives_rejected</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- camelCase → broke 3 existing pipelines<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- let each team decide → caused inconsistency across joins<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#1e90ff;font-weight:bold">constraints</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- any new table must follow this, no exceptions<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#1e90ff;font-weight:bold">symbols</span>:<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>- normalize_column_names<span style="color:#bbb">
+</span></span></span></code></pre></div><p>When Claude is about to touch that file in a future session, Lore injects this record before it acts. The agent knows the constraint before it starts planning — not after it proposes something that violates it.</p>
+<pre tabindex="0"><code>git log    # shows what changed
+lore log   # shows why it changed
+</code></pre><hr>
+<h2 id="how-it-actually-works">How it actually works</h2>
+<p>Lore has three components running quietly in the background: a daemon, a CLI, and a core library.</p>
+<p>The <strong>daemon</strong> (<code>lore-daemon</code>) is a lightweight HTTP server that listens to Claude Code&rsquo;s lifecycle hooks — every tool use, every file read, every reasoning block. It writes all of this to a <code>temp/</code> directory while you work. Think of it as short-term working memory.</p>
+<p>The <strong>git hooks</strong> are where things get interesting. When you <code>git commit</code>, a post-commit hook fires. Lore reads the raw session data from <code>temp/</code>, figures out which reasoning actually contributed to the code that survived the commit, and writes a structured decision record to <code>staging/</code>. When you merge to main, a post-merge hook promotes those records to <code>decisions/</code> — permanent storage.</p>
+<pre tabindex="0"><code>temp/         ← raw session data, captured live
+staging/      ← distilled decisions, per branch  
+decisions/    ← permanent institutional memory
+</code></pre><p>Only reasoning about code that made it into the commit reaches <code>staging/</code>. Only decisions from merged branches reach <code>decisions/</code>. Dead-end experiments, scrapped approaches, abandoned ideas — none of that noise pollutes your memory store.</p>
+<p>One more thing: Lore injects context when Claude <strong>reads</strong> a file, not just when it writes. By the time the agent is planning what to do, it already knows the constraints. Not after it proposes something that violates them.</p>
+<hr>
+<h2 id="the-details-that-make-it-work">The details that make it work</h2>
+<p>Three things that aren&rsquo;t obvious but matter a lot.</p>
+<p><strong>Symbols, not line numbers.</strong> Decision records are linked to function and class names, not to line 47. Line numbers drift with every refactor. <code>normalize_column_names</code> is stable — it follows the function wherever it goes.</p>
+<p><strong>Only surviving decisions become permanent.</strong> Lore tracks which reasoning contributed to code that actually made it into the commit. Reasoning from dead-end experiments never reaches permanent storage. Your institutional memory stays clean.</p>
+<p><strong>It&rsquo;s just files in your repo.</strong> The <code>.lore/</code> directory is version-controlled alongside your code. When a teammate merges their branch, their decisions get promoted into your local memory automatically. No separate service, no shared database, no account. If you squash commits, Lore re-distills the reasoning from all affected sessions into a single record for the final hash.</p>
+<hr>
+<h2 id="getting-started">Getting started</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://raw.githubusercontent.com/amarlearning/lore/main/install.sh | bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lore start
+</span></span><span style="display:flex;"><span>lore init   <span style="color:#aaa;font-style:italic"># run this in your project root</span>
+</span></span></code></pre></div><p>That&rsquo;s it. <code>lore init</code> installs the git hooks and registers with Claude Code. Everything else is automatic.</p>
+<p>If you use Claude Code seriously, you&rsquo;ve hit this problem. Lore is the fix.</p>
+<p>🔗 <a href="https://github.com/amarlearning/lore">github.com/amarlearning/lore</a></p>
+
+</content>
+
+<hr style="margin-top: 50px; margin-bottom: 30px;">
+<p>
+  Lastly, thank you for reading this post. For more awesome posts, you can explore my other articles <a href="/blog">here</a>, and follow me on Github — <a href="https://github.com/amarlearning">amarlearning</a>.
+</p>
+<p>
+  
+  <a href="https://amarpandey.me/tags/claude-code/">#claude-code</a>
+  
+  <a href="https://amarpandey.me/tags/ai/">#ai</a>
+  
+  <a href="https://amarpandey.me/tags/developer-tools/">#developer-tools</a>
+  
+  <a href="https://amarpandey.me/tags/open-source/">#open-source</a>
+  
+  <a href="https://amarpandey.me/tags/python/">#python</a>
+  
+</p>
+
+<div style="margin-top: 50px;">
+  <h2>Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="amarlearning/amarlearning.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
+        data-category-id="DIC_kwDOAo3u484CtGdf"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+
+
+
+  </main>
+  <footer><div class="footer-container">
+  2026 © Amar Prakash Pandey
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
+</div></footer>
+
+    
+</body>
+
+</html>
