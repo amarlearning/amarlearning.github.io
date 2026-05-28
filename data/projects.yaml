@@ -1,3 +1,15 @@
+- title: Lore
+  description: Persistent decision memory layer for Claude Code — captures the reasoning, rejected alternatives, and constraints behind every commit so future sessions know not just what changed, but why.
+  links:
+    - name: code
+      url: https://github.com/amarlearning/lore
+
+- title: uv-bundler
+  description: Build deployment-ready Python artifacts for Linux from any machine. Uses Ghost Resolution to cross-compile platform-specific wheels without Docker or a Linux build server.
+  links:
+    - name: code
+      url: https://github.com/amarlearning/uv-bundler
+
 - title: Spot Optimizer
   description: Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling.
   links:
