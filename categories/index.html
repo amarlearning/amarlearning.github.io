@@ -233,16 +233,92 @@
 
   :root {
     --primary-color: #222;
+    --muted-color: #666;
+    --quiet-color: #8a8a8a;
     --border-color: #eaeaea;
+    --paper-color: #FFFFFA;
+    --soft-surface: #f7f2e9;
+    --accent-color: #950505;
   }
 
-   
+  .project-page {
+    --section-space: clamp(2.5rem, 7vw, 5rem);
+  }
+
+  .project-hero {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.95fr) minmax(15rem, 1.05fr);
+    gap: clamp(1.25rem, 4vw, 2.75rem);
+    align-items: end;
+    margin: clamp(1.5rem, 5vw, 3rem) 0 var(--section-space);
+  }
+
+  .project-kicker {
+    grid-column: 1 / -1;
+    margin: 0 0 -0.75rem;
+    color: var(--accent-color);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .project-hero h1 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.2rem, 9vw, 4.6rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .project-intro-copy {
+    max-width: 27rem;
+    color: var(--muted-color);
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.08rem);
+    line-height: 1.7;
+  }
+
+  .project-intro-copy p {
+    margin: 0;
+  }
+
+  .section-heading-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .section-heading-row h2 {
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+    letter-spacing: 0;
+  }
+
+  .section-heading-row span {
+    color: var(--quiet-color);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
   .oss-section {
-    margin-bottom: 3rem;
+    margin-bottom: var(--section-space);
+  }
+
+  .oss-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(1.5rem, 6vw, 4rem);
   }
 
   .oss-list-item {
-    padding: 1.25rem 0;
+    padding: 1.35rem 0;
     border-bottom: 1px solid var(--border-color);
   }
 
@@ -267,7 +343,8 @@
   }
 
   .oss-list-desc {
-    font-size: 0.9rem;
+    max-width: 23rem;
+    font-size: 0.92rem;
     color: #666;
     line-height: 1.55;
     margin: 0;
@@ -276,66 +353,141 @@
   .oss-role-badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.15rem 0.6rem;
-    background: #f1f5f9;
-    color: #475569;
-    border-radius: 9999px;
+    padding: 0.14rem 0.48rem;
+    background: color-mix(in srgb, var(--accent-color) 7%, var(--paper-color));
+    color: #6b3a35;
+    border-radius: 4px;
     font-size: 0.65rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0;
     white-space: nowrap;
   }
 
-   
   .projects-section {
-    margin-top: 3rem;
     margin-bottom: 4rem;
   }
 
-  .project-list-item {
-    padding: 1.25rem 0;
+  .project-list {
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .project-list-item {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    gap: clamp(1rem, 4vw, 2.5rem);
+    align-items: baseline;
+    padding: clamp(1.05rem, 3vw, 1.55rem) 0;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .project-list-index {
+    color: var(--quiet-color);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.76rem;
   }
 
   .project-list-title {
     margin: 0 0 0.4rem 0;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
     font-weight: 700;
     color: var(--primary-color);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   .project-list-desc {
-    font-size: 0.9rem;
+    max-width: 34rem;
+    font-size: 0.94rem;
     line-height: 1.6;
-    color: #666;
-    margin: 0 0 0.75rem 0;
+    color: var(--muted-color);
+    margin: 0;
   }
 
   .project-list-links {
     display: flex;
-    gap: 1.25rem;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    flex-wrap: wrap;
   }
 
   .project-list-link {
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0 0.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
     color: #555;
+    font-size: 0.82rem;
+    line-height: 1;
     text-decoration: none;
     font-weight: 500;
   }
 
   .project-list-link:hover {
     color: #222;
-    text-decoration: underline;
+    border-color: color-mix(in srgb, var(--accent-color) 35%, var(--border-color));
+    background: var(--soft-surface);
+    text-decoration: none;
   }
 
-   
-  @media (prefers-color-scheme: dark) {
-    .oss-list-item,
+  @media (max-width: 760px) {
+    .project-hero {
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+      align-items: start;
+    }
+
+    .project-hero h1 {
+      font-size: clamp(3rem, 16vw, 4.4rem);
+    }
+
+    .project-kicker {
+      margin-bottom: -0.35rem;
+    }
+
+    .section-heading-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .oss-list {
+      grid-template-columns: 1fr;
+    }
+
     .project-list-item {
+      grid-template-columns: 2.5rem minmax(0, 1fr);
+      gap: 0.85rem;
+    }
+
+    .project-list-links {
+      grid-column: 2;
+      justify-content: flex-start;
+      margin-top: 0.2rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary-color: #eee;
+      --muted-color: #aaa;
+      --quiet-color: #777;
+      --border-color: #333;
+      --paper-color: #333;
+      --soft-surface: #252525;
+      --accent-color: #ffb3a8;
+    }
+
+    .oss-list-item,
+    .project-list-item,
+    .project-list {
       border-bottom-color: #333;
+    }
+
+    .project-list-item {
+      border-top-color: #333;
     }
 
     .oss-list-title,
@@ -345,20 +497,23 @@
 
     .oss-list-desc,
     .project-list-desc {
-      color: #999;
+      color: var(--muted-color);
     }
 
     .oss-role-badge {
       background: #2a2a2a;
-      color: #999;
+      color: #d9a19b;
     }
 
     .project-list-link {
       color: #999;
+      border-color: #3a3a3a;
     }
 
     .project-list-link:hover {
       color: #eee;
+      border-color: #5a4744;
+      background: #292929;
     }
   }
 </style>
