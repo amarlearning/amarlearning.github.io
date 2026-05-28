@@ -1,38 +1,56 @@
 {{ define "main" }}
-<div class="divider-thin"></div>
+<div class="project-page">
+    <div class="divider-thin"></div>
 
-<div class="intro">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
-</div>
-
-<div class="oss-section">
-    <h2>Open Source Contributions</h2>
-    <div class="divider-thin" style="margin-bottom: 0;"></div>
-    {{ range .Site.Data.oss }}
-    <div class="oss-list-item">
-        <div class="oss-list-header">
-            <a href="{{ .url }}" target="_blank" class="oss-list-title">{{ .organization }} ↗</a>
-            <span class="oss-role-badge">{{ .role }}</span>
+    <div class="intro project-hero">
+        <p class="project-kicker">Selected work</p>
+        <h1>{{ .Title }}</h1>
+        <div class="project-intro-copy">
+            {{ .Content }}
         </div>
-        <p class="oss-list-desc">{{ .description }}</p>
     </div>
-    {{ end }}
-</div>
 
-<div class="projects-section">
-    <h2>Personal Projects</h2>
-    <div class="divider-thin" style="margin-bottom: 0;"></div>
-    {{ range .Site.Data.projects }}
-    <div class="project-list-item">
-        <h3 class="project-list-title">{{ .title }}</h3>
-        <p class="project-list-desc">{{ .description }}</p>
-        <div class="project-list-links">
-            {{ range .links }}
-            <a href="{{ .url }}" target="_blank" class="project-list-link">{{ .name }} ↗</a>
+    <section class="oss-section" aria-labelledby="oss-heading">
+        <div class="section-heading-row">
+            <h2 id="oss-heading">Open Source Contributions</h2>
+            <span>{{ len .Site.Data.oss }} communities</span>
+        </div>
+        <div class="divider-thin"></div>
+        <div class="oss-list">
+            {{ range .Site.Data.oss }}
+            <article class="oss-list-item">
+                <div class="oss-list-header">
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="oss-list-title">{{ .organization }} ↗</a>
+                    <span class="oss-role-badge">{{ .role }}</span>
+                </div>
+                <p class="oss-list-desc">{{ .description }}</p>
+            </article>
             {{ end }}
         </div>
-    </div>
-    {{ end }}
+    </section>
+
+    <section class="projects-section" aria-labelledby="personal-projects-heading">
+        <div class="section-heading-row">
+            <h2 id="personal-projects-heading">Personal Projects</h2>
+            <span>{{ len .Site.Data.projects }} builds</span>
+        </div>
+        <div class="divider-thin"></div>
+        <div class="project-list">
+            {{ range $index, $project := .Site.Data.projects }}
+            <article class="project-list-item">
+                <div class="project-list-index">{{ printf "%02d" (add $index 1) }}</div>
+                <div class="project-list-main">
+                    <h3 class="project-list-title">{{ $project.title }}</h3>
+                    <p class="project-list-desc">{{ $project.description }}</p>
+                </div>
+                <div class="project-list-links" aria-label="{{ $project.title }} links">
+                    {{ range $project.links }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="project-list-link">{{ .name }} ↗</a>
+                    {{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
 </div>
 {{ end }}
