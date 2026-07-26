@@ -1,8 +1,9 @@
----
-title: "Your AI Agent Forgets Everything. Lore Fixes That."
-date: 2026-05-27
-tags: [claude-code, ai, developer-tools, open-source, python]
----
++++
+title = "Your AI Agent Forgets Everything. Lore Fixes That."
+description = "Every Claude Code session starts from zero. Lore fixes that by turning your reasoning into permanent, git-native decision records that get fed back to the agent right when it needs them."
+date = "2026-05-27T00:00:00-00:00"
+tags = ["claude-code", "ai", "developer-tools", "open-source", "python"]
++++
 
 ![banner](/images/your-ai-agent-forgets-everything-lore-fixes-that/banner.png)
 
