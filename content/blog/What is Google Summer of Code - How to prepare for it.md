@@ -1,5 +1,6 @@
 +++
 title = "What is Google Summer of Code? How to prepare for it?"
+images = ["/images/what-is-google-summer-of-code-how-to-prepare-for-it/banner.jpeg"]
 date = "2017-07-02T00:00:00-00:00"
 description = "What is Google Summer of Code? How to prepare for it? How to get selected in Google Summer of Code? How to write a good proposal for Google Summer of Code"
 

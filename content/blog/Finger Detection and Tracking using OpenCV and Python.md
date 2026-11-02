@@ -1,5 +1,6 @@
 +++
 title = "Finger Detection and Tracking using OpenCV and Python"
+images = ["/images/finger-detection-and-tracking-using-opencv-and-python/1.png"]
 date = "2018-07-28T00:00:00-00:00"
 description = "Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time."
 

@@ -1,5 +1,6 @@
 +++
 title = "Symptoms of Bad Code"
+images = ["/images/symptoms-of-bad-code/banner.jpg"]
 date = "2022-07-19T00:00:00-00:00"
 description = "Symptoms of Bad Code - How to Identify and Address Code Quality Issues"
 

@@ -1,5 +1,6 @@
 +++
 title = "The CAP Theorem: Balancing the Big Three in Distributed Databases"
+images = ["/images/the-cap-theorem-balancing-the-big-three-in-distributed-databases/banner.png"]
 date = "2024-10-15T00:00:00-00:00"
 description = "An introduction to the CAP theorem, explaining the trade-offs between consistency, availability, and partition tolerance in distributed systems."
 

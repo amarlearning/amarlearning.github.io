@@ -1,5 +1,6 @@
 +++
 title = "4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery"
+images = ["/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png"]
 date = "2025-03-30T00:00:00-00:00"
 description = "Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance."
 

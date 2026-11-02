@@ -1,5 +1,6 @@
 +++
 title = "GitOps - the easy way"
+images = ["/images/gitops-the-easy-way/banner.png"]
 date = "2022-01-04T00:00:00-00:00"
 description = "GitOps - the easy way is a way to manage infrastructure as code with version control, pull request, CI/CD pipeline."
 

@@ -1,20 +1,20 @@
 +++
 title = "About"
+description = "Kanpur-born, Bengaluru-based. Mountains, physics rabbit holes, cooking, and very particular opinions about coffee."
 menu = "main"
 +++
 
-![cover image](/images/about/cover.jpg)
+![Sitting outside The Wilderness Lodge in Sethan, Himachal Pradesh](/images/about/cover.jpg)
+*Outside The Wilderness Lodge, Sethan, Himachal Pradesh.*
 
-Hello, I'm Amar Prakash Pandey :)
+I grew up in Kanpur, in a pretty ordinary middle-class home. I was a late bloomer at most things. I didn't write a single line of code until engineering college, and I've been making up for lost time ever since. These days I live in Bengaluru and work as a data engineer, which is about all I'll say about work on this page.
 
-I’m a developer and hacker with a knack for solving problems in unconventional ways—finding simpler solutions where conventional methods fall short. Curiosity drives me, and I’m always experimenting with new ideas, whether it’s building efficient software, designing data platforms, or creating tools to make developers’ lives easier. You’ll often find me diving into distributed computing and large-scale data processing while sharing my learnings through open-source contributions and blogs.
+The mountains are my happy place. I've wandered through Bir, Manali, Kasol, Jibhi, Shoja, Kalpa, Sangla, Rakcham and Chitkul, and this June I trekked to Yulla Kanda. This year I also tried working vacations: a stretch in Mulki to surf, and a whole month in southern Kerala. I loved every bit of it, but for the record, mountains > beaches, and that's not up for debate.
 
-I prefer to think of myself as an open-minded, down to earth and outgoing person. I care very much for people who I come across in my life and try to make their lives easier. I love nature as well, this is why I like to go on long walks just to see what nature has to show me.
+I've always been curious about how the universe works. I can lose an entire evening to the double-slit experiment or the Einstein–Bohr debates, and come out understanding roughly as much as when I started. I also have a theory, entirely unproven, that aliens from another planet had a hand in us being here. Please don't ask for evidence.
 
-I also like to read about the universe and how it all started. I'm not sure if it's true but I like to think that aliens came from other planets and created us.
+Closer to home, I cook, lift at the gym, run, and play table tennis. There's almost always music on. And coffee does not mean instant. It means dark roast I've ground myself, made as a slow pour-over.
 
-Right now, I’m working as a Data Engineer at Citi, where I focus on building scalable, high-performance data processing systems. Previously, I was a Solutions Consultant at Sahaj Software, working on large-scale data engineering solutions.
+I'm open-minded, down to earth, and pretty comfortable in my own company. Still, if I've made someone's day a little easier, that's a good day.
 
-I’ve participated in Google Summer of Code, contributed to [Apache Airflow](http://airflow.apache.org/), and have been involved with open source as a community member and past maintainer at [CRI-O](https://cri-o.io/) and [DuckDuckGo](duckduckgo.com).
-
-
+If you're planning a trip to the hills, want to argue about quantum mechanics, or have a coffee recommendation, say hello on [GitHub](https://github.com/amarlearning) or [LinkedIn](https://in.linkedin.com/in/amarlearning).

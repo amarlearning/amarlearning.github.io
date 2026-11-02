@@ -1,5 +1,6 @@
 +++
 title = "From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark"
+images = ["/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png"]
 date = "2025-04-07T00:00:00-00:00"
 description = "Learn how Spark's Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning"
 

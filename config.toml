@@ -1,5 +1,5 @@
 baseURL = 'https://amarpandey.me/'
-languageCode = 'en-us'
+languageCode = 'en-US'
 title = 'Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ'
 theme = 'hugo-bearblog'
 author = "Amar Prakash Pandey"
@@ -8,7 +8,8 @@ author = "Amar Prakash Pandey"
 enableRobotsTXT = true
 
 [params]
-  Description = "Personal website of Amar Prakash Pandey. Currently working as a Solutions Consultant at Sahaj Software. I have also worked for Tata Research Design and Development Center, Tata Consultancy Service, and Google Summer of Code. Open Source Community Member at DuckDuckGo. Maintainer at Open Source Help Community."
+  Description = "Amar Prakash Pandey, senior data engineer at Citi working on Spark and data platforms. Apache Airflow contributor and former CRI-O and DuckDuckGo maintainer."
+  images = ["images/og-default.jpg"]
   hideMadeWithLine = true
   favicon = "favicon/favicon.png"
 

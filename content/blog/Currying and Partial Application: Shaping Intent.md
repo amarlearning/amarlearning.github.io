@@ -1,5 +1,6 @@
 +++
 title = "Currying and Partial Application: Shaping Intent"
+images = ["/images/currying-and-partial-application-shaping-intent/banner.jpg"]
 date = "2026-02-28T00:00:00-00:00"
 description = "Move beyond functional tricks. Learn how to use currying and partial application in Python to name behaviors, reduce noise, and separate configuration from execution."
 

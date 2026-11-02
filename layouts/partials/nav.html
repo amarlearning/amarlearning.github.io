@@ -1,5 +1,6 @@
-<a href="{{ "" | relURL }}">Home</a>
-<a href="{{ "about" | relURL }}">About</a>
-<a href="{{ "projects" | relURL }}">Projects</a>
-<a href="{{ "blog" | relURL }}">Blog</a>
+{{ $here := .RelPermalink }}
+<a href="{{ "" | relURL }}"{{ if .IsHome }} class="active"{{ end }}>Home</a>
+<a href="{{ "about" | relURL }}"{{ if eq $here ("about/" | relURL) }} class="active"{{ end }}>About</a>
+<a href="{{ "projects" | relURL }}"{{ if eq $here ("projects/" | relURL) }} class="active"{{ end }}>Projects</a>
+<a href="{{ "blog" | relURL }}"{{ if hasPrefix $here ("blog/" | relURL) }} class="active"{{ end }}>Blog</a>
 <a href="{{ "resume.pdf" | relURL }}" target="_blank">Reśume</a>

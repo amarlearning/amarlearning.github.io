@@ -1,18 +1,35 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
 {{ define "main" }}
-<div class="divider-thin"></div>
-
 <div class="intro">
     {{ .Content }}
 </div>
 
-<div class="divider-thick">
-    <h2>Recent Posts</h2>
-    {{ range first 2 (where .Site.RegularPages "Type" "blog") }}
-    <article>
-        <p class="post-item-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
-        <time class="post-item-date"><i>{{ .Date.Format "January 2, 2006" }}</i></time>
-        <p class="post-item-description">{{ .Description }}</p>
-    </article>
+<hr>
+
+<section class="home-section">
+    <p class="section-label">Work</p>
+    {{ range first 4 .Site.Data.projects }}
+    {{ $url := (index .links 0).url }}
+    {{ range .links }}{{ if eq .name "demo" }}{{ $url = .url }}{{ end }}{{ end }}
+    <a class="work-row" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+        {{ with .icon }}<span class="work-icon" aria-hidden="true">{{ . }}</span>{{ else }}<img src="https://www.google.com/s2/favicons?domain={{ (urls.Parse $url).Host }}&sz=32" alt="" width="20" height="20" loading="lazy">{{ end }}
+        <span class="work-title">{{ .title }}</span>
+        <span class="work-sep">/</span>
+        <span class="work-desc">{{ .short | default .description }}</span>
+    </a>
     {{ end }}
-</div>
+</section>
+
+<hr>
+
+<section class="home-section">
+    <p class="section-label">Writing</p>
+    {{ range first 5 (where .Site.RegularPages "Type" "blog") }}
+    <a class="writing-row" href="{{ .RelPermalink }}">
+        <span class="writing-title">{{ .Title }}</span>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.Jan.2006" }}</time>
+    </a>
+    {{ end }}
+    <a class="view-all" href="{{ "blog" | relURL }}">View all &rarr;</a>
+</section>
 {{ end }}

@@ -1,5 +1,6 @@
 +++
 title = "Never Push a Work Commit with Your Personal Email Again"
+images = ["/images/never-push-a-work-commit-with-your-personal-email-again/banner.png"]
 date = "2025-07-05T00:00:00-00:00"
 description = "Automatically switch Git identities based on folder path — a clean way to manage personal and work commits"
 

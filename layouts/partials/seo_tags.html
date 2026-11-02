@@ -1,0 +1,12 @@
+<link rel="canonical" href="{{ .Permalink }}" />
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ if .IsPage }}{{ .Summary | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}" />
+{{ if .IsPage }}{{ with .Params.tags }}<meta name="keywords" content="{{ delimit . ", " }}" />{{ end }}{{ end }}
+
+<!-- Open Graph / Facebook -->
+{{ template "_internal/opengraph.html" . }}
+
+<!-- Twitter -->
+{{ template "_internal/twitter_cards.html" . }}
+
+<!-- Microdata -->
+{{ template "_internal/schema.html" . }}

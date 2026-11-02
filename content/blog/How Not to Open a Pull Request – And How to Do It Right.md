@@ -1,5 +1,6 @@
 +++
 title = "How Not to Open a Pull Request – And How to Do It Right"
+images = ["/images/how-not-to-open-a-pull-request-add-how-to-do-it-right/banner.png"]
 date = "2025-07-25T00:00:00-00:00"
 description = "A comprehensive guide on creating effective pull requests, based on 6+ years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices."
 

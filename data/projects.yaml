@@ -1,28 +1,34 @@
 - title: Lore
+  icon: 🧠
+  short: Decision memory for Claude Code
   description: Persistent decision memory layer for Claude Code — captures the reasoning, rejected alternatives, and constraints behind every commit so future sessions know not just what changed, but why.
   links:
     - name: code
       url: https://github.com/amarlearning/lore
 
 - title: uv-bundler
+  icon: 📦
+  short: Linux-ready Python builds from any machine
   description: Build deployment-ready Python artifacts for Linux from any machine. Uses Ghost Resolution to cross-compile platform-specific wheels without Docker or a Linux build server.
   links:
     - name: code
       url: https://github.com/amarlearning/uv-bundler
 
 - title: Spot Optimizer
+  icon: 💸
+  short: Picks the cheapest stable AWS Spot instances
   description: Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling.
   links:
     - name: code
       url: https://github.com/amarlearning/spot-optimizer
 
 - title: GeohashViz.com
+  icon: 🌍
+  short: Visualize geohashes in bulk
   description: A web application that lets you visualize geohashes in bulk.
   links:
     - name: code
       url: https://github.com/amarlearning/geohashviz.com
-    - name: demo
-      url: https://geohashviz.com
 
 - title: Chat Rooms
   description: Real-time public/private chat application using Spring Boot and WebSockets.

@@ -1,5 +1,6 @@
 +++
 title = "Deep Dive into Spark Jobs and Stages"
+images = ["/images/deep-dive-into-spark-jobs-and-stages/banner.png"]
 date = "2025-03-23T00:00:00-00:00"
 description = "Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing."
 

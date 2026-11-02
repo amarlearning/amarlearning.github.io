@@ -1,5 +1,6 @@
 +++
 title = "Docker - the right way"
+images = ["/images/docker-the-right-way/banner.png"]
 date = "2022-01-23T00:00:00-00:00"
 description = "Docker - the right way - Best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles."
 

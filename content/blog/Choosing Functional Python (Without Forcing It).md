@@ -1,5 +1,6 @@
 +++
 title = "Choosing Functional Python (Without Forcing It)"
+images = ["/images/choosing-functional-python-without-forcing-it/banner.png"]
 date = "2026-01-31T00:00:00-00:00"
 description = "Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops."
 

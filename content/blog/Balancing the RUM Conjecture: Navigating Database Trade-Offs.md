@@ -1,5 +1,6 @@
 +++
 title = "Balancing the RUM Conjecture: Navigating Database Trade-Offs"
+images = ["/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png"]
 date = "2024-11-05T00:00:00-00:00"
 description = "An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory."
 

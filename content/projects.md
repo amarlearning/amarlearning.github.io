@@ -1,5 +1,6 @@
 +++
 title = "Projects"
+description = "Open source contributions and personal projects by Amar Prakash Pandey, from Spark tooling to developer tools."
 menu = "main"
 type = "projects"
 +++

@@ -1,7 +1,7 @@
 +++
 title = "Functors and Monads: Wrapping Your Data (Not Your Head) Around Them"
 date = "2026-03-15T00:00:00-00:00"
-description = "Move beyond functional tricks. Learn how to use currying and partial application in Python to name behaviors, reduce noise, and separate configuration from execution."
+description = "Functors and monads without the category theory. Learn how wrapping values in a context-aware box makes Python data pipelines cleaner, with real data engineering examples."
 
 tags = [ 
     "Python", 
