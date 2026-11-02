@@ -7,6 +7,20 @@
 <hr>
 
 <section class="home-section">
+    <p class="section-label">Building</p>
+    <p>Right now I'm building Litmus, a place to practice system design. Most courses hand you the finished diagram. Litmus gives you the requirements and an empty canvas, then grades every box as you add it: green if it's right-sized, yellow if it's over-built, red if it's about to fall over. The design that's perfect at 1k requests a second breaks at 100k.</p>
+    <a class="work-row" href="https://litmus.amarpandey.me" target="_blank" rel="noopener noreferrer">
+        <img class="work-icon" src="{{ "images/litmus.svg" | relURL }}" alt="" width="20" height="20">
+        <span class="work-title">Litmus</span>
+        <span class="work-sep">/</span>
+        <span class="work-desc">Learn when to use a component, not just what it is</span>
+        <span class="work-try">try it &rarr;</span>
+    </a>
+</section>
+
+<hr>
+
+<section class="home-section">
     <p class="section-label">Work</p>
     {{ range first 4 .Site.Data.projects }}
     {{ $url := (index .links 0).url }}
