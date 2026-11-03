@@ -22,13 +22,15 @@
     - name: code
       url: https://github.com/amarlearning/spot-optimizer
 
-- title: GeohashViz.com
+- title: GeohashViz
   icon: 🌍
   short: Visualize geohashes in bulk
   description: A web application that lets you visualize geohashes in bulk.
   links:
     - name: code
-      url: https://github.com/amarlearning/geohashviz.com
+      url: https://github.com/amarlearning/geohashviz
+    - name: demo
+      url: https://geohashviz.amarpandey.me/
 
 - title: Chat Rooms
   description: Real-time public/private chat application using Spring Boot and WebSockets.
