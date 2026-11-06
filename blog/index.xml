@@ -6,8 +6,15 @@
     <description>Recent content in Blog on Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</description>
     <generator>Hugo</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
     <atom:link href="https://amarpandey.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We&#39;re Putting AI Everywhere Before It&#39;s Sustainable</title>
+      <link>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</link>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+      <guid>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</guid>
+      <description>On unnecessary AI adoption, the economics of intelligence, environmental costs, and the software craftsmanship we&amp;rsquo;re slowly overlooking.&#xA;We are making an expensive, resource-intensive technology artificially accessible and encouraging mass adoption before we&amp;rsquo;ve established that its widespread use is economically and environmentally sustainable.&#xA;Something about the current wave of AI adoption doesn&amp;rsquo;t quite sit right with me.&#xA;Everywhere I look, products are introducing AI features. Existing products are being rebuilt around AI, new products are being launched with AI at their core, and developers are finding increasingly creative ways to incorporate AI into problems that were already being solved quite well.</description>
+    </item>
     <item>
       <title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
       <link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>

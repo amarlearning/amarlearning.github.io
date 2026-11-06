@@ -2,13 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://amarpandey.me/tags/ai/</loc>
-    <lastmod>2026-05-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://amarpandey.me/</loc>
-    <lastmod>2026-05-27T00:00:00+00:00</lastmod>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/artificial-intelligence/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/energy/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/environmental-impact/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/product-design/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/software-engineering/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/sustainability/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/technology/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</loc>
+    <lastmod>2026-11-07T00:00:00+05:30</lastmod>
+  </url><url>
+    <loc>https://amarpandey.me/tags/ai/</loc>
     <lastmod>2026-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/claude-code/</loc>
@@ -21,9 +48,6 @@
     <lastmod>2026-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/tags/python/</loc>
-    <lastmod>2026-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://amarpandey.me/tags/</loc>
     <lastmod>2026-05-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</loc>
