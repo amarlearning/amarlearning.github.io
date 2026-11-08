@@ -4,16 +4,16 @@
   url: https://github.com/apache/airflow
 
 - organization: CRI-O
-  role: Contributor
+  role: Maintainer
   description: Worked on container runtime interface improvements.
   url: https://github.com/cri-o/cri-o
 
 - organization: DuckDuckGo
-  role: Open Source Community Member
-  description: Active member of the open source community.
+  role: Maintainer
+  description: Maintainer in DuckDuckGo's open source community.
   url: https://github.com/duckduckgo
 
 - organization: Google Summer of Code
-  role: Student Developer
-  description: Successful completion of GSoC program.
+  role: Student
+  description: Worked on TEAMMATES at the National University of Singapore.
   url: https://summerofcode.withgoogle.com/
