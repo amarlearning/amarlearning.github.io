@@ -1,25 +1,21 @@
 {{ define "main" }}
 {{ if eq .Type "blog" }}{{ if not .Params.menu }}
 <h1>{{ .Title }}</h1>
-<p>
-  <i>
-    <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+<p class="post-date"><time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
       {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
-    </time>
-  </i>
-</p>
+    </time></p>
 {{ end }}{{ end }}
 <content>
   {{ .Content }}
 </content>
 {{ if eq .Type "blog" }}
-<hr style="margin-top: 50px; margin-bottom: 30px;">
+<hr>
 <p>
   Thanks for reading! If this one was useful, there's more where it came from in the <a href="{{ "blog" | relURL }}">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
 </p>
 <p>
   {{ range (.GetTerms "tags") }}
-  <a href="{{ .Permalink }}">#{{ .LinkTitle | lower }}</a>
+  <a class="tag" href="{{ .Permalink }}">#{{ .LinkTitle | lower }}</a>
   {{ end }}
 </p>
 {{ if (and (eq .Type "blog") (not .Params.noComments)) }}
