@@ -1,0 +1,59 @@
+- id: 1
+  title: "Scaling Hotstar for 25 million concurrent viewers"
+  speaker: "Gaurav Kamboj"
+  duration: "46 min"
+  url: "https://youtu.be/QjvyiyH4rr0"
+
+- id: 2
+  title: "How JioCinema streams IPL to 20 million devices"
+  speaker: "Prachi Sharma and Arpit Bhayani"
+  duration: "45 min"
+  url: "https://youtu.be/36N1Bz7qW0A"
+
+- id: 3
+  title: "Live streaming at world-record scale"
+  speaker: "Ashutosh Agrawal, ex-Chief Architect of JioCinema"
+  duration: "1 hr"
+  url: "https://youtu.be/qXJ3S3T3xJY"
+
+- id: 4
+  title: "How Flipkart built hybrid cloud for scale"
+  speaker: "Sudhir Reddy"
+  duration: "32 min"
+  url: "https://youtu.be/juKG07jL8fY"
+
+- id: 5
+  title: "Why PhonePe still bets on data centres"
+  speaker: "Heads of Engineering, PhonePe"
+  duration: "53 min"
+  url: "https://youtu.be/F7SHH47sWAY"
+
+- id: 6
+  title: "If UPI is free, who pays for it?"
+  speaker: "Nikhil Kamath with PhonePe, Razorpay, and NPCI"
+  duration: "4 hrs"
+  url: "https://youtu.be/hBvlnWQWpZ0"
+
+- id: 7
+  title: "Razorpay's journey to microservices"
+  speaker: "Arjun Tomer and Arpit Bhayani"
+  duration: "50 min"
+  url: "https://youtu.be/yqkyq8TPWbg"
+
+- id: 8
+  title: "7+ million Postgres tables"
+  speaker: "Kailash Nadh, CTO of Zerodha"
+  duration: "20 min"
+  url: "https://youtu.be/xhi5Q_wL9i0"
+
+- id: 9
+  title: "Scaling Kafka at Blinkit and Zomato"
+  speaker: "Pradeep Khileri"
+  duration: "41 min"
+  url: "https://youtu.be/kjGP_kBQdVc"
+
+- id: 10
+  title: "IRCTC System Design"
+  speaker: "Gaurav Sen interviewed by Keerti Purswani"
+  duration: "59 min"
+  url: "https://youtu.be/j3etJx7M0Sc"

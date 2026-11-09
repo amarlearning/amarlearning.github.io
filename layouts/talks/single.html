@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="intro">
+    {{ .Content }}
+</div>
+
+<hr>
+
+<section class="home-section">
+    <p class="section-label">Engineering Talks</p>
+    {{ range .Site.Data.talks }}
+    <a class="entry" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">{{ .title }}</h2>
+            <span class="entry-links">{{ .duration }} ↗</span>
+        </div>
+        <p class="entry-desc">{{ .speaker }}</p>
+    </a>
+    {{ end }}
+</section>
+{{ end }}
