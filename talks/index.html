@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
+<title>Talks | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title><link rel="canonical" href="https://amarpandey.me/talks/" />
+<meta name="description" content="Curated engineering talks on scaling, system design, and infrastructure from Indian tech companies." />
+
+
+
+<meta property="og:url" content="https://amarpandey.me/talks/">
+  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:title" content="Talks">
+  <meta property="og:description" content="Curated engineering talks on scaling, system design, and infrastructure from Indian tech companies.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="article">
+    <meta property="og:image" content="https://amarpandey.me/images/og-default.jpg">
+
+
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://amarpandey.me/images/og-default.jpg">
+  <meta name="twitter:title" content="Talks">
+  <meta name="twitter:description" content="Curated engineering talks on scaling, system design, and infrastructure from Indian tech companies.">
+
+
+
+
+  <meta itemprop="name" content="Talks">
+  <meta itemprop="description" content="Curated engineering talks on scaling, system design, and infrastructure from Indian tech companies.">
+  <meta itemprop="wordCount" content="22">
+  <meta itemprop="image" content="https://amarpandey.me/images/og-default.jpg">
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  div.highlight pre {
+    background-color: initial;
+    color: initial;
+  }
+
+  div.highlight code {
+    background-color: unset;
+    color: unset;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Sono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Whisper&text=AmarPndey&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CN34V0ZGSQ');
+  </script>
+
+
+<style>
+   
+  :root {
+    --bg: #fffdf8;             
+    --text: #0a0a0a;           
+    --primary-color: #0a0a0a;
+    --body-color: #2e2e2e;
+    --muted-color: #8c8c8c;    
+    --quiet-color: #b3b3b3;
+    --border-color: #e5e5e5;   
+    --link-line: #d1d1d1;      
+    --soft-surface: #f7f5ef;
+    --accent-color: #512906;   
+    --forest: #0c3b1a;
+    --oxblood: #5e0831;
+    --violet: #242d64;         
+    --on-violet: #fffdf8;
+
+    --sans: 'Inter', system-ui, sans-serif;
+    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --mono: 'Sono', ui-monospace, monospace;
+    --radius: 10px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15130f;
+      --text: #f2ede3;
+      --primary-color: #f2ede3;
+      --body-color: #d6d0c4;
+      --muted-color: #8f897c;
+      --quiet-color: #5f5a50;
+      --border-color: #2a2721;
+      --link-line: #4a453b;
+      --soft-surface: #1e1b16;
+      --accent-color: #d9a875;
+      --forest: #8fbf9a;
+      --oxblood: #d38aa6;
+      --violet: #262f66;
+    }
+  }
+
+  body {
+    max-width: 38rem;
+    padding: 3rem 1rem;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--body-color);
+    background-color: var(--bg) !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+   
+  h1, h2, h3, h4, h5, h6 { color: var(--primary-color); font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
+  h1 { font-size: 2.6rem; line-height: 1.08; margin: 0 0 0.75rem; }
+  h2 { font-size: 1.75rem; line-height: 1.15; margin-top: 2.5rem; }
+  h3 { font-size: 1.3rem; line-height: 1.3; margin-top: 2rem; }
+  strong, b { color: var(--primary-color); font-weight: 600; }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: var(--link-line);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color .15s, color .15s;
+  }
+  a:hover { text-decoration-color: currentColor; }
+  content a, .intro a { color: var(--accent-color); }
+   
+  content p:has(> img) > em {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--muted-color);
+    font-size: 0.875rem;
+  }
+  content img { border-radius: var(--radius); border: 1px solid var(--border-color); }
+
+  code, pre code { font-family: var(--mono); font-size: 0.85em; }
+  code { background-color: var(--soft-surface); border-radius: 6px; color: var(--primary-color); }
+  pre code { background-color: var(--soft-surface); border: 1px solid var(--border-color); border-radius: var(--radius); color: var(--primary-color); }
+  blockquote {
+    margin-left: 0;
+    border-left: 2px solid var(--oxblood);
+    color: var(--primary-color);
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+   
+  header .title { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  header .title h2 { margin: 0; font-size: 1.4rem; }
+  header .handle { color: var(--muted-color); font-family: var(--sans); font-size: 0.875rem; white-space: nowrap; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; }
+  header nav { display: flex; gap: 1.5rem; margin: 1.25rem 0 3rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border-color); }
+  header nav a { margin: 0; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
+  header nav a:hover, header nav a.active { color: var(--primary-color); }
+  header nav a.active { text-decoration: underline; text-decoration-color: var(--primary-color); text-underline-offset: 1.15rem; }
+
+   
+  .section-label { margin: 0 0 1rem; color: var(--primary-color); font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
+  .work-row, .writing-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+  .work-row img { width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0; align-self: center; }
+  .work-title, .writing-title { color: var(--primary-color); font-weight: 500; white-space: nowrap; }
+  .writing-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .work-sep { color: var(--quiet-color); margin: 0 -0.35rem; }
+  .work-icon { display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; align-self: center; font-size: 16px; line-height: 1; }
+  .work-desc { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted-color); }
+  .work-row:hover .work-title, .writing-row:hover .writing-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
+  .writing-row { justify-content: space-between; gap: 1rem; }
+  .writing-row time { color: var(--muted-color); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .view-all { display: inline-block; margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
+  .view-all:hover { color: var(--primary-color); }
+
+   
+  .panel {
+    margin: 0 -1.5rem;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius);
+    background: var(--violet);
+    color: color-mix(in srgb, var(--on-violet) 82%, transparent);
+  }
+  .panel .section-label { color: var(--on-violet); font-size: 2rem; }
+  .panel p { margin: 0 0 1rem; }
+  .panel .kicker { margin: 0 0 0.5rem; color: color-mix(in srgb, var(--on-violet) 60%, transparent); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ghost {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--on-violet) 35%, transparent);
+    border-radius: var(--radius);
+    color: var(--on-violet);
+    font-size: 0.875rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: border-color .15s;
+  }
+  .ghost:hover { border-color: var(--on-violet); }
+
+   
+  hr { height: 0; margin: 3rem 0; border: 0; border-top: 1px solid var(--border-color); }
+
+  footer { padding: 0; margin-top: 1rem; text-align: center; color: var(--muted-color); font-size: 0.8rem; }
+  .signature {
+    margin: 0 0 0.75rem;
+    font-family: 'Whisper', cursive;
+    font-size: 3.25rem;
+    line-height: 1.3;
+    color: var(--primary-color);
+    transform: rotate(-2deg);
+  }
+  .footer-meta { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+  .footer-meta .rss-link::before { content: '·'; margin-right: 0.5rem; color: var(--quiet-color); }
+  .footer-meta .rss-link { color: var(--muted-color); text-decoration: none; }
+  .footer-meta .rss-link:hover { color: var(--primary-color); }
+
+   
+  .post-date { margin: 0 0 2.5rem; color: var(--muted-color); font-size: 0.875rem; }
+  .archive-year { margin: 2.5rem 0 0.5rem; font-size: 1.5rem; }
+  .tag { color: var(--forest); text-decoration: none; margin-right: 0.75rem; font-size: 0.875rem; }
+  .tag:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+
+   
+  .entry { display: block; padding: 0.75rem 0; color: inherit; text-decoration: none; }
+  .entry-head { display: flex; align-items: baseline; gap: 0.75rem; }
+  .entry-head .work-icon { align-self: center; }
+  .entry-title { margin: 0; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.3; color: var(--primary-color); }
+  .entry-links { margin-left: auto; display: flex; gap: 1rem; color: var(--muted-color); font-size: 0.85rem; white-space: nowrap; }
+  .entry-links a { color: inherit; text-decoration: none; }
+  .entry-links a:hover { color: var(--primary-color); }
+  .entry-desc { display: block; margin: 0.2rem 0 0 calc(20px + 0.75rem); color: var(--muted-color); font-size: 0.95rem; line-height: 1.6; }
+  a.entry .entry-desc { margin-left: 0; }
+  a.entry:hover .entry-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 2.1rem; }
+    .panel { margin: 0; }
+  }
+
+   
+  @keyframes fadeInUp {
+    from { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+    to { opacity: 1; filter: blur(0); transform: none; }
+  }
+   
+  :where(header, main > :not(.intro, content, .project-page), .intro > *, main > content > *, .project-page > :not(.intro), footer) {
+    opacity: 0;
+    animation: fadeInUp .6s ease-out forwards;
+  }
+  main > :nth-child(1) { animation-delay: .1s; }
+  main > :nth-child(2) { animation-delay: .2s; }
+  main > :nth-child(3) { animation-delay: .3s; }
+  main > :nth-child(4) { animation-delay: .4s; }
+  main > :nth-child(5) { animation-delay: .5s; }
+  main > :nth-child(6) { animation-delay: .6s; }
+  main > :nth-child(7) { animation-delay: .7s; }
+  main > :nth-child(n+8) { animation-delay: .8s; }
+  footer { animation-delay: .9s; }
+  :where(main > content, .project-page) > :nth-child(1) { animation-delay: .2s; }
+  :where(main > content, .project-page) > :nth-child(2) { animation-delay: .3s; }
+  :where(main > content, .project-page) > :nth-child(3) { animation-delay: .4s; }
+  :where(main > content, .project-page) > :nth-child(4) { animation-delay: .5s; }
+  :where(main > content, .project-page) > :nth-child(5) { animation-delay: .6s; }
+  :where(main > content, .project-page) > :nth-child(6) { animation-delay: .7s; }
+  :where(main > content, .project-page) > :nth-child(n+7) { animation-delay: .8s; }
+
+   
+  .intro > :nth-child(1) { animation-delay: .1s; }
+  .intro > :nth-child(2) { animation-delay: .2s; }
+  .intro > :nth-child(3) { animation-delay: .3s; }
+  .intro > :nth-child(4) { animation-delay: .4s; }
+  .intro > :nth-child(n+5) { animation-delay: .45s; }
+  main > hr:nth-of-type(1) { animation-delay: .5s; }
+  main > section:nth-of-type(1) { animation-delay: .6s; }
+  main > hr:nth-of-type(2) { animation-delay: .7s; }
+  main > section:nth-of-type(2) { animation-delay: .8s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(header, main > *, .intro > *, main > content > *, .project-page > *, footer) { opacity: 1; animation: none; }
+  }
+
+
+</style>
+
+
+<a href="/" class="title">
+  <img src="https://github.com/amarlearning.png?size=80" alt="Amar Prakash Pandey" class="avatar" width="40" height="40">
+  <h2>Amar Prakash Pandey <span class="handle">aka @amarlearning</span></h2>
+</a>
+<nav>
+<a href="/">Home</a>
+<a href="/about">About</a>
+<a href="/projects">Projects</a>
+<a href="/talks" class="active">Talks</a>
+<a href="/blog">Blog</a>
+<a href="/resume.pdf" target="_blank">Reśume</a>
+</nav>
+</header>
+  <main>
+<div class="intro">
+    <p>Engineering talks I recommend — real-world scaling stories, architecture deep-dives, and system design war stories from folks who built things at scale.</p>
+
+</div>
+
+<hr>
+
+<section class="home-section">
+    <p class="section-label">Engineering Talks</p>
+    
+    <a class="entry" href="https://youtu.be/QjvyiyH4rr0" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">Scaling Hotstar for 25 million concurrent viewers</h2>
+            <span class="entry-links">46 min ↗</span>
+        </div>
+        <p class="entry-desc">Gaurav Kamboj</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/36N1Bz7qW0A" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">How JioCinema streams IPL to 20 million devices</h2>
+            <span class="entry-links">45 min ↗</span>
+        </div>
+        <p class="entry-desc">Prachi Sharma and Arpit Bhayani</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/qXJ3S3T3xJY" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">Live streaming at world-record scale</h2>
+            <span class="entry-links">1 hr ↗</span>
+        </div>
+        <p class="entry-desc">Ashutosh Agrawal, ex-Chief Architect of JioCinema</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/juKG07jL8fY" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">How Flipkart built hybrid cloud for scale</h2>
+            <span class="entry-links">32 min ↗</span>
+        </div>
+        <p class="entry-desc">Sudhir Reddy</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/F7SHH47sWAY" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">Why PhonePe still bets on data centres</h2>
+            <span class="entry-links">53 min ↗</span>
+        </div>
+        <p class="entry-desc">Heads of Engineering, PhonePe</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/hBvlnWQWpZ0" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">If UPI is free, who pays for it?</h2>
+            <span class="entry-links">4 hrs ↗</span>
+        </div>
+        <p class="entry-desc">Nikhil Kamath with PhonePe, Razorpay, and NPCI</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/yqkyq8TPWbg" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">Razorpay&#39;s journey to microservices</h2>
+            <span class="entry-links">50 min ↗</span>
+        </div>
+        <p class="entry-desc">Arjun Tomer and Arpit Bhayani</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/xhi5Q_wL9i0" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">7&#43; million Postgres tables</h2>
+            <span class="entry-links">20 min ↗</span>
+        </div>
+        <p class="entry-desc">Kailash Nadh, CTO of Zerodha</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/kjGP_kBQdVc" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">Scaling Kafka at Blinkit and Zomato</h2>
+            <span class="entry-links">41 min ↗</span>
+        </div>
+        <p class="entry-desc">Pradeep Khileri</p>
+    </a>
+    
+    <a class="entry" href="https://youtu.be/j3etJx7M0Sc" target="_blank" rel="noopener noreferrer">
+        <div class="entry-head">
+            <h2 class="entry-title">IRCTC System Design</h2>
+            <span class="entry-links">59 min ↗</span>
+        </div>
+        <p class="entry-desc">Gaurav Sen interviewed by Keerti Purswani</p>
+    </a>
+    
+</section>
+
+  </main>
+  <footer><hr>
+<div class="footer-container">
+  <p class="signature" aria-label="Signed, Amar Pandey">Amar Pandey</p>
+  <div class="footer-meta">
+    <span>2026 © Amar Prakash Pandey</span>
+    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
+        <path d="M4 11a9 9 0 0 1 9 9"></path>
+        <path d="M4 4a16 16 0 0 1 16 16"></path>
+        <circle cx="5" cy="19" r="1"></circle>
+      </svg>
+      RSS
+    </a>
+  </div>
+</div>
+</footer>
+
+    
+</body>
+
+</html>
