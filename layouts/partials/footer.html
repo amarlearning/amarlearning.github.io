@@ -1,16 +1,23 @@
-<hr>
-<div class="footer-container">
-  <p class="signature" aria-label="Signed, Amar Pandey">Amar Pandey</p>
-  <div class="footer-meta">
-    <span>{{ now.Format "2006" }} © Amar Prakash Pandey</span>
-    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
-        <path d="M4 11a9 9 0 0 1 9 9"></path>
-        <path d="M4 4a16 16 0 0 1 16 16"></path>
-        <circle cx="5" cy="19" r="1"></circle>
-      </svg>
-      RSS
-    </a>
-  </div>
+{{- /* drop your own sprite at static/images/footer-sprite.(gif|png|webp) and it rides the rainbow instead of the duck */ -}}
+{{- $sprite := "" -}}
+{{- range slice "gif" "png" "webp" }}{{ if and (not $sprite) (fileExists (printf "static/images/footer-sprite.%s" .)) }}{{ $sprite = printf "/images/footer-sprite.%s" . }}{{ end }}{{ end -}}
+<figure class="sky">
+  <button class="duck-button" type="button" aria-label="Make it fly">
+    <canvas aria-hidden="true"></canvas>
+    {{- with $sprite }}<img class="sprite" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  </button>
+  {{- if not $sprite }}
+  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
+  {{- end }}
+</figure>
+<div class="footer-meta">
+  <span>© {{ now.Format "2006" }} Amar Prakash Pandey</span>
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
 </div>

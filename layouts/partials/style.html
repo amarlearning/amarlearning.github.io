@@ -1,0 +1,2 @@
+{{- $css := slice (resources.Get "css/tokens.css") (resources.Get "css/base.css") (resources.Get "css/site.css") | resources.Concat "css/main.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
