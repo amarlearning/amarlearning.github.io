@@ -1,23 +1,14 @@
-{{ if (eq $.Page.Params.math "katex") }}
-  {{ partial "helpers/katex.html" . }}
-{{ else if (eq $.Page.Params.math "mathjax") }}
-  {{ partial "helpers/mathjax.html" . }}
-{{ end }}
-
-{{ with .Site.Params.analytics.measurement_id }}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ . }}');
-  </script>
-{{ end }}
-
-{{ partial "custom_style.html" . }}
-
-<a href="{{ "/" | relURL }}" class="title">
-  <img src="https://github.com/amarlearning.png?size=80" alt="Amar Prakash Pandey" class="avatar" width="40" height="40">
-  <h2>Amar Prakash Pandey <span class="handle">aka @amarlearning</span></h2>
-</a>
-<nav>{{- partial "nav.html" . -}}</nav>
+<div class="masthead">
+  <a href="{{ "/" | relURL }}" class="identity">
+    <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
+    <span class="identity-text">
+      <span class="identity-name">Amar Prakash Pandey</span>
+      <span class="identity-handle">aka @amarlearning</span>
+    </span>
+  </a>
+  <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+    <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+  </button>
+</div>
+<nav aria-label="Main">{{- partial "nav.html" . -}}</nav>

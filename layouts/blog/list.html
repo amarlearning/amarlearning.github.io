@@ -2,16 +2,19 @@
 {{ .Content }}
 {{ range .Pages.GroupByDate "2006" }}
 <h2 class="archive-year">{{ .Key }}</h2>
+<div class="rows">
 {{ range .Pages }}
-<a class="writing-row" href="{{ .RelPermalink }}">
-    <span class="writing-title">{{ .Title }}</span>
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02" }}</time>
+<a class="row" href="{{ .RelPermalink }}">
+    <span class="row-title">{{ .Title }}</span>
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
 </a>
 {{ end }}
+</div>
 {{ end }}
 
+<section class="block" aria-labelledby="tags">
+<h2 class="block-head" id="tags">Tags</h2>
 <div class="tags">
-    <p class="section-label">Tags</p>
     {{ $tagCounts := dict }}
     {{ range .Site.RegularPages }}
     {{ range .Params.tags }}
@@ -50,4 +53,5 @@
     <a class="tag" href="/tags/{{ . | urlize }}">#{{ . | lower }}</a>
     {{ end }}
 </div>
+</section>
 {{ end }}

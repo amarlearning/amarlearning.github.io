@@ -4,42 +4,46 @@
     {{ .Content }}
 </div>
 
-<hr>
-
-<section class="home-section panel">
-    <p class="kicker">Currently building</p>
-    <p class="section-label">Litmus</p>
-    <p>System design practice that judges your decisions, not your diagram. Each problem gives you real requirements and an empty canvas. Every box you add gets a verdict: right-sized, overkill, or about to break, with the reason why.</p>
-    <p>Pass, and a Deep Dive raises the bar, just like an interviewer would: more traffic, users worldwide, a database node that dies. Your design has to keep up. Stuck? Get a hint first, then watch the reference design built box by box.</p>
-    <a class="ghost" href="https://litmus.amarpandey.me" target="_blank" rel="noopener noreferrer">Try Litmus &rarr;</a>
+<section class="block" aria-labelledby="building">
+    <h2 class="block-head" id="building">Currently building</h2>
+    <article class="feature">
+        <div class="feature-head">
+            <img src="{{ "images/litmus.svg" | relURL }}" alt="" width="36" height="36">
+            <h3 class="feature-title">Litmus</h3>
+        </div>
+        <p>System design practice that judges your decisions, not your diagram. Each problem gives you real requirements and an empty canvas. Every box you add gets a verdict: right-sized, overkill, or about to break, with the reason why.</p>
+        <p>Pass, and a Deep Dive raises the bar, just like an interviewer would: more traffic, users worldwide, a database node that dies. Your design has to keep up. Stuck? Get a hint first, then watch the reference design built box by box.</p>
+        <a class="button" href="https://litmus.amarpandey.me" target="_blank" rel="noopener noreferrer">Try Litmus {{ partial "icon-arrow.html" . }}</a>
+    </article>
 </section>
 
-<hr>
-
-<section class="home-section">
-    <p class="section-label">Work</p>
+<section class="block" aria-labelledby="work">
+    <h2 class="block-head" id="work">Work</h2>
+    <div class="cards">
     {{ range first 4 .Site.Data.projects }}
     {{ $url := (index .links 0).url }}
     {{ range .links }}{{ if eq .name "demo" }}{{ $url = .url }}{{ end }}{{ end }}
-    <a class="work-row" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
-        {{ with .icon }}<span class="work-icon" aria-hidden="true">{{ . }}</span>{{ else }}<img src="https://www.google.com/s2/favicons?domain={{ (urls.Parse $url).Host }}&sz=32" alt="" width="20" height="20" loading="lazy">{{ end }}
-        <span class="work-title">{{ .title }}</span>
-        <span class="work-sep">/</span>
-        <span class="work-desc">{{ .short | default .description }}</span>
-    </a>
+        <a class="card" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+            <span class="card-head">
+                <span class="card-title">{{ .title }}</span>
+                {{ partial "icon-arrow.html" . }}
+            </span>
+            <span class="card-desc">{{ .short | default .description }}</span>
+        </a>
     {{ end }}
+    </div>
 </section>
 
-<hr>
-
-<section class="home-section">
-    <p class="section-label">Writing</p>
+<section class="block" aria-labelledby="writing">
+    <h2 class="block-head" id="writing">Writing</h2>
+    <div class="rows">
     {{ range first 5 (where .Site.RegularPages "Type" "blog") }}
-    <a class="writing-row" href="{{ .RelPermalink }}">
-        <span class="writing-title">{{ .Title }}</span>
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.Jan.2006" }}</time>
-    </a>
+        <a class="row" href="{{ .RelPermalink }}">
+            <span class="row-title">{{ .Title }}</span>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time>
+        </a>
     {{ end }}
-    <a class="view-all" href="{{ "blog" | relURL }}">View all &rarr;</a>
+    </div>
+    <a class="more" href="{{ "blog" | relURL }}">All posts</a>
 </section>
 {{ end }}

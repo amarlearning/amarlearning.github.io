@@ -1,0 +1,25 @@
+<script>
+(function () {
+  var root = document.documentElement;
+  var button = document.querySelector(".theme-toggle");
+  if (!button) return;
+  function current() {
+    return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  }
+  function sync() { button.setAttribute("aria-pressed", current() === "dark"); }
+  sync();
+  button.addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    var apply = function () {
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: { theme: next } } }, "https://giscus.app");
+    };
+    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(apply);
+    else apply();
+  });
+})();
+</script>
+{{ with resources.Get "js/duck.js" | minify | fingerprint }}<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>{{ end }}

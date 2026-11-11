@@ -1,0 +1,2 @@
+{{- $url := .Get "url" -}}
+<a class="chip" href="{{ $url }}" target="_blank" rel="noopener noreferrer"><img src="https://www.google.com/s2/favicons?domain={{ (urls.Parse $url).Host }}&sz=32" alt="" width="16" height="16" loading="lazy">{{ .Get "name" }}{{ partial "icon-arrow.html" . }}</a>

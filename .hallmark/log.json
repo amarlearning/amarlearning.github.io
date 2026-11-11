@@ -1,0 +1,32 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "notebook column",
+  "theme": "custom",
+  "axes": "light/grotesk-sans/chromatic-green",
+  "hero": "identity, nav, intro at lead size in one 37rem column",
+  "nav": "stacked under identity, toggle right",
+  "footer": "one line, copyright and RSS",
+  "imagery": "none, Litmus mark only",
+  "photos": [],
+  "entry": "settle fade on load",
+  "fingerprint": "light/geist/green/column/cards+rows/one-line-footer",
+  "sections": [
+   "intro",
+   "currently building",
+   "work cards",
+   "writing rows",
+   "footer"
+  ],
+  "signature": "view-transition theme toggle; Litmus card with its strip mark",
+  "waived": [
+   "78",
+   "59",
+   "3"
+  ],
+  "prompt": "personal site of a senior data engineer: intro, current product, projects, writing",
+  "date": "2026-11-11"
+ }
+]

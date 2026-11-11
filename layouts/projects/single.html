@@ -3,36 +3,34 @@
     {{ .Content }}
 </div>
 
-<hr>
-
-<section class="home-section">
-    <p class="section-label">Projects</p>
+<section class="block" aria-label="Projects">
+    <div class="entries">
     {{ range .Site.Data.projects }}
-    <article class="entry">
-        <div class="entry-head">
-            <span class="work-icon" aria-hidden="true">{{ .icon }}</span>
-            <h2 class="entry-title">{{ .title }}</h2>
-            <span class="entry-links">
-                {{ range .links }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} ↗</a>{{ end }}
-            </span>
-        </div>
-        <p class="entry-desc">{{ .description }}</p>
-    </article>
+        <article class="entry">
+            <div class="entry-head">
+                <h3 class="entry-title">{{ .title }}</h3>
+                <span class="entry-links">
+                    {{ range .links }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} {{ partial "icon-arrow.html" . }}</a>{{ end }}
+                </span>
+            </div>
+            <p class="entry-desc">{{ .description }}</p>
+        </article>
     {{ end }}
+    </div>
 </section>
 
-<hr>
-
-<section class="home-section">
-    <p class="section-label">Open source</p>
+<section class="block" aria-labelledby="oss">
+    <h2 class="block-head" id="oss">Open source</h2>
+    <div class="entries">
     {{ range .Site.Data.oss }}
-    <a class="entry" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-        <span class="entry-head">
-            <span class="entry-title">{{ .organization }}</span>
-            <span class="entry-links">{{ .role }}</span>
-        </span>
-        <span class="entry-desc">{{ .description }}</span>
-    </a>
+        <a class="entry" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <span class="entry-head">
+                <span class="entry-title">{{ .organization }}</span>
+                <span class="entry-links">{{ .role }}</span>
+            </span>
+            <span class="entry-desc">{{ .description }}</span>
+        </a>
     {{ end }}
+    </div>
 </section>
 {{ end }}

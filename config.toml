@@ -19,7 +19,7 @@ enableRobotsTXT = true
 [markup]
   [markup.highlight]
     style = "autumn"
-    noClasses = true
+    noClasses = false
     codeFences = true
 
 [outputs]
