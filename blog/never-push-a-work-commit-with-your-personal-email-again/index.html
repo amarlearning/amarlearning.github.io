@@ -48,187 +48,13 @@
   <meta itemprop="keywords" content="Git,Gitconfig,Developer-Tips,Productivity,Multiple-Identities,Personal-vs-Work,Version-Control,Dev-Tools">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <style>
-  body {
-    font-family: Verdana, sans-serif;
-    margin: auto;
-    padding: 20px;
-    max-width: 720px;
-    text-align: left;
-    background-color: #fff;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    color: #444;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  strong,
-  b {
-    color: #222;
-  }
-
-  a {
-    color: #3273dc;
-     
-  }
-
-  .title {
-    text-decoration: none;
-    border: 0;
-  }
-
-  .title span {
-    font-weight: 400;
-  }
-
-  nav a {
-    margin-right: 10px;
-  }
-
-  textarea {
-    width: 100%;
-    font-size: 16px;
-  }
-
-  input {
-    font-size: 16px;
-  }
-
-  content {
-    line-height: 1.6;
-  }
-
-  table {
-    width: 100%;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  code {
-    padding: 2px 5px;
-    background-color: #f2f2f2;
-  }
-
-  pre code {
-    color: #222;
-    display: block;
-    padding: 20px;
-    white-space: pre-wrap;
-    font-size: 14px;
-    overflow-x: auto;
-  }
-
-  div.highlight pre {
-    background-color: initial;
-    color: initial;
-  }
-
-  div.highlight code {
-    background-color: unset;
-    color: unset;
-  }
-
-  blockquote {
-    border-left: 1px solid #999;
-    color: #222;
-    padding-left: 20px;
-    font-style: italic;
-  }
-
-  footer {
-    padding: 25px;
-    text-align: center;
-  }
-
-  .helptext {
-    color: #777;
-    font-size: small;
-  }
-
-  .errorlist {
-    color: #eba613;
-    font-size: small;
-  }
-
-   
-  ul.blog-posts {
-    list-style-type: none;
-    padding: unset;
-  }
-
-  ul.blog-posts li {
-    display: flex;
-  }
-
-  ul.blog-posts li span {
-    flex: 0 0 130px;
-  }
-
-  ul.blog-posts li a:visited {
-    color: #8b6fcb;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #333;
-      color: #ddd;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong,
-    b {
-      color: #eee;
-    }
-
-    a {
-      color: #8cc2dd;
-    }
-
-    code {
-      background-color: #777;
-    }
-
-    pre code {
-      color: #ddd;
-    }
-
-    blockquote {
-      color: #ccc;
-    }
-
-    textarea,
-    input {
-      background-color: #252525;
-      color: #ddd;
-    }
-
-    .helptext {
-      color: #aaa;
-    }
-  }
-
-</style>
+  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Sono:wght@400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Whisper&text=AmarPndey&display=swap" rel="stylesheet">
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 
-<body>
-  <header>
 
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
@@ -239,249 +65,23 @@
     gtag('config', 'G-CN34V0ZGSQ');
   </script>
 
+</head>
 
-<style>
-   
-  :root {
-    --bg: #fffdf8;             
-    --text: #0a0a0a;           
-    --primary-color: #0a0a0a;
-    --body-color: #2e2e2e;
-    --muted-color: #8c8c8c;    
-    --quiet-color: #b3b3b3;
-    --border-color: #e5e5e5;   
-    --link-line: #d1d1d1;      
-    --soft-surface: #f7f5ef;
-    --accent-color: #512906;   
-    --forest: #0c3b1a;
-    --oxblood: #5e0831;
-    --violet: #242d64;         
-    --on-violet: #fffdf8;
-
-    --sans: 'Inter', system-ui, sans-serif;
-    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
-    --mono: 'Sono', ui-monospace, monospace;
-    --radius: 10px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #15130f;
-      --text: #f2ede3;
-      --primary-color: #f2ede3;
-      --body-color: #d6d0c4;
-      --muted-color: #8f897c;
-      --quiet-color: #5f5a50;
-      --border-color: #2a2721;
-      --link-line: #4a453b;
-      --soft-surface: #1e1b16;
-      --accent-color: #d9a875;
-      --forest: #8fbf9a;
-      --oxblood: #d38aa6;
-      --violet: #262f66;
-    }
-  }
-
-  body {
-    max-width: 38rem;
-    padding: 3rem 1rem;
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--body-color);
-    background-color: var(--bg) !important;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-   
-  h1, h2, h3, h4, h5, h6 { color: var(--primary-color); font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
-  h1 { font-size: 2.6rem; line-height: 1.08; margin: 0 0 0.75rem; }
-  h2 { font-size: 1.75rem; line-height: 1.15; margin-top: 2.5rem; }
-  h3 { font-size: 1.3rem; line-height: 1.3; margin-top: 2rem; }
-  strong, b { color: var(--primary-color); font-weight: 600; }
-
-  a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    text-decoration-color: var(--link-line);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-    transition: text-decoration-color .15s, color .15s;
-  }
-  a:hover { text-decoration-color: currentColor; }
-  content a, .intro a { color: var(--accent-color); }
-   
-  content p:has(> img) > em {
-    display: block;
-    margin-top: 0.5rem;
-    text-align: center;
-    color: var(--muted-color);
-    font-size: 0.875rem;
-  }
-  content img { border-radius: var(--radius); border: 1px solid var(--border-color); }
-
-  code, pre code { font-family: var(--mono); font-size: 0.85em; }
-  code { background-color: var(--soft-surface); border-radius: 6px; color: var(--primary-color); }
-  pre code { background-color: var(--soft-surface); border: 1px solid var(--border-color); border-radius: var(--radius); color: var(--primary-color); }
-  blockquote {
-    margin-left: 0;
-    border-left: 2px solid var(--oxblood);
-    color: var(--primary-color);
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    line-height: 1.45;
-  }
-
-   
-  header .title { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-  header .title h2 { margin: 0; font-size: 1.4rem; }
-  header .handle { color: var(--muted-color); font-family: var(--sans); font-size: 0.875rem; white-space: nowrap; }
-  .avatar { width: 40px; height: 40px; border-radius: 50%; }
-  header nav { display: flex; gap: 1.5rem; margin: 1.25rem 0 3rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border-color); }
-  header nav a { margin: 0; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
-  header nav a:hover, header nav a.active { color: var(--primary-color); }
-  header nav a.active { text-decoration: underline; text-decoration-color: var(--primary-color); text-underline-offset: 1.15rem; }
-
-   
-  .section-label { margin: 0 0 1rem; color: var(--primary-color); font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
-  .work-row, .writing-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.35rem 0;
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
-  .work-row img { width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0; align-self: center; }
-  .work-title, .writing-title { color: var(--primary-color); font-weight: 500; white-space: nowrap; }
-  .writing-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .work-sep { color: var(--quiet-color); margin: 0 -0.35rem; }
-  .work-icon { display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; align-self: center; font-size: 16px; line-height: 1; }
-  .work-desc { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted-color); }
-  .work-row:hover .work-title, .writing-row:hover .writing-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
-  .writing-row { justify-content: space-between; gap: 1rem; }
-  .writing-row time { color: var(--muted-color); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .view-all { display: inline-block; margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
-  .view-all:hover { color: var(--primary-color); }
-
-   
-  .panel {
-    margin: 0 -1.5rem;
-    padding: 2rem 1.5rem;
-    border-radius: var(--radius);
-    background: var(--violet);
-    color: color-mix(in srgb, var(--on-violet) 82%, transparent);
-  }
-  .panel .section-label { color: var(--on-violet); font-size: 2rem; }
-  .panel p { margin: 0 0 1rem; }
-  .panel .kicker { margin: 0 0 0.5rem; color: color-mix(in srgb, var(--on-violet) 60%, transparent); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .ghost {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--on-violet) 35%, transparent);
-    border-radius: var(--radius);
-    color: var(--on-violet);
-    font-size: 0.875rem;
-    line-height: 1;
-    text-decoration: none;
-    transition: border-color .15s;
-  }
-  .ghost:hover { border-color: var(--on-violet); }
-
-   
-  hr { height: 0; margin: 3rem 0; border: 0; border-top: 1px solid var(--border-color); }
-
-  footer { padding: 0; margin-top: 1rem; text-align: center; color: var(--muted-color); font-size: 0.8rem; }
-  .signature {
-    margin: 0 0 0.75rem;
-    font-family: 'Whisper', cursive;
-    font-size: 3.25rem;
-    line-height: 1.3;
-    color: var(--primary-color);
-    transform: rotate(-2deg);
-  }
-  .footer-meta { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
-  .footer-meta .rss-link::before { content: '·'; margin-right: 0.5rem; color: var(--quiet-color); }
-  .footer-meta .rss-link { color: var(--muted-color); text-decoration: none; }
-  .footer-meta .rss-link:hover { color: var(--primary-color); }
-
-   
-  .post-date { margin: 0 0 2.5rem; color: var(--muted-color); font-size: 0.875rem; }
-  .archive-year { margin: 2.5rem 0 0.5rem; font-size: 1.5rem; }
-  .tag { color: var(--forest); text-decoration: none; margin-right: 0.75rem; font-size: 0.875rem; }
-  .tag:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
-
-   
-  .entry { display: block; padding: 0.75rem 0; color: inherit; text-decoration: none; }
-  .entry-head { display: flex; align-items: baseline; gap: 0.75rem; }
-  .entry-head .work-icon { align-self: center; }
-  .entry-title { margin: 0; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.3; color: var(--primary-color); }
-  .entry-links { margin-left: auto; display: flex; gap: 1rem; color: var(--muted-color); font-size: 0.85rem; white-space: nowrap; }
-  .entry-links a { color: inherit; text-decoration: none; }
-  .entry-links a:hover { color: var(--primary-color); }
-  .entry-desc { display: block; margin: 0.2rem 0 0 calc(20px + 0.75rem); color: var(--muted-color); font-size: 0.95rem; line-height: 1.6; }
-  a.entry .entry-desc { margin-left: 0; }
-  a.entry:hover .entry-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 2.1rem; }
-    .panel { margin: 0; }
-  }
-
-   
-  @keyframes fadeInUp {
-    from { opacity: 0; filter: blur(10px); transform: translateY(20px); }
-    to { opacity: 1; filter: blur(0); transform: none; }
-  }
-   
-  :where(header, main > :not(.intro, content, .project-page), .intro > *, main > content > *, .project-page > :not(.intro), footer) {
-    opacity: 0;
-    animation: fadeInUp .6s ease-out forwards;
-  }
-  main > :nth-child(1) { animation-delay: .1s; }
-  main > :nth-child(2) { animation-delay: .2s; }
-  main > :nth-child(3) { animation-delay: .3s; }
-  main > :nth-child(4) { animation-delay: .4s; }
-  main > :nth-child(5) { animation-delay: .5s; }
-  main > :nth-child(6) { animation-delay: .6s; }
-  main > :nth-child(7) { animation-delay: .7s; }
-  main > :nth-child(n+8) { animation-delay: .8s; }
-  footer { animation-delay: .9s; }
-  :where(main > content, .project-page) > :nth-child(1) { animation-delay: .2s; }
-  :where(main > content, .project-page) > :nth-child(2) { animation-delay: .3s; }
-  :where(main > content, .project-page) > :nth-child(3) { animation-delay: .4s; }
-  :where(main > content, .project-page) > :nth-child(4) { animation-delay: .5s; }
-  :where(main > content, .project-page) > :nth-child(5) { animation-delay: .6s; }
-  :where(main > content, .project-page) > :nth-child(6) { animation-delay: .7s; }
-  :where(main > content, .project-page) > :nth-child(n+7) { animation-delay: .8s; }
-
-   
-  .intro > :nth-child(1) { animation-delay: .1s; }
-  .intro > :nth-child(2) { animation-delay: .2s; }
-  .intro > :nth-child(3) { animation-delay: .3s; }
-  .intro > :nth-child(4) { animation-delay: .4s; }
-  .intro > :nth-child(n+5) { animation-delay: .45s; }
-  main > hr:nth-of-type(1) { animation-delay: .5s; }
-  main > section:nth-of-type(1) { animation-delay: .6s; }
-  main > hr:nth-of-type(2) { animation-delay: .7s; }
-  main > section:nth-of-type(2) { animation-delay: .8s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    :where(header, main > *, .intro > *, main > content > *, .project-page > *, footer) { opacity: 1; animation: none; }
-  }
-
-
-</style>
-
-
-<a href="/" class="title">
-  <img src="https://github.com/amarlearning.png?size=80" alt="Amar Prakash Pandey" class="avatar" width="40" height="40">
-  <h2>Amar Prakash Pandey <span class="handle">aka @amarlearning</span></h2>
-</a>
-<nav>
+<body>
+  <header><div class="masthead">
+  <a href="/" class="identity">
+    <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
+    <span class="identity-text">
+      <span class="identity-name">Amar Prakash Pandey</span>
+      <span class="identity-handle">aka @amarlearning</span>
+    </span>
+  </a>
+  <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+    <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+  </button>
+</div>
+<nav aria-label="Main">
 <a href="/">Home</a>
 <a href="/about">About</a>
 <a href="/projects">Projects</a>
@@ -492,12 +92,12 @@
 </header>
   <main>
 
-<h1>Never Push a Work Commit with Your Personal Email Again</h1>
-<p class="post-date"><time datetime='2025-07-05' pubdate>
-      05 Jul, 2025
-    </time></p>
+<div class="post-header">
+  <h1>Never Push a Work Commit with Your Personal Email Again</h1>
+  <time datetime="2025-07-05">5 July 2025</time>
+</div>
 
-<content>
+<div class="prose">
   <p><img src="/images/never-push-a-work-commit-with-your-personal-email-again/banner.png" alt="banner"></p>
 <p>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.</p>
 <p>I used to run into this problem often, especially since I used the same laptop for both work and personal projects. That’s when I came up with a simple but powerful trick — automatically switching Git identities based on folder path using Git’s <code>includeIf</code> feature.</p>
@@ -588,73 +188,97 @@ git commit -m &#34;Refactored ETL logic&#34;
 <li>Pro Git Book: <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></li>
 </ul>
 
-</content>
-
-<hr>
-<p>
-  Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
-</p>
-<p>
-  
-  <a class="tag" href="https://amarpandey.me/tags/git/">#git</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/gitconfig/">#gitconfig</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/developer-tips/">#developer-tips</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/productivity/">#productivity</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/multiple-identities/">#multiple-identities</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/personal-vs-work/">#personal-vs-work</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/version-control/">#version-control</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/dev-tools/">#dev-tools</a>
-  
-</p>
-
-<div style="margin-top: 50px;">
-  <h2>Comments</h2>
-  <script src="https://giscus.app/client.js"
-        data-repo="amarlearning/amarlearning.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
-        data-category-id="DIC_kwDOAo3u484CtGdf"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
 </div>
+
+<div class="post-end">
+  <p>
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+  </p>
+  
+  <div class="tags">
+    <a class="tag" href="https://amarpandey.me/tags/git/">#git</a><a class="tag" href="https://amarpandey.me/tags/gitconfig/">#gitconfig</a><a class="tag" href="https://amarpandey.me/tags/developer-tips/">#developer-tips</a><a class="tag" href="https://amarpandey.me/tags/productivity/">#productivity</a><a class="tag" href="https://amarpandey.me/tags/multiple-identities/">#multiple-identities</a><a class="tag" href="https://amarpandey.me/tags/personal-vs-work/">#personal-vs-work</a><a class="tag" href="https://amarpandey.me/tags/version-control/">#version-control</a><a class="tag" href="https://amarpandey.me/tags/dev-tools/">#dev-tools</a>
+  </div>
+  
+</div>
+
+<section class="comments">
+  <h2>Comments</h2>
+  <div class="giscus"></div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var theme = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  var s = document.createElement("script");
+  s.src = "https://giscus.app/client.js";
+  s.async = true;
+  s.crossOrigin = "anonymous";
+  var attrs = {
+    "data-repo": "amarlearning/amarlearning.github.io",
+    "data-repo-id": "MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw==",
+    "data-category-id": "DIC_kwDOAo3u484CtGdf",
+    "data-mapping": "pathname",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": theme,
+    "data-lang": "en",
+    "data-loading": "lazy"
+  };
+  for (var k in attrs) s.setAttribute(k, attrs[k]);
+  document.currentScript.parentNode.appendChild(s);
+})();
+</script>
+
+</section>
 
 
 
   </main>
-  <footer><hr>
-<div class="footer-container">
-  <p class="signature" aria-label="Signed, Amar Pandey">Amar Pandey</p>
-  <div class="footer-meta">
-    <span>2026 © Amar Prakash Pandey</span>
-    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
-        <path d="M4 11a9 9 0 0 1 9 9"></path>
-        <path d="M4 4a16 16 0 0 1 16 16"></path>
-        <circle cx="5" cy="19" r="1"></circle>
-      </svg>
-      RSS
-    </a>
-  </div>
+  <footer><figure class="sky">
+  <button class="duck-button" type="button" aria-label="Make it fly">
+    <canvas aria-hidden="true"></canvas>
+  </button>
+  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
+</figure>
+<div class="footer-meta">
+  <span>© 2026 Amar Prakash Pandey</span>
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
 </div>
 </footer>
 
-    
+  <script>
+(function () {
+  var root = document.documentElement;
+  var button = document.querySelector(".theme-toggle");
+  if (!button) return;
+  function current() {
+    return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  }
+  function sync() { button.setAttribute("aria-pressed", current() === "dark"); }
+  sync();
+  button.addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    var apply = function () {
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: { theme: next } } }, "https://giscus.app");
+    };
+    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(apply);
+    else apply();
+  });
+})();
+</script>
+<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
 </body>
 
 </html>

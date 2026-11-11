@@ -48,187 +48,13 @@
   <meta itemprop="keywords" content="Docker,Best-Practices,Infrastructure,Iac,DevOps,Containers,Security">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <style>
-  body {
-    font-family: Verdana, sans-serif;
-    margin: auto;
-    padding: 20px;
-    max-width: 720px;
-    text-align: left;
-    background-color: #fff;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    line-height: 1.5;
-    color: #444;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  strong,
-  b {
-    color: #222;
-  }
-
-  a {
-    color: #3273dc;
-     
-  }
-
-  .title {
-    text-decoration: none;
-    border: 0;
-  }
-
-  .title span {
-    font-weight: 400;
-  }
-
-  nav a {
-    margin-right: 10px;
-  }
-
-  textarea {
-    width: 100%;
-    font-size: 16px;
-  }
-
-  input {
-    font-size: 16px;
-  }
-
-  content {
-    line-height: 1.6;
-  }
-
-  table {
-    width: 100%;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  code {
-    padding: 2px 5px;
-    background-color: #f2f2f2;
-  }
-
-  pre code {
-    color: #222;
-    display: block;
-    padding: 20px;
-    white-space: pre-wrap;
-    font-size: 14px;
-    overflow-x: auto;
-  }
-
-  div.highlight pre {
-    background-color: initial;
-    color: initial;
-  }
-
-  div.highlight code {
-    background-color: unset;
-    color: unset;
-  }
-
-  blockquote {
-    border-left: 1px solid #999;
-    color: #222;
-    padding-left: 20px;
-    font-style: italic;
-  }
-
-  footer {
-    padding: 25px;
-    text-align: center;
-  }
-
-  .helptext {
-    color: #777;
-    font-size: small;
-  }
-
-  .errorlist {
-    color: #eba613;
-    font-size: small;
-  }
-
-   
-  ul.blog-posts {
-    list-style-type: none;
-    padding: unset;
-  }
-
-  ul.blog-posts li {
-    display: flex;
-  }
-
-  ul.blog-posts li span {
-    flex: 0 0 130px;
-  }
-
-  ul.blog-posts li a:visited {
-    color: #8b6fcb;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #333;
-      color: #ddd;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    strong,
-    b {
-      color: #eee;
-    }
-
-    a {
-      color: #8cc2dd;
-    }
-
-    code {
-      background-color: #777;
-    }
-
-    pre code {
-      color: #ddd;
-    }
-
-    blockquote {
-      color: #ccc;
-    }
-
-    textarea,
-    input {
-      background-color: #252525;
-      color: #ddd;
-    }
-
-    .helptext {
-      color: #aaa;
-    }
-  }
-
-</style>
+  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Sono:wght@400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Whisper&text=AmarPndey&display=swap" rel="stylesheet">
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
 
-<body>
-  <header>
 
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN34V0ZGSQ"></script>
@@ -239,249 +65,23 @@
     gtag('config', 'G-CN34V0ZGSQ');
   </script>
 
+</head>
 
-<style>
-   
-  :root {
-    --bg: #fffdf8;             
-    --text: #0a0a0a;           
-    --primary-color: #0a0a0a;
-    --body-color: #2e2e2e;
-    --muted-color: #8c8c8c;    
-    --quiet-color: #b3b3b3;
-    --border-color: #e5e5e5;   
-    --link-line: #d1d1d1;      
-    --soft-surface: #f7f5ef;
-    --accent-color: #512906;   
-    --forest: #0c3b1a;
-    --oxblood: #5e0831;
-    --violet: #242d64;         
-    --on-violet: #fffdf8;
-
-    --sans: 'Inter', system-ui, sans-serif;
-    --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
-    --mono: 'Sono', ui-monospace, monospace;
-    --radius: 10px;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #15130f;
-      --text: #f2ede3;
-      --primary-color: #f2ede3;
-      --body-color: #d6d0c4;
-      --muted-color: #8f897c;
-      --quiet-color: #5f5a50;
-      --border-color: #2a2721;
-      --link-line: #4a453b;
-      --soft-surface: #1e1b16;
-      --accent-color: #d9a875;
-      --forest: #8fbf9a;
-      --oxblood: #d38aa6;
-      --violet: #262f66;
-    }
-  }
-
-  body {
-    max-width: 38rem;
-    padding: 3rem 1rem;
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--body-color);
-    background-color: var(--bg) !important;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-   
-  h1, h2, h3, h4, h5, h6 { color: var(--primary-color); font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; }
-  h1 { font-size: 2.6rem; line-height: 1.08; margin: 0 0 0.75rem; }
-  h2 { font-size: 1.75rem; line-height: 1.15; margin-top: 2.5rem; }
-  h3 { font-size: 1.3rem; line-height: 1.3; margin-top: 2rem; }
-  strong, b { color: var(--primary-color); font-weight: 600; }
-
-  a {
-    color: var(--primary-color);
-    text-decoration: underline;
-    text-decoration-color: var(--link-line);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-    transition: text-decoration-color .15s, color .15s;
-  }
-  a:hover { text-decoration-color: currentColor; }
-  content a, .intro a { color: var(--accent-color); }
-   
-  content p:has(> img) > em {
-    display: block;
-    margin-top: 0.5rem;
-    text-align: center;
-    color: var(--muted-color);
-    font-size: 0.875rem;
-  }
-  content img { border-radius: var(--radius); border: 1px solid var(--border-color); }
-
-  code, pre code { font-family: var(--mono); font-size: 0.85em; }
-  code { background-color: var(--soft-surface); border-radius: 6px; color: var(--primary-color); }
-  pre code { background-color: var(--soft-surface); border: 1px solid var(--border-color); border-radius: var(--radius); color: var(--primary-color); }
-  blockquote {
-    margin-left: 0;
-    border-left: 2px solid var(--oxblood);
-    color: var(--primary-color);
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    line-height: 1.45;
-  }
-
-   
-  header .title { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-  header .title h2 { margin: 0; font-size: 1.4rem; }
-  header .handle { color: var(--muted-color); font-family: var(--sans); font-size: 0.875rem; white-space: nowrap; }
-  .avatar { width: 40px; height: 40px; border-radius: 50%; }
-  header nav { display: flex; gap: 1.5rem; margin: 1.25rem 0 3rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border-color); }
-  header nav a { margin: 0; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
-  header nav a:hover, header nav a.active { color: var(--primary-color); }
-  header nav a.active { text-decoration: underline; text-decoration-color: var(--primary-color); text-underline-offset: 1.15rem; }
-
-   
-  .section-label { margin: 0 0 1rem; color: var(--primary-color); font-family: var(--serif); font-size: 1.5rem; line-height: 1.2; }
-  .work-row, .writing-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.35rem 0;
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
-  .work-row img { width: 20px; height: 20px; border-radius: 4px; flex-shrink: 0; align-self: center; }
-  .work-title, .writing-title { color: var(--primary-color); font-weight: 500; white-space: nowrap; }
-  .writing-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .work-sep { color: var(--quiet-color); margin: 0 -0.35rem; }
-  .work-icon { display: grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; align-self: center; font-size: 16px; line-height: 1; }
-  .work-desc { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted-color); }
-  .work-row:hover .work-title, .writing-row:hover .writing-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
-  .writing-row { justify-content: space-between; gap: 1rem; }
-  .writing-row time { color: var(--muted-color); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .view-all { display: inline-block; margin-top: 0.75rem; font-size: 0.875rem; color: var(--muted-color); text-decoration: none; }
-  .view-all:hover { color: var(--primary-color); }
-
-   
-  .panel {
-    margin: 0 -1.5rem;
-    padding: 2rem 1.5rem;
-    border-radius: var(--radius);
-    background: var(--violet);
-    color: color-mix(in srgb, var(--on-violet) 82%, transparent);
-  }
-  .panel .section-label { color: var(--on-violet); font-size: 2rem; }
-  .panel p { margin: 0 0 1rem; }
-  .panel .kicker { margin: 0 0 0.5rem; color: color-mix(in srgb, var(--on-violet) 60%, transparent); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .ghost {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--on-violet) 35%, transparent);
-    border-radius: var(--radius);
-    color: var(--on-violet);
-    font-size: 0.875rem;
-    line-height: 1;
-    text-decoration: none;
-    transition: border-color .15s;
-  }
-  .ghost:hover { border-color: var(--on-violet); }
-
-   
-  hr { height: 0; margin: 3rem 0; border: 0; border-top: 1px solid var(--border-color); }
-
-  footer { padding: 0; margin-top: 1rem; text-align: center; color: var(--muted-color); font-size: 0.8rem; }
-  .signature {
-    margin: 0 0 0.75rem;
-    font-family: 'Whisper', cursive;
-    font-size: 3.25rem;
-    line-height: 1.3;
-    color: var(--primary-color);
-    transform: rotate(-2deg);
-  }
-  .footer-meta { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
-  .footer-meta .rss-link::before { content: '·'; margin-right: 0.5rem; color: var(--quiet-color); }
-  .footer-meta .rss-link { color: var(--muted-color); text-decoration: none; }
-  .footer-meta .rss-link:hover { color: var(--primary-color); }
-
-   
-  .post-date { margin: 0 0 2.5rem; color: var(--muted-color); font-size: 0.875rem; }
-  .archive-year { margin: 2.5rem 0 0.5rem; font-size: 1.5rem; }
-  .tag { color: var(--forest); text-decoration: none; margin-right: 0.75rem; font-size: 0.875rem; }
-  .tag:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
-
-   
-  .entry { display: block; padding: 0.75rem 0; color: inherit; text-decoration: none; }
-  .entry-head { display: flex; align-items: baseline; gap: 0.75rem; }
-  .entry-head .work-icon { align-self: center; }
-  .entry-title { margin: 0; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.3; color: var(--primary-color); }
-  .entry-links { margin-left: auto; display: flex; gap: 1rem; color: var(--muted-color); font-size: 0.85rem; white-space: nowrap; }
-  .entry-links a { color: inherit; text-decoration: none; }
-  .entry-links a:hover { color: var(--primary-color); }
-  .entry-desc { display: block; margin: 0.2rem 0 0 calc(20px + 0.75rem); color: var(--muted-color); font-size: 0.95rem; line-height: 1.6; }
-  a.entry .entry-desc { margin-left: 0; }
-  a.entry:hover .entry-title { text-decoration: underline; text-decoration-color: var(--link-line); text-underline-offset: 4px; }
-
-  @media (max-width: 640px) {
-    h1 { font-size: 2.1rem; }
-    .panel { margin: 0; }
-  }
-
-   
-  @keyframes fadeInUp {
-    from { opacity: 0; filter: blur(10px); transform: translateY(20px); }
-    to { opacity: 1; filter: blur(0); transform: none; }
-  }
-   
-  :where(header, main > :not(.intro, content, .project-page), .intro > *, main > content > *, .project-page > :not(.intro), footer) {
-    opacity: 0;
-    animation: fadeInUp .6s ease-out forwards;
-  }
-  main > :nth-child(1) { animation-delay: .1s; }
-  main > :nth-child(2) { animation-delay: .2s; }
-  main > :nth-child(3) { animation-delay: .3s; }
-  main > :nth-child(4) { animation-delay: .4s; }
-  main > :nth-child(5) { animation-delay: .5s; }
-  main > :nth-child(6) { animation-delay: .6s; }
-  main > :nth-child(7) { animation-delay: .7s; }
-  main > :nth-child(n+8) { animation-delay: .8s; }
-  footer { animation-delay: .9s; }
-  :where(main > content, .project-page) > :nth-child(1) { animation-delay: .2s; }
-  :where(main > content, .project-page) > :nth-child(2) { animation-delay: .3s; }
-  :where(main > content, .project-page) > :nth-child(3) { animation-delay: .4s; }
-  :where(main > content, .project-page) > :nth-child(4) { animation-delay: .5s; }
-  :where(main > content, .project-page) > :nth-child(5) { animation-delay: .6s; }
-  :where(main > content, .project-page) > :nth-child(6) { animation-delay: .7s; }
-  :where(main > content, .project-page) > :nth-child(n+7) { animation-delay: .8s; }
-
-   
-  .intro > :nth-child(1) { animation-delay: .1s; }
-  .intro > :nth-child(2) { animation-delay: .2s; }
-  .intro > :nth-child(3) { animation-delay: .3s; }
-  .intro > :nth-child(4) { animation-delay: .4s; }
-  .intro > :nth-child(n+5) { animation-delay: .45s; }
-  main > hr:nth-of-type(1) { animation-delay: .5s; }
-  main > section:nth-of-type(1) { animation-delay: .6s; }
-  main > hr:nth-of-type(2) { animation-delay: .7s; }
-  main > section:nth-of-type(2) { animation-delay: .8s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    :where(header, main > *, .intro > *, main > content > *, .project-page > *, footer) { opacity: 1; animation: none; }
-  }
-
-
-</style>
-
-
-<a href="/" class="title">
-  <img src="https://github.com/amarlearning.png?size=80" alt="Amar Prakash Pandey" class="avatar" width="40" height="40">
-  <h2>Amar Prakash Pandey <span class="handle">aka @amarlearning</span></h2>
-</a>
-<nav>
+<body>
+  <header><div class="masthead">
+  <a href="/" class="identity">
+    <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
+    <span class="identity-text">
+      <span class="identity-name">Amar Prakash Pandey</span>
+      <span class="identity-handle">aka @amarlearning</span>
+    </span>
+  </a>
+  <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+    <svg class="icon-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+  </button>
+</div>
+<nav aria-label="Main">
 <a href="/">Home</a>
 <a href="/about">About</a>
 <a href="/projects">Projects</a>
@@ -492,34 +92,34 @@
 </header>
   <main>
 
-<h1>Docker - the right way</h1>
-<p class="post-date"><time datetime='2022-01-23' pubdate>
-      23 Jan, 2022
-    </time></p>
+<div class="post-header">
+  <h1>Docker - the right way</h1>
+  <time datetime="2022-01-23">23 January 2022</time>
+</div>
 
-<content>
+<div class="prose">
   <p><img src="/images/docker-the-right-way/banner.png" alt="banner"></p>
 <p>Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.</p>
 <hr>
 <h3 id="1-use-official-docker-image-as-base-image">1. Use Official Docker Image as Base Image</h3>
 <p>Always use the official or verified base image when writing the docker file. Let&rsquo;s say you are developing a java application and want to build it and run it as a docker image. Instead of taking a base operating system image and installing java, maven, and other tools you need for your application.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM ubuntu
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RUN apt-get update &amp;&amp; <span style="color:#a50">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>    apt-get install -y openjdk-8-jdk &amp;&amp; <span style="color:#a50">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>    apt-get install -y ant &amp;&amp; <span style="color:#a50">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>    apt-get clean;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM ubuntu
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RUN apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get install -y openjdk-8-jdk <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get install -y ant <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get clean<span class="p">;</span>
 </span></span></code></pre></div><hr>
 <p>Use the official Java image for your application. This will not only make your docker file cleaner but also let you use an official and verified image which is already built using the best practices.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM openjdk
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk
 </span></span></code></pre></div><hr>
 <h3 id="2-use-specific-image-version">2. Use specific Image Version</h3>
 <p>As you see from the previous script we have chosen <code>OpenJDK</code> as our base image, but now when we build our application image from the above docker file, it will always use the <strong>latest</strong> tag of the <code>OpenJDK</code> image.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Is same as FROM openjdk:latest</span>
-</span></span><span style="display:flex;"><span>FROM openjdk
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Is same as FROM openjdk:latest</span>
+</span></span><span class="line"><span class="cl">FROM openjdk
 </span></span></code></pre></div><hr>
 <p>The problem here is that we might get a different image version as in the previous build and the new image version may break stuff or cause unexpected behavior, so the <strong>latest</strong> tag is unpredictable, we don&rsquo;t know exactly which image we are getting. So instead of the random latest image tag, we need to fixate the version. <strong>We should be as specific as possible with the image version.</strong></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM openjdk:11-alpine
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk:11-alpine
 </span></span></code></pre></div><hr>
 <h3 id="3-use-small-sized-official-image">3. Use small sized Official Image</h3>
 <p>There are multiple official images of <code>openjdk</code> not only with different version numbers but also with the different operating system distribution, so the question here is <strong>which one to choose?</strong> and <strong>does it even matter?</strong></p>
@@ -531,83 +131,83 @@
 <h3 id="4-minimize-the-number-of-layers">4. Minimize the Number of Layers</h3>
 <p>Every line in our <code>Dockerfile</code> will be treated as an image layer. Each layer increases the size of images since they are cached. Therefore, as the number of layers increases, the size also increases. It&rsquo;s always a good idea to combine <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> commands as much as possible since they create layers.</p>
 <p>You can test this out with the <code>docker history</code> command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker images
-</span></span><span style="display:flex;"><span>REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
-</span></span><span style="display:flex;"><span>dockerfile   latest    194f98552a02   <span style="color:#099">37</span> seconds ago   218MB
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>$ docker <span style="color:#0aa">history</span> 194f98552a02
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>IMAGE            CREATED BY                                       SIZE
-</span></span><span style="display:flex;"><span>194f98552a02     COPY . . <span style="color:#aaa;font-style:italic"># buildkit                              6.71kB</span>
-</span></span><span style="display:flex;"><span>&lt;missing&gt;        RUN /bin/sh -c pip install -r requirem..         35.5MB
-</span></span><span style="display:flex;"><span>&lt;missing&gt;        COPY requirements.txt . <span style="color:#aaa;font-style:italic"># buildkit               58B</span>
-</span></span><span style="display:flex;"><span>&lt;missing&gt;        WORKDIR /app
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker images
+</span></span><span class="line"><span class="cl">REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+</span></span><span class="line"><span class="cl">dockerfile   latest    194f98552a02   <span class="m">37</span> seconds ago   218MB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ docker <span class="nb">history</span> 194f98552a02
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IMAGE            CREATED BY                                       SIZE
+</span></span><span class="line"><span class="cl">194f98552a02     COPY . . <span class="c1"># buildkit                              6.71kB</span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;        RUN /bin/sh -c pip install -r requirem..         35.5MB
+</span></span><span class="line"><span class="cl">&lt;missing&gt;        COPY requirements.txt . <span class="c1"># buildkit               58B</span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;        WORKDIR /app
 </span></span></code></pre></div><hr>
 <p>If we see the above logs carefully, we can notice only the <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> command adds size to the image. we can reduce the image size by combining commands wherever possible. For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>RUN apt-get update
-</span></span><span style="display:flex;"><span>RUN apt-get install -y openjdk-8-jdk
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update
+</span></span><span class="line"><span class="cl">RUN apt-get install -y openjdk-8-jdk
 </span></span></code></pre></div><hr>
 <p>Can be combined into a single <code>RUN</code> command:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>RUN apt-get update &amp;&amp; apt-get install -y openjdk-8-jdk
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update <span class="o">&amp;&amp;</span> apt-get install -y openjdk-8-jdk
 </span></span></code></pre></div><hr>
 <p>Thus, creating a single layer instead of multiple, which reduces the size of the final image.</p>
 <hr>
 <h3 id="5-optimize-caching-image-layers">5. Optimize Caching Image Layers</h3>
 <p>Docker images are built based on Dockerfile. In Dockerfile, each line generates its layer during the building process. The layers are also cached and reused between different building processes if no changes are detected.</p>
 <p>Let&rsquo;s take a look at the dockerfile based on a node alpine image:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>FROM node:17.0.1-alpine
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>WORKDIR /app
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>COPY project /app
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RUN npm install --production
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>CMD [<span style="color:#a50">&#34;node&#34;</span>, <span style="color:#a50">&#34;src/index.js&#34;</span>]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM node:17.0.1-alpine
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WORKDIR /app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">COPY project /app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RUN npm install --production
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">CMD <span class="o">[</span><span class="s2">&#34;node&#34;</span>, <span class="s2">&#34;src/index.js&#34;</span><span class="o">]</span>
 </span></span></code></pre></div><hr>
 <p>As we discussed before each line creates its cached layer. Let&rsquo;s build this docker image and see what is happening.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Step 1/5 : FROM node:17.0.1-alpine
-</span></span><span style="display:flex;"><span>17.0.1-alpine: Pulling from library/node
-</span></span><span style="display:flex;"><span>Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
-</span></span><span style="display:flex;"><span>Status: Downloaded newer image <span style="color:#00a">for</span> node:17.0.1-alpine
-</span></span><span style="display:flex;"><span> ---&gt; c0fc1c9c473b
-</span></span><span style="display:flex;"><span>Step 2/5 : WORKDIR /app
-</span></span><span style="display:flex;"><span> ---&gt; Using cache
-</span></span><span style="display:flex;"><span> ---&gt; f665e3b63c98
-</span></span><span style="display:flex;"><span>Step 3/5 : COPY project /app
-</span></span><span style="display:flex;"><span> ---&gt; 8d4971fa2f3b
-</span></span><span style="display:flex;"><span>Step 4/5 : RUN npm install --production
-</span></span><span style="display:flex;"><span> ---&gt; Running in a5eac87912ce
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>up to date, audited <span style="color:#099">1</span> package in 371ms
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>found <span style="color:#099">0</span> vulnerabilities
-</span></span><span style="display:flex;"><span>Removing intermediate container a5eac87912ce
-</span></span><span style="display:flex;"><span> ---&gt; 9c21576cad06
-</span></span><span style="display:flex;"><span>Step 5/5 : CMD [<span style="color:#a50">&#34;node&#34;</span>, <span style="color:#a50">&#34;src/index.js&#34;</span>]
-</span></span><span style="display:flex;"><span> ---&gt; Running in 1ff9c5bb72e7
-</span></span><span style="display:flex;"><span>Removing intermediate container 1ff9c5bb72e7
-</span></span><span style="display:flex;"><span> ---&gt; 9783eef2c1d3
-</span></span><span style="display:flex;"><span>Successfully built 9783eef2c1d3
-</span></span><span style="display:flex;"><span>Successfully tagged dockerfile:latest
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
+</span></span><span class="line"><span class="cl">17.0.1-alpine: Pulling from library/node
+</span></span><span class="line"><span class="cl">Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> node:17.0.1-alpine
+</span></span><span class="line"><span class="cl"> ---&gt; c0fc1c9c473b
+</span></span><span class="line"><span class="cl">Step 2/5 : WORKDIR /app
+</span></span><span class="line"><span class="cl"> ---&gt; Using cache
+</span></span><span class="line"><span class="cl"> ---&gt; f665e3b63c98
+</span></span><span class="line"><span class="cl">Step 3/5 : COPY project /app
+</span></span><span class="line"><span class="cl"> ---&gt; 8d4971fa2f3b
+</span></span><span class="line"><span class="cl">Step 4/5 : RUN npm install --production
+</span></span><span class="line"><span class="cl"> ---&gt; Running in a5eac87912ce
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">up to date, audited <span class="m">1</span> package in 371ms
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">found <span class="m">0</span> vulnerabilities
+</span></span><span class="line"><span class="cl">Removing intermediate container a5eac87912ce
+</span></span><span class="line"><span class="cl"> ---&gt; 9c21576cad06
+</span></span><span class="line"><span class="cl">Step 5/5 : CMD <span class="o">[</span><span class="s2">&#34;node&#34;</span>, <span class="s2">&#34;src/index.js&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> ---&gt; Running in 1ff9c5bb72e7
+</span></span><span class="line"><span class="cl">Removing intermediate container 1ff9c5bb72e7
+</span></span><span class="line"><span class="cl"> ---&gt; 9783eef2c1d3
+</span></span><span class="line"><span class="cl">Successfully built 9783eef2c1d3
+</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest
 </span></span></code></pre></div><hr>
 <p>Docker image from docker file was built completely from scratch, so it took 1 minute to build. Let&rsquo;s try to build again and see.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Step 1/5 : FROM node:17.0.1-alpine
-</span></span><span style="display:flex;"><span> ---&gt; c0fc1c9c473b
-</span></span><span style="display:flex;"><span>Step 2/5 : WORKDIR /app
-</span></span><span style="display:flex;"><span> ---&gt; Using cache
-</span></span><span style="display:flex;"><span> ---&gt; f665e3b63c98
-</span></span><span style="display:flex;"><span>Step 3/5 : COPY project /app
-</span></span><span style="display:flex;"><span> ---&gt; Using cache
-</span></span><span style="display:flex;"><span> ---&gt; 8d4971fa2f3b
-</span></span><span style="display:flex;"><span>Step 4/5 : RUN npm install --production
-</span></span><span style="display:flex;"><span> ---&gt; Using cache
-</span></span><span style="display:flex;"><span> ---&gt; 9c21576cad06
-</span></span><span style="display:flex;"><span>Step 5/5 : CMD [<span style="color:#a50">&#34;node&#34;</span>, <span style="color:#a50">&#34;src/index.js&#34;</span>]
-</span></span><span style="display:flex;"><span> ---&gt; Using cache
-</span></span><span style="display:flex;"><span> ---&gt; 9783eef2c1d3
-</span></span><span style="display:flex;"><span>Successfully built 9783eef2c1d3
-</span></span><span style="display:flex;"><span>Successfully tagged dockerfile:latest
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
+</span></span><span class="line"><span class="cl"> ---&gt; c0fc1c9c473b
+</span></span><span class="line"><span class="cl">Step 2/5 : WORKDIR /app
+</span></span><span class="line"><span class="cl"> ---&gt; Using cache
+</span></span><span class="line"><span class="cl"> ---&gt; f665e3b63c98
+</span></span><span class="line"><span class="cl">Step 3/5 : COPY project /app
+</span></span><span class="line"><span class="cl"> ---&gt; Using cache
+</span></span><span class="line"><span class="cl"> ---&gt; 8d4971fa2f3b
+</span></span><span class="line"><span class="cl">Step 4/5 : RUN npm install --production
+</span></span><span class="line"><span class="cl"> ---&gt; Using cache
+</span></span><span class="line"><span class="cl"> ---&gt; 9c21576cad06
+</span></span><span class="line"><span class="cl">Step 5/5 : CMD <span class="o">[</span><span class="s2">&#34;node&#34;</span>, <span class="s2">&#34;src/index.js&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"> ---&gt; Using cache
+</span></span><span class="line"><span class="cl"> ---&gt; 9783eef2c1d3
+</span></span><span class="line"><span class="cl">Successfully built 9783eef2c1d3
+</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest
 </span></span></code></pre></div><hr>
 <p>A few lines of logs. As you can see this is <strong>Using cache</strong> text in multiple lines and the whole process took less than 1 sec. This is the power of layer caching. Nothing here was built from scratch, every layer comes from the cache.</p>
 <p><strong>Important thing is,</strong> If any layer is created from scratch because of some changes in the source file, every next layer is built from scratch too.</p>
@@ -617,46 +217,46 @@
 <p>We should use the <code>.dockerignore</code> file to list all the files and folders that we want to exclude. we can create the <code>.dockerignore</code> file in the root directory and list all the files and folders we want to ignore.</p>
 <p>When building the image, docker will look at the contents and ignore anything specified inside. Matching is done using <a href="https://go.dev/">Go</a>&rsquo;s <code>filepath.Match</code> rules.</p>
 <p>A sample <code>.dockerignore</code> file would look like:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># ignore .git and .cache folders</span>
-</span></span><span style="display:flex;"><span>.git
-</span></span><span style="display:flex;"><span>.cache
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># ignore all markdown files</span>
-</span></span><span style="display:flex;"><span>*.md
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># ignore sensitive files</span>
-</span></span><span style="display:flex;"><span>private.key
-</span></span><span style="display:flex;"><span>settings.json
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ignore .git and .cache folders</span>
+</span></span><span class="line"><span class="cl">.git
+</span></span><span class="line"><span class="cl">.cache
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ignore all markdown files</span>
+</span></span><span class="line"><span class="cl">*.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ignore sensitive files</span>
+</span></span><span class="line"><span class="cl">private.key
+</span></span><span class="line"><span class="cl">settings.json
 </span></span></code></pre></div><hr>
 <h3 id="7-make-use-of-multi-stage-builds">7. Make use of Multi-stage builds</h3>
 <p>Let&rsquo;s assume that there are some contents in our project, that we need for building the image so during the build process but we don&rsquo;t need them in the final image itself to run the application.</p>
 <p>For example in a Java-based application, we need JDK to compile the Java source code but JDK is not needed to run the Java application. In addition to that, we also use build tools like Maven or Gradle to build our Java application and those are also not needed in the final image.</p>
 <p>Multi-stage builds allow us to use multiple temporary images during the build process but keep only the latest image as the final image. Let&rsquo;s see how it is done.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Build stage</span>
-</span></span><span style="display:flex;"><span>FROM tomcat AS build
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RUN apt-get update <span style="color:#a50">\
-</span></span></span><span style="display:flex;"><span><span style="color:#a50"></span>    &amp;&amp; apt-get -y install maven
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>WORKDIR /app
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>copy project /app
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RUN mvn package
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># Runtime stage</span>
-</span></span><span style="display:flex;"><span>FROM tomcat
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>COPY --from=build /app/target/file.war /usr/local/tomcat/webapps
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#099">8080</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ENTRYPOINT [<span style="color:#a50">&#34;java&#34;</span>, <span style="color:#a50">&#34;-jar&#34;</span>, <span style="color:#a50">&#34;/usr/local/tomcat/webapps/file.war&#34;</span>]
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Build stage</span>
+</span></span><span class="line"><span class="cl">FROM tomcat AS build
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RUN apt-get update <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    <span class="o">&amp;&amp;</span> apt-get -y install maven
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WORKDIR /app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">copy project /app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">RUN mvn package
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Runtime stage</span>
+</span></span><span class="line"><span class="cl">FROM tomcat
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">COPY --from<span class="o">=</span>build /app/target/file.war /usr/local/tomcat/webapps
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">EXPOSE <span class="m">8080</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ENTRYPOINT <span class="o">[</span><span class="s2">&#34;java&#34;</span>, <span class="s2">&#34;-jar&#34;</span>, <span class="s2">&#34;/usr/local/tomcat/webapps/file.war&#34;</span><span class="o">]</span>
 </span></span></code></pre></div><hr>
 <p>Let&rsquo;s also look at the size comparison between two stages:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>REPOSITORY                 TAG         IMAGE ID          SIZE
-</span></span><span style="display:flex;"><span>docker-single              latest      8d6b6a4d7fb6      259MB
-</span></span><span style="display:flex;"><span>docker-multi               latest      813c2fa9b114      156MB
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">REPOSITORY                 TAG         IMAGE ID          SIZE
+</span></span><span class="line"><span class="cl">docker-single              latest      8d6b6a4d7fb6      259MB
+</span></span><span class="line"><span class="cl">docker-multi               latest      813c2fa9b114      156MB
 </span></span></code></pre></div><hr>
 <h3 id="8-use-the-least-privileged-user-or-non-root-user">8. Use the Least Privileged User or Non-Root User</h3>
 <p>By default, Docker runs container processes as root inside of a container. However, this is a bad practice since a process running as root inside the container is running root in the docker host. Thus, if an attacker gains access to our container, they have access to all the root privileges and can perform several attacks on the Docker host, like:</p>
@@ -665,18 +265,18 @@
 <li>Executing remote commands.</li>
 </ul>
 <p>To prevent this, we should run container processes with a non-root user or less privileged user.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># create group and user</span>
-</span></span><span style="display:flex;"><span>RUN groupadd -r amar &amp;&amp; useradd -g amar amar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># set ownership and permissions</span>
-</span></span><span style="display:flex;"><span>RUN chown -R amar:amar /app
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#aaa;font-style:italic"># switch to user</span>
-</span></span><span style="display:flex;"><span>USER amar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>...
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># create group and user</span>
+</span></span><span class="line"><span class="cl">RUN groupadd -r amar <span class="o">&amp;&amp;</span> useradd -g amar amar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># set ownership and permissions</span>
+</span></span><span class="line"><span class="cl">RUN chown -R amar:amar /app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># switch to user</span>
+</span></span><span class="line"><span class="cl">USER amar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...
 </span></span></code></pre></div><hr>
 <blockquote>
 <p>Some base images already have a generic user bundled in which we can use. For example, the node image already bundles a user called a <code>node</code>.</p>
@@ -684,19 +284,19 @@
 <hr>
 <h3 id="9-scan-images-for-vulnerabilities">9. Scan Images for Vulnerabilities</h3>
 <p>Once we build the image, we should scan the image for security vulnerabilities using the <code>docker scan</code> command. We need to be logged in to the Docker Hub to run the docker scan command to scan our images.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ docker scan hello-world
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Testing hello-world...
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Organization:      docker-desktop-test
-</span></span><span style="display:flex;"><span>Package manager:   linux
-</span></span><span style="display:flex;"><span>Project name:      docker-image|hello-world
-</span></span><span style="display:flex;"><span>Docker image:      hello-world
-</span></span><span style="display:flex;"><span>Licenses:          enabled
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>✓ Tested <span style="color:#099">0</span> dependencies <span style="color:#00a">for</span> known issues, no vulnerable paths found.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Note that we <span style="color:#00a">do</span> not currently have vulnerability data <span style="color:#00a">for</span> your image.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker scan hello-world
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Testing hello-world...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Organization:      docker-desktop-test
+</span></span><span class="line"><span class="cl">Package manager:   linux
+</span></span><span class="line"><span class="cl">Project name:      docker-image<span class="p">|</span>hello-world
+</span></span><span class="line"><span class="cl">Docker image:      hello-world
+</span></span><span class="line"><span class="cl">Licenses:          enabled
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">✓ Tested <span class="m">0</span> dependencies <span class="k">for</span> known issues, no vulnerable paths found.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Note that we <span class="k">do</span> not currently have vulnerability data <span class="k">for</span> your image.
 </span></span></code></pre></div><hr>
 <p>In the background, Docker uses called <a href="https://snyk.io/">Snyk</a> to do the vulnerability scanning of the images. The scan uses a database of vulnerabilities that gets constantly updated so new ones get discovered and added all the time for different images.</p>
 <hr>
@@ -745,71 +345,97 @@
 </ol>
 <p>Follow all the above mentioned practices to make your Docker image leaner and more secure.</p>
 
-</content>
-
-<hr>
-<p>
-  Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
-</p>
-<p>
-  
-  <a class="tag" href="https://amarpandey.me/tags/docker/">#docker</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/best-practices/">#best-practices</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/infrastructure/">#infrastructure</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/iac/">#iac</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/devops/">#devops</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/containers/">#containers</a>
-  
-  <a class="tag" href="https://amarpandey.me/tags/security/">#security</a>
-  
-</p>
-
-<div style="margin-top: 50px;">
-  <h2>Comments</h2>
-  <script src="https://giscus.app/client.js"
-        data-repo="amarlearning/amarlearning.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw=="
-        data-category-id="DIC_kwDOAo3u484CtGdf"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
 </div>
+
+<div class="post-end">
+  <p>
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+  </p>
+  
+  <div class="tags">
+    <a class="tag" href="https://amarpandey.me/tags/docker/">#docker</a><a class="tag" href="https://amarpandey.me/tags/best-practices/">#best-practices</a><a class="tag" href="https://amarpandey.me/tags/infrastructure/">#infrastructure</a><a class="tag" href="https://amarpandey.me/tags/iac/">#iac</a><a class="tag" href="https://amarpandey.me/tags/devops/">#devops</a><a class="tag" href="https://amarpandey.me/tags/containers/">#containers</a><a class="tag" href="https://amarpandey.me/tags/security/">#security</a>
+  </div>
+  
+</div>
+
+<section class="comments">
+  <h2>Comments</h2>
+  <div class="giscus"></div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var theme = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  var s = document.createElement("script");
+  s.src = "https://giscus.app/client.js";
+  s.async = true;
+  s.crossOrigin = "anonymous";
+  var attrs = {
+    "data-repo": "amarlearning/amarlearning.github.io",
+    "data-repo-id": "MDEwOlJlcG9zaXRvcnk0Mjg1NjE2Mw==",
+    "data-category-id": "DIC_kwDOAo3u484CtGdf",
+    "data-mapping": "pathname",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": theme,
+    "data-lang": "en",
+    "data-loading": "lazy"
+  };
+  for (var k in attrs) s.setAttribute(k, attrs[k]);
+  document.currentScript.parentNode.appendChild(s);
+})();
+</script>
+
+</section>
 
 
 
   </main>
-  <footer><hr>
-<div class="footer-container">
-  <p class="signature" aria-label="Signed, Amar Pandey">Amar Pandey</p>
-  <div class="footer-meta">
-    <span>2026 © Amar Prakash Pandey</span>
-    <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rss-icon">
-        <path d="M4 11a9 9 0 0 1 9 9"></path>
-        <path d="M4 4a16 16 0 0 1 16 16"></path>
-        <circle cx="5" cy="19" r="1"></circle>
-      </svg>
-      RSS
-    </a>
-  </div>
+  <footer><figure class="sky">
+  <button class="duck-button" type="button" aria-label="Make it fly">
+    <canvas aria-hidden="true"></canvas>
+  </button>
+  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
+</figure>
+<div class="footer-meta">
+  <span>© 2026 Amar Prakash Pandey</span>
+  <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+    RSS
+  </a>
 </div>
 </footer>
 
-    
+  <script>
+(function () {
+  var root = document.documentElement;
+  var button = document.querySelector(".theme-toggle");
+  if (!button) return;
+  function current() {
+    return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  }
+  function sync() { button.setAttribute("aria-pressed", current() === "dark"); }
+  sync();
+  button.addEventListener("click", function () {
+    var next = current() === "dark" ? "light" : "dark";
+    var apply = function () {
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (frame) frame.contentWindow.postMessage({ giscus: { setConfig: { theme: next } } }, "https://giscus.app");
+    };
+    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.startViewTransition(apply);
+    else apply();
+  });
+})();
+</script>
+<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
 </body>
 
 </html>
