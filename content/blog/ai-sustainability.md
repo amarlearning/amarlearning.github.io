@@ -1,6 +1,7 @@
 +++
+slug = "were-putting-ai-everywhere-before-its-sustainable"
 title = "We're Putting AI Everywhere Before It's Sustainable"
-images = ["/images/were-putting-ai-everywhere-before-its-sustainable/banner.png"]
+images = ["/images/ai-sustainability/banner.png"]
 date = "2026-11-07T00:00:00+05:30"
 
 description = "AI is being pushed into more products and workflows before we've established that its widespread use is economically and environmentally sustainable. A case for intentional adoption and using AI where it genuinely earns its place."
@@ -16,7 +17,7 @@ tags = [
 ]
 +++
 
-![banner](/images/were-putting-ai-everywhere-before-its-sustainable/banner.png)
+![banner](/images/ai-sustainability/banner.png)
 
 
 

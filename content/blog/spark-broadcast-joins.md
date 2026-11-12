@@ -1,13 +1,14 @@
 +++
+slug = "handling-large-broadcast-joins-in-apache-spark"
 title = "Handling Large Broadcast Joins in Apache Spark"
-images = ["/images/handling-large-broadcast-joins-in-apache-spark/banner.png"]
+images = ["/images/spark-broadcast-joins/banner.png"]
 date = "2024-05-22T00:00:00-00:00"
 description = "Apache Spark Issue - Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB"
 
 tags = ["data", "apache", "spark", "broadcast", "join"]
 +++
 
-![banner](/images/handling-large-broadcast-joins-in-apache-spark/banner.png)
+![banner](/images/spark-broadcast-joins/banner.png)
 
 In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:
 

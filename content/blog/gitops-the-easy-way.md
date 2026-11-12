@@ -1,4 +1,5 @@
 +++
+slug = "gitops---the-easy-way"
 title = "GitOps - the easy way"
 images = ["/images/gitops-the-easy-way/banner.png"]
 date = "2022-01-04T00:00:00-00:00"

@@ -1,14 +1,15 @@
 +++
+slug = "from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark"
 pinned = true
 title = "From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark"
-images = ["/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png"]
+images = ["/images/spark-skew-joins/banner.png"]
 date = "2025-04-07T00:00:00-00:00"
 description = "Learn how Spark's Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning"
 
 tags = ["spark", "big data", "optimization", "data engineering", "performance", "spark-joins"]
 +++
 
-![banner](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png)
+![banner](/images/spark-skew-joins/banner.png)
 
 When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why **dynamic skew join optimization** is not just useful, but often essential.
 
@@ -29,7 +30,7 @@ df1.join(df2, df1.key == df2.key, "inner").filter("value == 'random'")
 
 Since both tables are large, we expect a **sort-merge join** to occur. When you run the job and inspect the execution plan, you’ll notice `Exchange` nodes — one for each table — indicating shuffle operations. Each table is being **partitioned by the join key**.
 
-![sort-merge-join-spark-plan](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png)
+![sort-merge-join-spark-plan](/images/spark-skew-joins/query-plan.png)
 
 ---
 
@@ -39,19 +40,19 @@ Let’s dig deeper.
 
 Assume `large_table_one` initially has two partitions.
 
-![table-one-partitions](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.png)
+![table-one-partitions](/images/spark-skew-joins/table-one-partitions.png)
 
 Each partition contains rows with different join keys, represented using different colors (for visualization purposes). After shuffling, Spark redistributes the data such that each partition contains rows with the same join key. This repartitioning by join key is the primary purpose of the shuffle, resulting in:
 
-![table-one-exchange](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.png)
+![table-one-exchange](/images/spark-skew-joins/table-one-exchange.png)
 
 You’ll see the same happen to `large_table_two` — it’s shuffled in a similar way so that corresponding keys are aligned for joining.
 
-![table-two-exchange](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.png)
+![table-two-exchange](/images/spark-skew-joins/table-two-exchange.png)
 
 Now that both tables are partitioned by key, Spark proceeds with the sort-merge join. If we have four partitions, we’ll get four tasks — each responsible for sorting and merging data for a specific key.
 
-![sort-merge-join-tasks](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.png)
+![sort-merge-join-tasks](/images/spark-skew-joins/sort-merge-join-tasks.png)
 
 ---
 
@@ -59,7 +60,7 @@ Now that both tables are partitioned by key, Spark proceeds with the sort-merge 
 
 At a glance, this looks fine. But look closely — one of the partitions (the one with green-colored data) is **much larger than the others**. This means the task handling that partition has a heavier load.
 
-![skewed-partitions](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png)
+![skewed-partitions](/images/spark-skew-joins/skewed-partitions.png)
 
 Let’s say you configured your Spark executor to allocate 4GB of RAM per task. That works well for all other partitions, but **the green partition needs more memory** to complete the  sort/merge. This becomes a problem.
 
@@ -96,18 +97,18 @@ Now, Spark monitors the actual size of shuffled partitions at runtime. If it det
 
 Let’s revisit our example. Initially, there are 4 shuffle partitions, hence 4 tasks. One of them is skewed (green). That task struggles and runs longer, maybe even fails.
 
-![skewed-partitions](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png)
+![skewed-partitions](/images/spark-skew-joins/skewed-partitions.png)
 
 But since AQE is enabled, Spark notices the skew and takes the following actions:
 
 1. **Splits the skewed partition** into two or more smaller partitions.
 2. **Duplicates the matching partition** from the other side of the join (so each split can be joined independently).
 
-![skewed-partitions-opt](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt.png)
+![skewed-partitions-opt](/images/spark-skew-joins/skewed-partitions-opt.png)
 
 As a result, we now have 5 tasks instead of 4. But the load is **evenly distributed**, and tasks finish faster and more reliably.
 
-![skewed-partitions-opt-tasks](/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt-tasks.png)
+![skewed-partitions-opt-tasks](/images/spark-skew-joins/skewed-partitions-opt-tasks.png)
 
 ---
 

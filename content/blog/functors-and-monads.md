@@ -1,4 +1,5 @@
 +++
+slug = "functors-and-monads-wrapping-your-data-not-your-head-around-them"
 title = "Functors and Monads: Wrapping Your Data (Not Your Head) Around Them"
 date = "2026-03-15T00:00:00-00:00"
 description = "Functors and monads without the category theory. Learn how wrapping values in a context-aware box makes Python data pipelines cleaner, with real data engineering examples."
@@ -12,7 +13,7 @@ tags = [
 ]
 +++
 
-![banner](/images/functors-and-monads-wrapping-your-data-around-them/banner.svg)
+![banner](/images/functors-and-monads/banner.svg)
 
 
 ## Why these words sound scarier than they are

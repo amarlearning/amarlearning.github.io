@@ -1,13 +1,14 @@
 +++
+slug = "how-not-to-open-a-pull-request--and-how-to-do-it-right"
 title = "How Not to Open a Pull Request – And How to Do It Right"
-images = ["/images/how-not-to-open-a-pull-request-add-how-to-do-it-right/banner.png"]
+images = ["/images/pull-requests-done-right/banner.png"]
 date = "2025-07-25T00:00:00-00:00"
 description = "A comprehensive guide on creating effective pull requests, based on 6+ years of open source maintenance experience. Learn how to make your PRs more mergeable through proper scoping, communication, and best practices."
 
 tags = ["open-source", "git", "best-practices", "collaboration", "code-review"]
 +++
 
-![banner](/images/how-not-to-open-a-pull-request-add-how-to-do-it-right/banner.png)
+![banner](/images/pull-requests-done-right/banner.png)
 
 Picture this: You're maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?
 

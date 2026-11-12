@@ -1,4 +1,5 @@
 +++
+slug = "spot-optimizer--spot-fleet---decide-smart-then-launch"
 title = "Spot Optimizer ≠ Spot Fleet: decide smart, then launch"
 date = "2025-09-01T00:00:00-00:00"
 description = "Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure."
@@ -6,7 +7,7 @@ description = "Stop guessing at EC2 Spot instances. Learn how Spot Optimizer int
 tags = [ "AWS", "EC2", "Spot-Instances", "Cloud-Computing", "Cost-Optimization", "Infrastructure", "DevOps", "Python", "CLI-Tools"]
 +++
 
-![banner](/images/spot-optimizer-spot-fleet-decide-smart-then-launch/banner.svg)
+![banner](/images/spot-optimizer-vs-spot-fleet/banner.svg)
 
 Picking EC2 Spot instances shouldn't feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.
 

@@ -1,13 +1,14 @@
 +++
+slug = "never-push-a-work-commit-with-your-personal-email-again"
 title = "Never Push a Work Commit with Your Personal Email Again"
-images = ["/images/never-push-a-work-commit-with-your-personal-email-again/banner.png"]
+images = ["/images/git-work-email/banner.png"]
 date = "2025-07-05T00:00:00-00:00"
 description = "Automatically switch Git identities based on folder path — a clean way to manage personal and work commits"
 
 tags = ["git", "gitconfig", "developer-tips", "productivity", "multiple-identities", "personal-vs-work", "version-control", "dev-tools"]
 +++
 
-![banner](/images/never-push-a-work-commit-with-your-personal-email-again/banner.png)
+![banner](/images/git-work-email/banner.png)
 
 As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.
 

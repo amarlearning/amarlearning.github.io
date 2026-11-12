@@ -1,4 +1,5 @@
 +++
+slug = "symptoms-of-bad-code"
 title = "Symptoms of Bad Code"
 images = ["/images/symptoms-of-bad-code/banner.jpg"]
 date = "2022-07-19T00:00:00-00:00"

@@ -1,14 +1,15 @@
 +++
+slug = "4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery"
 pinned = true
 title = "4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery"
-images = ["/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png"]
+images = ["/images/spark-oom-4tb-ram/banner.png"]
 date = "2025-03-30T00:00:00-00:00"
 description = "Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance."
 
 tags = [ "Apache-Spark", "Spark", "Big-Data", "Data-Processing", "Performance", "Performance-Optimization", "Distributed-Computing", "Data-Engineering"]
 +++
 
-![banner](/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png)
+![banner](/images/spark-oom-4tb-ram/banner.png)
 
 Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.
 

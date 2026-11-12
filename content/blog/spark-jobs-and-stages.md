@@ -1,13 +1,14 @@
 +++
+slug = "deep-dive-into-spark-jobs-and-stages"
 title = "Deep Dive into Spark Jobs and Stages"
-images = ["/images/deep-dive-into-spark-jobs-and-stages/banner.png"]
+images = ["/images/spark-jobs-and-stages/banner.png"]
 date = "2025-03-23T00:00:00-00:00"
 description = "Learn how Apache Spark organizes and executes data processing through jobs and stages. Understand transformations, actions, and optimization strategies for better performance in large-scale data processing."
 
 tags = [ "apache-spark", "big-data", "data-processing", "performance-optimization", "distributed-computing", "spark-optimization"]
 +++
 
-![banner](/images/deep-dive-into-spark-jobs-and-stages/banner.png)
+![banner](/images/spark-jobs-and-stages/banner.png)
 
 
 When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.
@@ -79,7 +80,7 @@ To better understand how Spark organizes jobs and stages, let's break down the f
 5. Shuffle/Sort → Connects Stages when wide dependencies are present
 6. Tasks → Smallest unit of execution within each stage
 
-![spark-task-execution](/images/deep-dive-into-spark-jobs-and-stages/spark_execution.png)
+![spark-task-execution](/images/spark-jobs-and-stages/spark_execution.png)
 
 
 ## Tasks and Parallelism

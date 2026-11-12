@@ -1,6 +1,7 @@
 +++
+slug = "finger-detection-and-tracking-using-opencv-and-python"
 title = "Finger Detection and Tracking using OpenCV and Python"
-images = ["/images/finger-detection-and-tracking-using-opencv-and-python/1.png"]
+images = ["/images/opencv-finger-tracking/1.png"]
 date = "2018-07-28T00:00:00-00:00"
 description = "Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time."
 
@@ -23,7 +24,7 @@ A much simpler method to detect skin would be to find pixels that are in a certa
 
 The problem with the above approach is that changing light conditions and skin colors can really mess with the skin detection. While on the other hand, Histogram tends to be more accurate and takes into account the current light conditions.
 
-![Place hand over the rectangles](/images/finger-detection-and-tracking-using-opencv-and-python/1.png)
+![Place hand over the rectangles](/images/opencv-finger-tracking/1.png)
 
 Green rectangles are drawn on the frame and the user places their hand inside these rectangles. Application is taking skin color samples from the user’s hand and then creates a histogram.
 
@@ -97,9 +98,9 @@ def hist_masking(frame, hist):
 
 In the first two lines, I changed the input frame to HSV and then applied `cv2.calcBackProject` with the skin color histogram `hist`. Following that, I have used Filtering and Thresholding function to smoothen the image. Lastly, I masked the input frame using the `cv2.bitwise_and` function. This final frame should just contain skin color regions of the frame.
 
-![Hand seperated from background (1)](/images/finger-detection-and-tracking-using-opencv-and-python/2.png)
+![Hand seperated from background (1)](/images/opencv-finger-tracking/2.png)
 
-![Hand seperated from background (2)](/images/finger-detection-and-tracking-using-opencv-and-python/3.png)
+![Hand seperated from background (2)](/images/opencv-finger-tracking/3.png)
 
 Now we have a frame with skin color regions only, but what we really want is to find the location of a fingertip. Using OpenCV you can find contours in a frame if you don’t know what contour is you can read [here](https://docs.opencv.org/3.4.2/d3/d05/tutorial_py_table_of_contents_contours.html). Using contours you can find convexity defects, which will be potential fingertip location.
 
@@ -129,18 +130,18 @@ def manage_image_opr(frame, hand_hist):
         draw_circles(frame, traverse_point)
 ```
 
-![Contour in Frame (1)](/images/finger-detection-and-tracking-using-opencv-and-python/4.png)
+![Contour in Frame (1)](/images/opencv-finger-tracking/4.png)
 
-![Contour in Frame (2)](/images/finger-detection-and-tracking-using-opencv-and-python/5.png)
+![Contour in Frame (2)](/images/opencv-finger-tracking/5.png)
 
 Then it determines the largest contour. For the largest contour, it finds the hull, centroid, and defects.
 
-![Defects in red circle and Centroid in purple circle](/images/finger-detection-and-tracking-using-opencv-and-python/6.png)
+![Defects in red circle and Centroid in purple circle](/images/opencv-finger-tracking/6.png)
 
 Now that you have all these defects you find the one that is farthest from the center of the contour. This point is assumed to be the pointing finger. The center is purple and the farthest point is red. And there you have it, you’ve found a fingertip.
 
-![Centroid in purple color and Farthest point in red color](/images/finger-detection-and-tracking-using-opencv-and-python/7.png)
+![Centroid in purple color and Farthest point in red color](/images/opencv-finger-tracking/7.png)
 
 All hard part is done up until now, now all we have to do is to create a `list` to store the changed location of the `farthest_point` in the frame. It’s up to you that how many changed points you want to store. I am storing only `20` points.
 
-![Finger Detection and Tracking using OpenCV and Python](/images/finger-detection-and-tracking-using-opencv-and-python/8.jpeg)
+![Finger Detection and Tracking using OpenCV and Python](/images/opencv-finger-tracking/8.jpeg)

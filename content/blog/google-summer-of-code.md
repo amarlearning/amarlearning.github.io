@@ -1,13 +1,14 @@
 +++
+slug = "what-is-google-summer-of-code---how-to-prepare-for-it"
 title = "What is Google Summer of Code? How to prepare for it?"
-images = ["/images/what-is-google-summer-of-code-how-to-prepare-for-it/banner.jpeg"]
+images = ["/images/google-summer-of-code/banner.jpeg"]
 date = "2017-07-02T00:00:00-00:00"
 description = "What is Google Summer of Code? How to prepare for it? How to get selected in Google Summer of Code? How to write a good proposal for Google Summer of Code"
 
 tags = ["oss", "google", "gsoc", "open-source", "open-source-software", "oss"]
 +++
 
-![banner](/images/what-is-google-summer-of-code-how-to-prepare-for-it/banner.jpeg)
+![banner](/images/google-summer-of-code/banner.jpeg)
 
 We will talk about Google Summer of Code but before that let’s talk about what
 Open Source Development is. Yes, it’s very important.

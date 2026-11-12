@@ -1,13 +1,14 @@
 +++
+slug = "fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency"
 title = "Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency"
-images = ["/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png"]
+images = ["/images/spark-shuffle-partitions/banner.png"]
 date = "2024-05-24T00:00:00-00:00"
 description = "Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency is crucial for optimizing performance. Learn how to calculate the right number of partitions based on data size and cluster resources."
 tags = ["data", "apache", "spark", "shuffle", "partitions", "performance"]
 math = "katex"
 +++
 
-![banner](/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png)
+![banner](/images/spark-shuffle-partitions/banner.png)
 
 Apache Spark's shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.
 

@@ -1,13 +1,14 @@
 +++
+slug = "balancing-the-rum-conjecture-navigating-database-trade-offs"
 title = "Balancing the RUM Conjecture: Navigating Database Trade-Offs"
-images = ["/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png"]
+images = ["/images/rum-conjecture/banner.png"]
 date = "2024-11-05T00:00:00-00:00"
 description = "An overview of the RUM Conjecture and its trade-offs in database design between reads, updates, and memory."
 
 tags = ["RUM Conjecture", "Database Design", "Data Engineering", "Tech Tradeoffs"]
 +++
 
-![banner](/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png)
+![banner](/images/rum-conjecture/banner.png)
 
 When designing databases, there's a constant balancing act among three main factors:
 
@@ -31,7 +32,7 @@ This trade-off forms a triangular relationship among read efficiency, update cos
 
 Databases are often optimized around specific workflows, focusing on either read, write, or storage efficiencies:
 
-![rum-visualized](/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-visualized.png)
+![rum-visualized](/images/rum-conjecture/rum-visualized.png)
 
 1. **Read-Optimized**
 
@@ -55,7 +56,7 @@ Databases are often optimized around specific workflows, focusing on either read
 
 Some database structures are designed to adapt dynamically, balancing the RUM trade-offs based on access patterns:
 
-![rum-adaptive](/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-adaptive.png)
+![rum-adaptive](/images/rum-conjecture/rum-adaptive.png)
 
 - Adaptive access methods: These structures include tunable parameters or are inherently adaptive, allowing them to adjust based on workload.
 - Examples: Techniques like database cracking and adaptive merging use workload information to find an optimal balance among read, update, and memory costs.
