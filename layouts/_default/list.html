@@ -1,25 +1,32 @@
 {{ define "main" }}
-{{ if .Data.Singular }}
-<div class="post-header">
-  <h1>Filtering for "{{ .Title }}"</h1>
-  <a class="more" href="{{ "blog/" | relURL }}">Remove filter</a>
+{{- if eq .Kind "taxonomy" }}
+{{- /* /tags/: every tag as a luggage tag, most-used first, with its count */}}
+<div class="term-head">
+  <a class="more" href="{{ "blog/" | relURL }}">← All posts</a>
+  <h1 class="term-title">Tags</h1>
+  <p class="term-count">{{ len .Data.Terms }} topics</p>
 </div>
-{{ end }}
+<div class="tags tag-cloud">
+  {{ range .Data.Terms.ByCount }}
+  <a class="tag" href="{{ .Page.RelPermalink }}">#{{ .Page.Title | lower }} <span class="tag-count">{{ .Count }}</span></a>
+  {{ end }}
+</div>
+{{- else }}
+{{- /* a tag's own page (or any other list): the tag written by hand, then its posts like the blog archive */}}
+<div class="term-head">
+  <a class="more" href="{{ "blog/" | relURL }}">← All posts</a>
+  <h1 class="term-title">{{ if .Data.Singular }}#{{ .Title | lower }}{{ else }}{{ .Title }}{{ end }}</h1>
+  <p class="term-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</p>
+</div>
 <div class="rows">
   {{ range .Pages }}
   <a class="row" href="{{ .RelPermalink }}">
-    <span class="row-title">{{ .Title }}</span>
+    <span class="row-title">{{ .Title }}{{ with .Params.tags }}<span class="row-tags">{{ range first 3 . }}<span>#{{ . | lower }}</span>{{ end }}</span>{{ end }}</span>
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2006" }}</time>
   </a>
   {{ else }}
   <p>No posts yet</p>
   {{ end }}
 </div>
-{{ if not .Data.Singular }}
-<div class="tags">
-  {{ range .Site.Taxonomies.tags }}
-  <a class="tag" href="{{ .Page.RelPermalink }}">#{{ .Page.Title }}</a>
-  {{ end }}
-</div>
-{{ end }}
+{{- end }}
 {{ end }}

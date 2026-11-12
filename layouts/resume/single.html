@@ -1,4 +1,5 @@
 {{ define "main" }}
+<h1 class="visually-hidden">{{ .Title }}</h1>
 {{- /* the résumé as a sheet taped to the page: a still image of static/resume.pdf, so there is no PDF viewer to zoom or pan.
        ponytail: the image is rendered by hand; after changing resume.pdf, re-render it:
        qlmanage -t -s 2200 -o /tmp static/resume.pdf && magick /tmp/resume.pdf.png -quality 84 static/images/resume/resume.webp */}}

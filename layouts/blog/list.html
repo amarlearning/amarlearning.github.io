@@ -1,4 +1,5 @@
 {{ define "main" }}
+<h1 class="visually-hidden">{{ .Title }}</h1>
 {{ .Content }}
 {{- /* pinned posts (front matter: pinned = true) as polaroids of their banners */}}
 {{ with where .Pages "Params.pinned" true }}
@@ -7,7 +8,7 @@
 <div class="pins">
 {{ range . }}
 <a class="pin" href="{{ .RelPermalink }}">
-    {{ with .Params.images }}<img src="{{ index . 0 | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
+    {{ with .Params.images }}{{ $img := index . 0 }}{{ $small := printf "%s.webp" (strings.TrimSuffix (path.Ext $img) $img) }}{{ if fileExists (printf "static%s" $small) }}{{ $img = $small }}{{ end }}<img src="{{ $img | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
     <span class="pin-title">{{ .Title }}</span>
     <span class="pin-meta">{{ .Date.Format "Jan 2006" }} · {{ .ReadingTime }} min read</span>
 </a>

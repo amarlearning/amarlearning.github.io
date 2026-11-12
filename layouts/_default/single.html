@@ -13,7 +13,8 @@
   {{ .TableOfContents }}
 </nav>
 {{- end }}
-<div class="prose{{ with .Params.pageClass }} {{ . }}{{ end }}">
+{{- if not $post }}<h1 class="visually-hidden">{{ .Title }}</h1>{{ end }}
+<div class="prose{{ if $post }} post{{ end }}{{ with .Params.pageClass }} {{ . }}{{ end }}">
   {{ .Content }}
 </div>
 {{ if eq .Type "blog" }}

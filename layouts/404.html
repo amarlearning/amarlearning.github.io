@@ -1,0 +1,18 @@
+{{ define "title" }}Page not found | {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+{{- /* a page torn out of the notebook: the gap where it was, and the way back */}}
+<section class="lost">
+    <svg class="lost-art" viewBox="0 0 160 120" aria-hidden="true">
+        <path class="lost-gap" d="M28 14H112L132 34V106H28Z"/>
+        <path class="lost-page" d="M40 22H104L118 36V58L110 62L116 68L108 74L114 82L106 88L112 96H40Z"/>
+        <path class="lost-lines" d="M50 40H96M50 50H104M50 60H92M50 70H98M50 80H88"/>
+    </svg>
+    <p class="lost-code">404</p>
+    <h1 class="lost-title">This page fell out of the notebook.</h1>
+    <p class="lost-text">The link may be old, or the page moved. Everything else is still here.</p>
+    <div class="lost-actions">
+        <a class="button" href="{{ "" | relURL }}">Back to home</a>
+        <a class="more" href="{{ "blog/" | relURL }}">Browse the blog</a>
+    </div>
+</section>
+{{ end }}

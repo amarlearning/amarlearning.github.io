@@ -45,6 +45,8 @@
   --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
   --note-ink: light-dark(#c4532e, #f0875f);
   --paper-note: #f6efdf;
+  --note-ink-paper: #b04626;   /* coral on cream paper: the lighter coral falls under 4.5:1 there */
+  --muted-paper: #635d56;
   --tape: rgb(222 210 180 / 0.6);
   --grid-line: light-dark(rgb(70 140 210 / 0.16), rgb(236 231 223 / 0.04));   /* light: classic blue graph paper (#468cd2), pairs with the coral notes */
   --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.1), 0 18px 36px -18px rgb(0 0 0 / 0.5);

@@ -80,7 +80,8 @@ header nav a.active { color: var(--color-ink); font-weight: var(--weight-medium)
 .prose li::marker { color: var(--color-muted); }
 .prose img { width: 100%; border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card); }
 /* image caption: ![alt](src) followed by *caption* on the next line */
-.prose p:has(> img) > em { display: block; margin-top: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); font-style: normal; text-align: center; }
+.prose picture { display: block; }
+.prose p:has(> img, > picture) > em { display: block; margin-top: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); font-style: normal; text-align: center; }
 .prose blockquote {
   margin-left: 0; padding-left: var(--space-md);
   border-left: 2px solid var(--color-rule-strong);
@@ -178,23 +179,23 @@ a:hover > .icon-arrow, a:hover .card-head .icon-arrow { transform: translate(1px
 
 /* ---------- about: a taped-in polaroid and a paper card of things off the clock ---------- */
 /* both are physical paper, so they stay light in either theme */
-.about p:has(> img) {
+.about p:has(> picture, > img) {
   position: relative; width: min(100%, 30rem); margin: var(--space-lg) auto var(--space-2xl);
   padding: 12px 12px 4px; background: #fbf8f2;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 16px 32px -16px rgb(0 0 0 / 0.5);
   rotate: -1.2deg; transform-origin: 50% 0;
   animation: sway 7s var(--ease-in-out) infinite alternate;
 }
-.about p:has(> img)::before, .offclock::before, .feature::before {
+.about p:has(> picture, > img)::before, .offclock::before, .feature::before {
   content: ""; position: absolute; top: -11px; left: 50%; width: 92px; height: 22px; translate: -50% 0; rotate: 3deg;
   background: var(--tape); box-shadow: 0 1px 1px rgb(0 0 0 / 0.06);
 }
-.about p:has(> img) img { display: block; border: 0; border-radius: 1px; }
-.about p:has(> img) > em { margin: 6px 0 2px; color: #3b352e; font-family: var(--font-hand); font-size: 1.3rem; line-height: 1.25; }
+.about p:has(> picture, > img) img { display: block; border: 0; border-radius: 1px; }
+.about p:has(> picture, > img) > em { margin: 6px 0 2px; color: #3b352e; font-family: var(--font-hand); font-size: 1.3rem; line-height: 1.25; }
 @keyframes sway { from { rotate: -1.5deg; } to { rotate: -0.5deg; } }
 
 .offclock {
-  --oc-accent: #c4532e; --oc-brew: #7d5236;
+  --oc-accent: var(--note-ink-paper); --oc-brew: #7d5236;
   color-scheme: light;   /* every light-dark() token resolves to its light value on the paper */
   position: relative; margin: var(--space-2xl) 0;
   padding: var(--space-lg) var(--space-lg) var(--space-md);
@@ -281,7 +282,7 @@ a:hover > .icon-arrow, a:hover .card-head .icon-arrow { transform: translate(1px
   .oc-art { order: -1; max-width: 20rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .about p:has(> img), .offclock, .offclock * { animation: none !important; }
+  .about p:has(> picture, > img), .offclock, .offclock * { animation: none !important; }
 }
 
 /* ---------- posts ---------- */
@@ -476,7 +477,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
   position: absolute; z-index: 1; right: var(--space-sm); top: calc(-1 * var(--space-xs));
   padding: 3px 10px 4px; border-radius: 2px;
   background: var(--paper-note); box-shadow: 0 2px 6px -2px rgb(0 0 0 / 0.35);
-  color: #c4532e; font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1;
+  color: var(--note-ink-paper); font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1;
   rotate: 4deg;
 }
 .pcard-desc { flex: 1; color: var(--color-muted); font-size: var(--text-sm); line-height: 1.6; }
@@ -542,7 +543,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
   position: absolute; z-index: 1; right: var(--space-sm); top: calc(-1 * var(--space-xs));
   padding: 3px 10px 4px; border-radius: 2px;
   background: var(--paper-note); box-shadow: 0 2px 6px -2px rgb(0 0 0 / 0.35);
-  color: #c4532e; font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1;
+  color: var(--note-ink-paper); font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1;
   rotate: 4deg;
 }
 .talk-thumb.no-thumb {
@@ -618,7 +619,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .pin::before { content: ""; position: absolute; z-index: 1; top: -9px; left: 50%; width: 64px; height: 18px; translate: -50% 0; rotate: -3deg; background: var(--tape); }
 .pin img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: 0; border-radius: 1px; background: #e9e3d6; }
 .pin-title { margin-top: var(--space-2xs); font-size: var(--text-sm); font-weight: var(--weight-strong); line-height: 1.35; text-wrap: balance; }
-.pin-meta { color: #c4532e; font-family: var(--font-hand); font-size: 1.1rem; line-height: 1; }
+.pin-meta { color: var(--note-ink-paper); font-family: var(--font-hand); font-size: 1.1rem; line-height: 1; }
 @media (hover: hover) and (pointer: fine) {
   .pin:hover { rotate: 0deg; translate: 0 -4px; box-shadow: 0 2px 4px rgb(0 0 0 / 0.12), 0 24px 40px -18px rgb(0 0 0 / 0.6); }
 }
@@ -629,7 +630,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .archive-head { display: flex; align-items: baseline; gap: var(--space-sm); margin: var(--space-xl) 0 var(--space-sm); }
 .archive-head .archive-year { margin: 0; }
 .archive-count { color: var(--color-muted); font-size: var(--text-xs); }
-.row-tags { display: flex; flex-wrap: wrap; gap: 0 var(--space-xs); margin-top: 2px; color: var(--color-muted); font-size: var(--text-xs); opacity: 0.75; }
+.row-tags { display: flex; flex-wrap: wrap; gap: 0 var(--space-xs); margin-top: 2px; color: var(--color-muted); font-size: var(--text-xs); }
 
 /* posts: code sits on a sheet with its language on the tab and a copy button */
 .prose .code {
@@ -727,7 +728,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .org-role {
   position: absolute; z-index: 2; left: 50%; bottom: calc(100% + 2px);
   padding: 3px 9px 4px; border-radius: 2px; background: var(--paper-note); box-shadow: 0 4px 10px -4px rgb(0 0 0 / 0.45);
-  color: #c4532e; font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1; white-space: nowrap;
+  color: var(--note-ink-paper); font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1; white-space: nowrap;
   opacity: 0; translate: -50% 6px; rotate: -4deg; pointer-events: none;
   transition: opacity 200ms var(--ease-out), translate 350ms var(--ease-out);
 }
@@ -748,6 +749,53 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .intro .social a[href*="x.com"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z'/%3E%3C/svg%3E"); }
 .intro .social a[href*="medium"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='7' cy='12' rx='5' ry='6'/%3E%3Cellipse cx='16.5' cy='12' rx='2.5' ry='5.5'/%3E%3Cpath d='M21.5 7v10'/%3E%3C/svg%3E"); }
 .intro .social a[href^="mailto"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='M3 7l9 6 9-6'/%3E%3C/svg%3E"); }
+
+/* 404: the gap where a page was torn out, and the way back */
+.lost { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-sm); padding: var(--space-xl) 0; }
+.lost-art { width: 150px; height: auto; margin-bottom: var(--space-xs); overflow: visible; }
+.lost-gap { fill: none; stroke: var(--color-rule-strong); stroke-width: 1.5; stroke-dasharray: 4 5; }
+.lost-page { fill: var(--paper-note); stroke: #3b352e; stroke-width: 1.3; stroke-linejoin: round; transform-origin: 40px 96px; rotate: -9deg; translate: -6px 4px; animation: page-drift 5s var(--ease-in-out) infinite alternate; }
+.lost-lines { fill: none; stroke: #3b352e; stroke-width: 1; stroke-linecap: round; opacity: 0.35; transform-origin: 40px 96px; rotate: -9deg; translate: -6px 4px; animation: page-drift 5s var(--ease-in-out) infinite alternate; }
+@keyframes page-drift { to { rotate: -5deg; translate: -3px 1px; } }
+.lost-code { margin: 0; color: var(--note-ink); font-family: var(--font-hand); font-size: 3.5rem; font-weight: 600; line-height: 0.9; rotate: -4deg; }
+.lost-title { color: var(--color-ink); font-size: var(--text-xl); font-weight: var(--weight-strong); line-height: 1.3; letter-spacing: -0.01em; }
+.lost-text { color: var(--color-muted); }
+.lost-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin-top: var(--space-sm); }
+.lost-actions .button, .lost-actions .more { margin-top: 0; }
+
+/* tag pages: the tag written by hand like a section label, then the archive rows */
+.term-head { margin-bottom: var(--space-lg); }
+.term-head .more { margin: 0 0 var(--space-md); }
+.term-title { position: relative; width: fit-content; color: var(--note-ink); font-family: var(--font-hand); font-size: 2.4rem; font-weight: 600; line-height: 1; letter-spacing: 0; overflow-wrap: anywhere; }
+.term-title::after { content: ""; position: absolute; left: -2px; right: -4px; bottom: -10px; height: 8px; background: var(--note-ink); opacity: 0.6; mask: var(--scribble) repeat-x 0 0 / 40px 8px; animation: scribble 700ms var(--ease-out) 300ms both; }
+.term-count { margin-top: var(--space-md); color: var(--color-muted); font-size: var(--text-sm); }
+.tag-cloud { gap: var(--space-sm) var(--space-xs); }
+.tag-count { margin-left: 4px; color: var(--note-ink); font-family: var(--font-hand); font-size: 1.05rem; font-weight: 600; line-height: 1; }
+
+/* posts: the opening banner is a photo taped into the notebook, held still so reading stays calm */
+.prose.post > p:first-child:has(> picture, > img) {
+  position: relative; margin: var(--space-md) 0 var(--space-xl); padding: 10px;
+  background: #fbf8f2; box-shadow: 0 1px 2px rgb(0 0 0 / 0.12), 0 16px 32px -18px rgb(0 0 0 / 0.5);
+  rotate: -0.6deg;
+}
+.prose.post > p:first-child:has(> picture, > img)::before {
+  content: ""; position: absolute; z-index: 1; top: -11px; left: 50%; width: 92px; height: 22px; translate: -50% 0; rotate: 3deg;
+  background: var(--tape); box-shadow: 0 1px 1px rgb(0 0 0 / 0.06);
+}
+.prose.post > p:first-child:has(> picture, > img) img { border: 0; border-radius: 1px; }
+
+/* cream paper objects keep readable greys */
+.offclock, .feature, .pin { --color-muted: var(--muted-paper); }
+
+/* keyboard: a skip link that appears on focus */
+.skip-link {
+  position: absolute; z-index: 20; top: var(--space-sm); left: var(--space-sm);
+  padding: var(--space-xs) var(--space-md); border-radius: var(--radius-pill);
+  background: var(--color-ink); color: var(--color-paper); font-size: var(--text-sm); text-decoration: none;
+  translate: 0 calc(-100% - var(--space-lg));
+}
+.skip-link:focus { translate: 0 0; }
+main:focus { outline: none; }
 
 /* posts: a coral line along the top keeps your place */
 .post-progress { display: none; }

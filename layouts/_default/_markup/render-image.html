@@ -1,0 +1,15 @@
+{{- /* every markdown image: serve the .webp copy beside it when there is one (made by resizing; see static/images),
+       with its real size so nothing jumps, and lazy-load everything but the first image on the page */ -}}
+{{- $src := .Destination -}}
+{{- $local := and (hasPrefix $src "/") (fileExists (printf "static%s" $src)) -}}
+{{- $webp := "" -}}{{- $w := 0 -}}{{- $h := 0 -}}
+{{- if $local -}}
+  {{- $cand := printf "%s.webp" (strings.TrimSuffix (path.Ext $src) $src) -}}
+  {{- if and (ne $cand $src) (fileExists (printf "static%s" $cand)) }}{{ $webp = $cand }}{{ end -}}
+  {{- if in (slice ".png" ".jpg" ".jpeg") (lower (path.Ext $src)) }}{{ with imageConfig (printf "static%s" $src) }}{{ $w = .Width }}{{ $h = .Height }}{{ end }}{{ end -}}
+{{- end -}}
+<picture>
+  {{- with $webp }}<source srcset="{{ . }}" type="image/webp">{{ end -}}
+  <img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $w }} width="{{ $w }}" height="{{ $h }}"{{ end }}{{ if eq .Ordinal 0 }} fetchpriority="high"{{ else }} loading="lazy"{{ end }} decoding="async">
+</picture>
+{{- /**/ -}}
