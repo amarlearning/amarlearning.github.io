@@ -1,4 +1,5 @@
 +++
+pinned = true
 title = "Your AI Agent Forgets Everything. Lore Fixes That."
 images = ["/images/your-ai-agent-forgets-everything-lore-fixes-that/banner.png"]
 description = "Every Claude Code session starts from zero. Lore fixes that by turning your reasoning into permanent, git-native decision records that get fed back to the agent right when it needs them."

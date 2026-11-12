@@ -2,7 +2,7 @@
  * paper: #ffffff (surface: absolute) · accent: none, ink only · display: Geist · body: Geist · hero: avatar, name and nav, then the intro at lead size filling one 37rem column · nav: stacked under the identity, toggle at the right · footer: one line, copyright left, RSS right · imagery: none (the Litmus mark only) · signature: the theme toggle crossfades the page through a view transition; the Litmus card carries its own strip mark
  * axes: light/grotesk-sans/neutral · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S3 R5 V4 · weakest: S, a clean column could be anyone's; the Litmus card with its own strip mark leads the page below the intro, and colour is left to the content */
-/* Hallmark · waive 7b · paper is #ffffff and dark paper #0a0a0a, both in the token block · the owner asked for pure neutral like kamran.fyi after the stone tint read muddy */
+/* Hallmark · waive 7b · paper is #ffffff and dark paper #171614, both in the token block · light stays pure neutral like kamran.fyi; the owner picked davemiye.com's warm dark palette */
 /* Hallmark · waive 74 · the greys match the neutral scale kamran.fyi ships · the owner picked those exact greys for this site */
 /* Hallmark · waive 78 · section heads sit inline at title size over notebook rows · a Letter-shaped personal column, the reference reads the same way */
 /* Hallmark · waive 59 · notebook sections separate at 64px with no rules · a single 37rem column of short lists, 120px gaps would leave the page half empty */
@@ -26,32 +26,30 @@
   --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* pure neutral, after kamran.fyi: true white and true greys; dark is a neutral near-black, no tint */
-  --color-paper: light-dark(#ffffff, #0a0a0a);
-  --color-paper-2: light-dark(#fafafa, #141414);
-  --color-paper-3: light-dark(#f5f5f5, #1c1c1c);
-  --color-ink: light-dark(#171717, #f5f5f5);
-  --color-ink-2: light-dark(#404040, #d4d4d4);
-  --color-muted: light-dark(#737373, #a3a3a3);
-  --color-rule: light-dark(#e5e5e5, #262626);
-  --color-rule-strong: light-dark(#d4d4d4, #404040);
+  /* light is pure neutral, after kamran.fyi: true white and true greys; dark is warm stone, after davemiye.com */
+  --color-paper: light-dark(#ffffff, #171614);
+  --color-paper-2: light-dark(#fafafa, #211f1c);
+  --color-paper-3: light-dark(#f5f5f5, #2c2a26);
+  --color-ink: light-dark(#171717, #ece7df);
+  --color-ink-2: light-dark(#404040, #c4baa9);
+  --color-muted: light-dark(#737373, #968f83);
+  --color-rule: light-dark(#e5e5e5, #2b2925);
+  --color-rule-strong: light-dark(#d4d4d4, #3e3b35);
   --color-accent: var(--color-ink);
   --color-accent-ink: var(--color-paper);
   --color-focus: var(--color-ink);
   --color-error: light-dark(oklch(52% 0.19 27), oklch(72% 0.15 27));
   --color-success: light-dark(oklch(50% 0.12 150), oklch(78% 0.11 150));
 
-  /* footer duck and its rainbow: the same in both themes, hex so the canvas reads them everywhere */
-  --duck-body: #ffd84d;
-  --duck-wing: #f0b42e;
-  --duck-beak: #f08a24;
-  --duck-eye: #1d1a17;
-  --rainbow-1: #e5484d;
-  --rainbow-2: #f59e2c;
-  --rainbow-3: #f7d64a;
-  --rainbow-4: #46b866;
-  --rainbow-5: #3d8fe0;
-  --rainbow-6: #8a55d9;
+  /* the notebook on the desk: graph paper under everything, coral handwriting for notes, real paper for taped-in objects */
+  --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --note-ink: light-dark(#c4532e, #f0875f);
+  --paper-note: #f6efdf;
+  --tape: rgb(222 210 180 / 0.6);
+  --grid-line: light-dark(rgb(23 23 23 / 0.045), rgb(236 231 223 / 0.04));
+  --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.1), 0 18px 36px -18px rgb(0 0 0 / 0.5);
+  --scribble: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Cpath d='M0 4.5Q10 0 20 4.5T40 4.5' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E");
+  --hand-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 5.5C4 4.6 8 4.8 12 5M8.5 1.5L12.5 5L8.8 8.6' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   /* code: one token per role so chroma follows the theme */
   --syn-comment: light-dark(oklch(56% 0.01 60), oklch(64% 0.02 60));

@@ -1,4 +1,5 @@
 +++
+pinned = true
 title = "4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery"
 images = ["/images/4TB-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/banner.png"]
 date = "2025-03-30T00:00:00-00:00"

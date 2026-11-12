@@ -2,6 +2,7 @@
 title = "About"
 description = "Kanpur-born, Bengaluru-based. Mountains, physics rabbit holes, cooking, and very particular opinions about coffee."
 menu = "main"
+pageClass = "about"
 +++
 
 ![Sitting outside The Wilderness Lodge in Sethan, Himachal Pradesh](/images/about/cover.jpg)
@@ -16,5 +17,7 @@ I've always been curious about how the universe works. I can lose an entire even
 Closer to home, I cook, lift at the gym, run, and play table tennis. There's almost always music on. And coffee does not mean instant. It means dark roast I've ground myself, made as a slow pour-over.
 
 I'm open-minded, down to earth, and pretty comfortable in my own company. Still, if I've made someone's day a little easier, that's a good day.
+
+{{< offclock >}}
 
 If you're planning a trip to the hills, want to argue about quantum mechanics, or have a coffee recommendation, say hello on [GitHub](https://github.com/amarlearning) or [LinkedIn](https://in.linkedin.com/in/amarlearning).

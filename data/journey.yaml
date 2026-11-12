@@ -1,0 +1,10 @@
+# Career stops for the home page strip, oldest first. Facts as stated in content/_index.md.
+- name: TCS
+  when: 3 yrs
+  what: Real-time pricing APIs for Cummins
+- name: Sahaj Software
+  when: 4 yrs
+  what: Terabyte-scale ad-tech pipelines
+- name: Citi
+  when: now
+  what: Spark and data platforms

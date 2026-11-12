@@ -1,0 +1,5 @@
+{{- /* every fenced code block: a sheet with its language on a tab and a copy button (wired in custom_body.html) */ -}}
+<figure class="code">
+  <figcaption><span class="code-lang">{{ .Type | default "text" }}</span><button class="code-copy" type="button">Copy</button></figcaption>
+  {{ transform.Highlight .Inner .Type .Options }}
+</figure>

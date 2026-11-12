@@ -3,33 +3,40 @@
     {{ .Content }}
 </div>
 
-<section class="block" aria-label="Projects">
-    <div class="entries">
-    {{ range .Site.Data.projects }}
-        <article class="entry">
-            <div class="entry-head">
-                <h3 class="entry-title">{{ .title }}</h3>
-                <span class="entry-links">
-                    {{ range .links }}<a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} {{ partial "icon-arrow.html" . }}</a>{{ end }}
-                </span>
-            </div>
-            <p class="entry-desc">{{ .description }}</p>
-        </article>
+{{- /* open source: one stamp per community, the role postmarked by hand */}}
+<section class="block" aria-labelledby="oss">
+    <h2 class="block-head" id="oss">Open source</h2>
+    <div class="stamps">
+    {{ range .Site.Data.oss }}
+        <a class="stamp" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <span class="stamp-top">
+                {{ with .site }}<img src="https://www.google.com/s2/favicons?domain={{ . }}&sz=64" alt="" width="28" height="28" loading="lazy">{{ end }}
+                <span class="stamp-role">{{ .role }}</span>
+            </span>
+            <span class="stamp-org">{{ .organization }}</span>
+            <span class="stamp-desc">{{ .description }}</span>
+        </a>
     {{ end }}
     </div>
 </section>
 
-<section class="block" aria-labelledby="oss">
-    <h2 class="block-head" id="oss">Open source</h2>
-    <div class="entries">
-    {{ range .Site.Data.oss }}
-        <a class="entry" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            <span class="entry-head">
-                <span class="entry-title">{{ .organization }}</span>
-                <span class="entry-links">{{ .role }}</span>
-            </span>
-            <span class="entry-desc">{{ .description }}</span>
-        </a>
+{{- /* a board of index cards: the newest spans the top, the rest pair up; the title's link covers the whole card */}}
+<section class="block" aria-labelledby="built">
+    <h2 class="block-head" id="built">Projects</h2>
+    <div class="board">
+    {{ range $i, $p := .Site.Data.projects }}
+        {{ $url := (index .links 0).url }}
+        {{ range .links }}{{ if eq .name "demo" }}{{ $url = .url }}{{ end }}{{ end }}
+        <article class="pcard{{ if eq $i 0 }} pcard-lead{{ end }}">
+            <div class="pcard-head">
+                <h3 class="pcard-title"><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></h3>
+                {{ with .note }}<span class="pcard-note">{{ . }}</span>{{ end }}
+            </div>
+            <p class="pcard-desc">{{ .description }}</p>
+            <div class="pcard-links">
+                {{ range .links }}<a class="pill" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} {{ partial "icon-arrow.html" . }}</a>{{ end }}
+            </div>
+        </article>
     {{ end }}
     </div>
 </section>

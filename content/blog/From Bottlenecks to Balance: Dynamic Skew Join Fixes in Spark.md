@@ -1,4 +1,5 @@
 +++
+pinned = true
 title = "From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark"
 images = ["/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png"]
 date = "2025-04-07T00:00:00-00:00"

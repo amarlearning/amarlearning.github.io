@@ -1,17 +1,39 @@
 {{ define "main" }}
 {{ if and (eq .Type "blog") (not .Params.menu) }}
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>{{ .Title }}</h1>
-  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (default "2 January 2006" .Site.Params.dateFormat) }}</time>
+  <p class="post-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (default "2 January 2006" .Site.Params.dateFormat) }}</time> · {{ .ReadingTime }} min read</p>
 </div>
 {{ end }}
-<div class="prose">
+{{- $post := and (eq .Type "blog") (not .Params.menu) }}
+{{- if and $post (ge .WordCount 700) (strings.Contains .TableOfContents "<li>") }}
+<nav class="toc" aria-label="On this page">
+  <p class="toc-head">On this page</p>
+  {{ .TableOfContents }}
+</nav>
+{{- end }}
+<div class="prose{{ with .Params.pageClass }} {{ . }}{{ end }}">
   {{ .Content }}
 </div>
 {{ if eq .Type "blog" }}
+{{- /* read next: the posts either side of this one, labelled by date */}}
+{{ $here := . }}
+{{ $near := slice }}{{ with .PrevInSection }}{{ $near = $near | append . }}{{ end }}{{ with .NextInSection }}{{ $near = $near | append . }}{{ end }}
+{{ with $near }}
+<nav class="read-next" aria-label="More posts">
+  {{ range sort . "Date" "asc" }}
+  <a class="next-card" href="{{ .RelPermalink }}">
+    <span class="next-label">{{ if .Date.After $here.Date }}Newer post →{{ else }}← Older post{{ end }}</span>
+    <span class="next-title">{{ .Title }}</span>
+    <span class="next-meta">{{ .ReadingTime }} min read</span>
+  </a>
+  {{ end }}
+</nav>
+{{ end }}
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="{{ "blog" | relURL }}">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="{{ "blog/" | relURL }}">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   {{ with .GetTerms "tags" }}
   <div class="tags">

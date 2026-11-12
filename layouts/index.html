@@ -7,6 +7,21 @@
 <section class="block" aria-labelledby="building">
     <h2 class="block-head" id="building">Currently building</h2>
     <article class="feature">
+        {{- /* a sketch of what Litmus does: a small design on a canvas, each box getting its verdict */}}
+        <svg class="litmus-sketch" viewBox="0 0 220 72" aria-hidden="true">
+            <path class="wire" d="M38 36H50M86 36L102 16M86 36L102 56M138 16L162 36M138 56L162 36"/>
+            <path class="wire" d="M46 33L50 36L46 39M98.5 15.5L102 16L101.5 19.5M98.5 56.5L102 56L101.5 52.5M158 33L162 36L158 38.5"/>
+            <rect class="box" x="4" y="26" width="34" height="20" rx="3"/>
+            <rect class="box" x="50" y="26" width="36" height="20" rx="3"/>
+            <rect class="box" x="102" y="6" width="36" height="20" rx="3"/>
+            <rect class="box" x="102" y="46" width="36" height="20" rx="3"/>
+            <path class="box" d="M162 29c0-3 20-3 20 0v14c0 3-20 3-20 0zM162 29c0 3 20 3 20 0"/>
+            <path class="scrawl" d="M10 36h22M56 36h24M108 16h24M108 56h24M166 38h12"/>
+            <circle class="verdict ok" cx="86" cy="26" r="4"/>
+            <circle class="verdict ok" cx="138" cy="6" r="4"/>
+            <circle class="verdict over" cx="138" cy="46" r="4"/>
+            <circle class="verdict break" cx="182" cy="28" r="4"/>
+        </svg>
         <div class="feature-head">
             <img src="{{ "images/litmus.svg" | relURL }}" alt="" width="36" height="36">
             <h3 class="feature-title">Litmus</h3>
@@ -44,6 +59,6 @@
         </a>
     {{ end }}
     </div>
-    <a class="more" href="{{ "blog" | relURL }}">All posts</a>
+    <a class="more" href="{{ "blog/" | relURL }}">All posts</a>
 </section>
 {{ end }}

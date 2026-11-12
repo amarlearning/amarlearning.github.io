@@ -1,0 +1,10 @@
+{{- /* home page: where Amar has worked, as a line drawn left to right (data/journey.yaml); styles in site.css (.journey) */ -}}
+<ol class="journey" aria-label="Where I've worked">
+{{- range $i, $s := .Site.Data.journey }}
+  <li class="stop{{ if eq .when "now" }} is-now{{ end }}" style="--i:{{ $i }}">
+    <span class="stop-name">{{ .name }}</span>
+    <span class="stop-when">{{ .when }}</span>
+    <span class="stop-what">{{ .what }}</span>
+  </li>
+{{- end }}
+</ol>

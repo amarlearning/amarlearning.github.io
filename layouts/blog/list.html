@@ -1,11 +1,30 @@
 {{ define "main" }}
 {{ .Content }}
+{{- /* pinned posts (front matter: pinned = true) as polaroids of their banners */}}
+{{ with where .Pages "Params.pinned" true }}
+<section class="block pinned-block" aria-labelledby="pinned">
+<h2 class="block-head" id="pinned">Pinned</h2>
+<div class="pins">
+{{ range . }}
+<a class="pin" href="{{ .RelPermalink }}">
+    {{ with .Params.images }}<img src="{{ index . 0 | relURL }}" alt="" loading="lazy" decoding="async">{{ end }}
+    <span class="pin-title">{{ .Title }}</span>
+    <span class="pin-meta">{{ .Date.Format "Jan 2006" }} · {{ .ReadingTime }} min read</span>
+</a>
+{{ end }}
+</div>
+</section>
+{{ end }}
+
 {{ range .Pages.GroupByDate "2006" }}
+<div class="archive-head">
 <h2 class="archive-year">{{ .Key }}</h2>
+<span class="archive-count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}post{{ else }}posts{{ end }}</span>
+</div>
 <div class="rows">
 {{ range .Pages }}
 <a class="row" href="{{ .RelPermalink }}">
-    <span class="row-title">{{ .Title }}</span>
+    <span class="row-title">{{ .Title }}{{ with .Params.tags }}<span class="row-tags">{{ range first 3 . }}<span>#{{ . | lower }}</span>{{ end }}</span>{{ end }}</span>
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2" }}</time>
 </a>
 {{ end }}

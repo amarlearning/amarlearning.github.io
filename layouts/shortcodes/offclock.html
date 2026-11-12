@@ -1,0 +1,158 @@
+{{- /* About page: a small card you step through, one line-drawn scene per thing Amar loves. Styles in assets/css/site.css (.offclock). */ -}}
+<section class="offclock" aria-roledescription="carousel" aria-label="Off the clock">
+  <h2 class="oc-title">Off the clock</h2>
+  <div class="oc-stage">
+
+    <figure class="oc-scene is-active" aria-roledescription="slide" aria-label="1 of 5">
+      <figcaption><strong>Mountains</strong>My happy place. Bir, Kalpa, Chitkul, and Yulla Kanda this June. Mountains &gt; beaches, and that's not up for debate.</figcaption>
+      <svg class="oc-art" viewBox="0 0 240 120" aria-hidden="true">
+        <path class="soft drift" d="M26 28h18M32 34h24"/>
+        <path class="soft drift late" d="M182 18h16M188 24h22"/>
+        <path class="ink" d="M0 112L40 82L62 94L100 44L122 64L150 26L178 60L200 48L240 112"/>
+        <path class="soft" d="M92 54L100 44L108 54M143 35L150 26L157 35"/>
+        <path class="ink" d="M150 26V8"/>
+        <path class="ink flag" d="M150 8L163 12L150 16"/>
+        <circle class="dot" r="2.6">
+          <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.75;1" calcMode="linear" path="M6 106L40 79L62 91L100 41L122 61L148 25"/>
+        </circle>
+      </svg>
+    </figure>
+
+    <figure class="oc-scene" aria-roledescription="slide" aria-label="2 of 5">
+      <figcaption><strong>Coffee</strong>Coffee does not mean instant. Dark roast I've ground myself, made as a slow pour-over.</figcaption>
+      <svg class="oc-art" viewBox="0 0 240 120" aria-hidden="true">
+        <clipPath id="oc-carafe"><path d="M104 76H136L142 106Q120 112 98 106Z"/></clipPath>
+        <path class="ink" d="M36 34v-4h18v4M28 34h34v26a6 6 0 0 1-6 6H34a6 6 0 0 1-6-6zM28 40h-6v16h6M62 58C80 58 80 24 96 20"/>
+        <path class="stream" d="M96 20C104 22 113 30 118 46"/>
+        <path class="ink" d="M94 46H146L130 70H110Z"/>
+        <rect class="brew" x="96" y="80" width="48" height="32" clip-path="url(#oc-carafe)"/>
+        <path class="ink" d="M104 76H136L142 106Q120 112 98 106Z"/>
+        <circle class="drip" cx="120" cy="72" r="1.6"/>
+        <path class="soft" d="M70 112H170"/>
+      </svg>
+    </figure>
+
+    <figure class="oc-scene slit" aria-roledescription="slide" aria-label="3 of 5">
+      <figcaption><strong>The double-slit experiment</strong>I can lose an entire evening to it and come out understanding roughly as much as when I started.
+        <button class="oc-look" type="button" aria-pressed="false">Look at it</button></figcaption>
+      <svg class="oc-art" viewBox="0 0 240 120" aria-hidden="true">
+        <clipPath id="oc-left"><rect x="0" y="0" width="80" height="120"/></clipPath>
+        <clipPath id="oc-right"><rect x="80" y="0" width="140" height="120"/></clipPath>
+        <circle class="dot" cx="16" cy="60" r="3"/>
+        <g clip-path="url(#oc-left)"><circle class="ring" cx="16" cy="60" r="64"/><circle class="ring r2" cx="16" cy="60" r="64"/><circle class="ring r3" cx="16" cy="60" r="64"/></g>
+        <g class="waves" clip-path="url(#oc-right)">
+          <circle class="ring" cx="80" cy="53" r="140"/><circle class="ring r2" cx="80" cy="53" r="140"/><circle class="ring r3" cx="80" cy="53" r="140"/>
+          <circle class="ring" cx="80" cy="67" r="140"/><circle class="ring r2" cx="80" cy="67" r="140"/><circle class="ring r3" cx="80" cy="67" r="140"/>
+        </g>
+        <path class="beams stream" d="M81 53L221 45M81 67L221 75"/>
+        <path class="ink" d="M80 6V50M80 56V64M80 70V114M222 6V114"/>
+        <g class="fringes"><rect x="226" y="56" width="5" height="8" opacity="1"/><rect x="226" y="38" width="5" height="8" opacity=".6"/><rect x="226" y="74" width="5" height="8" opacity=".6"/><rect x="226" y="20" width="5" height="8" opacity=".3"/><rect x="226" y="92" width="5" height="8" opacity=".3"/></g>
+        <g class="bands"><rect x="226" y="38" width="5" height="14"/><rect x="226" y="68" width="5" height="14"/></g>
+      </svg>
+    </figure>
+
+    <figure class="oc-scene" aria-roledescription="slide" aria-label="4 of 5">
+      <figcaption><strong>An unproven theory</strong>Aliens from another planet had a hand in us being here. Please don't ask for evidence.</figcaption>
+      <svg class="oc-art" viewBox="0 0 240 120" aria-hidden="true">
+        <circle class="star" cx="30" cy="20" r="1.2"/><circle class="star late" cx="62" cy="44" r="1"/><circle class="star" cx="196" cy="16" r="1.2"/><circle class="star late" cx="214" cy="52" r="1"/><circle class="star" cx="176" cy="70" r="1"/>
+        <path class="beam" d="M108 50L90 108H150L132 50Z"/>
+        <g class="lifted"><circle class="ink" cx="120" cy="84" r="3"/><path class="ink" d="M120 87v9M120 90l-4 4M120 90l4 4M120 96l-3 7M120 96l3 7"/></g>
+        <g class="ufo">
+          <path class="ink" d="M104 40Q120 20 136 40"/>
+          <path class="ink" d="M84 44Q120 30 156 44Q120 58 84 44Z"/>
+          <circle class="dot light" cx="102" cy="46" r="1.5"/><circle class="dot light late" cx="120" cy="49" r="1.5"/><circle class="dot light" cx="138" cy="46" r="1.5"/>
+        </g>
+        <path class="soft" d="M20 108H220"/>
+      </svg>
+    </figure>
+
+    <figure class="oc-scene" aria-roledescription="slide" aria-label="5 of 5">
+      <figcaption><strong>Table tennis</strong>Also cooking, lifting and running. There's almost always music on.</figcaption>
+      <svg class="oc-art" viewBox="0 0 240 120" aria-hidden="true">
+        <path class="ink" d="M30 86H210M44 86V108M196 86V108M120 86V74"/>
+        <circle class="ink" cx="22" cy="62" r="8"/><path class="ink" d="M22 70V80"/>
+        <circle class="ink" cx="218" cy="62" r="8"/><path class="ink" d="M218 70V80"/>
+        <circle class="ball" r="2.4">
+          <animateMotion dur="2.4s" repeatCount="indefinite" path="M31 60Q70 18 92 84Q104 52 208 60Q170 18 148 84Q136 52 31 60"/>
+        </circle>
+        <g class="note"><circle class="dot" cx="182" cy="30" r="2.6"/><path class="ink" d="M184.6 30V16L192 18"/></g>
+        <g class="note late"><circle class="dot" cx="58" cy="26" r="2.2"/><path class="ink" d="M60.2 26V14"/></g>
+      </svg>
+    </figure>
+
+  </div>
+  <div class="oc-nav">
+    <button class="oc-step" type="button" data-step="-1" aria-label="Previous">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8L10 13"/></svg>
+    </button>
+    <button class="oc-step" type="button" data-step="1" aria-label="Next">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3L11 8L6 13"/></svg>
+    </button>
+    <span class="oc-count" aria-live="polite">1 / 5</span>
+  </div>
+</section>
+<script>
+(function () {
+  var card = document.currentScript.previousElementSibling;
+  var scenes = [].slice.call(card.querySelectorAll(".oc-scene"));
+  var count = card.querySelector(".oc-count");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ease = "cubic-bezier(0.23, 1, 0.32, 1)";
+  var at = 0;
+
+  function sync() {
+    scenes.forEach(function (s, i) {
+      var on = i === at, svg = s.querySelector("svg");
+      s.inert = !on;
+      if (svg.pauseAnimations) on && !reduce ? svg.unpauseAnimations() : svg.pauseAnimations();
+    });
+    count.textContent = at + 1 + " / " + scenes.length;
+  }
+
+  function go(step) {
+    var from = scenes[at];
+    at = (at + step + scenes.length) % scenes.length;
+    var to = scenes[at];
+    from.classList.remove("is-active");
+    to.classList.add("is-active");
+    if (!reduce) {
+      from.animate([
+        { opacity: 1, transform: "none", filter: "blur(0)", visibility: "visible" },
+        { opacity: 0, transform: "translateX(" + -step * 24 + "px)", filter: "blur(4px)", visibility: "visible" }
+      ], { duration: 240, easing: ease });
+      to.animate([
+        { opacity: 0, transform: "translateX(" + step * 24 + "px)", filter: "blur(4px)" },
+        { opacity: 1, transform: "none", filter: "blur(0)" }
+      ], { duration: 460, easing: ease });
+    }
+    sync();
+  }
+
+  card.querySelectorAll(".oc-step").forEach(function (b) {
+    b.addEventListener("click", function () { go(+b.dataset.step); });
+  });
+  card.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") go(1);
+    if (e.key === "ArrowLeft") go(-1);
+  });
+
+  // a sideways swipe on the stage steps too
+  var stage = card.querySelector(".oc-stage"), x0 = null;
+  stage.addEventListener("pointerdown", function (e) { x0 = e.clientX; });
+  stage.addEventListener("pointerup", function (e) {
+    if (x0 !== null && Math.abs(e.clientX - x0) > 40) go(e.clientX < x0 ? 1 : -1);
+    x0 = null;
+  });
+
+  // looking at the experiment collapses the waves into two plain bands
+  var look = card.querySelector(".oc-look");
+  look.addEventListener("click", function () {
+    var on = look.getAttribute("aria-pressed") !== "true";
+    look.setAttribute("aria-pressed", on);
+    look.textContent = on ? "Stop looking" : "Look at it";
+    look.closest(".oc-scene").classList.toggle("observed", on);
+  });
+
+  sync();
+})();
+</script>

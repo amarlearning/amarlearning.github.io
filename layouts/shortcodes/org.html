@@ -1,0 +1,5 @@
+{{- /* an open-source name inside prose: its logo as a sticker, linked to the project, with the role from data/oss.yaml popping up on hover */ -}}
+{{- $name := .Get 0 -}}
+{{- with index (where .Site.Data.oss "organization" $name) 0 -}}
+<a class="org" href="{{ .url }}" target="_blank" rel="noopener noreferrer"><img src="https://www.google.com/s2/favicons?domain={{ .site }}&sz=64" alt="" width="20" height="20"><span class="org-name">{{ $name }}</span><span class="org-role">{{ .role }}</span></a>
+{{- else -}}{{ $name }}{{- end -}}

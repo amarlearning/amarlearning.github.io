@@ -1,19 +1,23 @@
 - organization: Apache Airflow
+  site: airflow.apache.org
   role: Contributor
   description: Contributed to the core scheduler and executor logic.
   url: https://github.com/apache/airflow
 
 - organization: CRI-O
+  site: cri-o.io
   role: Maintainer
   description: Worked on container runtime interface improvements.
   url: https://github.com/cri-o/cri-o
 
 - organization: DuckDuckGo
+  site: duckduckgo.com
   role: Maintainer
   description: Maintainer in DuckDuckGo's open source community.
   url: https://github.com/duckduckgo
 
 - organization: Google Summer of Code
+  site: summerofcode.withgoogle.com
   role: Student
   description: Worked on TEAMMATES at the National University of Singapore.
   url: https://summerofcode.withgoogle.com/

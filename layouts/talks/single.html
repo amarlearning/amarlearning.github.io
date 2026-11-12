@@ -3,13 +3,21 @@
     {{ .Content }}
 </div>
 
+{{- /* a watchlist: each talk's own YouTube thumbnail, its length stuck on as a handwritten sticker */}}
 <section class="block" aria-labelledby="talks">
     <h2 class="block-head" id="talks">Engineering Talks</h2>
-    <div class="rows">
+    <div class="reel">
     {{ range .Site.Data.talks }}
-        <a class="row" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">{{ .title }}<span class="row-sub">{{ .speaker }}</span></span>
-            <span class="row-meta">{{ .duration }}</span>
+        {{ $id := path.Base (urls.Parse .url).Path }}
+        <a class="talk" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                {{- /* hq720 is 16:9 with no letterbox; YouTube answers a missing size with a 120px placeholder, so step down to hqdefault, and if that is missing too the video is gone: draw a placeholder instead */}}
+                <img src="https://i.ytimg.com/vi/{{ $id }}/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">{{ .duration }}</span>
+            <span class="talk-title">{{ .title }}</span>
+            <span class="talk-speaker">{{ .speaker }}</span>
         </a>
     {{ end }}
     </div>

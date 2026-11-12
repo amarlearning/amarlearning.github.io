@@ -17,6 +17,7 @@
 - title: Spot Optimizer
   icon: 💸
   short: Picks the cheapest stable AWS Spot instances
+  note: 11k+ downloads
   description: Tool to optimize AWS Spot Instance usage, reducing cloud costs through automated instance management and dynamic scaling.
   links:
     - name: code
