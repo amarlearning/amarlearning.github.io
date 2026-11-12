@@ -367,7 +367,7 @@ body {
   background-size: auto, 24px 24px, 24px 24px;
   background-attachment: fixed;
 }
-::selection { background: color-mix(in oklab, var(--note-ink) 30%, transparent); }
+::selection { background: color-mix(in oklab, var(--mark-ink) 30%, transparent); }
 
 /* section labels, written by hand */
 .block-head, .archive-year {
@@ -378,7 +378,7 @@ body {
 .archive-year { margin-bottom: var(--space-sm); }
 .block-head::after, .archive-year::after, header nav a.active::after {
   content: ""; position: absolute; left: -2px; right: -4px; bottom: -9px; height: 8px;
-  background: var(--note-ink); opacity: 0.6;
+  background: var(--mark-ink); opacity: 0.6;
   mask: var(--scribble) repeat-x 0 0 / 40px 8px;
 }
 @keyframes scribble { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 -2px 0 0); } }
@@ -394,7 +394,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 
 /* the facts in the intro get a marker pass, once, on arrival */
 .intro strong {
-  background: linear-gradient(transparent 60%, color-mix(in oklab, var(--note-ink) 32%, transparent) 60% 90%, transparent 90%) no-repeat 0 0 / 0% 100%;
+  background: linear-gradient(transparent 60%, color-mix(in oklab, var(--mark-ink) 32%, transparent) 60% 90%, transparent 90%) no-repeat 0 0 / 0% 100%;
   box-decoration-break: clone; -webkit-box-decoration-break: clone;
   animation: marker 900ms var(--ease-out) 700ms forwards;
 }
@@ -432,7 +432,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 
 /* the work: index cards with a coral header line, lifted when you reach for one */
 .card { position: relative; }
-.card-head { padding-bottom: var(--space-xs); margin-bottom: var(--space-2xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--note-ink) 45%, transparent); }
+.card-head { padding-bottom: var(--space-xs); margin-bottom: var(--space-2xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--mark-ink) 45%, transparent); }
 .card { transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), translate 400ms var(--ease-out), rotate 400ms var(--ease-out), box-shadow 400ms var(--ease-out); }
 
 /* lists: a hand-drawn arrow points at the row you're on */
@@ -440,7 +440,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .row-title { transition: translate 300ms var(--ease-out); }
 .row::before {
   content: ""; position: absolute; left: -24px; top: calc(var(--space-xs) + 0.5lh - 5px); width: 14px; height: 10px;
-  background: var(--note-ink); mask: var(--hand-arrow) no-repeat center / contain;
+  background: var(--mark-ink); mask: var(--hand-arrow) no-repeat center / contain;
   opacity: 0; translate: -6px 0;
   transition: opacity 200ms var(--ease-out), translate 300ms var(--ease-out);
 }
@@ -468,7 +468,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
   transition: border-color var(--dur-micro) var(--ease-out), translate 400ms var(--ease-out), rotate 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
 }
 .pcard-lead { grid-column: 1 / -1; padding: var(--space-lg); }
-.pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-sm); padding-bottom: var(--space-xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--note-ink) 45%, transparent); }
+.pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-sm); padding-bottom: var(--space-xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--mark-ink) 45%, transparent); }
 .pcard-title { color: var(--color-ink); font-size: var(--text-md); font-weight: var(--weight-strong); }
 .pcard-lead .pcard-title { font-size: var(--text-lg); }
 .pcard-title a { color: inherit; text-decoration: none; }
@@ -583,15 +583,15 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 }
 .journey::before {
   content: ""; position: absolute; top: 5px; left: 5px; right: 0; height: 0;
-  border-top: 1.5px dashed color-mix(in oklab, var(--note-ink) 60%, transparent);
+  border-top: 1.5px dashed color-mix(in oklab, var(--mark-ink) 60%, transparent);
   transform-origin: left; animation: journey-line 1200ms var(--ease-in-out) 500ms both;
 }
 .stop { position: relative; display: flex; flex-direction: column; gap: 2px; animation: settle var(--dur-long) var(--ease-out) both; animation-delay: calc(700ms + var(--i) * 260ms); }
 .stop::before {
   content: ""; position: absolute; top: calc(-1 * var(--space-lg)); left: 0; width: 11px; height: 11px;
-  border: 1.5px solid var(--note-ink); border-radius: 50%; background: var(--color-paper);
+  border: 1.5px solid var(--mark-ink); border-radius: 50%; background: var(--color-paper);
 }
-.stop.is-now::before { background: var(--note-ink); box-shadow: 0 0 0 0 color-mix(in oklab, var(--note-ink) 50%, transparent); animation: now-pulse 2.4s var(--ease-out) 2s infinite; }
+.stop.is-now::before { background: var(--mark-ink); box-shadow: 0 0 0 0 color-mix(in oklab, var(--mark-ink) 50%, transparent); animation: now-pulse 2.4s var(--ease-out) 2s infinite; }
 .stop-name { color: var(--color-ink); font-weight: var(--weight-strong); }
 .stop-when { color: var(--note-ink); font-family: var(--font-hand); font-size: 1.3rem; font-weight: 600; line-height: 1; }
 .stop-what { margin-top: 2px; color: var(--color-muted); font-size: var(--text-sm); line-height: 1.45; }
@@ -599,7 +599,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 @keyframes now-pulse { 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
 @media (max-width: 40rem) {
   .journey { grid-template-columns: minmax(0, 1fr); gap: var(--space-md); padding: 0 0 0 var(--space-lg); }
-  .journey::before { top: 6px; bottom: 6px; left: 5px; right: auto; height: auto; border-top: 0; border-left: 1.5px dashed color-mix(in oklab, var(--note-ink) 60%, transparent); transform-origin: top; }
+  .journey::before { top: 6px; bottom: 6px; left: 5px; right: auto; height: auto; border-top: 0; border-left: 1.5px dashed color-mix(in oklab, var(--mark-ink) 60%, transparent); transform-origin: top; }
   @keyframes journey-line { from { scale: 1 0; } }
   .stop::before { top: 4px; left: calc(-1 * var(--space-lg)); }
 }
@@ -641,7 +641,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .code figcaption {
   display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm);
   padding: 6px var(--space-xs) 6px var(--space-md);
-  border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--note-ink) 40%, transparent);
+  border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--mark-ink) 40%, transparent);
 }
 .code-lang { color: var(--note-ink); font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1; }
 .code-copy {
@@ -673,7 +673,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
     transition: color var(--dur-micro) var(--ease-out), border-color var(--dur-short) var(--ease-out);
   }
   .toc a:hover { color: var(--color-ink); }
-  .toc a[aria-current] { border-left-color: var(--note-ink); color: var(--color-ink); }
+  .toc a[aria-current] { border-left-color: var(--mark-ink); color: var(--color-ink); }
 }
 
 /* posts: what to read next, either side of this one */
@@ -734,7 +734,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 }
 .org:hover .org-role, .org:focus-visible .org-role { opacity: 1; translate: -50% 0; }
 .org:hover img, .org:focus-visible img { rotate: 0deg; scale: 1.15; }
-.org:hover .org-name { text-decoration-color: var(--note-ink); }
+.org:hover .org-name { text-decoration-color: var(--mark-ink); }
 .intro .social { gap: var(--space-xs) var(--space-md); }
 .intro .social a {
   display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px 6px 10px;
@@ -743,7 +743,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
   transition: color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), translate 300ms var(--ease-out);
 }
 .intro .social a::before { content: ""; width: 15px; height: 15px; background: currentColor; mask: var(--icon) no-repeat center / contain; }
-.intro .social a:hover { border-color: var(--note-ink); color: var(--color-ink); translate: 0 -2px; }
+.intro .social a:hover { border-color: var(--mark-ink); color: var(--color-ink); translate: 0 -2px; }
 .intro .social a[href*="github"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21'/%3E%3C/svg%3E"); }
 .intro .social a[href*="linkedin"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z'/%3E%3Ccircle cx='4' cy='4' r='2'/%3E%3C/svg%3E"); }
 .intro .social a[href*="x.com"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z'/%3E%3C/svg%3E"); }
@@ -767,7 +767,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 .term-head { margin-bottom: var(--space-lg); }
 .term-head .more { margin: 0 0 var(--space-md); }
 .term-title { position: relative; width: fit-content; color: var(--note-ink); font-family: var(--font-hand); font-size: 2.4rem; font-weight: 600; line-height: 1; letter-spacing: 0; overflow-wrap: anywhere; }
-.term-title::after { content: ""; position: absolute; left: -2px; right: -4px; bottom: -10px; height: 8px; background: var(--note-ink); opacity: 0.6; mask: var(--scribble) repeat-x 0 0 / 40px 8px; animation: scribble 700ms var(--ease-out) 300ms both; }
+.term-title::after { content: ""; position: absolute; left: -2px; right: -4px; bottom: -10px; height: 8px; background: var(--mark-ink); opacity: 0.6; mask: var(--scribble) repeat-x 0 0 / 40px 8px; animation: scribble 700ms var(--ease-out) 300ms both; }
 .term-count { margin-top: var(--space-md); color: var(--color-muted); font-size: var(--text-sm); }
 .tag-cloud { gap: var(--space-sm) var(--space-xs); }
 .tag-count { margin-left: 4px; color: var(--note-ink); font-family: var(--font-hand); font-size: 1.05rem; font-weight: 600; line-height: 1; }
@@ -802,7 +802,7 @@ main:focus { outline: none; }
 @supports (animation-timeline: scroll()) {
   .post-progress {
     display: block; position: fixed; inset: 0 0 auto; z-index: 10; height: 2px;
-    background: var(--note-ink); transform-origin: 0 50%;
+    background: var(--mark-ink); transform-origin: 0 50%;
     animation: progress linear both; animation-timeline: scroll(root);
   }
   @keyframes progress { from { scale: 0 1; } to { scale: 1 1; } }
