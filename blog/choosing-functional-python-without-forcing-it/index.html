@@ -43,17 +43,19 @@
   <meta itemprop="description" content="Stop forcing functional purity in Python. Learn the mental models for when to use functional transformations and when to stick with simple, readable loops.">
   <meta itemprop="datePublished" content="2026-01-31T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-31T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1163">
+  <meta itemprop="wordCount" content="1174">
   <meta itemprop="image" content="https://amarpandey.me/images/choosing-functional-python-without-forcing-it/banner.png">
   <meta itemprop="keywords" content="Python,Functional-Programming,Clean-Code,Software-Design,Programming-Patterns,Pythonic">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -83,20 +85,58 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>Choosing Functional Python (Without Forcing It)</h1>
-  <time datetime="2026-01-31">31 January 2026</time>
+  <p class="post-meta"><time datetime="2026-01-31">31 January 2026</time> · 6 min read</p>
 </div>
 
+<nav class="toc" aria-label="On this page">
+  <p class="toc-head">On this page</p>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-this-matters">Why this matters</a></li>
+    <li><a href="#what-i-mean-by-functional-programming-in-python-fpp">What I mean by Functional Programming in Python (FPP)</a></li>
+    <li><a href="#when-to-use-fpp-and-when-not-to">When to use FPP (and when not to)</a>
+      <ul>
+        <li><a href="#when-fpp-works-well">When FPP works well</a></li>
+        <li><a href="#when-fpp-is-a-bad-fit">When FPP is a bad fit</a></li>
+      </ul>
+    </li>
+    <li><a href="#patterns-that-unlocked-things-for-me">Patterns that unlocked things for me</a>
+      <ul>
+        <li><a href="#pattern-1-existence-checks-using-any">Pattern 1: Existence checks using <code>any</code></a></li>
+        <li><a href="#pattern-2-tuple-keys-in-sorted">Pattern 2: Tuple keys in <code>sorted</code></a></li>
+        <li><a href="#pattern-3-reduce-is-for-building-structure">Pattern 3: <code>reduce</code> is for building structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-quick-before--after-example">A quick before → after example</a>
+      <ul>
+        <li><a href="#before-imperative-loop">Before: imperative loop</a></li>
+        <li><a href="#after-functional-style">After: functional style</a></li>
+      </ul>
+    </li>
+    <li><a href="#generators-the-mental-model-that-helped">Generators: the mental model that helped</a></li>
+    <li><a href="#filtering-vs-conditional-mapping">Filtering vs conditional mapping</a></li>
+    <li><a href="#zip-aligning-data-instead-of-indexing"><code>zip</code>: aligning data instead of indexing</a>
+      <ul>
+        <li><a href="#unzipping-and-the-iterator-gotcha">Unzipping (and the iterator gotcha)</a></li>
+      </ul>
+    </li>
+    <li><a href="#functoolspartial-pre-filling-intent"><code>functools.partial</code>: pre-filling intent</a></li>
+    <li><a href="#a-closing-thought">A closing thought</a></li>
+  </ul>
+</nav>
+</nav>
 <div class="prose">
   <p><img src="/images/choosing-functional-python-without-forcing-it/banner.png" alt="banner"></p>
 <h2 id="why-this-matters">Why this matters</h2>
@@ -145,24 +185,30 @@
 <h3 id="pattern-1-existence-checks-using-any">Pattern 1: Existence checks using <code>any</code></h3>
 <p>Many problems boil down to a simple question: <em>does something exist?</em></p>
 <p>Instead of writing loops that return early, it’s often clearer to express that intent directly:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">17</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># Returns True because 17 has no divisors other than 1 and itself</span>
-</span></span><span class="line"><span class="cl"><span class="n">has_no_divisors</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-</span></span></code></pre></div><p>This reads almost like English: there does not exist a divisor. Once I started framing problems this way, a lot of validation and checking logic became easier to reason about.</p>
+</span></span><span class="line"><span class="cl"><span class="n">has_no_divisors</span> <span class="o">=</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></span></span></code></pre></div>
+</figure>
+<p>This reads almost like English: there does not exist a divisor. Once I started framing problems this way, a lot of validation and checking logic became easier to reason about.</p>
 <hr>
 <h3 id="pattern-2-tuple-keys-in-sorted">Pattern 2: Tuple keys in <code>sorted</code></h3>
 <p>Sorting often involves more than one rule. Python’s tuple comparison makes this surprisingly clean.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">students</span> <span class="o">=</span> <span class="p">[</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">students</span> <span class="o">=</span> <span class="p">[</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Alice&#34;</span><span class="p">,</span> <span class="s2">&#34;score&#34;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Bob&#34;</span><span class="p">,</span> <span class="s2">&#34;score&#34;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Charlie&#34;</span><span class="p">,</span> <span class="s2">&#34;score&#34;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="mi">21</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Sort by score (descending), then by age (ascending)</span>
-</span></span><span class="line"><span class="cl"><span class="n">sorted_students</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="s2">&#34;score&#34;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s2">&#34;age&#34;</span><span class="p">]))</span>
-</span></span></code></pre></div><p>Here, the intent is encoded directly in the key:</p>
+</span></span><span class="line"><span class="cl"><span class="n">sorted_students</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="s2">&#34;score&#34;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s2">&#34;age&#34;</span><span class="p">]))</span></span></span></code></pre></div>
+</figure>
+<p>Here, the intent is encoded directly in the key:</p>
 <ul>
 <li>Score in descending order (negated).</li>
 <li>Age in ascending order.</li>
@@ -171,7 +217,9 @@
 <hr>
 <h3 id="pattern-3-reduce-is-for-building-structure">Pattern 3: <code>reduce</code> is for building structure</h3>
 <p><code>reduce</code> works best when you are <em>accumulating</em> something — a dictionary, a count, or a combined result.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;abracadabra&#34;</span>
 </span></span><span class="line"><span class="cl">
@@ -180,14 +228,17 @@
 </span></span><span class="line"><span class="cl">    <span class="n">s</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Result: {&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;r&#39;: 2, &#39;c&#39;: 1, &#39;d&#39;: 1}</span>
-</span></span></code></pre></div><p><em>Note: While this demonstrates the pattern, for simple counting, <code>collections.Counter</code> is usually preferred in production code.</em></p>
+</span></span><span class="line"><span class="cl"><span class="c1"># Result: {&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;r&#39;: 2, &#39;c&#39;: 1, &#39;d&#39;: 1}</span></span></span></code></pre></div>
+</figure>
+<p><em>Note: While this demonstrates the pattern, for simple counting, <code>collections.Counter</code> is usually preferred in production code.</em></p>
 <p>Where <code>reduce</code> tends to fall apart is control flow. If a solution feels hard to read, that’s often a sign the problem wants a loop instead.</p>
 <hr>
 <h2 id="a-quick-before--after-example">A quick before → after example</h2>
 <p>One pattern that helped anchor all of this for me was rewriting a small loop and asking a simple question: <em>is this transformation or state management?</em></p>
 <h3 id="before-imperative-loop">Before: imperative loop</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -195,14 +246,18 @@
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="kc">False</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span>
-</span></span></code></pre></div><p>This works, but the intent is buried inside the loop.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span></span></span></code></pre></div>
+</figure>
+<p>This works, but the intent is buried inside the loop.</p>
 <h3 id="after-functional-style">After: functional style</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">False</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-</span></span></code></pre></div><p>Here, the logic reads closer to the actual rule: <em>a prime has no divisors</em>. No explicit looping is required.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></span></span></code></pre></div>
+</figure>
+<p>Here, the logic reads closer to the actual rule: <em>a prime has no divisors</em>. No explicit looping is required.</p>
 <hr>
 <h2 id="generators-the-mental-model-that-helped">Generators: the mental model that helped</h2>
 <p>My confusion with generators wasn’t about syntax. It was about mixing up producers and consumers.</p>
@@ -210,24 +265,33 @@
 <blockquote>
 <p>A <code>for</code> loop doesn’t care about <code>yield</code>. It only cares whether an object is iterable.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gen_one</span><span class="p">():</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gen_one</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Generator expression (lazy)</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">gen_two</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># Explicit generator delegation</span>
-</span></span><span class="line"><span class="cl">    <span class="k">yield from</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span></span></code></pre></div><p>Both return generator objects. The difference is who controls the iteration. <code>yield from</code> allows you to delegate part of the generation process to another iterable explicitly.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">yield from</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>Both return generator objects. The difference is who controls the iteration. <code>yield from</code> allows you to delegate part of the generation process to another iterable explicitly.</p>
 <hr>
 <h2 id="filtering-vs-conditional-mapping">Filtering vs conditional mapping</h2>
 <p>These two look similar but mean very different things.</p>
 <p><strong>Filtering:</strong> Keep only the even numbers.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
-</span></span><span class="line"><span class="cl"><span class="n">evens</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span></span></code></pre></div><p><strong>Conditional mapping:</strong> Keep all numbers, but change the odd ones to 0.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># if / else BEFORE the &#39;for&#39; transforms</span>
-</span></span><span class="line"><span class="cl"><span class="n">transformed</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</span></span></code></pre></div><p>Rule of thumb:</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">evens</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p><strong>Conditional mapping:</strong> Keep all numbers, but change the odd ones to 0.</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># if / else BEFORE the &#39;for&#39; transforms</span>
+</span></span><span class="line"><span class="cl"><span class="n">transformed</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span></span></span></code></pre></div>
+</figure>
+<p>Rule of thumb:</p>
 <ul>
 <li><code>if</code> after the <code>for</code> <strong>filters</strong>.</li>
 <li><code>if / else</code> before the <code>for</code> <strong>transforms</strong>.</li>
@@ -235,25 +299,33 @@
 <hr>
 <h2 id="zip-aligning-data-instead-of-indexing"><code>zip</code>: aligning data instead of indexing</h2>
 <p><code>zip</code> became much clearer to me once I stopped thinking about indices and started thinking about <em>alignment</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;amar&#34;</span><span class="p">,</span> <span class="s2">&#34;john&#34;</span><span class="p">,</span> <span class="s2">&#34;alice&#34;</span><span class="p">]</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;amar&#34;</span><span class="p">,</span> <span class="s2">&#34;john&#34;</span><span class="p">,</span> <span class="s2">&#34;alice&#34;</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">aligned</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">scores</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Result: [(&#39;amar&#39;, 90), (&#39;john&#39;, 80), (&#39;alice&#39;, 85)]</span>
-</span></span></code></pre></div><p>This expresses the idea that these two collections belong together, position by position.</p>
+</span></span><span class="line"><span class="cl"><span class="c1"># Result: [(&#39;amar&#39;, 90), (&#39;john&#39;, 80), (&#39;alice&#39;, 85)]</span></span></span></code></pre></div>
+</figure>
+<p>This expresses the idea that these two collections belong together, position by position.</p>
 <p>A simple mental shortcut I use:</p>
 <ul>
 <li><code>map</code> transforms values.</li>
 <li><code>zip</code> aligns values.</li>
 </ul>
 <h3 id="unzipping-and-the-iterator-gotcha">Unzipping (and the iterator gotcha)</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl"><span class="n">letters</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">)</span>
-</span></span></code></pre></div><p>One important detail: <code>zip</code> returns an iterator. If you consume it once, it’s exhausted. If you need to use the data multiple times, convert it to a list first.</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&#34;a&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;b&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">letters</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">pairs</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>One important detail: <code>zip</code> returns an iterator. If you consume it once, it’s exhausted. If you need to use the data multiple times, convert it to a list first.</p>
 <hr>
 <h2 id="functoolspartial-pre-filling-intent"><code>functools.partial</code>: pre-filling intent</h2>
 <p>I found <code>partial</code> useful once I stopped seeing it as an optimization and started seeing it as a way to <em>name behavior</em>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">factor</span>
@@ -261,8 +333,9 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># Create a new function that always multiplies by 2</span>
 </span></span><span class="line"><span class="cl"><span class="n">double</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">multiply</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 20</span>
-</span></span></code></pre></div><p>Instead of repeating the same lambda everywhere, <code>partial</code> makes the intent explicit and reusable.</p>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 20</span></span></span></code></pre></div>
+</figure>
+<p>Instead of repeating the same lambda everywhere, <code>partial</code> makes the intent explicit and reusable.</p>
 <hr>
 <h2 id="a-closing-thought">A closing thought</h2>
 <p>Functional-style Python didn’t click for me by memorizing APIs or forcing myself to avoid loops. It clicked when I started asking a simpler question: <em>what kind of problem is this?</em></p>
@@ -271,9 +344,28 @@
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">Spot Optimizer ≠ Spot Fleet: decide smart, then launch</span>
+    <span class="next-meta">6 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/currying-and-partial-application-shaping-intent/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">Currying and Partial Application: Shaping Intent</span>
+    <span class="next-meta">3 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -316,14 +408,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -332,6 +423,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -359,7 +451,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

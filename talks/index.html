@@ -36,12 +36,14 @@
   <meta itemprop="image" content="https://amarpandey.me/images/og-default.jpg">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -71,11 +73,11 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks" class="active">Talks</a>
-<a href="/blog">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/" class="active">Talks</a>
+<a href="/blog/">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
@@ -83,73 +85,131 @@
     <p>Engineering talks I recommend — real-world scaling stories, architecture deep-dives, and system design war stories from folks who built things at scale.</p>
 
 </div>
-
 <section class="block" aria-labelledby="talks">
     <h2 class="block-head" id="talks">Engineering Talks</h2>
-    <div class="rows">
+    <div class="reel">
     
-        <a class="row" href="https://youtu.be/QjvyiyH4rr0" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">Scaling Hotstar for 25 million concurrent viewers<span class="row-sub">Gaurav Kamboj</span></span>
-            <span class="row-meta">46 min</span>
+        
+        <a class="talk" href="https://youtu.be/QjvyiyH4rr0" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/QjvyiyH4rr0/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">46 min</span>
+            <span class="talk-title">Scaling Hotstar for 25 million concurrent viewers</span>
+            <span class="talk-speaker">Gaurav Kamboj</span>
         </a>
     
-        <a class="row" href="https://youtu.be/36N1Bz7qW0A" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">How JioCinema streams IPL to 20 million devices<span class="row-sub">Prachi Sharma and Arpit Bhayani</span></span>
-            <span class="row-meta">45 min</span>
+        
+        <a class="talk" href="https://youtu.be/36N1Bz7qW0A" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/36N1Bz7qW0A/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">45 min</span>
+            <span class="talk-title">How JioCinema streams IPL to 20 million devices</span>
+            <span class="talk-speaker">Prachi Sharma and Arpit Bhayani</span>
         </a>
     
-        <a class="row" href="https://youtu.be/qXJ3S3T3xJY" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">Live streaming at world-record scale<span class="row-sub">Ashutosh Agrawal, ex-Chief Architect of JioCinema</span></span>
-            <span class="row-meta">1 hr</span>
+        
+        <a class="talk" href="https://youtu.be/qXJ3S3T3xJY" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/qXJ3S3T3xJY/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">1 hr</span>
+            <span class="talk-title">Live streaming at world-record scale</span>
+            <span class="talk-speaker">Ashutosh Agrawal, ex-Chief Architect of JioCinema</span>
         </a>
     
-        <a class="row" href="https://youtu.be/juKG07jL8fY" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">How Flipkart built hybrid cloud for scale<span class="row-sub">Sudhir Reddy</span></span>
-            <span class="row-meta">32 min</span>
+        
+        <a class="talk" href="https://youtu.be/juKG07jL8fY" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/juKG07jL8fY/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">32 min</span>
+            <span class="talk-title">How Flipkart built hybrid cloud for scale</span>
+            <span class="talk-speaker">Sudhir Reddy</span>
         </a>
     
-        <a class="row" href="https://youtu.be/F7SHH47sWAY" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">Why PhonePe still bets on data centres<span class="row-sub">Heads of Engineering, PhonePe</span></span>
-            <span class="row-meta">53 min</span>
+        
+        <a class="talk" href="https://youtu.be/F7SHH47sWAY" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/F7SHH47sWAY/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">53 min</span>
+            <span class="talk-title">Why PhonePe still bets on data centres</span>
+            <span class="talk-speaker">Heads of Engineering, PhonePe</span>
         </a>
     
-        <a class="row" href="https://youtu.be/hBvlnWQWpZ0" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">If UPI is free, who pays for it?<span class="row-sub">Nikhil Kamath with PhonePe, Razorpay, and NPCI</span></span>
-            <span class="row-meta">4 hrs</span>
+        
+        <a class="talk" href="https://youtu.be/hBvInWQWpZ0" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/hBvInWQWpZ0/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">4 hrs</span>
+            <span class="talk-title">If UPI is free, who pays for it?</span>
+            <span class="talk-speaker">Nikhil Kamath with PhonePe, Razorpay, and NPCI</span>
         </a>
     
-        <a class="row" href="https://youtu.be/yqkyq8TPWbg" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">Razorpay&#39;s journey to microservices<span class="row-sub">Arjun Tomer and Arpit Bhayani</span></span>
-            <span class="row-meta">50 min</span>
+        
+        <a class="talk" href="https://youtu.be/yqkyq8TPWbg" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/yqkyq8TPWbg/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">50 min</span>
+            <span class="talk-title">Razorpay&#39;s journey to microservices</span>
+            <span class="talk-speaker">Arjun Tomer and Arpit Bhayani</span>
         </a>
     
-        <a class="row" href="https://youtu.be/xhi5Q_wL9i0" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">7&#43; million Postgres tables<span class="row-sub">Kailash Nadh, CTO of Zerodha</span></span>
-            <span class="row-meta">20 min</span>
+        
+        <a class="talk" href="https://youtu.be/xhi5Q_wL9i0" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/xhi5Q_wL9i0/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">20 min</span>
+            <span class="talk-title">7&#43; million Postgres tables</span>
+            <span class="talk-speaker">Kailash Nadh, CTO of Zerodha</span>
         </a>
     
-        <a class="row" href="https://youtu.be/kjGP_kBQdVc" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">Scaling Kafka at Blinkit and Zomato<span class="row-sub">Pradeep Khileri</span></span>
-            <span class="row-meta">41 min</span>
+        
+        <a class="talk" href="https://youtu.be/kjGP_kBQdVc" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/kjGP_kBQdVc/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">41 min</span>
+            <span class="talk-title">Scaling Kafka at Blinkit and Zomato</span>
+            <span class="talk-speaker">Pradeep Khileri</span>
         </a>
     
-        <a class="row" href="https://youtu.be/j3etJx7M0Sc" target="_blank" rel="noopener noreferrer">
-            <span class="row-title">IRCTC System Design<span class="row-sub">Gaurav Sen interviewed by Keerti Purswani</span></span>
-            <span class="row-meta">59 min</span>
+        
+        <a class="talk" href="https://youtu.be/j3etJx7M0Sc" target="_blank" rel="noopener noreferrer">
+            <span class="talk-thumb">
+                <img src="https://i.ytimg.com/vi/j3etJx7M0Sc/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">
+                <span class="talk-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z"/></svg></span>
+            </span>
+            <span class="talk-len">59 min</span>
+            <span class="talk-title">IRCTC System Design</span>
+            <span class="talk-speaker">Gaurav Sen interviewed by Keerti Purswani</span>
         </a>
     
     </div>
 </section>
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -158,6 +218,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -185,7 +246,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

@@ -41,17 +41,19 @@
   <meta itemprop="description" content="Finger Detection and Tracking using OpenCV and Python is a project to detect the fingers in a live video and track it in real-time.">
   <meta itemprop="datePublished" content="2018-07-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2018-07-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1083">
+  <meta itemprop="wordCount" content="1087">
   <meta itemprop="image" content="https://amarpandey.me/images/finger-detection-and-tracking-using-opencv-and-python/1.png">
   <meta itemprop="keywords" content="Gitops,DevOps,Infrastructure,Iac">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -81,18 +83,19 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>Finger Detection and Tracking using OpenCV and Python</h1>
-  <time datetime="2018-07-28">28 July 2018</time>
+  <p class="post-meta"><time datetime="2018-07-28">28 July 2018</time> · 6 min read</p>
 </div>
 
 <div class="prose">
@@ -116,7 +119,9 @@
 <p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/1.png" alt="Place hand over the rectangles"></p>
 <p>Green rectangles are drawn on the frame and the user places their hand inside these rectangles. Application is taking skin color samples from the user’s hand and then creates a histogram.</p>
 <p><em>The rectangles are drawn with the following function:</em></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=draw_rectangles_in_frame.py" data-lang="python:title=draw_rectangles_in_frame.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">draw_rect</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python:title=draw_rectangles_in_frame.py</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=draw_rectangles_in_frame.py" data-lang="python:title=draw_rectangles_in_frame.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">draw_rect</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">shape</span>
 </span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">total_rectangle</span><span class="p">,</span> <span class="n">hand_rect_one_x</span><span class="p">,</span> <span class="n">hand_rect_one_y</span><span class="p">,</span> <span class="n">hand_rect_two_x</span><span class="p">,</span> <span class="n">hand_rect_two_y</span>
 </span></span><span class="line"><span class="cl">
@@ -136,10 +141,13 @@
 </span></span><span class="line"><span class="cl">                      <span class="p">(</span><span class="n">hand_rect_two_y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">hand_rect_two_x</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span>
 </span></span><span class="line"><span class="cl">                      <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">frame</span>
-</span></span></code></pre></div><p>There’s nothing too complicated going on here. I have created four arrays <code>hand_rect_one_x</code>, <code>hand_rect_one_y</code>, <code>hand_rect_two_x</code>, <code>hand_rect_two_y</code> to hold the coordinates of each rectangle. The code then iterates over these arrays and draws them on the frame using <code>cv2.rectangle</code>. Here <code>total_rectangle</code> is just the length of the array i.e. <code>9</code>.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">frame</span></span></span></code></pre></div>
+</figure>
+<p>There’s nothing too complicated going on here. I have created four arrays <code>hand_rect_one_x</code>, <code>hand_rect_one_y</code>, <code>hand_rect_two_x</code>, <code>hand_rect_two_y</code> to hold the coordinates of each rectangle. The code then iterates over these arrays and draws them on the frame using <code>cv2.rectangle</code>. Here <code>total_rectangle</code> is just the length of the array i.e. <code>9</code>.</p>
 <p>Now that the user understands where to place his or her palm, the succeeding step is to extract pixels from these rectangles and use them to generate an HSV histogram.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=generate_hsv_histogram.py" data-lang="python:title=generate_hsv_histogram.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hand_histogram</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python:title=generate_hsv_histogram.py</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=generate_hsv_histogram.py" data-lang="python:title=generate_hsv_histogram.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hand_histogram</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">global</span> <span class="n">hand_rect_one_x</span><span class="p">,</span> <span class="n">hand_rect_one_y</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">hsv_frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
@@ -150,12 +158,15 @@
 </span></span><span class="line"><span class="cl">                                          <span class="n">hand_rect_one_y</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span><span class="n">hand_rect_one_y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">hand_hist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">roi</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">180</span><span class="p">,</span> <span class="mi">256</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">hand_hist</span><span class="p">,</span> <span class="n">hand_hist</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
-</span></span></code></pre></div><p>Here function transforms the input frame to HSV. Using Numpy, we create an image of size <code>[90 * 10]</code> with <code>3</code> color channels and we name it as <strong>ROI</strong> <em>(Region of Intrest)</em>. It then takes the 900-pixel values from the green rectangles and puts them in the ROI matrix.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">hand_hist</span><span class="p">,</span> <span class="n">hand_hist</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>Here function transforms the input frame to HSV. Using Numpy, we create an image of size <code>[90 * 10]</code> with <code>3</code> color channels and we name it as <strong>ROI</strong> <em>(Region of Intrest)</em>. It then takes the 900-pixel values from the green rectangles and puts them in the ROI matrix.</p>
 <p>The <code>cv2.calcHist</code> creates a histogram using the ROI matrix for the skin color and <code>cv2.normalize</code> normalizes this matrix using the norm Type <code>cv2.NORM_MINMAX</code>. Now we have a histogram to detect skin regions in the frames.</p>
 <p>Now that the user understands where to place his or her palm, the succeeding step is to extract pixels from these rectangles and use them to generate an HSV histogram.</p>
 <p>Now that we hold a skin color histogram we can use it to find the components of the frame that contains skin. OpenCV provides us with a convenient method, <code>cv2.calcBackProject</code>, that uses a histogram to separate features in an image. I used this function to apply the skin color histogram to a frame. If you want to read more about back projection, you can read from <a href="https://docs.opencv.org/master/dc/df6/tutorial_py_histogram_backprojection.html">here</a> and <a href="https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/back_projection/back_projection.html">here</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=histogram_masking.py" data-lang="python:title=histogram_masking.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hist_masking</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">hist</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python:title=histogram_masking.py</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=histogram_masking.py" data-lang="python:title=histogram_masking.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hist_masking</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">hist</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcBackProject</span><span class="p">([</span><span class="n">hsv</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hist</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
@@ -166,13 +177,16 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">thresh</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">merge</span><span class="p">((</span><span class="n">thresh</span><span class="p">,</span> <span class="n">thresh</span><span class="p">,</span> <span class="n">thresh</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span>
-</span></span></code></pre></div><p>In the first two lines, I changed the input frame to HSV and then applied <code>cv2.calcBackProject</code> with the skin color histogram <code>hist</code>. Following that, I have used Filtering and Thresholding function to smoothen the image. Lastly, I masked the input frame using the <code>cv2.bitwise_and</code> function. This final frame should just contain skin color regions of the frame.</p>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>In the first two lines, I changed the input frame to HSV and then applied <code>cv2.calcBackProject</code> with the skin color histogram <code>hist</code>. Following that, I have used Filtering and Thresholding function to smoothen the image. Lastly, I masked the input frame using the <code>cv2.bitwise_and</code> function. This final frame should just contain skin color regions of the frame.</p>
 <p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/2.png" alt="Hand seperated from background (1)"></p>
 <p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/3.png" alt="Hand seperated from background (2)"></p>
 <p>Now we have a frame with skin color regions only, but what we really want is to find the location of a fingertip. Using OpenCV you can find contours in a frame if you don’t know what contour is you can read <a href="https://docs.opencv.org/3.4.2/d3/d05/tutorial_py_table_of_contents_contours.html">here</a>. Using contours you can find convexity defects, which will be potential fingertip location.</p>
 <p>In my application, I needed to find the tip of a finger with which a user is aiming. To do this I determined the convexity defect, which is furthest from the centroid of the contour. This is done by the following code:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=fingertip_point.py" data-lang="python:title=fingertip_point.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">manage_image_opr</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">hand_hist</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python:title=fingertip_point.py</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python:title=fingertip_point.py" data-lang="python:title=fingertip_point.py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">manage_image_opr</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">hand_hist</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">hist_mask_image</span> <span class="o">=</span> <span class="n">hist_masking</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">hand_hist</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">contour_list</span> <span class="o">=</span> <span class="n">contours</span><span class="p">(</span><span class="n">hist_mask_image</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">max_cont</span> <span class="o">=</span> <span class="n">max_contour</span><span class="p">(</span><span class="n">contour_list</span><span class="p">)</span>
@@ -192,8 +206,9 @@
 </span></span><span class="line"><span class="cl">            <span class="n">traverse_point</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="n">traverse_point</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">far_point</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">draw_circles</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">traverse_point</span><span class="p">)</span>
-</span></span></code></pre></div><p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/4.png" alt="Contour in Frame (1)"></p>
+</span></span><span class="line"><span class="cl">        <span class="n">draw_circles</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">traverse_point</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/4.png" alt="Contour in Frame (1)"></p>
 <p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/5.png" alt="Contour in Frame (2)"></p>
 <p>Then it determines the largest contour. For the largest contour, it finds the hull, centroid, and defects.</p>
 <p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/6.png" alt="Defects in red circle and Centroid in purple circle"></p>
@@ -204,9 +219,28 @@
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/what-is-google-summer-of-code---how-to-prepare-for-it/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">What is Google Summer of Code? How to prepare for it?</span>
+    <span class="next-meta">6 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/gitops---the-easy-way/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">GitOps - the easy way</span>
+    <span class="next-meta">3 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -249,14 +283,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -265,6 +298,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -292,7 +326,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

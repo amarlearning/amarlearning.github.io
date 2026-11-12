@@ -43,17 +43,19 @@
   <meta itemprop="description" content="Docker - the right way - Best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.">
   <meta itemprop="datePublished" content="2022-01-23T00:00:00+00:00">
   <meta itemprop="dateModified" content="2022-01-23T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1769">
+  <meta itemprop="wordCount" content="1784">
   <meta itemprop="image" content="https://amarpandey.me/images/docker-the-right-way/banner.png">
   <meta itemprop="keywords" content="Docker,Best-Practices,Infrastructure,Iac,DevOps,Containers,Security">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -83,44 +85,78 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>Docker - the right way</h1>
-  <time datetime="2022-01-23">23 January 2022</time>
+  <p class="post-meta"><time datetime="2022-01-23">23 January 2022</time> · 9 min read</p>
 </div>
 
+<nav class="toc" aria-label="On this page">
+  <p class="toc-head">On this page</p>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-use-official-docker-image-as-base-image">1. Use Official Docker Image as Base Image</a></li>
+        <li><a href="#2-use-specific-image-version">2. Use specific Image Version</a></li>
+        <li><a href="#3-use-small-sized-official-image">3. Use small sized Official Image</a></li>
+        <li><a href="#4-minimize-the-number-of-layers">4. Minimize the Number of Layers</a></li>
+        <li><a href="#5-optimize-caching-image-layers">5. Optimize Caching Image Layers</a></li>
+        <li><a href="#6-use-dockerignore-to-exclude-files-and-folder">6. Use .dockerignore to Exclude Files and Folder</a></li>
+        <li><a href="#7-make-use-of-multi-stage-builds">7. Make use of Multi-stage builds</a></li>
+        <li><a href="#8-use-the-least-privileged-user-or-non-root-user">8. Use the Least Privileged User or Non-Root User</a></li>
+        <li><a href="#9-scan-images-for-vulnerabilities">9. Scan Images for Vulnerabilities</a></li>
+        <li><a href="#summary">Summary</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</nav>
 <div class="prose">
   <p><img src="/images/docker-the-right-way/banner.png" alt="banner"></p>
 <p>Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.</p>
 <hr>
 <h3 id="1-use-official-docker-image-as-base-image">1. Use Official Docker Image as Base Image</h3>
 <p>Always use the official or verified base image when writing the docker file. Let&rsquo;s say you are developing a java application and want to build it and run it as a docker image. Instead of taking a base operating system image and installing java, maven, and other tools you need for your application.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM ubuntu
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM ubuntu
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">RUN apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get install -y openjdk-8-jdk <span class="o">&amp;&amp;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get install -y ant <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get clean<span class="p">;</span>
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    apt-get clean<span class="p">;</span></span></span></code></pre></div>
+</figure>
+<hr>
 <p>Use the official Java image for your application. This will not only make your docker file cleaner but also let you use an official and verified image which is already built using the best practices.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk
-</span></span></code></pre></div><hr>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk</span></span></code></pre></div>
+</figure>
+<hr>
 <h3 id="2-use-specific-image-version">2. Use specific Image Version</h3>
 <p>As you see from the previous script we have chosen <code>OpenJDK</code> as our base image, but now when we build our application image from the above docker file, it will always use the <strong>latest</strong> tag of the <code>OpenJDK</code> image.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Is same as FROM openjdk:latest</span>
-</span></span><span class="line"><span class="cl">FROM openjdk
-</span></span></code></pre></div><hr>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Is same as FROM openjdk:latest</span>
+</span></span><span class="line"><span class="cl">FROM openjdk</span></span></code></pre></div>
+</figure>
+<hr>
 <p>The problem here is that we might get a different image version as in the previous build and the new image version may break stuff or cause unexpected behavior, so the <strong>latest</strong> tag is unpredictable, we don&rsquo;t know exactly which image we are getting. So instead of the random latest image tag, we need to fixate the version. <strong>We should be as specific as possible with the image version.</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk:11-alpine
-</span></span></code></pre></div><hr>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM openjdk:11-alpine</span></span></code></pre></div>
+</figure>
+<hr>
 <h3 id="3-use-small-sized-official-image">3. Use small sized Official Image</h3>
 <p>There are multiple official images of <code>openjdk</code> not only with different version numbers but also with the different operating system distribution, so the question here is <strong>which one to choose?</strong> and <strong>does it even matter?</strong></p>
 <p>If the image is based on a <strong>full-blown operating system distribution</strong> like ubuntu or centos which has a bunch of tools already packaged in, which makes the <strong>image size large</strong>. But most of the time, we don&rsquo;t need these tools in our application image.</p>
@@ -131,7 +167,9 @@
 <h3 id="4-minimize-the-number-of-layers">4. Minimize the Number of Layers</h3>
 <p>Every line in our <code>Dockerfile</code> will be treated as an image layer. Each layer increases the size of images since they are cached. Therefore, as the number of layers increases, the size also increases. It&rsquo;s always a good idea to combine <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> commands as much as possible since they create layers.</p>
 <p>You can test this out with the <code>docker history</code> command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker images
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker images
 </span></span><span class="line"><span class="cl">REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
 </span></span><span class="line"><span class="cl">dockerfile   latest    194f98552a02   <span class="m">37</span> seconds ago   218MB
 </span></span><span class="line"><span class="cl">
@@ -141,21 +179,30 @@
 </span></span><span class="line"><span class="cl">194f98552a02     COPY . . <span class="c1"># buildkit                              6.71kB</span>
 </span></span><span class="line"><span class="cl">&lt;missing&gt;        RUN /bin/sh -c pip install -r requirem..         35.5MB
 </span></span><span class="line"><span class="cl">&lt;missing&gt;        COPY requirements.txt . <span class="c1"># buildkit               58B</span>
-</span></span><span class="line"><span class="cl">&lt;missing&gt;        WORKDIR /app
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;        WORKDIR /app</span></span></code></pre></div>
+</figure>
+<hr>
 <p>If we see the above logs carefully, we can notice only the <code>RUN</code>, <code>COPY</code>, and <code>ADD</code> command adds size to the image. we can reduce the image size by combining commands wherever possible. For example:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update
-</span></span><span class="line"><span class="cl">RUN apt-get install -y openjdk-8-jdk
-</span></span></code></pre></div><hr>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update
+</span></span><span class="line"><span class="cl">RUN apt-get install -y openjdk-8-jdk</span></span></code></pre></div>
+</figure>
+<hr>
 <p>Can be combined into a single <code>RUN</code> command:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update <span class="o">&amp;&amp;</span> apt-get install -y openjdk-8-jdk
-</span></span></code></pre></div><hr>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">RUN apt-get update <span class="o">&amp;&amp;</span> apt-get install -y openjdk-8-jdk</span></span></code></pre></div>
+</figure>
+<hr>
 <p>Thus, creating a single layer instead of multiple, which reduces the size of the final image.</p>
 <hr>
 <h3 id="5-optimize-caching-image-layers">5. Optimize Caching Image Layers</h3>
 <p>Docker images are built based on Dockerfile. In Dockerfile, each line generates its layer during the building process. The layers are also cached and reused between different building processes if no changes are detected.</p>
 <p>Let&rsquo;s take a look at the dockerfile based on a node alpine image:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM node:17.0.1-alpine
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">FROM node:17.0.1-alpine
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">WORKDIR /app
 </span></span><span class="line"><span class="cl">
@@ -163,10 +210,13 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">RUN npm install --production
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">CMD <span class="o">[</span><span class="s2">&#34;node&#34;</span>, <span class="s2">&#34;src/index.js&#34;</span><span class="o">]</span>
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">CMD <span class="o">[</span><span class="s2">&#34;node&#34;</span>, <span class="s2">&#34;src/index.js&#34;</span><span class="o">]</span></span></span></code></pre></div>
+</figure>
+<hr>
 <p>As we discussed before each line creates its cached layer. Let&rsquo;s build this docker image and see what is happening.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
 </span></span><span class="line"><span class="cl">17.0.1-alpine: Pulling from library/node
 </span></span><span class="line"><span class="cl">Digest: sha256:959c4fc79a753b8b797c4fc9da967c7a81b4a3a3ff93d484dfe00092bf9fd584
 </span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> node:17.0.1-alpine
@@ -189,10 +239,13 @@
 </span></span><span class="line"><span class="cl">Removing intermediate container 1ff9c5bb72e7
 </span></span><span class="line"><span class="cl"> ---&gt; 9783eef2c1d3
 </span></span><span class="line"><span class="cl">Successfully built 9783eef2c1d3
-</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest</span></span></code></pre></div>
+</figure>
+<hr>
 <p>Docker image from docker file was built completely from scratch, so it took 1 minute to build. Let&rsquo;s try to build again and see.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Step 1/5 : FROM node:17.0.1-alpine
 </span></span><span class="line"><span class="cl"> ---&gt; c0fc1c9c473b
 </span></span><span class="line"><span class="cl">Step 2/5 : WORKDIR /app
 </span></span><span class="line"><span class="cl"> ---&gt; Using cache
@@ -207,8 +260,9 @@
 </span></span><span class="line"><span class="cl"> ---&gt; Using cache
 </span></span><span class="line"><span class="cl"> ---&gt; 9783eef2c1d3
 </span></span><span class="line"><span class="cl">Successfully built 9783eef2c1d3
-</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">Successfully tagged dockerfile:latest</span></span></code></pre></div>
+</figure>
+<hr>
 <p>A few lines of logs. As you can see this is <strong>Using cache</strong> text in multiple lines and the whole process took less than 1 sec. This is the power of layer caching. Nothing here was built from scratch, every layer comes from the cache.</p>
 <p><strong>Important thing is,</strong> If any layer is created from scratch because of some changes in the source file, every next layer is built from scratch too.</p>
 <p>The best practice here is to order docker file commands from least to most frequently change to take advantage of caching and this way we can optimize how fast the image gets built.</p>
@@ -217,7 +271,9 @@
 <p>We should use the <code>.dockerignore</code> file to list all the files and folders that we want to exclude. we can create the <code>.dockerignore</code> file in the root directory and list all the files and folders we want to ignore.</p>
 <p>When building the image, docker will look at the contents and ignore anything specified inside. Matching is done using <a href="https://go.dev/">Go</a>&rsquo;s <code>filepath.Match</code> rules.</p>
 <p>A sample <code>.dockerignore</code> file would look like:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ignore .git and .cache folders</span>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># ignore .git and .cache folders</span>
 </span></span><span class="line"><span class="cl">.git
 </span></span><span class="line"><span class="cl">.cache
 </span></span><span class="line"><span class="cl">
@@ -226,13 +282,16 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># ignore sensitive files</span>
 </span></span><span class="line"><span class="cl">private.key
-</span></span><span class="line"><span class="cl">settings.json
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">settings.json</span></span></code></pre></div>
+</figure>
+<hr>
 <h3 id="7-make-use-of-multi-stage-builds">7. Make use of Multi-stage builds</h3>
 <p>Let&rsquo;s assume that there are some contents in our project, that we need for building the image so during the build process but we don&rsquo;t need them in the final image itself to run the application.</p>
 <p>For example in a Java-based application, we need JDK to compile the Java source code but JDK is not needed to run the Java application. In addition to that, we also use build tools like Maven or Gradle to build our Java application and those are also not needed in the final image.</p>
 <p>Multi-stage builds allow us to use multiple temporary images during the build process but keep only the latest image as the final image. Let&rsquo;s see how it is done.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Build stage</span>
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Build stage</span>
 </span></span><span class="line"><span class="cl">FROM tomcat AS build
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">RUN apt-get update <span class="se">\
@@ -251,13 +310,17 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">EXPOSE <span class="m">8080</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">ENTRYPOINT <span class="o">[</span><span class="s2">&#34;java&#34;</span>, <span class="s2">&#34;-jar&#34;</span>, <span class="s2">&#34;/usr/local/tomcat/webapps/file.war&#34;</span><span class="o">]</span>
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">ENTRYPOINT <span class="o">[</span><span class="s2">&#34;java&#34;</span>, <span class="s2">&#34;-jar&#34;</span>, <span class="s2">&#34;/usr/local/tomcat/webapps/file.war&#34;</span><span class="o">]</span></span></span></code></pre></div>
+</figure>
+<hr>
 <p>Let&rsquo;s also look at the size comparison between two stages:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">REPOSITORY                 TAG         IMAGE ID          SIZE
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">REPOSITORY                 TAG         IMAGE ID          SIZE
 </span></span><span class="line"><span class="cl">docker-single              latest      8d6b6a4d7fb6      259MB
-</span></span><span class="line"><span class="cl">docker-multi               latest      813c2fa9b114      156MB
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">docker-multi               latest      813c2fa9b114      156MB</span></span></code></pre></div>
+</figure>
+<hr>
 <h3 id="8-use-the-least-privileged-user-or-non-root-user">8. Use the Least Privileged User or Non-Root User</h3>
 <p>By default, Docker runs container processes as root inside of a container. However, this is a bad practice since a process running as root inside the container is running root in the docker host. Thus, if an attacker gains access to our container, they have access to all the root privileges and can perform several attacks on the Docker host, like:</p>
 <ul>
@@ -265,7 +328,9 @@
 <li>Executing remote commands.</li>
 </ul>
 <p>To prevent this, we should run container processes with a non-root user or less privileged user.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">...
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># create group and user</span>
 </span></span><span class="line"><span class="cl">RUN groupadd -r amar <span class="o">&amp;&amp;</span> useradd -g amar amar
@@ -276,15 +341,18 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># switch to user</span>
 </span></span><span class="line"><span class="cl">USER amar
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">...
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></div>
+</figure>
+<hr>
 <blockquote>
 <p>Some base images already have a generic user bundled in which we can use. For example, the node image already bundles a user called a <code>node</code>.</p>
 </blockquote>
 <hr>
 <h3 id="9-scan-images-for-vulnerabilities">9. Scan Images for Vulnerabilities</h3>
 <p>Once we build the image, we should scan the image for security vulnerabilities using the <code>docker scan</code> command. We need to be logged in to the Docker Hub to run the docker scan command to scan our images.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker scan hello-world
+<figure class="code">
+  <figcaption><span class="code-lang">shell</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker scan hello-world
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">Testing hello-world...
 </span></span><span class="line"><span class="cl">
@@ -296,8 +364,9 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">✓ Tested <span class="m">0</span> dependencies <span class="k">for</span> known issues, no vulnerable paths found.
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Note that we <span class="k">do</span> not currently have vulnerability data <span class="k">for</span> your image.
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl">Note that we <span class="k">do</span> not currently have vulnerability data <span class="k">for</span> your image.</span></span></code></pre></div>
+</figure>
+<hr>
 <p>In the background, Docker uses called <a href="https://snyk.io/">Snyk</a> to do the vulnerability scanning of the images. The scan uses a database of vulnerabilities that gets constantly updated so new ones get discovered and added all the time for different images.</p>
 <hr>
 <h3 id="summary">Summary</h3>
@@ -347,9 +416,28 @@
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/gitops---the-easy-way/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">GitOps - the easy way</span>
+    <span class="next-meta">3 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/symptoms-of-bad-code/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">Symptoms of Bad Code</span>
+    <span class="next-meta">2 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -392,14 +480,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -408,6 +495,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -435,7 +523,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

@@ -42,17 +42,19 @@
   <meta itemprop="description" content="Move beyond functional tricks. Learn how to use currying and partial application in Python to name behaviors, reduce noise, and separate configuration from execution.">
   <meta itemprop="datePublished" content="2026-02-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-02-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="524">
+  <meta itemprop="wordCount" content="530">
   <meta itemprop="image" content="https://amarpandey.me/images/currying-and-partial-application-shaping-intent/banner.jpg">
   <meta itemprop="keywords" content="Python,Functional-Programming,Clean-Code,Refactoring,Software-Design">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -82,18 +84,19 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>Currying and Partial Application: Shaping Intent</h1>
-  <time datetime="2026-02-28">28 February 2026</time>
+  <p class="post-meta"><time datetime="2026-02-28">28 February 2026</time> · 3 min read</p>
 </div>
 
 <div class="prose">
@@ -103,16 +106,21 @@
 <hr>
 <h2 id="a-clear-distinction-currying-vs-partial-application">A clear distinction: currying vs partial application</h2>
 <p><strong>Currying</strong> transforms a function that takes multiple arguments into a chain of functions that each take a single argument:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">by</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">by</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Usage: multiply(3)(4) returns 12</span>
 </span></span><span class="line"><span class="cl"><span class="n">triple</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">triple</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 12</span>
-</span></span></code></pre></div><p><strong>Partial application</strong> fixes some arguments of an existing function and returns a new callable:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">triple</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 12</span></span></span></code></pre></div>
+</figure>
+<p><strong>Partial application</strong> fixes some arguments of an existing function and returns a new callable:</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
@@ -122,12 +130,15 @@
 </span></span><span class="line"><span class="cl"><span class="n">triple</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">multiply</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">double</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># 10</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">triple</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># 12</span>
-</span></span></code></pre></div><p><strong>Currying changes the shape</strong> of a function; <strong>partial application configures</strong> a function.</p>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">triple</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>  <span class="c1"># 12</span></span></span></code></pre></div>
+</figure>
+<p><strong>Currying changes the shape</strong> of a function; <strong>partial application configures</strong> a function.</p>
 <hr>
 <h2 id="where-functoolspartial-actually-helps">Where <code>functools.partial</code> actually helps</h2>
 <p>Partial application became useful to me once I started seeing it as a way to <strong>name behavior</strong>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Instead of repeating the same sorting logic</span>
 </span></span><span class="line"><span class="cl"><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;apple&#34;</span><span class="p">,</span> <span class="s2">&#34;banana&#34;</span><span class="p">,</span> <span class="s2">&#34;cherry&#34;</span><span class="p">,</span> <span class="s2">&#34;date&#34;</span><span class="p">]</span>
@@ -138,12 +149,15 @@
 </span></span><span class="line"><span class="cl"><span class="n">sort_reverse</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="nb">sorted</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">sort_by_length</span><span class="p">(</span><span class="n">fruits</span><span class="p">))</span>   <span class="c1"># [&#39;date&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;cherry&#39;]</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">sort_reverse</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>      <span class="c1"># [&#39;world&#39;, &#39;python&#39;, &#39;hello&#39;, &#39;code&#39;]</span>
-</span></span></code></pre></div><p><code>sort_by_length</code> and <code>sort_reverse</code> communicate purpose clearly - no mental parsing required.</p>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">sort_reverse</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>      <span class="c1"># [&#39;world&#39;, &#39;python&#39;, &#39;hello&#39;, &#39;code&#39;]</span></span></span></code></pre></div>
+</figure>
+<p><code>sort_by_length</code> and <code>sort_reverse</code> communicate purpose clearly - no mental parsing required.</p>
 <hr>
 <h2 id="reducing-lambda-noise">Reducing lambda noise</h2>
 <p>Partial application helps clean up <code>map</code> and <code>filter</code> operations:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">add_tax</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">tax_rate</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">tax_rate</span><span class="p">)</span>
@@ -157,12 +171,15 @@
 </span></span><span class="line"><span class="cl"><span class="n">add_sales_tax</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">add_tax</span><span class="p">,</span> <span class="n">tax_rate</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">with_sales_tax</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">add_sales_tax</span><span class="p">,</span> <span class="n">prices</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">with_sales_tax</span><span class="p">)</span>  <span class="c1"># [108.0, 216.0, 162.0, 324.0]</span>
-</span></span></code></pre></div><p>The <code>add_sales_tax</code> function can be reused anywhere, and the intent is crystal clear.</p>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">with_sales_tax</span><span class="p">)</span>  <span class="c1"># [108.0, 216.0, 162.0, 324.0]</span></span></span></code></pre></div>
+</figure>
+<p>The <code>add_sales_tax</code> function can be reused anywhere, and the intent is crystal clear.</p>
 <hr>
 <h2 id="configuration-now-execution-later">Configuration now, execution later</h2>
 <p>One of the most practical uses of <code>partial</code> is separating configuration from execution:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">logging</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Set up logger</span>
@@ -189,12 +206,15 @@
 </span></span><span class="line"><span class="cl"><span class="n">api_post</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&#34;User-Agent&#34;</span><span class="p">:</span> <span class="s2">&#34;MyApp/1.0&#34;</span><span class="p">})</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Use everywhere without repeating configuration</span>
-</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">api_get</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/users&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p>This keeps call sites clean and configuration centralized.</p>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">api_get</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/users&#34;</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>This keeps call sites clean and configuration centralized.</p>
 <hr>
 <h2 id="when-not-to-use-these-tools">When NOT to use these tools</h2>
 <p>Don&rsquo;t use partial application when it makes code harder to understand:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># BAD - Over-engineered for simple cases</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># BAD - Over-engineered for simple cases</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 </span></span><span class="line"><span class="cl"><span class="n">add_one</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">add_one</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Just write: result = 5 + 1</span>
@@ -204,14 +224,34 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># GOOD - Simple and direct</span>
 </span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;hello&#34;</span><span class="p">,</span> <span class="s2">&#34;world&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
-</span></span></code></pre></div><p>Use partial application when it <strong>names intent</strong> and <strong>reduces repetition</strong>. Skip it when a direct approach is clearer.</p>
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span></span></span></code></pre></div>
+</figure>
+<p>Use partial application when it <strong>names intent</strong> and <strong>reduces repetition</strong>. Skip it when a direct approach is clearer.</p>
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/choosing-functional-python-without-forcing-it/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">Choosing Functional Python (Without Forcing It)</span>
+    <span class="next-meta">6 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">Functors and Monads: Wrapping Your Data (Not Your Head) Around Them</span>
+    <span class="next-meta">6 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -254,14 +294,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -270,6 +309,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -297,7 +337,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

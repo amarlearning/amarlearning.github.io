@@ -43,17 +43,19 @@
   <meta itemprop="description" content="Learn how Spark&#39;s Adaptive Query Execution (AQE) solves data skew problems in joins, improving performance without memory overprovisioning">
   <meta itemprop="datePublished" content="2025-04-07T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-04-07T00:00:00+00:00">
-  <meta itemprop="wordCount" content="927">
+  <meta itemprop="wordCount" content="931">
   <meta itemprop="image" content="https://amarpandey.me/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png">
   <meta itemprop="keywords" content="Spark,Big Data,Optimization,Data Engineering,Performance,Spark-Joins">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -83,32 +85,58 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</h1>
-  <time datetime="2025-04-07">7 April 2025</time>
+  <p class="post-meta"><time datetime="2025-04-07">7 April 2025</time> · 5 min read</p>
 </div>
 
+<nav class="toc" aria-label="On this page">
+  <p class="toc-head">On this page</p>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem-setup">The Problem Setup</a></li>
+    <li><a href="#shuffling-and-partitioning">Shuffling and Partitioning</a></li>
+    <li><a href="#but-heres-the-catch">But Here’s the Catch…</a></li>
+    <li><a href="#so-should-we-increase-memory">So, Should We Increase Memory?</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#enter-adaptive-query-execution-aqe">Enter Adaptive Query Execution (AQE)</a></li>
+    <li><a href="#what-happens-under-the-hood">What Happens Under the Hood?</a></li>
+    <li><a href="#fine-tuning-skew-detection">Fine-Tuning Skew Detection</a></li>
+    <li><a href="#final-thoughts">Final Thoughts</a></li>
+  </ul>
+</nav>
+</nav>
 <div class="prose">
   <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png" alt="banner"></p>
 <p>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why <strong>dynamic skew join optimization</strong> is not just useful, but often essential.</p>
 <h2 id="the-problem-setup">The Problem Setup</h2>
 <p>Assume we have two large tables and we&rsquo;re trying to join them using the following Spark SQL:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+<figure class="code">
+  <figcaption><span class="code-lang">sql</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">FROM</span><span class="w"> </span><span class="n">large_table_one</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">JOIN</span><span class="w"> </span><span class="n">large_table_two</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">large_table_one</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">large_table_two</span><span class="p">.</span><span class="k">key</span><span class="w">
-</span></span></span></code></pre></div><p>Or using the equivalent Spark DataFrame API:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">df2</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s2">&#34;inner&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&#34;value == &#39;random&#39;&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><p>Since both tables are large, we expect a <strong>sort-merge join</strong> to occur. When you run the job and inspect the execution plan, you’ll notice <code>Exchange</code> nodes — one for each table — indicating shuffle operations. Each table is being <strong>partitioned by the join key</strong>.</p>
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">ON</span><span class="w"> </span><span class="n">large_table_one</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">large_table_two</span><span class="p">.</span><span class="k">key</span></span></span></code></pre></div>
+</figure>
+<p>Or using the equivalent Spark DataFrame API:</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">df2</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s2">&#34;inner&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&#34;value == &#39;random&#39;&#34;</span><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<p>Since both tables are large, we expect a <strong>sort-merge join</strong> to occur. When you run the job and inspect the execution plan, you’ll notice <code>Exchange</code> nodes — one for each table — indicating shuffle operations. Each table is being <strong>partitioned by the join key</strong>.</p>
 <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png" alt="sort-merge-join-spark-plan"></p>
 <hr>
 <h2 id="shuffling-and-partitioning">Shuffling and Partitioning</h2>
@@ -136,9 +164,12 @@
 <hr>
 <h2 id="enter-adaptive-query-execution-aqe">Enter Adaptive Query Execution (AQE)</h2>
 <p>Spark’s <strong>Adaptive Query Execution (AQE)</strong> provides an elegant solution. Enable AQE and skew join optimization with the following configurations:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="n">true</span>
-</span></span><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">skewjoin</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="n">true</span>
-</span></span></code></pre></div><p><strong>Version Note:</strong> AQE was introduced in Spark 3.0 and has been improved in subsequent versions. Make sure you&rsquo;re running Spark 3.0 or later to use these features.</p>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="n">true</span>
+</span></span><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">skewjoin</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="n">true</span></span></span></code></pre></div>
+</figure>
+<p><strong>Version Note:</strong> AQE was introduced in Spark 3.0 and has been improved in subsequent versions. Make sure you&rsquo;re running Spark 3.0 or later to use these features.</p>
 <p>Now, Spark monitors the actual size of shuffled partitions at runtime. If it detects skew, it dynamically rewrites the execution plan <strong>on the fly</strong>.</p>
 <hr>
 <h2 id="what-happens-under-the-hood">What Happens Under the Hood?</h2>
@@ -155,10 +186,13 @@
 <hr>
 <h2 id="fine-tuning-skew-detection">Fine-Tuning Skew Detection</h2>
 <p>Two important configurations let you control when Spark considers a partition to be skewed:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># default values</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># default values</span>
 </span></span><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">skewjoin</span><span class="o">.</span><span class="n">skewedPartitionFactor</span> <span class="o">=</span> <span class="mi">5</span>
-</span></span><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">skewjoin</span><span class="o">.</span><span class="n">skewedPartitionThresholdInBytes</span> <span class="o">=</span> <span class="mi">256</span><span class="n">MB</span>
-</span></span></code></pre></div><p>Let’s break these down:</p>
+</span></span><span class="line"><span class="cl"><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">adaptive</span><span class="o">.</span><span class="n">skewjoin</span><span class="o">.</span><span class="n">skewedPartitionThresholdInBytes</span> <span class="o">=</span> <span class="mi">256</span><span class="n">MB</span></span></span></code></pre></div>
+</figure>
+<p>Let’s break these down:</p>
 <ul>
 <li><strong><code>skewedPartitionFactor = 5</code></strong>: Spark compares the size of each partition with the median partition size. If a partition is <strong>5 times larger than the median</strong>, it is a candidate for being skewed.</li>
 <li><strong><code>skewedPartitionThresholdInBytes = 256MB</code></strong>: This is the minimum size threshold in bytes. Even if the partition is 5x larger, Spark will not treat it as skewed unless it&rsquo;s also larger than 256MB.</li>
@@ -181,9 +215,28 @@
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</span>
+    <span class="next-meta">3 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/never-push-a-work-commit-with-your-personal-email-again/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">Never Push a Work Commit with Your Personal Email Again</span>
+    <span class="next-meta">3 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -226,14 +279,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -242,6 +294,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -269,7 +322,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>

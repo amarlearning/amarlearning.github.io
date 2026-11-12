@@ -43,17 +43,19 @@
   <meta itemprop="description" content="Stop guessing at EC2 Spot instances. Learn how Spot Optimizer intelligently selects low-interruption instance types, then pairs with EC2 Fleet for reliable, cost-effective infrastructure.">
   <meta itemprop="datePublished" content="2025-09-01T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-09-01T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1163">
+  <meta itemprop="wordCount" content="1169">
   <meta itemprop="image" content="https://amarpandey.me/images/og-default.jpg">
   <meta itemprop="keywords" content="AWS,EC2,Spot-Instances,Cloud-Computing,Cost-Optimization,Infrastructure,DevOps,Python,CLI-Tools">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.57b9fe5f312920cab3fba74e22631095519ed0cc59af6e674e2d3ad5caf376b5.css" integrity="sha256-V7n&#43;XzEpIMqz&#43;6dOImMQlVGe0MxZr25nTi061crzdrU=">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-<meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="/css/main.min.f95159cd6145cb43b7f33b9b07c1a32945dbe485e67e0f4c11722fb185b7f496.css" integrity="sha256-&#43;VFZzWFFy0O38zubB8GjKUXb5IXmfg9MEXIvsYW39JY=">
+<script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
+<script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
+<meta name="color-scheme" content="dark light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&display=swap" rel="stylesheet">
 
 
 
@@ -83,20 +85,79 @@
 </div>
 <nav aria-label="Main">
 <a href="/">Home</a>
-<a href="/about">About</a>
-<a href="/projects">Projects</a>
-<a href="/talks">Talks</a>
-<a href="/blog" class="active">Blog</a>
-<a href="/resume.pdf" target="_blank">Reśume</a>
+<a href="/about/">About</a>
+<a href="/projects/">Projects</a>
+<a href="/talks/">Talks</a>
+<a href="/blog/" class="active">Blog</a>
+<a href="/resume/">Résumé</a>
 </nav>
 </header>
   <main>
 
+<div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
   <h1>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</h1>
-  <time datetime="2025-09-01">1 September 2025</time>
+  <p class="post-meta"><time datetime="2025-09-01">1 September 2025</time> · 6 min read</p>
 </div>
 
+<nav class="toc" aria-label="On this page">
+  <p class="toc-head">On this page</p>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem-with-manual-spot-instance-selection">The Problem with Manual Spot Instance Selection</a></li>
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#what-spot-optimizer-actually-does">What Spot Optimizer Actually Does</a>
+      <ul>
+        <li><a href="#inputs">Inputs</a></li>
+        <li><a href="#guarantees">Guarantees</a></li>
+        <li><a href="#outputs">Outputs</a></li>
+        <li><a href="#interfaces">Interfaces</a></li>
+        <li><a href="#under-the-hood">Under the hood</a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-start">Quick Start</a>
+      <ul>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#api">API</a></li>
+        <li><a href="#cli">CLI</a></li>
+      </ul>
+    </li>
+    <li><a href="#spot-optimizer-vs-ec2spot-fleet">Spot Optimizer vs EC2/Spot Fleet</a>
+      <ul>
+        <li><a href="#why-pair-them">Why Pair Them</a></li>
+      </ul>
+    </li>
+    <li><a href="#integration-with-ec2-fleet">Integration with EC2 Fleet</a>
+      <ul>
+        <li><a href="#best-practices-for-ec2-fleet-integration">Best practices for EC2 Fleet integration</a></li>
+      </ul>
+    </li>
+    <li><a href="#integration-with-spot-fleet">Integration with Spot Fleet</a></li>
+    <li><a href="#when-spot-optimizer-makes-a-difference">When Spot Optimizer Makes a Difference</a>
+      <ul>
+        <li><a href="#highimpact-scenarios">High‑impact scenarios</a></li>
+        <li><a href="#lowerimpact-scenarios-still-good-spot-candidates">Lower‑impact scenarios (still good Spot candidates)</a></li>
+      </ul>
+    </li>
+    <li><a href="#choosing-the-right-optimization-mode">Choosing the right optimization mode</a></li>
+    <li><a href="#advanced-filtering-options">Advanced Filtering Options</a>
+      <ul>
+        <li><a href="#example-with-all-filters">Example with all filters</a></li>
+      </ul>
+    </li>
+    <li><a href="#performance--reliability">Performance &amp; reliability</a></li>
+    <li><a href="#production-checklist">Production Checklist</a>
+      <ul>
+        <li><a href="#before-deployment">Before Deployment</a></li>
+        <li><a href="#fleet-configuration">Fleet Configuration</a></li>
+        <li><a href="#ongoing-maintenance">Ongoing Maintenance</a></li>
+      </ul>
+    </li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+</nav>
 <div class="prose">
   <p><img src="/images/spot-optimizer-spot-fleet-decide-smart-then-launch/banner.svg" alt="banner"></p>
 <p>Picking EC2 Spot instances shouldn&rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.</p>
@@ -156,9 +217,14 @@
 <hr>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="install">Install</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install spot-optimizer
-</span></span></code></pre></div><h3 id="api">API</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">spot_optimizer</span> <span class="kn">import</span> <span class="n">optimize</span>
+<figure class="code">
+  <figcaption><span class="code-lang">bash</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install spot-optimizer</span></span></code></pre></div>
+</figure>
+<h3 id="api">API</h3>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">spot_optimizer</span> <span class="kn">import</span> <span class="n">optimize</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">plan</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cores</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
@@ -170,17 +236,21 @@
 </span></span><span class="line"><span class="cl">    <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;fault_tolerance&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>  <span class="c1"># example: {&#34;instances&#34;: {&#34;type&#34;: &#34;m6i.4xlarge&#34;, &#34;count&#34;: 4}, &#34;mode&#34;: &#34;fault_tolerance&#34;, ...}</span>
-</span></span></code></pre></div><h3 id="cli">CLI</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">spot-optimizer <span class="se">\
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>  <span class="c1"># example: {&#34;instances&#34;: {&#34;type&#34;: &#34;m6i.4xlarge&#34;, &#34;count&#34;: 4}, &#34;mode&#34;: &#34;fault_tolerance&#34;, ...}</span></span></span></code></pre></div>
+</figure>
+<h3 id="cli">CLI</h3>
+<figure class="code">
+  <figcaption><span class="code-lang">bash</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">spot-optimizer <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cores <span class="m">64</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --memory <span class="m">256</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --region us-east-1 <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --ssd-only <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --no-arm <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --instance-family m6i r6i <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --mode fault_tolerance
-</span></span></code></pre></div><hr>
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --mode fault_tolerance</span></span></code></pre></div>
+</figure>
+<hr>
 <h2 id="spot-optimizer-vs-ec2spot-fleet">Spot Optimizer vs EC2/Spot Fleet</h2>
 <table>
 <thead>
@@ -222,7 +292,9 @@
 <hr>
 <h2 id="integration-with-ec2-fleet">Integration with EC2 Fleet</h2>
 <p>Take Spot Optimizer&rsquo;s output and pass it to <code>LaunchTemplateConfigs[].Overrides</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">boto3</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">boto3</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">spot_optimizer</span> <span class="kn">import</span> <span class="n">optimize</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">launch_optimized_fleet</span><span class="p">(</span><span class="n">cores</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -260,8 +332,9 @@
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
 </span></span><span class="line"><span class="cl">    <span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">resp</span><span class="p">[</span><span class="s2">&#34;FleetId&#34;</span><span class="p">]</span>
-</span></span></code></pre></div><h3 id="best-practices-for-ec2-fleet-integration">Best practices for EC2 Fleet integration</h3>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">resp</span><span class="p">[</span><span class="s2">&#34;FleetId&#34;</span><span class="p">]</span></span></span></code></pre></div>
+</figure>
+<h3 id="best-practices-for-ec2-fleet-integration">Best practices for EC2 Fleet integration</h3>
 <ul>
 <li><strong>Region‑scoped</strong>: create one fleet per region.</li>
 <li><strong>Request type</strong>: prefer <strong>maintain</strong> for steady capacity; use <strong>instant</strong> when you need immediate placement (EC2 Fleet only).</li>
@@ -272,7 +345,9 @@
 <hr>
 <h2 id="integration-with-spot-fleet">Integration with Spot Fleet</h2>
 <p>If you&rsquo;re using the older Spot Fleet service, populate Launch Specifications/Overrides with the recommended instance types:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+<figure class="code">
+  <figcaption><span class="code-lang">json</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;SpotFleetRequestConfig&#34;</span><span class="p">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;IamFleetRole&#34;</span><span class="p">:</span> <span class="s2">&#34;arn:aws:iam::&lt;account&gt;:role/aws-ec2-spot-fleet-role&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nt">&#34;TargetCapacity&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
@@ -285,8 +360,9 @@
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+</figure>
+<hr>
 <h2 id="when-spot-optimizer-makes-a-difference">When Spot Optimizer Makes a Difference</h2>
 <h3 id="highimpact-scenarios">High‑impact scenarios</h3>
 <ul>
@@ -312,7 +388,9 @@
 <h2 id="advanced-filtering-options">Advanced Filtering Options</h2>
 <p>Filter by EMR version, choose ARM (Graviton) or x86, enforce SSD-only storage, and constrain by families like <code>m6i</code>/<code>r6i</code>. The goal: your shortlist is runnable and optimized, not just cheap.</p>
 <h3 id="example-with-all-filters">Example with all filters</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plan</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
+<figure class="code">
+  <figcaption><span class="code-lang">python</span><button class="code-copy" type="button">Copy</button></figcaption>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">plan</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cores</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">memory</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">region</span><span class="o">=</span><span class="s2">&#34;us-west-2&#34;</span><span class="p">,</span>
@@ -321,8 +399,9 @@
 </span></span><span class="line"><span class="cl">    <span class="n">instance_family</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;m6i&#34;</span><span class="p">,</span> <span class="s2">&#34;m6a&#34;</span><span class="p">,</span> <span class="s2">&#34;r6i&#34;</span><span class="p">],</span>  <span class="c1"># Specific families</span>
 </span></span><span class="line"><span class="cl">    <span class="n">emr_version</span><span class="o">=</span><span class="s2">&#34;6.4.0&#34;</span><span class="p">,</span>     <span class="c1"># EMR compatibility</span>
 </span></span><span class="line"><span class="cl">    <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;balanced&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span></code></pre></div><hr>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></div>
+</figure>
+<hr>
 <h2 id="performance--reliability">Performance &amp; reliability</h2>
 <ul>
 <li><strong>Fast decisions</strong>: the selector is designed to be quick enough for CI or deploy-time.</li>
@@ -375,9 +454,28 @@
 
 </div>
 
+
+
+
+<nav class="read-next" aria-label="More posts">
+  
+  <a class="next-card" href="/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/">
+    <span class="next-label">← Older post</span>
+    <span class="next-title">How Not to Open a Pull Request – And How to Do It Right</span>
+    <span class="next-meta">4 min read</span>
+  </a>
+  
+  <a class="next-card" href="/blog/choosing-functional-python-without-forcing-it/">
+    <span class="next-label">Newer post →</span>
+    <span class="next-title">Choosing Functional Python (Without Forcing It)</span>
+    <span class="next-meta">6 min read</span>
+  </a>
+  
+</nav>
+
 <div class="post-end">
   <p>
-    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
+    Thanks for reading! If this one was useful, there's more where it came from in the <a href="/blog/">archive</a>, and you can see what I'm building next on <a href="https://github.com/amarlearning">GitHub</a>.
   </p>
   
   <div class="tags">
@@ -420,14 +518,13 @@
 
 
   </main>
-  <footer><figure class="sky">
-  <button class="duck-button" type="button" aria-label="Make it fly">
-    <canvas aria-hidden="true"></canvas>
-  </button>
-  <figcaption>Every bug I've fixed, I explained to this duck first.</figcaption>
-</figure>
-<div class="footer-meta">
+  <footer><div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
+  <span class="footer-links">
+  <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a href="https://in.linkedin.com/in/amarlearning" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+  <a href="https://x.com/iamarpandey" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l6.5 8.5L4 20h2l5.4-6.3L16 20h4l-6.8-9L19.5 4h-2l-5 5.8L8 4z"/></svg></a>
+  <a href="mailto:amarpandey.sh@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
   <a href="/index.xml" title="Subscribe via RSS" class="rss-link">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M4 11a9 9 0 0 1 9 9"></path>
@@ -436,6 +533,7 @@
     </svg>
     RSS
   </a>
+  </span>
 </div>
 </footer>
 
@@ -463,7 +561,46 @@
   });
 })();
 </script>
-<script src="/js/duck.min.26604a9f6eeed781bfd02bac4bc15e1a4ec5703668a4293b433fa85739fab3b9.js" integrity="sha256-JmBKn27u14G/0CusS8FeGk7FcDZopCk7Qz&#43;oVzn6s7k=" defer></script>
+<script>
+
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".code-copy");
+  if (!b) return;
+  var text = b.closest(".code").querySelector("pre code").innerText;
+  function done() {
+    b.textContent = "Copied";
+    b.classList.add("done");
+    setTimeout(function () { b.textContent = "Copy"; b.classList.remove("done"); }, 1600);
+  }
+  function fallback() {
+    var t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.cssText = "position:fixed;opacity:0";
+    document.body.appendChild(t); t.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) {}
+    t.remove();
+    if (ok) done();
+  }
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, fallback);
+  else fallback();
+});
+
+(function () {
+  var toc = document.querySelector(".toc");
+  if (!toc) return;
+  var links = {}, current = null;
+  toc.querySelectorAll("a[href^='#']").forEach(function (a) { links[decodeURIComponent(a.hash.slice(1))] = a; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || !links[e.target.id]) return;
+      if (current) current.removeAttribute("aria-current");
+      current = links[e.target.id];
+      current.setAttribute("aria-current", "true");
+    });
+  }, { rootMargin: "0px 0px -70% 0px" });
+  document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
 </body>
 
 </html>
