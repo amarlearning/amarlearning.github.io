@@ -46,7 +46,7 @@
   --note-ink: light-dark(#c4532e, #f0875f);
   --paper-note: #f6efdf;
   --tape: rgb(222 210 180 / 0.6);
-  --grid-line: light-dark(rgb(255 105 169 / 0.2), rgb(236 231 223 / 0.04));   /* light: pink graph paper (#ff69a9) */
+  --grid-line: light-dark(rgb(70 140 210 / 0.16), rgb(236 231 223 / 0.04));   /* light: classic blue graph paper (#468cd2), pairs with the coral notes */
   --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.1), 0 18px 36px -18px rgb(0 0 0 / 0.5);
   --scribble: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Cpath d='M0 4.5Q10 0 20 4.5T40 4.5' fill='none' stroke='%23000' stroke-width='1.7'/%3E%3C/svg%3E");
   --hand-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 5.5C4 4.6 8 4.8 12 5M8.5 1.5L12.5 5L8.8 8.6' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
