@@ -19,3 +19,5 @@ node_modules/
 *.log
 
 .vscode
+# Claude Code: personal settings stay local
+.claude/settings.local.json
