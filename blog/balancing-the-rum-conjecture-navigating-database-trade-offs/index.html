@@ -46,7 +46,7 @@
   <meta itemprop="keywords" content="RUM Conjecture,Database Design,Data Engineering,Tech Tradeoffs">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.dbe3ea2ccf93e8589c6d19b74ef18e227962a15c869e7d563056f09e2c041e8c.css" integrity="sha256-2&#43;PqLM&#43;T6FicbRm3TvGOInlioVyGnn1WMFbwniwEHow=">
+  <link rel="stylesheet" href="/css/main.min.26e0345ec0034da87de1c7e6f73c6555079d8ae9bad1cba5f8920b59e6df04a5.css" integrity="sha256-JuA0XsADTah94cfm9zxlVQedium60cul&#43;JILWebfBKU=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -68,6 +68,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
     <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
@@ -90,7 +91,7 @@
 <a href="/resume/">Résumé</a>
 </nav>
 </header>
-  <main>
+  <main id="main" tabindex="-1">
 
 <div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
@@ -98,8 +99,9 @@
   <p class="post-meta"><time datetime="2024-11-05">5 November 2024</time> · 2 min read</p>
 </div>
 
-<div class="prose">
-  <p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png" alt="banner"></p>
+<div class="prose post">
+  <p><picture><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/banner.png" alt="banner" width="1217" height="305" fetchpriority="high" decoding="async">
+</picture></p>
 <p>When designing databases, there&rsquo;s a constant balancing act among three main factors:</p>
 <ol>
 <li>Read times</li>
@@ -117,7 +119,8 @@
 <p>This trade-off forms a triangular relationship among read efficiency, update costs, and storage overhead.</p>
 <h2 id="visualizing-rum">Visualizing RUM</h2>
 <p>Databases are often optimized around specific workflows, focusing on either read, write, or storage efficiencies:</p>
-<p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-visualized.png" alt="rum-visualized"></p>
+<p><picture><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-visualized.png" alt="rum-visualized" width="929" height="705" loading="lazy" decoding="async">
+</picture></p>
 <ol>
 <li><strong>Read-Optimized</strong></li>
 </ol>
@@ -144,7 +147,8 @@
 </ul>
 <h3 id="beyond-the-rum-corners-adaptive-access-methods">Beyond the RUM Corners: Adaptive Access Methods</h3>
 <p>Some database structures are designed to adapt dynamically, balancing the RUM trade-offs based on access patterns:</p>
-<p><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-adaptive.png" alt="rum-adaptive"></p>
+<p><picture><source srcset="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-adaptive.webp" type="image/webp"><img src="/images/balancing-the-rum-conjecture-navigating-database-trade-offs/rum-adaptive.png" alt="rum-adaptive" width="929" height="705" loading="lazy" decoding="async">
+</picture></p>
 <ul>
 <li>Adaptive access methods: These structures include tunable parameters or are inherently adaptive, allowing them to adjust based on workload.</li>
 <li>Examples: Techniques like database cracking and adaptive merging use workload information to find an optimal balance among read, update, and memory costs.</li>

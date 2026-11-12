@@ -48,7 +48,7 @@
   <meta itemprop="keywords" content="Spark,Big Data,Optimization,Data Engineering,Performance,Spark-Joins">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.dbe3ea2ccf93e8589c6d19b74ef18e227962a15c869e7d563056f09e2c041e8c.css" integrity="sha256-2&#43;PqLM&#43;T6FicbRm3TvGOInlioVyGnn1WMFbwniwEHow=">
+  <link rel="stylesheet" href="/css/main.min.26e0345ec0034da87de1c7e6f73c6555079d8ae9bad1cba5f8920b59e6df04a5.css" integrity="sha256-JuA0XsADTah94cfm9zxlVQedium60cul&#43;JILWebfBKU=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -70,6 +70,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
     <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
@@ -92,7 +93,7 @@
 <a href="/resume/">Résumé</a>
 </nav>
 </header>
-  <main>
+  <main id="main" tabindex="-1">
 
 <div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
@@ -119,8 +120,9 @@
   </ul>
 </nav>
 </nav>
-<div class="prose">
-  <p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png" alt="banner"></p>
+<div class="prose post">
+  <p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/banner.png" alt="banner" width="16860" height="2566" fetchpriority="high" decoding="async">
+</picture></p>
 <p>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why <strong>dynamic skew join optimization</strong> is not just useful, but often essential.</p>
 <h2 id="the-problem-setup">The Problem Setup</h2>
 <p>Assume we have two large tables and we&rsquo;re trying to join them using the following Spark SQL:</p>
@@ -137,22 +139,28 @@
   <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">key</span> <span class="o">==</span> <span class="n">df2</span><span class="o">.</span><span class="n">key</span><span class="p">,</span> <span class="s2">&#34;inner&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&#34;value == &#39;random&#39;&#34;</span><span class="p">)</span></span></span></code></pre></div>
 </figure>
 <p>Since both tables are large, we expect a <strong>sort-merge join</strong> to occur. When you run the job and inspect the execution plan, you’ll notice <code>Exchange</code> nodes — one for each table — indicating shuffle operations. Each table is being <strong>partitioned by the join key</strong>.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png" alt="sort-merge-join-spark-plan"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/query-plan.png" alt="sort-merge-join-spark-plan" width="1244" height="1360" loading="lazy" decoding="async">
+</picture></p>
 <hr>
 <h2 id="shuffling-and-partitioning">Shuffling and Partitioning</h2>
 <p>Let’s dig deeper.</p>
 <p>Assume <code>large_table_one</code> initially has two partitions.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.png" alt="table-one-partitions"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-partitions.png" alt="table-one-partitions" width="3237" height="1305" loading="lazy" decoding="async">
+</picture></p>
 <p>Each partition contains rows with different join keys, represented using different colors (for visualization purposes). After shuffling, Spark redistributes the data such that each partition contains rows with the same join key. This repartitioning by join key is the primary purpose of the shuffle, resulting in:</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.png" alt="table-one-exchange"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-one-exchange.png" alt="table-one-exchange" width="7768" height="2415" loading="lazy" decoding="async">
+</picture></p>
 <p>You’ll see the same happen to <code>large_table_two</code> — it’s shuffled in a similar way so that corresponding keys are aligned for joining.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.png" alt="table-two-exchange"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/table-two-exchange.png" alt="table-two-exchange" width="6962" height="2408" loading="lazy" decoding="async">
+</picture></p>
 <p>Now that both tables are partitioned by key, Spark proceeds with the sort-merge join. If we have four partitions, we’ll get four tasks — each responsible for sorting and merging data for a specific key.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.png" alt="sort-merge-join-tasks"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/sort-merge-join-tasks.png" alt="sort-merge-join-tasks" width="16860" height="2566" loading="lazy" decoding="async">
+</picture></p>
 <hr>
 <h2 id="but-heres-the-catch">But Here’s the Catch…</h2>
 <p>At a glance, this looks fine. But look closely — one of the partitions (the one with green-colored data) is <strong>much larger than the others</strong>. This means the task handling that partition has a heavier load.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions" width="9810" height="3360" loading="lazy" decoding="async">
+</picture></p>
 <p>Let’s say you configured your Spark executor to allocate 4GB of RAM per task. That works well for all other partitions, but <strong>the green partition needs more memory</strong> to complete the  sort/merge. This becomes a problem.</p>
 <hr>
 <h2 id="so-should-we-increase-memory">So, Should We Increase Memory?</h2>
@@ -174,15 +182,18 @@
 <hr>
 <h2 id="what-happens-under-the-hood">What Happens Under the Hood?</h2>
 <p>Let’s revisit our example. Initially, there are 4 shuffle partitions, hence 4 tasks. One of them is skewed (green). That task struggles and runs longer, maybe even fails.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions.png" alt="skewed-partitions" width="9810" height="3360" loading="lazy" decoding="async">
+</picture></p>
 <p>But since AQE is enabled, Spark notices the skew and takes the following actions:</p>
 <ol>
 <li><strong>Splits the skewed partition</strong> into two or more smaller partitions.</li>
 <li><strong>Duplicates the matching partition</strong> from the other side of the join (so each split can be joined independently).</li>
 </ol>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt.png" alt="skewed-partitions-opt"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt.png" alt="skewed-partitions-opt" width="9818" height="3472" loading="lazy" decoding="async">
+</picture></p>
 <p>As a result, we now have 5 tasks instead of 4. But the load is <strong>evenly distributed</strong>, and tasks finish faster and more reliably.</p>
-<p><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt-tasks.png" alt="skewed-partitions-opt-tasks"></p>
+<p><picture><source srcset="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt-tasks.webp" type="image/webp"><img src="/images/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/skewed-partitions-opt-tasks.png" alt="skewed-partitions-opt-tasks" width="9818" height="3575" loading="lazy" decoding="async">
+</picture></p>
 <hr>
 <h2 id="fine-tuning-skew-detection">Fine-Tuning Skew Detection</h2>
 <p>Two important configurations let you control when Spark considers a partition to be skewed:</p>

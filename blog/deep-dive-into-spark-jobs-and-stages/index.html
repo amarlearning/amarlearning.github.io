@@ -48,7 +48,7 @@
   <meta itemprop="keywords" content="Apache-Spark,Big Data,Data-Processing,Performance-Optimization,Distributed-Computing,Spark-Optimization">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.dbe3ea2ccf93e8589c6d19b74ef18e227962a15c869e7d563056f09e2c041e8c.css" integrity="sha256-2&#43;PqLM&#43;T6FicbRm3TvGOInlioVyGnn1WMFbwniwEHow=">
+  <link rel="stylesheet" href="/css/main.min.26e0345ec0034da87de1c7e6f73c6555079d8ae9bad1cba5f8920b59e6df04a5.css" integrity="sha256-JuA0XsADTah94cfm9zxlVQedium60cul&#43;JILWebfBKU=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -70,6 +70,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
     <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
@@ -92,7 +93,7 @@
 <a href="/resume/">Résumé</a>
 </nav>
 </header>
-  <main>
+  <main id="main" tabindex="-1">
 
 <div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
@@ -100,8 +101,9 @@
   <p class="post-meta"><time datetime="2025-03-23">23 March 2025</time> · 3 min read</p>
 </div>
 
-<div class="prose">
-  <p><img src="/images/deep-dive-into-spark-jobs-and-stages/banner.png" alt="banner"></p>
+<div class="prose post">
+  <p><picture><source srcset="/images/deep-dive-into-spark-jobs-and-stages/banner.webp" type="image/webp"><img src="/images/deep-dive-into-spark-jobs-and-stages/banner.png" alt="banner" width="2880" height="1368" fetchpriority="high" decoding="async">
+</picture></p>
 <p>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.</p>
 <h2 id="spark-transformations-and-actions">Spark Transformations and Actions</h2>
 <p>In Spark, operations are classified into two main categories: Transformations and Actions.</p>
@@ -166,7 +168,8 @@
 <li>Shuffle/Sort → Connects Stages when wide dependencies are present</li>
 <li>Tasks → Smallest unit of execution within each stage</li>
 </ol>
-<p><img src="/images/deep-dive-into-spark-jobs-and-stages/spark_execution.png" alt="spark-task-execution"></p>
+<p><picture><source srcset="/images/deep-dive-into-spark-jobs-and-stages/spark_execution.webp" type="image/webp"><img src="/images/deep-dive-into-spark-jobs-and-stages/spark_execution.png" alt="spark-task-execution" width="6138" height="4950" loading="lazy" decoding="async">
+</picture></p>
 <h2 id="tasks-and-parallelism">Tasks and Parallelism</h2>
 <p>Inside each stage, Spark divides the workload into multiple tasks, with each task processing a single partition. These tasks are executed in parallel by the Spark executors. The number of tasks within a stage equals the number of input partitions.</p>
 <p>Tasks are the smallest unit of execution within a Spark job. The Spark driver assigns these tasks to executors and monitors their progress. It is essential to balance the number of tasks and partition sizes to avoid performance bottlenecks.</p>

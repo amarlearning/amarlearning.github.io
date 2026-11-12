@@ -46,7 +46,7 @@
   <meta itemprop="keywords" content="Gitops,DevOps,Infrastructure,Iac">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.dbe3ea2ccf93e8589c6d19b74ef18e227962a15c869e7d563056f09e2c041e8c.css" integrity="sha256-2&#43;PqLM&#43;T6FicbRm3TvGOInlioVyGnn1WMFbwniwEHow=">
+  <link rel="stylesheet" href="/css/main.min.26e0345ec0034da87de1c7e6f73c6555079d8ae9bad1cba5f8920b59e6df04a5.css" integrity="sha256-JuA0XsADTah94cfm9zxlVQedium60cul&#43;JILWebfBKU=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -68,6 +68,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
     <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
@@ -90,7 +91,7 @@
 <a href="/resume/">Résumé</a>
 </nav>
 </header>
-  <main>
+  <main id="main" tabindex="-1">
 
 <div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
@@ -98,7 +99,7 @@
   <p class="post-meta"><time datetime="2018-07-28">28 July 2018</time> · 6 min read</p>
 </div>
 
-<div class="prose">
+<div class="prose post">
   
 
     
@@ -116,7 +117,8 @@
 <p>In an application where you want to track a user’s hand movement, skin color histogram will be very useful. This histogram is then used to subtracts the background from an image, only leaving parts of the image that contain skin tone.</p>
 <p>A much simpler method to detect skin would be to find pixels that are in a certain RGB or HSV range. If you want to know more about this approach follow <a href="https://docs.opencv.org/3.4.2/df/d9d/tutorial_py_colorspaces.html">here</a>.</p>
 <p>The problem with the above approach is that changing light conditions and skin colors can really mess with the skin detection. While on the other hand, Histogram tends to be more accurate and takes into account the current light conditions.</p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/1.png" alt="Place hand over the rectangles"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/1.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/1.png" alt="Place hand over the rectangles" width="831" height="694" fetchpriority="high" decoding="async">
+</picture></p>
 <p>Green rectangles are drawn on the frame and the user places their hand inside these rectangles. Application is taking skin color samples from the user’s hand and then creates a histogram.</p>
 <p><em>The rectangles are drawn with the following function:</em></p>
 <figure class="code">
@@ -180,8 +182,10 @@
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">thresh</span><span class="p">)</span></span></span></code></pre></div>
 </figure>
 <p>In the first two lines, I changed the input frame to HSV and then applied <code>cv2.calcBackProject</code> with the skin color histogram <code>hist</code>. Following that, I have used Filtering and Thresholding function to smoothen the image. Lastly, I masked the input frame using the <code>cv2.bitwise_and</code> function. This final frame should just contain skin color regions of the frame.</p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/2.png" alt="Hand seperated from background (1)"></p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/3.png" alt="Hand seperated from background (2)"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/2.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/2.png" alt="Hand seperated from background (1)" width="827" height="704" loading="lazy" decoding="async">
+</picture></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/3.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/3.png" alt="Hand seperated from background (2)" width="831" height="716" loading="lazy" decoding="async">
+</picture></p>
 <p>Now we have a frame with skin color regions only, but what we really want is to find the location of a fingertip. Using OpenCV you can find contours in a frame if you don’t know what contour is you can read <a href="https://docs.opencv.org/3.4.2/d3/d05/tutorial_py_table_of_contents_contours.html">here</a>. Using contours you can find convexity defects, which will be potential fingertip location.</p>
 <p>In my application, I needed to find the tip of a finger with which a user is aiming. To do this I determined the convexity defect, which is furthest from the centroid of the contour. This is done by the following code:</p>
 <figure class="code">
@@ -208,14 +212,19 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="n">draw_circles</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">traverse_point</span><span class="p">)</span></span></span></code></pre></div>
 </figure>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/4.png" alt="Contour in Frame (1)"></p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/5.png" alt="Contour in Frame (2)"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/4.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/4.png" alt="Contour in Frame (1)" width="831" height="706" loading="lazy" decoding="async">
+</picture></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/5.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/5.png" alt="Contour in Frame (2)" width="836" height="706" loading="lazy" decoding="async">
+</picture></p>
 <p>Then it determines the largest contour. For the largest contour, it finds the hull, centroid, and defects.</p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/6.png" alt="Defects in red circle and Centroid in purple circle"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/6.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/6.png" alt="Defects in red circle and Centroid in purple circle" width="831" height="710" loading="lazy" decoding="async">
+</picture></p>
 <p>Now that you have all these defects you find the one that is farthest from the center of the contour. This point is assumed to be the pointing finger. The center is purple and the farthest point is red. And there you have it, you’ve found a fingertip.</p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/7.png" alt="Centroid in purple color and Farthest point in red color"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/7.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/7.png" alt="Centroid in purple color and Farthest point in red color" width="831" height="708" loading="lazy" decoding="async">
+</picture></p>
 <p>All hard part is done up until now, now all we have to do is to create a <code>list</code> to store the changed location of the <code>farthest_point</code> in the frame. It’s up to you that how many changed points you want to store. I am storing only <code>20</code> points.</p>
-<p><img src="/images/finger-detection-and-tracking-using-opencv-and-python/8.jpeg" alt="Finger Detection and Tracking using OpenCV and Python"></p>
+<p><picture><source srcset="/images/finger-detection-and-tracking-using-opencv-and-python/8.webp" type="image/webp"><img src="/images/finger-detection-and-tracking-using-opencv-and-python/8.jpeg" alt="Finger Detection and Tracking using OpenCV and Python" width="1280" height="720" loading="lazy" decoding="async">
+</picture></p>
 
 </div>
 

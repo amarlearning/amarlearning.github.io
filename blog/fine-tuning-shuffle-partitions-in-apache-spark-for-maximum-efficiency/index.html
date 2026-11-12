@@ -48,7 +48,7 @@
   <meta itemprop="keywords" content="Data,Apache,Spark,Shuffle,Partitions,Performance">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.dbe3ea2ccf93e8589c6d19b74ef18e227962a15c869e7d563056f09e2c041e8c.css" integrity="sha256-2&#43;PqLM&#43;T6FicbRm3TvGOInlioVyGnn1WMFbwniwEHow=">
+  <link rel="stylesheet" href="/css/main.min.26e0345ec0034da87de1c7e6f73c6555079d8ae9bad1cba5f8920b59e6df04a5.css" integrity="sha256-JuA0XsADTah94cfm9zxlVQedium60cul&#43;JILWebfBKU=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -112,6 +112,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
     <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
@@ -134,7 +135,7 @@
 <a href="/resume/">Résumé</a>
 </nav>
 </header>
-  <main>
+  <main id="main" tabindex="-1">
 
 <div class="post-progress" aria-hidden="true"></div>
 <div class="post-header">
@@ -161,8 +162,9 @@
   </ul>
 </nav>
 </nav>
-<div class="prose">
-  <p><img src="/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png" alt="banner"></p>
+<div class="prose post">
+  <p><picture><img src="/images/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/banner.png" alt="banner" width="1042" height="455" fetchpriority="high" decoding="async">
+</picture></p>
 <p>Apache Spark&rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.</p>
 <h3 id="default-shuffle-partition-count">Default Shuffle Partition Count</h3>
 <p>By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</p>
