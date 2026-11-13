@@ -1,15 +1,15 @@
 baseURL = 'https://amarpandey.me/'
 languageCode = 'en-US'
-title = 'Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ'
+title = "Amar’s space: data, open source & side quests"
 theme = 'hugo-bearblog'
-author = "Amar Prakash Pandey"
 
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
 [params]
+  author = "Amar Prakash Pandey"
   Description = "Amar Prakash Pandey, senior data engineer at Citi working on Spark and data platforms. Apache Airflow contributor and former CRI-O and DuckDuckGo maintainer."
-  images = ["images/og-default.jpg"]
+  images = ["images/og-card.jpg"]
   hideMadeWithLine = true
   favicon = "favicon/favicon.png"
 

@@ -1,0 +1,8 @@
+{{- /* Overrides Hugo's embedded helper behind og:image / twitter:image.
+  Blog posts share their generated card (static/images/og/<file name>.jpg, made by assets/og/render.py) when one exists;
+  otherwise the page's `images` front matter, then the site default. */ -}}
+{{- $imgs := .Params.images | default site.Params.images -}}
+{{- with .File }}{{ $card := printf "images/og/%s.jpg" .ContentBaseName }}{{ if fileExists (printf "static/%s" $card) }}{{ $imgs = slice $card }}{{ end }}{{ end -}}
+{{- $out := slice -}}
+{{- range $imgs }}{{ $out = $out | append (dict "Permalink" (absURL .) "RelPermalink" (relURL .)) }}{{ end -}}
+{{- return $out -}}

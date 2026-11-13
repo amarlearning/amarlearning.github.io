@@ -1,0 +1,70 @@
+<!doctype html>
+<!-- Share card for one blog post, filled from the query string by render.py: ?title=&date=&read=&img= -->
+<html lang="en">
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&family=Caveat:wght@600..700&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 40% 40%, transparent 35%, rgb(0 0 0 / .5)),
+      linear-gradient(rgb(236 231 223 / .05) 1px, transparent 1px) 0 0 / 28px 28px,
+      linear-gradient(90deg, rgb(236 231 223 / .05) 1px, transparent 1px) 0 0 / 28px 28px,
+      #171614;
+    font-family: "Geist", sans-serif; color: #101010;
+  }
+  .sheet {
+    position: absolute; left: 48px; top: 44px; width: 1000px; height: 542px; padding: 50px 0 40px 104px;
+    background:
+      linear-gradient(90deg, transparent 75px, rgb(213 54 12 / .45) 75px 77px, transparent 77px),
+      linear-gradient(rgb(16 16 16 / .055) 1px, transparent 1px) 0 13px / 100% 28px,
+      linear-gradient(90deg, rgb(16 16 16 / .055) 1px, transparent 1px) 0 0 / 28px 100%,
+      #faf6ec;
+    border-radius: 6px; rotate: -.6deg;
+    box-shadow: 0 2px 3px rgb(0 0 0 / .3), 0 50px 80px -30px rgb(0 0 0 / .9);
+    display: flex; flex-direction: column;
+  }
+  .meta { font: 500 15px/1 "Geist Mono", monospace; letter-spacing: .16em; text-transform: uppercase; color: #b04626; }
+  .meta i { font-style: normal; color: #cbbfae; margin: 0 10px; }
+  h1 { margin-top: 24px; width: 530px; font-size: 58px; font-weight: 660; letter-spacing: -.038em; line-height: 1.04; text-wrap: balance; }
+  .read { margin-top: 22px; display: flex; align-items: center; gap: 10px; font: 700 34px/1 "Caveat", cursive; color: #b04626; rotate: -2deg; transform-origin: left; }
+  .read svg { width: 46px; height: 22px; }
+  .by { margin-top: auto; display: flex; align-items: center; gap: 14px; }
+  .by img { width: 46px; height: 46px; border-radius: 3px; padding: 3px; background: #fff; rotate: -4deg; object-fit: cover; box-shadow: 0 1px 2px rgb(0 0 0 / .2), 0 6px 10px -6px rgb(0 0 0 / .5); }
+  .by b { display: block; font-size: 19px; font-weight: 580; }
+  .by span { font: 400 15px/1.5 "Geist Mono", monospace; color: #635d56; }
+  .polaroid {
+    position: absolute; right: 64px; top: 128px; width: 440px; padding: 14px 14px 58px; background: #fffdf8;
+    rotate: 4deg; box-shadow: 0 2px 4px rgb(0 0 0 / .25), 0 40px 60px -24px rgb(0 0 0 / .75);
+  }
+  .polaroid::before { content: ""; position: absolute; top: -18px; left: 50%; translate: -50% 0; rotate: -5deg; width: 140px; height: 36px; background: rgb(200 184 150 / .8); }
+  .polaroid img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #e9e3d6; }
+  .polaroid p { position: absolute; left: 18px; right: 18px; bottom: 14px; font: 700 30px/1 "Caveat", cursive; color: #2a2622; }
+</style>
+<div class="sheet">
+  <p class="meta">Blog<i>/</i><span id="date"></span></p>
+  <h1 id="title"></h1>
+  <p class="read"><span id="read"></span>
+    <svg viewBox="0 0 46 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13C12 9 26 9 41 11M33 4l9 7-8 7"/></svg></p>
+  <div class="by">
+    <img src="../../static/images/me.webp" alt="">
+    <p><b>Amar Prakash Pandey</b><span>amarpandey.me/blog</span></p>
+  </div>
+</div>
+<figure class="polaroid"><img id="img" src="../../static/images/me.webp" alt=""><p id="cap">fig. 1</p></figure>
+<script>
+  const q = new URLSearchParams(location.search), $ = id => document.getElementById(id);
+  $("title").textContent = q.get("title");
+  $("date").textContent = q.get("date");
+  $("read").textContent = q.get("read");
+  if (q.get("img")) $("img").src = q.get("img");
+  else $("cap").textContent = "hi, I'm Amar";
+  // long titles: shrink until they fit in four lines
+  document.fonts.ready.then(() => {
+    const h1 = $("title"); let size = 58;
+    while (h1.offsetHeight > 245 && size > 40) h1.style.fontSize = (size -= 2) + "px";
+  });
+</script>
+</html>

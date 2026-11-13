@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- Site-wide share card (static/images/og-card.jpg). Rebuild: python3 assets/og/render.py -->
+<html lang="en">
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400..500&family=Caveat:wght@600&display=block" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    display: grid; place-items: center;
+    background:
+      radial-gradient(ellipse at 50% 45%, transparent 40%, rgb(0 0 0 / .45)),
+      linear-gradient(rgb(236 231 223 / .05) 1px, transparent 1px) 0 0 / 28px 28px,
+      linear-gradient(90deg, rgb(236 231 223 / .05) 1px, transparent 1px) 0 0 / 28px 28px,
+      #171614;
+    font-family: "Geist", sans-serif; color: #101010;
+  }
+  .card {
+    position: relative; width: 860px; height: 470px; padding: 52px 60px 46px;
+    background: #faf6ec; border-radius: 10px; transform: rotate(-1.2deg);
+    box-shadow: 0 2px 3px rgb(0 0 0 / .25), 0 40px 70px -24px rgb(0 0 0 / .8);
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto;
+  }
+  .card::before { /* tape */
+    content: ""; position: absolute; top: -16px; left: 50%; width: 130px; height: 34px;
+    transform: translateX(-50%) rotate(2.5deg); background: rgb(200 184 150 / .78);
+  }
+  .role { font: 500 15px/1 "Geist Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: #b04626; }
+  h1 { margin-top: 18px; font-size: 62px; font-weight: 640; letter-spacing: -.035em; line-height: 1; }
+  .what { margin-top: 16px; font-size: 22px; line-height: 1.4; color: #635d56; }
+  .what b { color: #101010; font-weight: 560; }
+  .photo { grid-row: 1 / 3; grid-column: 2; position: relative; }
+  .photo img { width: 148px; height: 148px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px #faf6ec, 0 0 0 6.5px #d3cabc; }
+  .note { position: absolute; top: 166px; right: -10px; width: 210px; text-align: right; transform: rotate(-4deg);
+          font: 600 27px/1.05 "Caveat", cursive; color: #b04626; }
+  .foot { grid-column: 1 / 3; display: flex; justify-content: space-between; align-items: end;
+          padding-top: 24px; border-top: 1px solid #e3dccf; }
+  .links { list-style: none; padding: 0; display: grid; gap: 9px; font: 400 17px/1 "Geist Mono", monospace; }
+  .links li::before { content: "→"; margin-right: 12px; color: #d5360c; }
+  .oss { font: 400 14px/1.6 "Geist Mono", monospace; color: #635d56; text-align: right; }
+  .oss span { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #6f675e; }
+</style>
+<div class="card">
+  <div>
+    <p class="role">Senior Data Engineer</p>
+    <h1>Amar Prakash Pandey</h1>
+    <p class="what">Spark and data platforms at <b>Citi</b>, Bengaluru.<br>8+ years fixing data systems.</p>
+  </div>
+  <div class="photo">
+    <img src="../../static/images/me.webp" alt="">
+    <p class="note">happy to talk data &amp; open source</p>
+  </div>
+  <div class="foot">
+    <ul class="links">
+      <li>amarpandey.me</li>
+      <li>github.com/amarlearning</li>
+    </ul>
+    <p class="oss"><span>Open source</span>Apache Airflow · CRI-O · DuckDuckGo</p>
+  </div>
+</div>
+</html>

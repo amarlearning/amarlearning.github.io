@@ -16,8 +16,8 @@ a:active { opacity: 0.7; }
 
 /* ---------- header ---------- */
 .masthead { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); }
-.identity { display: flex; align-items: center; gap: var(--space-sm); min-width: 0; color: var(--color-ink); text-decoration: none; }
-.identity img { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; }
+.identity { display: flex; align-items: center; gap: var(--space-md); min-width: 0; color: var(--color-ink); text-decoration: none; }
+.identity img { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 .identity-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
 .identity-name { color: var(--color-ink); font-size: var(--text-title); font-weight: var(--weight-medium); }
 .identity-handle { color: var(--color-muted); font-size: var(--text-sm); }
@@ -174,8 +174,15 @@ a:hover > .icon-arrow, a:hover .card-head .icon-arrow { transform: translate(1px
 .row-title { min-width: 0; color: var(--color-ink); font-weight: var(--weight-body); }
 .row time { flex-shrink: 0; color: var(--color-muted); font-size: var(--text-sm); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-.more { display: inline-flex; margin-top: var(--space-sm); color: var(--color-muted); font-size: var(--text-sm); text-decoration: underline; text-decoration-color: var(--color-rule-strong); text-underline-offset: 3px; }
-.more:hover { color: var(--color-ink); text-decoration-color: var(--color-ink); }
+/* "more" links get the pen's scribble instead of a plain underline; it redraws on hover */
+.more { position: relative; display: inline-flex; margin-top: var(--space-sm); padding-bottom: 7px; color: var(--color-muted); font-size: var(--text-sm); text-decoration: none; }
+.more::after {
+  content: ""; position: absolute; left: -1px; right: -3px; bottom: 0; height: 6px;
+  background: var(--mark-ink); opacity: 0.55; mask: var(--scribble) repeat-x 0 0 / 26px 6px;
+  transition: opacity var(--dur-short) var(--ease-out);
+}
+.more:hover { color: var(--color-ink); }
+.more:hover::after { opacity: 1; animation: scribble 600ms var(--ease-out) both; }
 
 /* ---------- about: a taped-in polaroid and a paper card of things off the clock ---------- */
 /* both are physical paper, so they stay light in either theme */
@@ -569,10 +576,10 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 }
 
 /* the avatar is a small photo taped into the corner of the page */
-.identity img { border-radius: 3px; padding: 3px; background: #fbf8f2; box-shadow: 0 1px 2px rgb(0 0 0 / 0.15), 0 6px 12px -6px rgb(0 0 0 / 0.5); rotate: -4deg; }
+.identity img { border-radius: 3px; padding: 4px; background: #fbf8f2; box-shadow: 0 1px 2px rgb(0 0 0 / 0.15), 0 6px 12px -6px rgb(0 0 0 / 0.5); rotate: -4deg; }
 .identity { position: relative; }
 .identity::before {
-  content: ""; position: absolute; z-index: 1; top: -6px; left: 10px; width: 26px; height: 10px; rotate: -12deg;
+  content: ""; position: absolute; z-index: 1; top: -8px; left: 20px; width: 40px; height: 14px; rotate: -12deg;
   background: var(--tape); pointer-events: none;
 }
 
