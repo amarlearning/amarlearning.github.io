@@ -6,13 +6,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="https://amarpandey.me/favicon/favicon.png" />
-<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery | Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ</title><link rel="canonical" href="https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/" />
+<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery | Amar Prakash Pandey</title><link rel="canonical" href="https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/" />
 <meta name="description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance." />
 <meta name="keywords" content="Apache-Spark, Spark, Big-Data, Data-Processing, Performance, Performance-Optimization, Distributed-Computing, Data-Engineering" />
 
 
 <meta property="og:url" content="https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/">
-  <meta property="og:site_name" content="Amar Prakash Pandey - ᕦ(ò_óˇ)ᕤ">
+  <meta property="og:site_name" content="Amar’s space: data, open source &amp; side quests">
   <meta property="og:title" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery">
   <meta property="og:description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
   <meta property="og:locale" content="en_US">
@@ -26,13 +26,13 @@
     <meta property="article:tag" content="Data-Processing">
     <meta property="article:tag" content="Performance">
     <meta property="article:tag" content="Performance-Optimization">
-    <meta property="og:image" content="https://amarpandey.me/images/spark-oom-4tb-ram/banner.png">
+    <meta property="og:image" content="https://amarpandey.me/images/og/spark-oom-4tb-ram.jpg">
 
 
 
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://amarpandey.me/images/spark-oom-4tb-ram/banner.png">
+  <meta name="twitter:image" content="https://amarpandey.me/images/og/spark-oom-4tb-ram.jpg">
   <meta name="twitter:title" content="4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery">
   <meta name="twitter:description" content="Our Spark job failed despite a 4TB RAM cluster. Scaling up wasn’t the fix—tuning executors and heap size was. Learn how we solved JVM memory inefficiencies and optimized Spark performance.">
 
@@ -44,11 +44,11 @@
   <meta itemprop="datePublished" content="2025-03-30T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-03-30T00:00:00+00:00">
   <meta itemprop="wordCount" content="567">
-  <meta itemprop="image" content="https://amarpandey.me/images/spark-oom-4tb-ram/banner.png">
+  <meta itemprop="image" content="https://amarpandey.me/images/og/spark-oom-4tb-ram.jpg">
   <meta itemprop="keywords" content="Apache-Spark,Spark,Big Data,Data-Processing,Performance,Performance-Optimization,Distributed-Computing,Data Engineering">
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
-  <link rel="stylesheet" href="/css/main.min.f2cd2b9ebd6ba3962ccb32961c62fbefd55f2baa9a75cedd4729617ba8d7c6a4.css" integrity="sha256-8s0rnr1ro5YsyzKWHGL779VfK6qadc7dRylhe6jXxqQ=">
+  <link rel="stylesheet" href="/css/main.min.a43bbea9e644db002f22daa9bb7cedea9f4c07473e8ef9f958f460defb1a0952.css" integrity="sha256-pDu&#43;qeZE2wAvItqpu3zt6p9MB0c&#43;jvn5WPRg3vsaCVI=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -73,7 +73,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header><div class="masthead">
   <a href="/" class="identity">
-    <img src="https://github.com/amarlearning.png?size=96" alt="Amar Prakash Pandey" width="44" height="44" fetchpriority="high">
+    <img src="/images/me.webp" alt="Amar Prakash Pandey" width="80" height="80" fetchpriority="high">
     <span class="identity-text">
       <span class="identity-name">Amar Prakash Pandey</span>
       <span class="identity-handle">aka @amarlearning</span>
