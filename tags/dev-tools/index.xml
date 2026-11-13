@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dev-Tools on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/dev-tools/</link>
-    <description>Recent content in Dev-Tools on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/dev-tools/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Never Push a Work Commit with Your Personal Email Again</title>
-      <link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
-      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
-      <description>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&#xA;I used to run into this problem often, especially since I used the same laptop for both work and personal projects.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Dev-Tools on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/dev-tools/</link>
+		<description>Recent content in Dev-Tools on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/dev-tools/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Never Push a Work Commit with Your Personal Email Again</title>
+				<link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/git-work-email/banner.png&#34; alt=&#34;banner&#34; width=&#34;1920&#34; height=&#34;1080&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&lt;/p&gt;&#xA;&lt;p&gt;I used to run into this problem often, especially since I used the same laptop for both work and personal projects. That’s when I came up with a simple but powerful trick — automatically switching Git identities based on folder path using Git’s &lt;code&gt;includeIf&lt;/code&gt; feature.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

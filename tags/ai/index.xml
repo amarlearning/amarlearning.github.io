@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ai on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/ai/</link>
-    <description>Recent content in Ai on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
-      <link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
-      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
-      <description>You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&#xA;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&#xA;You explain again.&#xA;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Ai on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/ai/</link>
+		<description>Recent content in Ai on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
+				<link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.png&#34; alt=&#34;banner&#34; width=&#34;1536&#34; height=&#34;1024&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&lt;/p&gt;&#xA;&lt;p&gt;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&lt;/p&gt;&#xA;&lt;p&gt;You explain again.&lt;/p&gt;&#xA;&lt;p&gt;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one. The reasoning that shaped your codebase? Gone the moment you close the tab.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

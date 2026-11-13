@@ -1,152 +1,157 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blog on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/blog/</link>
-    <description>Recent content in Blog on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
-    <atom:link href="https://amarpandey.me/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>We&#39;re Putting AI Everywhere Before It&#39;s Sustainable</title>
-      <link>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</link>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
-      <guid>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</guid>
-      <description>We are making an expensive, resource-intensive technology artificially accessible and encouraging mass adoption before we&amp;rsquo;ve established that its widespread use is economically and environmentally sustainable.&#xA;Something about the current wave of AI adoption doesn&amp;rsquo;t sit right with me.&#xA;Every product is adding AI features. Existing products are being rebuilt around it, and developers keep finding creative ways to put it into problems that were already solved quite well.&#xA;I get the excitement.</description>
-    </item>
-    <item>
-      <title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
-      <link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
-      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
-      <description>You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&#xA;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&#xA;You explain again.&#xA;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one.</description>
-    </item>
-    <item>
-      <title>Functors and Monads: Wrapping Your Data (Not Your Head) Around Them</title>
-      <link>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</link>
-      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</guid>
-      <description>Why these words sound scarier than they are If you&amp;rsquo;ve ever Googled &amp;ldquo;what is a monad&amp;rdquo;, you&amp;rsquo;ve probably landed on a Stack Overflow answer that says something like &amp;ldquo;a monad is just a monoid in the category of endofunctors&amp;rdquo; and immediately closed the tab.&#xA;Fair.&#xA;Here&amp;rsquo;s the thing: you don&amp;rsquo;t need category theory to use functors and monads. You need a pipeline, some data, and a small conceptual shift in how you think about wrapping transformations.</description>
-    </item>
-    <item>
-      <title>Currying and Partial Application: Shaping Intent</title>
-      <link>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</link>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</guid>
-      <description>Why this topic is confusing Currying and partial application are concepts that almost every Python developer has seen, but very few feel confident using. For a long time, I understood what they did, but I didn&amp;rsquo;t know when using them actually made code better.&#xA;A clear distinction: currying vs partial application Currying transforms a function that takes multiple arguments into a chain of functions that each take a single argument:</description>
-    </item>
-    <item>
-      <title>Choosing Functional Python (Without Forcing It)</title>
-      <link>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</link>
-      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</guid>
-      <description>Why this matters Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, map, filter, reduce, any, sorted, and more.&#xA;For a long time, I knew these tools existed, but I didn’t really know when or why to use them. I could read functional-style code, but writing it confidently was another story.&#xA;This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.</description>
-    </item>
-    <item>
-      <title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
-      <link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
-      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
-      <description>Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&#xA;Here&amp;rsquo;s the clean split that keeps you sane:&#xA;Spot Optimizer is a Python library/CLI that figures out the right instance types and counts for your workload. EC2 Fleet / Spot Fleet are AWS services that launch and maintain that capacity. Short version: Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.</description>
-    </item>
-    <item>
-      <title>How Not to Open a Pull Request – And How to Do It Right</title>
-      <link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
-      <description>Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&#xA;That&amp;rsquo;s exactly what happened with my project spot-optimizer. The contributor was skilled, the intentions were great, but there was one major problem:&#xA;Changes Count Lines Added 2,200+ Lines Removed 1,200 Files Changed 25 Total Commits 15 Despite the valuable improvements it offered, I had to close it.</description>
-    </item>
-    <item>
-      <title>Never Push a Work Commit with Your Personal Email Again</title>
-      <link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
-      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
-      <description>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&#xA;I used to run into this problem often, especially since I used the same laptop for both work and personal projects.</description>
-    </item>
-    <item>
-      <title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
-      <link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
-      <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
-      <description>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why dynamic skew join optimization is not just useful, but often essential.&#xA;The Problem Setup Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&#xA;sqlCopy SELECT * FROM large_table_one JOIN large_table_two ON large_table_one.key = large_table_two.</description>
-    </item>
-    <item>
-      <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
-      <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
-      <description>Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&#xA;The Data Challenge Our task involved processing three datasets:</description>
-    </item>
-    <item>
-      <title>Deep Dive into Spark Jobs and Stages</title>
-      <link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
-      <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
-      <description>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&#xA;Spark Transformations and Actions In Spark, operations are classified into two main categories: Transformations and Actions.&#xA;Transformations: These operations do not trigger execution but define a new dataset from an existing one.</description>
-    </item>
-    <item>
-      <title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
-      <link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
-      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
-      <description>When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&#xA;Read times Update cost Memory/storage overhead The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&#xA;Example: Log-Structured Databases Consider a log-structured database:&#xA;Update-optimized: Records are appended at the end of the file, allowing efficient updates. Low memory/storage overhead: There’s no additional indexing, saving on storage.</description>
-    </item>
-    <item>
-      <title>The CAP Theorem: Balancing the Big Three in Distributed Databases</title>
-      <link>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</link>
-      <pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</guid>
-      <description>The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:&#xA;C: Consistency A: Availability P: Partition Tolerance What Do These Terms Mean? Consistency (C): Every read receives the most recent write or an error. This means that the data you access is guaranteed to be the latest version, or the system will notify you that something went wrong.</description>
-    </item>
-    <item>
-      <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
-      <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
-      <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
-    </item>
-    <item>
-      <title>Handling Large Broadcast Joins in Apache Spark</title>
-      <link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
-      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
-      <description>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&#xA;shellCopy Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: 13 GB This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB.</description>
-    </item>
-    <item>
-      <title>Symptoms of Bad Code</title>
-      <link>https://amarpandey.me/blog/symptoms-of-bad-code/</link>
-      <pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/symptoms-of-bad-code/</guid>
-      <description>1. Rigidity Rigidity is the tendency of the system to be hard to change. Code that has dependencies that snake out in so many directions and you cannot make an isolated change without changing everything around it. Rigidity causes compile time error. 2. Fragility A system is fragile when a small change in one module causes other unrelated modules to misbehave.&#xA;It is the tendency of the code to break in many places even when you make changes in one place.</description>
-    </item>
-    <item>
-      <title>Docker - the right way</title>
-      <link>https://amarpandey.me/blog/docker---the-right-way/</link>
-      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/docker---the-right-way/</guid>
-      <description>Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.&#xA;1. Use Official Docker Image as Base Image Always use the official or verified base image when writing the docker file. Let&amp;rsquo;s say you are developing a java application and want to build it and run it as a docker image.</description>
-    </item>
-    <item>
-      <title>GitOps - the easy way</title>
-      <link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
-      <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
-      <description>What is GitOps? Treat the infrastructure as code the same way as application code.&#xA;Separate repository for Infrastructure as code. DevOps pipeline. How does GitOps works? Infrastructure as Code hosted on Git repository.&#xA;Version controlled. Team collaboration. Use branching strategy to merge code in git repository. With CI pipeline to test the code. With CD pipeline to apply the changes to the Infrastructure. With the above steps we achieve: Automated Process.</description>
-    </item>
-    <item>
-      <title>Finger Detection and Tracking using OpenCV and Python</title>
-      <link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
-      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
-      <description>TL;DR. Code is here.&#xA;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&#xA;One of the challenges that I faced in detecting fingers is differentiating a hand from the background and identifying the tip of a finger.</description>
-    </item>
-    <item>
-      <title>What is Google Summer of Code? How to prepare for it?</title>
-      <link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
-      <pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
-      <description>We will talk about Google Summer of Code but before that let’s talk about what Open Source Development is. Yes, it’s very important.&#xA;What is open source development? Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an open-source license to study, change, and improve its design.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Blog on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/blog/</link>
+		<description>Recent content in Blog on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/blog/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>We&#39;re Putting AI Everywhere Before It&#39;s Sustainable</title>
+				<link>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/ai-sustainability/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/ai-sustainability/banner.png&#34; alt=&#34;banner&#34; width=&#34;1672&#34; height=&#34;941&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;We are making an expensive, resource-intensive technology artificially accessible and encouraging mass adoption before we&amp;rsquo;ve established that its widespread use is economically and environmentally sustainable.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Something about the current wave of AI adoption doesn&amp;rsquo;t sit right with me.&lt;/p&gt;&#xA;&lt;p&gt;Every product is adding AI features. Existing products are being rebuilt around it, and developers keep finding creative ways to put it into problems that were already solved quite well.&lt;/p&gt;&#xA;&lt;p&gt;I get the excitement. AI is genuinely powerful. But I think we&amp;rsquo;re getting carried away.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
+				<link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.png&#34; alt=&#34;banner&#34; width=&#34;1536&#34; height=&#34;1024&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&lt;/p&gt;&#xA;&lt;p&gt;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&lt;/p&gt;&#xA;&lt;p&gt;You explain again.&lt;/p&gt;&#xA;&lt;p&gt;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one. The reasoning that shaped your codebase? Gone the moment you close the tab.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Functors and Monads: Wrapping Your Data (Not Your Head) Around Them</title>
+				<link>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/functors-and-monads/banner.svg&#34; alt=&#34;banner&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-these-words-sound-scarier-than-they-are&#34;&gt;Why these words sound scarier than they are&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;ve ever Googled &amp;ldquo;what is a monad&amp;rdquo;, you&amp;rsquo;ve probably landed on a Stack Overflow answer that says something like &lt;em&gt;&amp;ldquo;a monad is just a monoid in the category of endofunctors&amp;rdquo;&lt;/em&gt; and immediately closed the tab.&lt;/p&gt;&#xA;&lt;p&gt;Fair.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s the thing: you don&amp;rsquo;t need category theory to use functors and monads. You need a pipeline, some data, and a small conceptual shift in how you think about wrapping transformations.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Currying and Partial Application: Shaping Intent</title>
+				<link>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/currying-and-partial-application/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/currying-and-partial-application/banner.jpg&#34; alt=&#34;banner&#34; width=&#34;1280&#34; height=&#34;720&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-this-topic-is-confusing&#34;&gt;Why this topic is confusing&lt;/h2&gt;&#xA;&lt;p&gt;Currying and partial application are concepts that almost every Python developer has seen, but very few feel confident using. For a long time, I understood what they did, but I didn&amp;rsquo;t know &lt;strong&gt;when&lt;/strong&gt; using them actually made code better.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;a-clear-distinction-currying-vs-partial-application&#34;&gt;A clear distinction: currying vs partial application&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Currying&lt;/strong&gt; transforms a function that takes multiple arguments into a chain of functions that each take a single argument:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Choosing Functional Python (Without Forcing It)</title>
+				<link>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</link>
+				<pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/functional-python/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/functional-python/banner.png&#34; alt=&#34;banner&#34; width=&#34;1022&#34; height=&#34;403&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-this-matters&#34;&gt;Why this matters&lt;/h2&gt;&#xA;&lt;p&gt;Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;reduce&lt;/code&gt;, &lt;code&gt;any&lt;/code&gt;, &lt;code&gt;sorted&lt;/code&gt;, and more.&lt;/p&gt;&#xA;&lt;p&gt;For a long time, I knew these tools existed, but I didn’t really know &lt;strong&gt;when&lt;/strong&gt; or &lt;strong&gt;why&lt;/strong&gt; to use them. I could read functional-style code, but writing it confidently was another story.&lt;/p&gt;&#xA;&lt;p&gt;This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
+				<link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spot-optimizer-vs-spot-fleet/banner.svg&#34; alt=&#34;banner&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s the clean split that keeps you sane:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Spot Optimizer&lt;/strong&gt; is a Python library/CLI that figures out the right instance types and counts for your workload.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;EC2 Fleet / Spot Fleet&lt;/strong&gt; are AWS services that launch and maintain that capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Short version: &lt;strong&gt;Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>How Not to Open a Pull Request – And How to Do It Right</title>
+				<link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/pull-requests-done-right/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/pull-requests-done-right/banner.png&#34; alt=&#34;banner&#34; width=&#34;896&#34; height=&#34;504&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&lt;/p&gt;&#xA;&lt;p&gt;That&amp;rsquo;s exactly what happened with my project &lt;strong&gt;spot-optimizer&lt;/strong&gt;. The contributor was skilled, the intentions were great, but there was one major problem:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Changes&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Count&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Lines Added&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2,200+&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Lines Removed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1,200&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Files Changed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;25&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Total Commits&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;15&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Despite the valuable improvements it offered, I had to close it. Not because of code quality or the contributor&amp;rsquo;s skills, but because its sheer size made it impossible to review effectively. It tried to solve too many problems at once, altered core design decisions, and would have required days of careful review.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Never Push a Work Commit with Your Personal Email Again</title>
+				<link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/git-work-email/banner.png&#34; alt=&#34;banner&#34; width=&#34;1920&#34; height=&#34;1080&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&lt;/p&gt;&#xA;&lt;p&gt;I used to run into this problem often, especially since I used the same laptop for both work and personal projects. That’s when I came up with a simple but powerful trick — automatically switching Git identities based on folder path using Git’s &lt;code&gt;includeIf&lt;/code&gt; feature.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
+				<link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-skew-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-skew-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;16860&#34; height=&#34;2566&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why &lt;strong&gt;dynamic skew join optimization&lt;/strong&gt; is not just useful, but often essential.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-setup&#34;&gt;The Problem Setup&lt;/h2&gt;&#xA;&lt;p&gt;Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;sql&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;Or using the equivalent Spark DataFrame API:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
+				<link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.png&#34; alt=&#34;banner&#34; width=&#34;3444&#34; height=&#34;978&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-data-challenge&#34;&gt;The Data Challenge&lt;/h2&gt;&#xA;&lt;p&gt;Our task involved processing three datasets:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Deep Dive into Spark Jobs and Stages</title>
+				<link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
+				<pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-jobs-and-stages/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-jobs-and-stages/banner.png&#34; alt=&#34;banner&#34; width=&#34;2880&#34; height=&#34;1368&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&lt;/p&gt;&#xA;&lt;h2 id=&#34;spark-transformations-and-actions&#34;&gt;Spark Transformations and Actions&lt;/h2&gt;&#xA;&lt;p&gt;In Spark, operations are classified into two main categories: Transformations and Actions.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Transformations:&lt;/strong&gt; These operations do not trigger execution but define a new dataset from an existing one. Transformations are further categorized into:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Narrow Dependency:&lt;/strong&gt; Performed in parallel on data partitions. Examples include &lt;code&gt;select()&lt;/code&gt;, &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;withColumn()&lt;/code&gt;, &lt;code&gt;drop()&lt;/code&gt;. These transformations are efficient as they do not involve shuffling.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Wide Dependency:&lt;/strong&gt; Require data from multiple partitions to be grouped or aggregated, leading to shuffle operations. Examples include &lt;code&gt;groupBy()&lt;/code&gt;, &lt;code&gt;join()&lt;/code&gt;, &lt;code&gt;cube()&lt;/code&gt;, &lt;code&gt;rollup()&lt;/code&gt;, &lt;code&gt;agg()&lt;/code&gt;, and &lt;code&gt;repartition()&lt;/code&gt;. These operations can be costly due to data movement between nodes.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Actions:&lt;/strong&gt; These trigger the execution of the transformations and produce an output. Examples include &lt;code&gt;read()&lt;/code&gt;, &lt;code&gt;write()&lt;/code&gt;, &lt;code&gt;collect()&lt;/code&gt;, &lt;code&gt;take()&lt;/code&gt;, and &lt;code&gt;count()&lt;/code&gt;. Each action triggers a separate job in Spark.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s look at some code examples to understand these concepts better:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
+				<link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/rum-conjecture/banner.png&#34; alt=&#34;banner&#34; width=&#34;1217&#34; height=&#34;305&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Read times&lt;/li&gt;&#xA;&lt;li&gt;Update cost&lt;/li&gt;&#xA;&lt;li&gt;Memory/storage overhead&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&lt;/p&gt;&#xA;&lt;h3 id=&#34;example-log-structured-databases&#34;&gt;Example: Log-Structured Databases&lt;/h3&gt;&#xA;&lt;p&gt;Consider a log-structured database:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Update-optimized: Records are appended at the end of the file, allowing efficient updates.&lt;/li&gt;&#xA;&lt;li&gt;Low memory/storage overhead: There’s no additional indexing, saving on storage.&lt;/li&gt;&#xA;&lt;li&gt;Trade-off on reads: Without indexes, lookups become slower, negatively impacting read times.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This trade-off forms a triangular relationship among read efficiency, update costs, and storage overhead.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>The CAP Theorem: Balancing the Big Three in Distributed Databases</title>
+				<link>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/the-cap-theorem-balancing-the-big-three-in-distributed-databases/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/cap-theorem/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/cap-theorem/banner.png&#34; alt=&#34;banner&#34; width=&#34;800&#34; height=&#34;753&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;The CAP theorem, also known as Brewer’s theorem (named after computer scientist Eric Brewer), defines a fundamental trade-off in distributed systems: any distributed data store can provide only two out of three guarantees at any time:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;C&lt;/strong&gt;: Consistency&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;A&lt;/strong&gt;: Availability&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;P&lt;/strong&gt;: Partition Tolerance&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;what-do-these-terms-mean&#34;&gt;What Do These Terms Mean?&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Consistency (C):&lt;/strong&gt; Every read receives the most recent write or an error. This means that the data you access is guaranteed to be the latest version, or the system will notify you that something went wrong.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Availability (A):&lt;/strong&gt; Every request receives a response, but without the guarantee that it contains the most recent write. In other words, you’ll always get a reply, but it may not always reflect the latest state of the system.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Partition Tolerance (P):&lt;/strong&gt; The system continues to operate even if there is a network partition—essentially, when some nodes in the system cannot communicate with others due to network failures.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;the-cap-theorem-trilemma-pick-two&#34;&gt;The CAP Theorem Trilemma: &amp;ldquo;Pick Two&amp;rdquo;&lt;/h2&gt;&#xA;&lt;p&gt;A common phrase used to describe the CAP theorem is: &amp;ldquo;You can only pick two out of the three.&amp;rdquo; However, this description is a bit of an oversimplification. Here&amp;rsquo;s the real crux of the matter:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
+				<link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-shuffle-partitions/banner.png&#34; alt=&#34;banner&#34; width=&#34;1042&#34; height=&#34;455&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&lt;/p&gt;&#xA;&lt;h3 id=&#34;default-shuffle-partition-count&#34;&gt;Default Shuffle Partition Count&lt;/h3&gt;&#xA;&lt;p&gt;By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Handling Large Broadcast Joins in Apache Spark</title>
+				<link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
+				<pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;1400&#34; height=&#34;631&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;shell&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; GB&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB. If a dataset exceeds this limit, Spark will throw an exception and the job will fail. Here, we will discuss two ways to resolve this issue.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Symptoms of Bad Code</title>
+				<link>https://amarpandey.me/blog/symptoms-of-bad-code/</link>
+				<pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/symptoms-of-bad-code/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/symptoms-of-bad-code/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/symptoms-of-bad-code/banner.jpg&#34; alt=&#34;banner&#34; width=&#34;1600&#34; height=&#34;900&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-rigidity&#34;&gt;1. Rigidity&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Rigidity is the tendency of the system to be hard to change.&lt;/li&gt;&#xA;&lt;li&gt;Code that has dependencies that snake out in so many directions and you cannot make an isolated change without changing everything around it.&lt;/li&gt;&#xA;&lt;li&gt;Rigidity causes compile time error.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;2-fragility&#34;&gt;2. Fragility&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;A system is fragile when a small change in one module causes other unrelated modules to misbehave.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;It is the tendency of the code to break in many places even when you make changes in one place. You make a simple change and a whole bunch of things break. But they break into parts of the code that have no relationship to what you changed.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Fragility causes runtime error.&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+			<item>
+				<title>Docker - the right way</title>
+				<link>https://amarpandey.me/blog/docker---the-right-way/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/docker---the-right-way/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/docker-the-right-way/banner.png&#34; alt=&#34;banner&#34; width=&#34;601&#34; height=&#34;431&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-use-official-docker-image-as-base-image&#34;&gt;1. Use Official Docker Image as Base Image&lt;/h3&gt;&#xA;&lt;p&gt;Always use the official or verified base image when writing the docker file. Let&amp;rsquo;s say you are developing a java application and want to build it and run it as a docker image. Instead of taking a base operating system image and installing java, maven, and other tools you need for your application.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>GitOps - the easy way</title>
+				<link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
+				<pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/gitops-the-easy-way/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/gitops-the-easy-way/banner.png&#34; alt=&#34;banner&#34; width=&#34;1800&#34; height=&#34;942&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-is-gitops&#34;&gt;What is GitOps?&lt;/h3&gt;&#xA;&lt;p&gt;Treat the infrastructure as code the same way as application code.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Separate repository for Infrastructure as code.&lt;/li&gt;&#xA;&lt;li&gt;DevOps pipeline.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;how-does-gitops-works&#34;&gt;How does GitOps works?&lt;/h3&gt;&#xA;&lt;p&gt;Infrastructure as Code hosted on Git repository.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Version controlled.&lt;/li&gt;&#xA;&lt;li&gt;Team collaboration.&lt;/li&gt;&#xA;&lt;li&gt;Use branching strategy to merge code in git repository.&lt;/li&gt;&#xA;&lt;li&gt;With CI pipeline to test the code.&lt;/li&gt;&#xA;&lt;li&gt;With CD pipeline to apply the changes to the Infrastructure.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;with-the-above-steps-we-achieve&#34;&gt;With the above steps we achieve:&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Automated Process.&lt;/li&gt;&#xA;&lt;li&gt;More Transparent.&lt;/li&gt;&#xA;&lt;li&gt;Quality Infrastructure as Code.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;cd-pipeline-push-vs-pull-model&#34;&gt;CD Pipeline: Push vs Pull Model&lt;/h3&gt;&#xA;&lt;p&gt;Once merged into master changes will be automatically applied to master.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Finger Detection and Tracking using OpenCV and Python</title>
+				<link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
+				<pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
+				<description>&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;&#x9;&#x9;&#x9;&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/P3dUePye_-k?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;&#x9;&#x9;&lt;/div&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;TL;DR. Code is &lt;a href=&#34;https://github.com/amarlearning/Finger-Detection-and-Tracking&#34;&gt;here&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>What is Google Summer of Code? How to prepare for it?</title>
+				<link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/google-summer-of-code/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/google-summer-of-code/banner.jpeg&#34; alt=&#34;banner&#34; width=&#34;1600&#34; height=&#34;900&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;We will talk about Google Summer of Code but before that let’s talk about what&#xA;Open Source Development is. Yes, it’s very important.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-open-source-development&#34;&gt;What is open source development?&lt;/h2&gt;&#xA;&lt;p&gt;Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an &lt;a href=&#34;https://opensource.org/licenses&#34;&gt;open-source license&lt;/a&gt; to study, change, and improve its design.&lt;/p&gt;&#xA;&lt;p&gt;I strongly believe that reading few lines of code is worth more than reading 500 pages of a book. When you follow code written by great programmers, you automatically tend to pick up some great practices while coding.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

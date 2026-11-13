@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cloud-Computing on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/cloud-computing/</link>
-    <description>Recent content in Cloud-Computing on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
-      <link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
-      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
-      <description>Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&#xA;Here&amp;rsquo;s the clean split that keeps you sane:&#xA;Spot Optimizer is a Python library/CLI that figures out the right instance types and counts for your workload. EC2 Fleet / Spot Fleet are AWS services that launch and maintain that capacity. Short version: Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Cloud-Computing on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/cloud-computing/</link>
+		<description>Recent content in Cloud-Computing on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 01 Sep 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
+				<link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spot-optimizer-vs-spot-fleet/banner.svg&#34; alt=&#34;banner&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s the clean split that keeps you sane:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Spot Optimizer&lt;/strong&gt; is a Python library/CLI that figures out the right instance types and counts for your workload.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;EC2 Fleet / Spot Fleet&lt;/strong&gt; are AWS services that launch and maintain that capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Short version: &lt;strong&gt;Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

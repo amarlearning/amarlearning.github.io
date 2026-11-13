@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Open-Source-Software on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/open-source-software/</link>
-    <description>Recent content in Open-Source-Software on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sun, 02 Jul 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/open-source-software/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>What is Google Summer of Code? How to prepare for it?</title>
-      <link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
-      <pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
-      <description>We will talk about Google Summer of Code but before that let’s talk about what Open Source Development is. Yes, it’s very important.&#xA;What is open source development? Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an open-source license to study, change, and improve its design.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Open-Source-Software on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/open-source-software/</link>
+		<description>Recent content in Open-Source-Software on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 02 Jul 2017 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/open-source-software/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>What is Google Summer of Code? How to prepare for it?</title>
+				<link>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/what-is-google-summer-of-code---how-to-prepare-for-it/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/google-summer-of-code/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/google-summer-of-code/banner.jpeg&#34; alt=&#34;banner&#34; width=&#34;1600&#34; height=&#34;900&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;We will talk about Google Summer of Code but before that let’s talk about what&#xA;Open Source Development is. Yes, it’s very important.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;what-is-open-source-development&#34;&gt;What is open source development?&lt;/h2&gt;&#xA;&lt;p&gt;Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed. These are software products available with its source code under an &lt;a href=&#34;https://opensource.org/licenses&#34;&gt;open-source license&lt;/a&gt; to study, change, and improve its design.&lt;/p&gt;&#xA;&lt;p&gt;I strongly believe that reading few lines of code is worth more than reading 500 pages of a book. When you follow code written by great programmers, you automatically tend to pick up some great practices while coding.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Gitops on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/gitops/</link>
-    <description>Recent content in Gitops on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Tue, 04 Jan 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GitOps - the easy way</title>
-      <link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
-      <pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
-      <description>What is GitOps? Treat the infrastructure as code the same way as application code.&#xA;Separate repository for Infrastructure as code. DevOps pipeline. How does GitOps works? Infrastructure as Code hosted on Git repository.&#xA;Version controlled. Team collaboration. Use branching strategy to merge code in git repository. With CI pipeline to test the code. With CD pipeline to apply the changes to the Infrastructure. With the above steps we achieve: Automated Process.</description>
-    </item>
-    <item>
-      <title>Finger Detection and Tracking using OpenCV and Python</title>
-      <link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
-      <pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
-      <description>TL;DR. Code is here.&#xA;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&#xA;One of the challenges that I faced in detecting fingers is differentiating a hand from the background and identifying the tip of a finger.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Gitops on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/gitops/</link>
+		<description>Recent content in Gitops on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 04 Jan 2022 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/gitops/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>GitOps - the easy way</title>
+				<link>https://amarpandey.me/blog/gitops---the-easy-way/</link>
+				<pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/gitops---the-easy-way/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/gitops-the-easy-way/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/gitops-the-easy-way/banner.png&#34; alt=&#34;banner&#34; width=&#34;1800&#34; height=&#34;942&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;what-is-gitops&#34;&gt;What is GitOps?&lt;/h3&gt;&#xA;&lt;p&gt;Treat the infrastructure as code the same way as application code.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Separate repository for Infrastructure as code.&lt;/li&gt;&#xA;&lt;li&gt;DevOps pipeline.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;how-does-gitops-works&#34;&gt;How does GitOps works?&lt;/h3&gt;&#xA;&lt;p&gt;Infrastructure as Code hosted on Git repository.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Version controlled.&lt;/li&gt;&#xA;&lt;li&gt;Team collaboration.&lt;/li&gt;&#xA;&lt;li&gt;Use branching strategy to merge code in git repository.&lt;/li&gt;&#xA;&lt;li&gt;With CI pipeline to test the code.&lt;/li&gt;&#xA;&lt;li&gt;With CD pipeline to apply the changes to the Infrastructure.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;with-the-above-steps-we-achieve&#34;&gt;With the above steps we achieve:&lt;/h4&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Automated Process.&lt;/li&gt;&#xA;&lt;li&gt;More Transparent.&lt;/li&gt;&#xA;&lt;li&gt;Quality Infrastructure as Code.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;cd-pipeline-push-vs-pull-model&#34;&gt;CD Pipeline: Push vs Pull Model&lt;/h3&gt;&#xA;&lt;p&gt;Once merged into master changes will be automatically applied to master.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Finger Detection and Tracking using OpenCV and Python</title>
+				<link>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</link>
+				<pubDate>Sat, 28 Jul 2018 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/finger-detection-and-tracking-using-opencv-and-python/</guid>
+				<description>&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;&#x9;&#x9;&#x9;&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/P3dUePye_-k?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;&#x9;&#x9;&lt;/div&gt;&#xA;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;TL;DR. Code is &lt;a href=&#34;https://github.com/amarlearning/Finger-Detection-and-Tracking&#34;&gt;here&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Finger detection is an important feature of many computer vision applications. In this application, A histogram based approach is used to separate out the hand from the background frame. Thresholding and Filtering techniques are used for background cancellation to obtain optimum results.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

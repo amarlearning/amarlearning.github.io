@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Partitions on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/partitions/</link>
-    <description>Recent content in Partitions on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/partitions/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
-      <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
-      <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Partitions on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/partitions/</link>
+		<description>Recent content in Partitions on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/partitions/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
+				<link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-shuffle-partitions/banner.png&#34; alt=&#34;banner&#34; width=&#34;1042&#34; height=&#34;455&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&lt;/p&gt;&#xA;&lt;h3 id=&#34;default-shuffle-partition-count&#34;&gt;Default Shuffle Partition Count&lt;/h3&gt;&#xA;&lt;p&gt;By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

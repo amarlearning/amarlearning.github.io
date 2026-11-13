@@ -1,47 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Python on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/python/</link>
-    <description>Recent content in Python on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
-      <link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
-      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
-      <description>You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&#xA;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&#xA;You explain again.&#xA;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one.</description>
-    </item>
-    <item>
-      <title>Functors and Monads: Wrapping Your Data (Not Your Head) Around Them</title>
-      <link>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</link>
-      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</guid>
-      <description>Why these words sound scarier than they are If you&amp;rsquo;ve ever Googled &amp;ldquo;what is a monad&amp;rdquo;, you&amp;rsquo;ve probably landed on a Stack Overflow answer that says something like &amp;ldquo;a monad is just a monoid in the category of endofunctors&amp;rdquo; and immediately closed the tab.&#xA;Fair.&#xA;Here&amp;rsquo;s the thing: you don&amp;rsquo;t need category theory to use functors and monads. You need a pipeline, some data, and a small conceptual shift in how you think about wrapping transformations.</description>
-    </item>
-    <item>
-      <title>Currying and Partial Application: Shaping Intent</title>
-      <link>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</link>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</guid>
-      <description>Why this topic is confusing Currying and partial application are concepts that almost every Python developer has seen, but very few feel confident using. For a long time, I understood what they did, but I didn&amp;rsquo;t know when using them actually made code better.&#xA;A clear distinction: currying vs partial application Currying transforms a function that takes multiple arguments into a chain of functions that each take a single argument:</description>
-    </item>
-    <item>
-      <title>Choosing Functional Python (Without Forcing It)</title>
-      <link>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</link>
-      <pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</guid>
-      <description>Why this matters Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, map, filter, reduce, any, sorted, and more.&#xA;For a long time, I knew these tools existed, but I didn’t really know when or why to use them. I could read functional-style code, but writing it confidently was another story.&#xA;This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.</description>
-    </item>
-    <item>
-      <title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
-      <link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
-      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
-      <description>Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&#xA;Here&amp;rsquo;s the clean split that keeps you sane:&#xA;Spot Optimizer is a Python library/CLI that figures out the right instance types and counts for your workload. EC2 Fleet / Spot Fleet are AWS services that launch and maintain that capacity. Short version: Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Python on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/python/</link>
+		<description>Recent content in Python on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Your AI Agent Forgets Everything. Lore Fixes That.</title>
+				<link>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/your-ai-agent-forgets-everything-lore-fixes-that/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/lore-ai-agent-memory/banner.png&#34; alt=&#34;banner&#34; width=&#34;1536&#34; height=&#34;1024&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;You&amp;rsquo;re building something with Claude Code. The agent asks a question, you explain the context, it makes a good decision. You commit. Session ends.&lt;/p&gt;&#xA;&lt;p&gt;Next session. Different task, same file. The agent is about to do the exact thing you just told it not to do.&lt;/p&gt;&#xA;&lt;p&gt;You explain again.&lt;/p&gt;&#xA;&lt;p&gt;This isn&amp;rsquo;t a bug. It&amp;rsquo;s just how LLM sessions work — every session starts completely fresh. No memory of the last one. The reasoning that shaped your codebase? Gone the moment you close the tab.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Functors and Monads: Wrapping Your Data (Not Your Head) Around Them</title>
+				<link>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/functors-and-monads-wrapping-your-data-not-your-head-around-them/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/functors-and-monads/banner.svg&#34; alt=&#34;banner&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-these-words-sound-scarier-than-they-are&#34;&gt;Why these words sound scarier than they are&lt;/h2&gt;&#xA;&lt;p&gt;If you&amp;rsquo;ve ever Googled &amp;ldquo;what is a monad&amp;rdquo;, you&amp;rsquo;ve probably landed on a Stack Overflow answer that says something like &lt;em&gt;&amp;ldquo;a monad is just a monoid in the category of endofunctors&amp;rdquo;&lt;/em&gt; and immediately closed the tab.&lt;/p&gt;&#xA;&lt;p&gt;Fair.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s the thing: you don&amp;rsquo;t need category theory to use functors and monads. You need a pipeline, some data, and a small conceptual shift in how you think about wrapping transformations.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Currying and Partial Application: Shaping Intent</title>
+				<link>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</link>
+				<pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/currying-and-partial-application-shaping-intent/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/currying-and-partial-application/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/currying-and-partial-application/banner.jpg&#34; alt=&#34;banner&#34; width=&#34;1280&#34; height=&#34;720&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-this-topic-is-confusing&#34;&gt;Why this topic is confusing&lt;/h2&gt;&#xA;&lt;p&gt;Currying and partial application are concepts that almost every Python developer has seen, but very few feel confident using. For a long time, I understood what they did, but I didn&amp;rsquo;t know &lt;strong&gt;when&lt;/strong&gt; using them actually made code better.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;a-clear-distinction-currying-vs-partial-application&#34;&gt;A clear distinction: currying vs partial application&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Currying&lt;/strong&gt; transforms a function that takes multiple arguments into a chain of functions that each take a single argument:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Choosing Functional Python (Without Forcing It)</title>
+				<link>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</link>
+				<pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/choosing-functional-python-without-forcing-it/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/functional-python/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/functional-python/banner.png&#34; alt=&#34;banner&#34; width=&#34;1022&#34; height=&#34;403&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-this-matters&#34;&gt;Why this matters&lt;/h2&gt;&#xA;&lt;p&gt;Python gives you multiple ways to solve the same problem. Loops, comprehensions, generators, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;filter&lt;/code&gt;, &lt;code&gt;reduce&lt;/code&gt;, &lt;code&gt;any&lt;/code&gt;, &lt;code&gt;sorted&lt;/code&gt;, and more.&lt;/p&gt;&#xA;&lt;p&gt;For a long time, I knew these tools existed, but I didn’t really know &lt;strong&gt;when&lt;/strong&gt; or &lt;strong&gt;why&lt;/strong&gt; to use them. I could read functional-style code, but writing it confidently was another story.&lt;/p&gt;&#xA;&lt;p&gt;This document is not a tutorial on functional programming in Python. It’s a set of notes, patterns, and mental models that helped things finally click for me.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Spot Optimizer ≠ Spot Fleet: decide smart, then launch</title>
+				<link>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/spot-optimizer--spot-fleet---decide-smart-then-launch/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spot-optimizer-vs-spot-fleet/banner.svg&#34; alt=&#34;banner&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Picking EC2 Spot instances shouldn&amp;rsquo;t feel like rolling dice. Most teams either guess and get bitten by interruptions, or overbuild complicated logic to dodge them.&lt;/p&gt;&#xA;&lt;p&gt;Here&amp;rsquo;s the clean split that keeps you sane:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Spot Optimizer&lt;/strong&gt; is a Python library/CLI that figures out the right instance types and counts for your workload.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;EC2 Fleet / Spot Fleet&lt;/strong&gt; are AWS services that launch and maintain that capacity.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Short version: &lt;strong&gt;Spot Optimizer decides what to run; EC2/Spot Fleet decide how to run it.&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

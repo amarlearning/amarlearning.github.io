@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tech Tradeoffs on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/tech-tradeoffs/</link>
-    <description>Recent content in Tech Tradeoffs on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/tech-tradeoffs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
-      <link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
-      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
-      <description>When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&#xA;Read times Update cost Memory/storage overhead The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&#xA;Example: Log-Structured Databases Consider a log-structured database:&#xA;Update-optimized: Records are appended at the end of the file, allowing efficient updates. Low memory/storage overhead: There’s no additional indexing, saving on storage.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tech Tradeoffs on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/tech-tradeoffs/</link>
+		<description>Recent content in Tech Tradeoffs on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/tech-tradeoffs/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
+				<link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/rum-conjecture/banner.png&#34; alt=&#34;banner&#34; width=&#34;1217&#34; height=&#34;305&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Read times&lt;/li&gt;&#xA;&lt;li&gt;Update cost&lt;/li&gt;&#xA;&lt;li&gt;Memory/storage overhead&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&lt;/p&gt;&#xA;&lt;h3 id=&#34;example-log-structured-databases&#34;&gt;Example: Log-Structured Databases&lt;/h3&gt;&#xA;&lt;p&gt;Consider a log-structured database:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Update-optimized: Records are appended at the end of the file, allowing efficient updates.&lt;/li&gt;&#xA;&lt;li&gt;Low memory/storage overhead: There’s no additional indexing, saving on storage.&lt;/li&gt;&#xA;&lt;li&gt;Trade-off on reads: Without indexes, lookups become slower, negatively impacting read times.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This trade-off forms a triangular relationship among read efficiency, update costs, and storage overhead.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

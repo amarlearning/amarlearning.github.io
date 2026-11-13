@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Artificial-Intelligence on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/artificial-intelligence/</link>
-    <description>Recent content in Artificial-Intelligence on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>We&#39;re Putting AI Everywhere Before It&#39;s Sustainable</title>
-      <link>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</link>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
-      <guid>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</guid>
-      <description>We are making an expensive, resource-intensive technology artificially accessible and encouraging mass adoption before we&amp;rsquo;ve established that its widespread use is economically and environmentally sustainable.&#xA;Something about the current wave of AI adoption doesn&amp;rsquo;t sit right with me.&#xA;Every product is adding AI features. Existing products are being rebuilt around it, and developers keep finding creative ways to put it into problems that were already solved quite well.&#xA;I get the excitement.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Artificial-Intelligence on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/artificial-intelligence/</link>
+		<description>Recent content in Artificial-Intelligence on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>We&#39;re Putting AI Everywhere Before It&#39;s Sustainable</title>
+				<link>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/blog/were-putting-ai-everywhere-before-its-sustainable/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/ai-sustainability/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/ai-sustainability/banner.png&#34; alt=&#34;banner&#34; width=&#34;1672&#34; height=&#34;941&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;We are making an expensive, resource-intensive technology artificially accessible and encouraging mass adoption before we&amp;rsquo;ve established that its widespread use is economically and environmentally sustainable.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Something about the current wave of AI adoption doesn&amp;rsquo;t sit right with me.&lt;/p&gt;&#xA;&lt;p&gt;Every product is adding AI features. Existing products are being rebuilt around it, and developers keep finding creative ways to put it into problems that were already solved quite well.&lt;/p&gt;&#xA;&lt;p&gt;I get the excitement. AI is genuinely powerful. But I think we&amp;rsquo;re getting carried away.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

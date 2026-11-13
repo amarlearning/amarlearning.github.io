@@ -1,558 +1,563 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/</link>
-    <description>Recent content in Tags on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Artificial-Intelligence</title>
-      <link>https://amarpandey.me/tags/artificial-intelligence/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/artificial-intelligence/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Energy</title>
-      <link>https://amarpandey.me/tags/energy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/energy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Environmental-Impact</title>
-      <link>https://amarpandey.me/tags/environmental-impact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/environmental-impact/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Product-Design</title>
-      <link>https://amarpandey.me/tags/product-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/product-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software-Engineering</title>
-      <link>https://amarpandey.me/tags/software-engineering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/software-engineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sustainability</title>
-      <link>https://amarpandey.me/tags/sustainability/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/sustainability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Technology</title>
-      <link>https://amarpandey.me/tags/technology/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/technology/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai</title>
-      <link>https://amarpandey.me/tags/ai/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Claude-Code</title>
-      <link>https://amarpandey.me/tags/claude-code/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/claude-code/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Developer-Tools</title>
-      <link>https://amarpandey.me/tags/developer-tools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/developer-tools/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Open-Source</title>
-      <link>https://amarpandey.me/tags/open-source/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/open-source/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://amarpandey.me/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Clean-Code</title>
-      <link>https://amarpandey.me/tags/clean-code/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/clean-code/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Functional-Programming</title>
-      <link>https://amarpandey.me/tags/functional-programming/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/functional-programming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Refactoring</title>
-      <link>https://amarpandey.me/tags/refactoring/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/refactoring/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software-Design</title>
-      <link>https://amarpandey.me/tags/software-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/software-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Programming-Patterns</title>
-      <link>https://amarpandey.me/tags/programming-patterns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/programming-patterns/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Pythonic</title>
-      <link>https://amarpandey.me/tags/pythonic/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/pythonic/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AWS</title>
-      <link>https://amarpandey.me/tags/aws/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/aws/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>CLI-Tools</title>
-      <link>https://amarpandey.me/tags/cli-tools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/cli-tools/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cloud-Computing</title>
-      <link>https://amarpandey.me/tags/cloud-computing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/cloud-computing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cost-Optimization</title>
-      <link>https://amarpandey.me/tags/cost-optimization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/cost-optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>DevOps</title>
-      <link>https://amarpandey.me/tags/devops/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/devops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>EC2</title>
-      <link>https://amarpandey.me/tags/ec2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/ec2/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Infrastructure</title>
-      <link>https://amarpandey.me/tags/infrastructure/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/infrastructure/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spot-Instances</title>
-      <link>https://amarpandey.me/tags/spot-instances/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/spot-instances/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Best-Practices</title>
-      <link>https://amarpandey.me/tags/best-practices/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/best-practices/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Code-Review</title>
-      <link>https://amarpandey.me/tags/code-review/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/code-review/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Collaboration</title>
-      <link>https://amarpandey.me/tags/collaboration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/collaboration/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>https://amarpandey.me/tags/git/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/git/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Dev-Tools</title>
-      <link>https://amarpandey.me/tags/dev-tools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/dev-tools/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Developer-Tips</title>
-      <link>https://amarpandey.me/tags/developer-tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/developer-tips/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gitconfig</title>
-      <link>https://amarpandey.me/tags/gitconfig/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/gitconfig/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Multiple-Identities</title>
-      <link>https://amarpandey.me/tags/multiple-identities/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/multiple-identities/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Personal-vs-Work</title>
-      <link>https://amarpandey.me/tags/personal-vs-work/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/personal-vs-work/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Productivity</title>
-      <link>https://amarpandey.me/tags/productivity/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/productivity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Version-Control</title>
-      <link>https://amarpandey.me/tags/version-control/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/version-control/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Big Data</title>
-      <link>https://amarpandey.me/tags/big-data/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/big-data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data Engineering</title>
-      <link>https://amarpandey.me/tags/data-engineering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/data-engineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Optimization</title>
-      <link>https://amarpandey.me/tags/optimization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance</title>
-      <link>https://amarpandey.me/tags/performance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/performance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spark</title>
-      <link>https://amarpandey.me/tags/spark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/spark/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spark-Joins</title>
-      <link>https://amarpandey.me/tags/spark-joins/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/spark-joins/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Apache-Spark</title>
-      <link>https://amarpandey.me/tags/apache-spark/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/apache-spark/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data-Processing</title>
-      <link>https://amarpandey.me/tags/data-processing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/data-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Distributed-Computing</title>
-      <link>https://amarpandey.me/tags/distributed-computing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/distributed-computing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance-Optimization</title>
-      <link>https://amarpandey.me/tags/performance-optimization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/performance-optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Spark-Optimization</title>
-      <link>https://amarpandey.me/tags/spark-optimization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/spark-optimization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Database Design</title>
-      <link>https://amarpandey.me/tags/database-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/database-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RUM Conjecture</title>
-      <link>https://amarpandey.me/tags/rum-conjecture/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/rum-conjecture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tech Tradeoffs</title>
-      <link>https://amarpandey.me/tags/tech-tradeoffs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/tech-tradeoffs/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Availability</title>
-      <link>https://amarpandey.me/tags/availability/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/availability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Brewers Theorem</title>
-      <link>https://amarpandey.me/tags/brewers-theorem/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/brewers-theorem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>CAP Theorem</title>
-      <link>https://amarpandey.me/tags/cap-theorem/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/cap-theorem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Consistency</title>
-      <link>https://amarpandey.me/tags/consistency/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/consistency/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Distributed Systems</title>
-      <link>https://amarpandey.me/tags/distributed-systems/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/distributed-systems/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Network Partitions</title>
-      <link>https://amarpandey.me/tags/network-partitions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/network-partitions/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Partition Tolerance</title>
-      <link>https://amarpandey.me/tags/partition-tolerance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/partition-tolerance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>System Design</title>
-      <link>https://amarpandey.me/tags/system-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/system-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Apache</title>
-      <link>https://amarpandey.me/tags/apache/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/apache/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Data</title>
-      <link>https://amarpandey.me/tags/data/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/data/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Partitions</title>
-      <link>https://amarpandey.me/tags/partitions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/partitions/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Shuffle</title>
-      <link>https://amarpandey.me/tags/shuffle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/shuffle/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Broadcast</title>
-      <link>https://amarpandey.me/tags/broadcast/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/broadcast/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Join</title>
-      <link>https://amarpandey.me/tags/join/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/join/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cleancode</title>
-      <link>https://amarpandey.me/tags/cleancode/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/cleancode/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codesmells</title>
-      <link>https://amarpandey.me/tags/codesmells/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/codesmells/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Softwareengineering</title>
-      <link>https://amarpandey.me/tags/softwareengineering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/softwareengineering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Softwarequality</title>
-      <link>https://amarpandey.me/tags/softwarequality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/softwarequality/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Containers</title>
-      <link>https://amarpandey.me/tags/containers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/containers/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://amarpandey.me/tags/docker/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Iac</title>
-      <link>https://amarpandey.me/tags/iac/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/iac/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://amarpandey.me/tags/security/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gitops</title>
-      <link>https://amarpandey.me/tags/gitops/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/gitops/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Google</title>
-      <link>https://amarpandey.me/tags/google/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/google/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gsoc</title>
-      <link>https://amarpandey.me/tags/gsoc/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/gsoc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Open-Source-Software</title>
-      <link>https://amarpandey.me/tags/open-source-software/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/open-source-software/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oss</title>
-      <link>https://amarpandey.me/tags/oss/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/tags/oss/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tags on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/</link>
+		<description>Recent content in Tags on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 07 Nov 2026 00:00:00 +0530</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Artificial-Intelligence</title>
+				<link>https://amarpandey.me/tags/artificial-intelligence/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/artificial-intelligence/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Energy</title>
+				<link>https://amarpandey.me/tags/energy/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/energy/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Environmental-Impact</title>
+				<link>https://amarpandey.me/tags/environmental-impact/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/environmental-impact/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Product-Design</title>
+				<link>https://amarpandey.me/tags/product-design/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/product-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Software-Engineering</title>
+				<link>https://amarpandey.me/tags/software-engineering/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/software-engineering/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Sustainability</title>
+				<link>https://amarpandey.me/tags/sustainability/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/sustainability/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Technology</title>
+				<link>https://amarpandey.me/tags/technology/</link>
+				<pubDate>Sat, 07 Nov 2026 00:00:00 +0530</pubDate>
+				<guid>https://amarpandey.me/tags/technology/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ai</title>
+				<link>https://amarpandey.me/tags/ai/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/ai/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Claude-Code</title>
+				<link>https://amarpandey.me/tags/claude-code/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/claude-code/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Developer-Tools</title>
+				<link>https://amarpandey.me/tags/developer-tools/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/developer-tools/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Open-Source</title>
+				<link>https://amarpandey.me/tags/open-source/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/open-source/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Python</title>
+				<link>https://amarpandey.me/tags/python/</link>
+				<pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/python/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Clean-Code</title>
+				<link>https://amarpandey.me/tags/clean-code/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/clean-code/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Functional-Programming</title>
+				<link>https://amarpandey.me/tags/functional-programming/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/functional-programming/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Refactoring</title>
+				<link>https://amarpandey.me/tags/refactoring/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/refactoring/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Software-Design</title>
+				<link>https://amarpandey.me/tags/software-design/</link>
+				<pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/software-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Programming-Patterns</title>
+				<link>https://amarpandey.me/tags/programming-patterns/</link>
+				<pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/programming-patterns/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pythonic</title>
+				<link>https://amarpandey.me/tags/pythonic/</link>
+				<pubDate>Sat, 31 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/pythonic/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>AWS</title>
+				<link>https://amarpandey.me/tags/aws/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/aws/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CLI-Tools</title>
+				<link>https://amarpandey.me/tags/cli-tools/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/cli-tools/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cloud-Computing</title>
+				<link>https://amarpandey.me/tags/cloud-computing/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/cloud-computing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cost-Optimization</title>
+				<link>https://amarpandey.me/tags/cost-optimization/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/cost-optimization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>DevOps</title>
+				<link>https://amarpandey.me/tags/devops/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/devops/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>EC2</title>
+				<link>https://amarpandey.me/tags/ec2/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/ec2/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Infrastructure</title>
+				<link>https://amarpandey.me/tags/infrastructure/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/infrastructure/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spot-Instances</title>
+				<link>https://amarpandey.me/tags/spot-instances/</link>
+				<pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/spot-instances/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Best-Practices</title>
+				<link>https://amarpandey.me/tags/best-practices/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/best-practices/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Code-Review</title>
+				<link>https://amarpandey.me/tags/code-review/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/code-review/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Collaboration</title>
+				<link>https://amarpandey.me/tags/collaboration/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/collaboration/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Git</title>
+				<link>https://amarpandey.me/tags/git/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/git/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Dev-Tools</title>
+				<link>https://amarpandey.me/tags/dev-tools/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/dev-tools/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Developer-Tips</title>
+				<link>https://amarpandey.me/tags/developer-tips/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/developer-tips/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gitconfig</title>
+				<link>https://amarpandey.me/tags/gitconfig/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/gitconfig/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Multiple-Identities</title>
+				<link>https://amarpandey.me/tags/multiple-identities/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/multiple-identities/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Personal-vs-Work</title>
+				<link>https://amarpandey.me/tags/personal-vs-work/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/personal-vs-work/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Productivity</title>
+				<link>https://amarpandey.me/tags/productivity/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/productivity/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Version-Control</title>
+				<link>https://amarpandey.me/tags/version-control/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/version-control/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Big Data</title>
+				<link>https://amarpandey.me/tags/big-data/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/big-data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data Engineering</title>
+				<link>https://amarpandey.me/tags/data-engineering/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/data-engineering/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Optimization</title>
+				<link>https://amarpandey.me/tags/optimization/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/optimization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Performance</title>
+				<link>https://amarpandey.me/tags/performance/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/performance/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spark</title>
+				<link>https://amarpandey.me/tags/spark/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/spark/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spark-Joins</title>
+				<link>https://amarpandey.me/tags/spark-joins/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/spark-joins/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Apache-Spark</title>
+				<link>https://amarpandey.me/tags/apache-spark/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/apache-spark/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data-Processing</title>
+				<link>https://amarpandey.me/tags/data-processing/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/data-processing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Distributed-Computing</title>
+				<link>https://amarpandey.me/tags/distributed-computing/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/distributed-computing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Performance-Optimization</title>
+				<link>https://amarpandey.me/tags/performance-optimization/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/performance-optimization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Spark-Optimization</title>
+				<link>https://amarpandey.me/tags/spark-optimization/</link>
+				<pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/spark-optimization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Database Design</title>
+				<link>https://amarpandey.me/tags/database-design/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/database-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>RUM Conjecture</title>
+				<link>https://amarpandey.me/tags/rum-conjecture/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/rum-conjecture/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Tech Tradeoffs</title>
+				<link>https://amarpandey.me/tags/tech-tradeoffs/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/tech-tradeoffs/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Availability</title>
+				<link>https://amarpandey.me/tags/availability/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/availability/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Brewers Theorem</title>
+				<link>https://amarpandey.me/tags/brewers-theorem/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/brewers-theorem/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CAP Theorem</title>
+				<link>https://amarpandey.me/tags/cap-theorem/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/cap-theorem/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Consistency</title>
+				<link>https://amarpandey.me/tags/consistency/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/consistency/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Distributed Systems</title>
+				<link>https://amarpandey.me/tags/distributed-systems/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/distributed-systems/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Network Partitions</title>
+				<link>https://amarpandey.me/tags/network-partitions/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/network-partitions/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Partition Tolerance</title>
+				<link>https://amarpandey.me/tags/partition-tolerance/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/partition-tolerance/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>System Design</title>
+				<link>https://amarpandey.me/tags/system-design/</link>
+				<pubDate>Tue, 15 Oct 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/system-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Apache</title>
+				<link>https://amarpandey.me/tags/apache/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/apache/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Data</title>
+				<link>https://amarpandey.me/tags/data/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/data/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Partitions</title>
+				<link>https://amarpandey.me/tags/partitions/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/partitions/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Shuffle</title>
+				<link>https://amarpandey.me/tags/shuffle/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/shuffle/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Broadcast</title>
+				<link>https://amarpandey.me/tags/broadcast/</link>
+				<pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/broadcast/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Join</title>
+				<link>https://amarpandey.me/tags/join/</link>
+				<pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/join/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Cleancode</title>
+				<link>https://amarpandey.me/tags/cleancode/</link>
+				<pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/cleancode/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Codesmells</title>
+				<link>https://amarpandey.me/tags/codesmells/</link>
+				<pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/codesmells/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Softwareengineering</title>
+				<link>https://amarpandey.me/tags/softwareengineering/</link>
+				<pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/softwareengineering/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Softwarequality</title>
+				<link>https://amarpandey.me/tags/softwarequality/</link>
+				<pubDate>Tue, 19 Jul 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/softwarequality/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Containers</title>
+				<link>https://amarpandey.me/tags/containers/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/containers/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Docker</title>
+				<link>https://amarpandey.me/tags/docker/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/docker/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Iac</title>
+				<link>https://amarpandey.me/tags/iac/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/iac/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Security</title>
+				<link>https://amarpandey.me/tags/security/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/security/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gitops</title>
+				<link>https://amarpandey.me/tags/gitops/</link>
+				<pubDate>Tue, 04 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/gitops/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Google</title>
+				<link>https://amarpandey.me/tags/google/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/google/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Gsoc</title>
+				<link>https://amarpandey.me/tags/gsoc/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/gsoc/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Open-Source-Software</title>
+				<link>https://amarpandey.me/tags/open-source-software/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/open-source-software/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Oss</title>
+				<link>https://amarpandey.me/tags/oss/</link>
+				<pubDate>Sun, 02 Jul 2017 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/tags/oss/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

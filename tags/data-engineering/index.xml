@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Data Engineering on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/data-engineering/</link>
-    <description>Recent content in Data Engineering on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
-      <link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
-      <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
-      <description>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why dynamic skew join optimization is not just useful, but often essential.&#xA;The Problem Setup Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&#xA;sqlCopy SELECT * FROM large_table_one JOIN large_table_two ON large_table_one.key = large_table_two.</description>
-    </item>
-    <item>
-      <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
-      <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
-      <description>Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&#xA;The Data Challenge Our task involved processing three datasets:</description>
-    </item>
-    <item>
-      <title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
-      <link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
-      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
-      <description>When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&#xA;Read times Update cost Memory/storage overhead The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&#xA;Example: Log-Structured Databases Consider a log-structured database:&#xA;Update-optimized: Records are appended at the end of the file, allowing efficient updates. Low memory/storage overhead: There’s no additional indexing, saving on storage.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Data Engineering on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/data-engineering/</link>
+		<description>Recent content in Data Engineering on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/data-engineering/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
+				<link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-skew-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-skew-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;16860&#34; height=&#34;2566&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why &lt;strong&gt;dynamic skew join optimization&lt;/strong&gt; is not just useful, but often essential.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-setup&#34;&gt;The Problem Setup&lt;/h2&gt;&#xA;&lt;p&gt;Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;sql&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;Or using the equivalent Spark DataFrame API:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
+				<link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.png&#34; alt=&#34;banner&#34; width=&#34;3444&#34; height=&#34;978&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-data-challenge&#34;&gt;The Data Challenge&lt;/h2&gt;&#xA;&lt;p&gt;Our task involved processing three datasets:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Balancing the RUM Conjecture: Navigating Database Trade-Offs</title>
+				<link>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</link>
+				<pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/balancing-the-rum-conjecture-navigating-database-trade-offs/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/rum-conjecture/banner.png&#34; alt=&#34;banner&#34; width=&#34;1217&#34; height=&#34;305&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When designing databases, there&amp;rsquo;s a constant balancing act among three main factors:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Read times&lt;/li&gt;&#xA;&lt;li&gt;Update cost&lt;/li&gt;&#xA;&lt;li&gt;Memory/storage overhead&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;The RUM Conjecture suggests that optimizing any two of these factors will negatively impact the third. Essentially, you can only choose two out of the three to prioritize in any design.&lt;/p&gt;&#xA;&lt;h3 id=&#34;example-log-structured-databases&#34;&gt;Example: Log-Structured Databases&lt;/h3&gt;&#xA;&lt;p&gt;Consider a log-structured database:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Update-optimized: Records are appended at the end of the file, allowing efficient updates.&lt;/li&gt;&#xA;&lt;li&gt;Low memory/storage overhead: There’s no additional indexing, saving on storage.&lt;/li&gt;&#xA;&lt;li&gt;Trade-off on reads: Without indexes, lookups become slower, negatively impacting read times.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This trade-off forms a triangular relationship among read efficiency, update costs, and storage overhead.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

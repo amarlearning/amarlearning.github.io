@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Git on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/git/</link>
-    <description>Recent content in Git on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How Not to Open a Pull Request – And How to Do It Right</title>
-      <link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
-      <pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
-      <description>Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&#xA;That&amp;rsquo;s exactly what happened with my project spot-optimizer. The contributor was skilled, the intentions were great, but there was one major problem:&#xA;Changes Count Lines Added 2,200+ Lines Removed 1,200 Files Changed 25 Total Commits 15 Despite the valuable improvements it offered, I had to close it.</description>
-    </item>
-    <item>
-      <title>Never Push a Work Commit with Your Personal Email Again</title>
-      <link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
-      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
-      <description>As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&#xA;I used to run into this problem often, especially since I used the same laptop for both work and personal projects.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Git on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/git/</link>
+		<description>Recent content in Git on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 25 Jul 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/git/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>How Not to Open a Pull Request – And How to Do It Right</title>
+				<link>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</link>
+				<pubDate>Fri, 25 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/how-not-to-open-a-pull-request--and-how-to-do-it-right/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/pull-requests-done-right/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/pull-requests-done-right/banner.png&#34; alt=&#34;banner&#34; width=&#34;896&#34; height=&#34;504&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Picture this: You&amp;rsquo;re maintaining an open-source project, and you receive a pull request that promises to revolutionize your codebase. Security improvements, architectural enhancements, performance optimizations – it has everything! Sounds perfect, right?&lt;/p&gt;&#xA;&lt;p&gt;That&amp;rsquo;s exactly what happened with my project &lt;strong&gt;spot-optimizer&lt;/strong&gt;. The contributor was skilled, the intentions were great, but there was one major problem:&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Changes&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Count&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Lines Added&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;2,200+&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Lines Removed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;1,200&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Files Changed&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;25&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Total Commits&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;15&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;Despite the valuable improvements it offered, I had to close it. Not because of code quality or the contributor&amp;rsquo;s skills, but because its sheer size made it impossible to review effectively. It tried to solve too many problems at once, altered core design decisions, and would have required days of careful review.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Never Push a Work Commit with Your Personal Email Again</title>
+				<link>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</link>
+				<pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/never-push-a-work-commit-with-your-personal-email-again/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/git-work-email/banner.png&#34; alt=&#34;banner&#34; width=&#34;1920&#34; height=&#34;1080&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;As developers, it’s common to wear multiple hats — working on company projects during the day and tinkering with open-source or personal side-projects at night. If you’ve ever accidentally committed to Git using your personal email in a company repo (or worse, pushed your work identity to a public repo 😅), you know how frustrating it can be.&lt;/p&gt;&#xA;&lt;p&gt;I used to run into this problem often, especially since I used the same laptop for both work and personal projects. That’s when I came up with a simple but powerful trick — automatically switching Git identities based on folder path using Git’s &lt;code&gt;includeIf&lt;/code&gt; feature.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

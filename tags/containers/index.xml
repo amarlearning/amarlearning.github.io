@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Containers on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/containers/</link>
-    <description>Recent content in Containers on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sun, 23 Jan 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/containers/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Docker - the right way</title>
-      <link>https://amarpandey.me/blog/docker---the-right-way/</link>
-      <pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/docker---the-right-way/</guid>
-      <description>Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.&#xA;1. Use Official Docker Image as Base Image Always use the official or verified base image when writing the docker file. Let&amp;rsquo;s say you are developing a java application and want to build it and run it as a docker image.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Containers on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/containers/</link>
+		<description>Recent content in Containers on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 23 Jan 2022 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/containers/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Docker - the right way</title>
+				<link>https://amarpandey.me/blog/docker---the-right-way/</link>
+				<pubDate>Sun, 23 Jan 2022 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/docker---the-right-way/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/docker-the-right-way/banner.png&#34; alt=&#34;banner&#34; width=&#34;601&#34; height=&#34;431&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Docker is a software framework for building, running, and managing containers on servers and the cloud. Here are the several best practices for using Docker in production to improve security, optimize image size and write cleaner and more maintainable Dockerfiles.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;1-use-official-docker-image-as-base-image&#34;&gt;1. Use Official Docker Image as Base Image&lt;/h3&gt;&#xA;&lt;p&gt;Always use the official or verified base image when writing the docker file. Let&amp;rsquo;s say you are developing a java application and want to build it and run it as a docker image. Instead of taking a base operating system image and installing java, maven, and other tools you need for your application.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

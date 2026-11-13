@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Spark-Optimization on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/spark-optimization/</link>
-    <description>Recent content in Spark-Optimization on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Sun, 23 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/spark-optimization/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Deep Dive into Spark Jobs and Stages</title>
-      <link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
-      <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
-      <description>When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&#xA;Spark Transformations and Actions In Spark, operations are classified into two main categories: Transformations and Actions.&#xA;Transformations: These operations do not trigger execution but define a new dataset from an existing one.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Spark-Optimization on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/spark-optimization/</link>
+		<description>Recent content in Spark-Optimization on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Sun, 23 Mar 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/spark-optimization/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Deep Dive into Spark Jobs and Stages</title>
+				<link>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</link>
+				<pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/deep-dive-into-spark-jobs-and-stages/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-jobs-and-stages/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-jobs-and-stages/banner.png&#34; alt=&#34;banner&#34; width=&#34;2880&#34; height=&#34;1368&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When working with large-scale data processing using Apache Spark, understanding how jobs and stages work is crucial to optimizing performance. This blog is for those who already have some experience with Spark and want to dig deeper into the internal mechanics of jobs and stages.&lt;/p&gt;&#xA;&lt;h2 id=&#34;spark-transformations-and-actions&#34;&gt;Spark Transformations and Actions&lt;/h2&gt;&#xA;&lt;p&gt;In Spark, operations are classified into two main categories: Transformations and Actions.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Transformations:&lt;/strong&gt; These operations do not trigger execution but define a new dataset from an existing one. Transformations are further categorized into:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Narrow Dependency:&lt;/strong&gt; Performed in parallel on data partitions. Examples include &lt;code&gt;select()&lt;/code&gt;, &lt;code&gt;filter()&lt;/code&gt;, &lt;code&gt;withColumn()&lt;/code&gt;, &lt;code&gt;drop()&lt;/code&gt;. These transformations are efficient as they do not involve shuffling.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Wide Dependency:&lt;/strong&gt; Require data from multiple partitions to be grouped or aggregated, leading to shuffle operations. Examples include &lt;code&gt;groupBy()&lt;/code&gt;, &lt;code&gt;join()&lt;/code&gt;, &lt;code&gt;cube()&lt;/code&gt;, &lt;code&gt;rollup()&lt;/code&gt;, &lt;code&gt;agg()&lt;/code&gt;, and &lt;code&gt;repartition()&lt;/code&gt;. These operations can be costly due to data movement between nodes.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Actions:&lt;/strong&gt; These trigger the execution of the transformations and produce an output. Examples include &lt;code&gt;read()&lt;/code&gt;, &lt;code&gt;write()&lt;/code&gt;, &lt;code&gt;collect()&lt;/code&gt;, &lt;code&gt;take()&lt;/code&gt;, and &lt;code&gt;count()&lt;/code&gt;. Each action triggers a separate job in Spark.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s look at some code examples to understand these concepts better:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

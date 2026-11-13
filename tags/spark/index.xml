@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Spark on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/spark/</link>
-    <description>Recent content in Spark on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/spark/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
-      <link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
-      <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
-      <description>When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why dynamic skew join optimization is not just useful, but often essential.&#xA;The Problem Setup Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&#xA;sqlCopy SELECT * FROM large_table_one JOIN large_table_two ON large_table_one.key = large_table_two.</description>
-    </item>
-    <item>
-      <title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
-      <link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
-      <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
-      <description>Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&#xA;The Data Challenge Our task involved processing three datasets:</description>
-    </item>
-    <item>
-      <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
-      <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
-      <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
-    </item>
-    <item>
-      <title>Handling Large Broadcast Joins in Apache Spark</title>
-      <link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
-      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
-      <description>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&#xA;shellCopy Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: 13 GB This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Spark on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/spark/</link>
+		<description>Recent content in Spark on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>From Bottlenecks to Balance: Dynamic Skew Join Fixes in Spark</title>
+				<link>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</link>
+				<pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/from-bottlenecks-to-balance-dynamic-skew-join-fixes-in-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-skew-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-skew-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;16860&#34; height=&#34;2566&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;When working with large datasets in Spark, joins are a common operation. But what happens when data distribution isn’t uniform? Let’s dive into a real-world scenario to understand why &lt;strong&gt;dynamic skew join optimization&lt;/strong&gt; is not just useful, but often essential.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-problem-setup&#34;&gt;The Problem Setup&lt;/h2&gt;&#xA;&lt;p&gt;Assume we have two large tables and we&amp;rsquo;re trying to join them using the following Spark SQL:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;sql&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;SELECT&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;FROM&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;JOIN&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&#x9;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ON&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;large_table_two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;key&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;Or using the equivalent Spark DataFrame API:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>4TB RAM, Yet an OOM Error? Debugging a Spark Memory Mystery</title>
+				<link>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</link>
+				<pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/4tb-ram-yet-an-oom-error-debugging-a-spark-memory-mystery/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-oom-4tb-ram/banner.png&#34; alt=&#34;banner&#34; width=&#34;3444&#34; height=&#34;978&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Everything seemed right—ample resources, a well-sized cluster, and yet, the Spark job kept failing with an out-of-memory error. Logs pointed to memory allocation failures, but with a 63-node cluster, each equipped with 64GB RAM, this shouldn’t have been an issue. We tweaked configurations, analyzed logs, and even considered scaling up the cluster. But the real solution? It wasn’t what we expected.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-data-challenge&#34;&gt;The Data Challenge&lt;/h2&gt;&#xA;&lt;p&gt;Our task involved processing three datasets:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
+				<link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-shuffle-partitions/banner.png&#34; alt=&#34;banner&#34; width=&#34;1042&#34; height=&#34;455&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&lt;/p&gt;&#xA;&lt;h3 id=&#34;default-shuffle-partition-count&#34;&gt;Default Shuffle Partition Count&lt;/h3&gt;&#xA;&lt;p&gt;By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Handling Large Broadcast Joins in Apache Spark</title>
+				<link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
+				<pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;1400&#34; height=&#34;631&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;shell&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; GB&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB. If a dataset exceeds this limit, Spark will throw an exception and the job will fail. Here, we will discuss two ways to resolve this issue.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

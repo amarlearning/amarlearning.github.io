@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Apache on Amar’s space: data, open source &amp; side quests</title>
-    <link>https://amarpandey.me/tags/apache/</link>
-    <description>Recent content in Apache on Amar’s space: data, open source &amp; side quests</description>
-    <generator>Hugo</generator>
-    <language>en-US</language>
-    <lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://amarpandey.me/tags/apache/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
-      <link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
-      <pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
-      <description>Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&#xA;Default Shuffle Partition Count By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?</description>
-    </item>
-    <item>
-      <title>Handling Large Broadcast Joins in Apache Spark</title>
-      <link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
-      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
-      <description>In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&#xA;shellCopy Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: 13 GB This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Apache on Amar’s space: data, open source &amp; side quests</title>
+		<link>https://amarpandey.me/tags/apache/</link>
+		<description>Recent content in Apache on Amar’s space: data, open source &amp; side quests</description>
+		<generator>Hugo</generator>
+		<language>en-US</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 24 May 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://amarpandey.me/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Fine-Tuning Shuffle Partitions in Apache Spark for Maximum Efficiency</title>
+				<link>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</link>
+				<pubDate>Fri, 24 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/fine-tuning-shuffle-partitions-in-apache-spark-for-maximum-efficiency/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-shuffle-partitions/banner.png&#34; alt=&#34;banner&#34; width=&#34;1042&#34; height=&#34;455&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;Apache Spark&amp;rsquo;s shuffle partitions play a critical role in data processing, especially during operations like joins and aggregations. Properly configuring these partitions is essential for optimizing performance.&lt;/p&gt;&#xA;&lt;h3 id=&#34;default-shuffle-partition-count&#34;&gt;Default Shuffle Partition Count&lt;/h3&gt;&#xA;&lt;p&gt;By default, Spark sets the shuffle partition count to 200. While this may work for small datasets (less than 20 GB), it is usually inadequate for larger data sizes. Besides, who would work with just 20 GB of data on Spark?&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Handling Large Broadcast Joins in Apache Spark</title>
+				<link>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</link>
+				<pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+				<guid>https://amarpandey.me/blog/handling-large-broadcast-joins-in-apache-spark/</guid>
+				<description>&lt;p&gt;&lt;picture&gt;&lt;source srcset=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.webp&#34; type=&#34;image/webp&#34;&gt;&lt;img src=&#34;https://amarpandey.me/images/spark-broadcast-joins/banner.png&#34; alt=&#34;banner&#34; width=&#34;1400&#34; height=&#34;631&#34; fetchpriority=&#34;high&#34; decoding=&#34;async&#34;&gt;&#xA;&lt;/picture&gt;&lt;/p&gt;&#xA;&lt;p&gt;In Apache Spark, efficient data processing often relies on the use of broadcast joins. However, when the dataset exceeds a certain size, specifically 8GB, you may encounter the following error:&lt;/p&gt;&#xA;&lt;figure class=&#34;code&#34;&gt;&#xA;  &lt;figcaption&gt;&lt;span class=&#34;code-lang&#34;&gt;shell&lt;/span&gt;&lt;button class=&#34;code-copy&#34; type=&#34;button&#34;&gt;Copy&lt;/button&gt;&lt;/figcaption&gt;&#xA;  &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Caused by: org.apache.spark.SparkException: Cannot broadcast the table that is larger than 8GB: &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; GB&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;This error arises because Spark is attempting to broadcast a dataset that is larger than the maximum threshold allowed for broadcast joins. By default, Spark&amp;rsquo;s threshold for broadcasting is set to 8GB. If a dataset exceeds this limit, Spark will throw an exception and the job will fail. Here, we will discuss two ways to resolve this issue.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
