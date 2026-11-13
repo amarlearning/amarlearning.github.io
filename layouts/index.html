@@ -34,16 +34,16 @@
 
 <section class="block" aria-labelledby="work">
     <h2 class="block-head" id="work">Work</h2>
-    <div class="cards">
-    {{ range first 4 .Site.Data.projects }}
+    <div class="tiles">
+    {{ range $i, $p := first 4 .Site.Data.projects }}
     {{ $url := (index .links 0).url }}
     {{ range .links }}{{ if eq .name "demo" }}{{ $url = .url }}{{ end }}{{ end }}
-        <a class="card" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
-            <span class="card-head">
-                <span class="card-title">{{ .title }}</span>
-                {{ partial "icon-arrow.html" . }}
+        <a class="tile" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+            {{ partial "project-art.html" (dict "title" .title "i" $i) }}
+            <span class="tile-body">
+                <span class="tile-head"><span class="tile-title">{{ .title }}</span>{{ partial "icon-arrow.html" . }}</span>
+                <span class="tile-desc">{{ .short | default .description }}</span>
             </span>
-            <span class="card-desc">{{ .short | default .description }}</span>
         </a>
     {{ end }}
     </div>

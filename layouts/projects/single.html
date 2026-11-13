@@ -21,21 +21,22 @@
     </div>
 </section>
 
-{{- /* a board of index cards: the newest spans the top, the rest pair up; the title's link covers the whole card */}}
+{{- /* colour tiles: the newest spans the top, the rest pair up; the title's link covers the whole tile, the links sit above it */}}
 <section class="block" aria-labelledby="built">
     <h2 class="block-head" id="built">Projects</h2>
-    <div class="board">
+    <div class="tiles">
     {{ range $i, $p := .Site.Data.projects }}
         {{ $url := (index .links 0).url }}
         {{ range .links }}{{ if eq .name "demo" }}{{ $url = .url }}{{ end }}{{ end }}
-        <article class="pcard{{ if eq $i 0 }} pcard-lead{{ end }}">
-            <div class="pcard-head">
-                <h3 class="pcard-title"><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></h3>
-                {{ with .note }}<span class="pcard-note">{{ . }}</span>{{ end }}
-            </div>
-            <p class="pcard-desc">{{ .description }}</p>
-            <div class="pcard-links">
-                {{ range .links }}<a class="pill" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} {{ partial "icon-arrow.html" . }}</a>{{ end }}
+        <article class="tile{{ if eq $i 0 }} tile-lead{{ end }}">
+            {{ partial "project-art.html" (dict "title" .title "i" $i) }}
+            {{ with .note }}<span class="tile-note">{{ . }}</span>{{ end }}
+            <div class="tile-body">
+                <h3 class="tile-title"><a href="{{ $url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a></h3>
+                <p class="tile-desc">{{ .description }}</p>
+                <div class="tile-links">
+                    {{ range .links }}<a class="pill" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }} {{ partial "icon-arrow.html" . }}</a>{{ end }}
+                </div>
             </div>
         </article>
     {{ end }}

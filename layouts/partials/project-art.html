@@ -1,0 +1,34 @@
+{{- /* The coloured top of a project tile: a pen drawing of what the project does, on one of five tones picked by position.
+  Takes (dict "title" .title "i" $i). Unknown projects get a dot grid; add a branch below to draw one for them.
+  pathLength="1" lets the CSS redraw each stroke on hover. */ -}}
+{{- $slug := urlize .title -}}
+<span class="tile-art tone-{{ mod .i 5 }}" aria-hidden="true">
+<svg viewBox="0 0 240 120" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet">
+{{- if eq $slug "lore" }}
+  <path pathLength="1" d="M16 86H224"/>
+  <circle pathLength="1" cx="52" cy="86" r="6"/><circle pathLength="1" cx="104" cy="86" r="6"/><circle pathLength="1" cx="156" cy="86" r="6"/><circle pathLength="1" cx="204" cy="86" r="6"/>
+  <path pathLength="1" d="M104 80V60M74 24h60a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H74a4 4 0 0 1-4-4V28a4 4 0 0 1 4-4ZM82 36h44M82 46h28"/>
+  <path pathLength="1" d="M204 80V66M184 36h40a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4h-40a4 4 0 0 1-4-4V40a4 4 0 0 1 4-4ZM190 46h30M190 55h18"/>
+{{- else if eq $slug "uv-bundler" }}
+  <path pathLength="1" d="M110 14l40 20-40 20-40-20ZM70 34v44l40 20V54M150 34v44l-40 20M90 24l40 20"/>
+  <circle pathLength="1" cx="190" cy="74" r="20"/><circle pathLength="1" cx="190" cy="74" r="5"/>
+  <path pathLength="1" d="M190 54v15M190 79v15M170 74h15M195 74h15"/>
+  <path pathLength="1" d="M28 74h26M46 66l8 8-8 8"/>
+{{- else if eq $slug "spot-optimizer" }}
+  <path pathLength="1" d="M24 18v82h200"/>
+  <path pathLength="1" d="M24 34l26-6 24 20 24-6 24 22 26-6 26 24 28-4"/>
+  <circle pathLength="1" cx="176" cy="84" r="6"/>
+  <path class="no-draw" d="M24 84h200" stroke-dasharray="3 6" stroke-width="1.2"/>
+{{- else if eq $slug "geohashviz" }}
+  <g fill="currentColor" stroke="none" opacity=".22"><rect x="102" y="40" width="24" height="24"/><rect x="126" y="40" width="24" height="24"/><rect x="126" y="64" width="24" height="24"/><rect x="150" y="64" width="24" height="24"/><rect x="78" y="16" width="24" height="24"/></g>
+  <path pathLength="1" d="M30 16h192M30 40h192M30 64h192M30 88h192M30 112h192"/>
+  <path pathLength="1" d="M30 16v96M54 16v96M78 16v96M102 16v96M126 16v96M150 16v96M174 16v96M198 16v96M222 16v96"/>
+{{- else if eq $slug "chat-rooms" }}
+  <path pathLength="1" d="M36 18h80a10 10 0 0 1 10 10v30a10 10 0 0 1-10 10H70L52 82V68H36a10 10 0 0 1-10-10V28a10 10 0 0 1 10-10ZM44 36h64M44 48h40"/>
+  <path pathLength="1" d="M138 54h62a10 10 0 0 1 10 10v26a10 10 0 0 1-10 10h-8v14l-16-14h-38a10 10 0 0 1-10-10V64a10 10 0 0 1 10-10Z"/>
+  <circle pathLength="1" cx="156" cy="77" r="2.5"/><circle pathLength="1" cx="169" cy="77" r="2.5"/><circle pathLength="1" cx="182" cy="77" r="2.5"/>
+{{- else }}
+  <g fill="currentColor" stroke="none" opacity=".5">{{ range $y := seq 24 24 96 }}{{ range $x := seq 32 22 208 }}<circle cx="{{ $x }}" cy="{{ $y }}" r="2"/>{{ end }}{{ end }}</g>
+{{- end }}
+</svg>
+</span>

@@ -145,24 +145,65 @@ code, pre { font-family: var(--font-mono); }
 .button:active { transform: scale(0.97); }
 
 .icon-arrow { width: 14px; height: 14px; flex-shrink: 0; transition: transform var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out); }
-a:hover > .icon-arrow, a:hover .card-head .icon-arrow { transform: translate(1px, -1px); }
+a:hover > .icon-arrow, a:hover .tile-head .icon-arrow { transform: translate(1px, -1px); }
 
-/* Work cards */
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
-.card {
-  display: flex; flex-direction: column; gap: var(--space-2xs);
-  padding: var(--space-md);
-  border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card);
+/* projects (home and /projects): colour tiles. Each has a tone and a pen drawing of what it does
+   (layouts/partials/project-art.html); the drawing redraws itself on hover. */
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+.tile {
+  position: relative; display: flex; flex-direction: column; overflow: hidden;
+  border: var(--rule-hair) solid var(--color-rule); border-radius: 16px;
   background: var(--color-paper-2); color: inherit; text-decoration: none;
-  transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+  transition: translate 400ms var(--ease-out), box-shadow 400ms var(--ease-out), border-color var(--dur-micro) var(--ease-out);
 }
-.card:hover { background: var(--color-paper-3); border-color: var(--color-rule-strong); }
-.card:active { background: var(--color-paper-3); }
-.card-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xs); }
-.card-title { color: var(--color-ink); font-size: var(--text-md); font-weight: var(--weight-body); }
-.card-head .icon-arrow { color: var(--color-muted); }
-.card:hover .card-head .icon-arrow { color: var(--color-ink); }
-.card-desc { color: var(--color-muted); font-size: var(--text-sm); line-height: 1.5; }
+.tile-lead { grid-column: 1 / -1; }
+.tone-0 { --tone-ink: light-dark(#5b4bb0, #b9adf0); }
+.tone-1 { --tone-ink: light-dark(#1d7566, #8fd6c8); }
+.tone-2 { --tone-ink: light-dark(#a3601a, #f0bf7e); }
+.tone-3 { --tone-ink: light-dark(#3d7531, #a6d69a); }
+.tone-4 { --tone-ink: light-dark(#a8443a, #f0a69c); }
+/* no solid fill: the tile's own paper, a faint grid that fades at the edges, and a glow of the project's hue behind the drawing */
+.tile-art { position: relative; display: block; height: 116px; color: var(--tone-ink); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.tile-lead .tile-art { height: 150px; }
+.tile-art::before, .tile-art::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
+.tile-art::before {
+  background:
+    linear-gradient(color-mix(in oklab, var(--tone-ink) 16%, transparent) 1px, transparent 1px) 50% 50% / 14px 14px,
+    linear-gradient(90deg, color-mix(in oklab, var(--tone-ink) 16%, transparent) 1px, transparent 1px) 50% 50% / 14px 14px;
+  mask: radial-gradient(closest-side, #000 30%, transparent);
+}
+.tile-art::after {
+  background: radial-gradient(60% 75% at 50% 60%, color-mix(in oklab, var(--tone-ink) 20%, transparent), transparent 75%);
+  opacity: 0.75; transition: opacity 500ms var(--ease-out);
+}
+.tile-art svg { position: absolute; z-index: 1; inset: 10px; width: calc(100% - 20px); height: calc(100% - 20px); transition: scale 600ms var(--ease-out); }
+.tile-art [pathLength] { stroke-dasharray: 1; }
+.tile-body { display: flex; flex: 1; flex-direction: column; gap: var(--space-2xs); padding: var(--space-sm) var(--space-md) var(--space-md); }
+.tile-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-xs); }
+.tile-head .icon-arrow { color: var(--color-muted); }
+.tile-title { color: var(--color-ink); font-size: var(--text-md); font-weight: var(--weight-strong); letter-spacing: -0.01em; }
+.tile-lead .tile-title { font-size: var(--text-xl); }
+.tile-title a { color: inherit; text-decoration: none; }
+.tile-title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.tile-desc { flex: 1; color: var(--color-muted); font-size: var(--text-sm); line-height: 1.55; }
+.tile-lead .tile-desc { color: var(--color-ink-2); font-size: var(--text-body); max-width: 52ch; }
+.tile-links { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-xs); }
+.tile-note {
+  position: absolute; z-index: 1; top: var(--space-sm); right: var(--space-sm);
+  padding: 4px 10px; border-radius: var(--radius-pill);
+  background: var(--color-paper-2); color: var(--note-ink);
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.04em;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover { translate: 0 -3px; border-color: var(--color-rule-strong); box-shadow: 0 18px 32px -20px rgb(0 0 0 / 0.55); }
+  .tile:hover .tile-art svg { scale: 1.04; }
+  .tile:hover .tile-art::after { opacity: 1; }
+  .tile:hover .tile-head .icon-arrow { color: var(--color-ink); }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .tile:hover .tile-art [pathLength] { animation: pen-draw 900ms var(--ease-out) both; }
+}
+@keyframes pen-draw { from { stroke-dashoffset: 1; } }
 
 /* rows: writing, archive, talks */
 .rows { display: flex; flex-direction: column; }
@@ -360,7 +401,6 @@ html:active-view-transition-type(page-turn)::view-transition-new(root) { animati
   :root { --gutter: 16px; }
   body { padding-top: var(--space-xl); }
   header nav { column-gap: var(--space-md); margin-bottom: var(--space-xl); }
-  .cards { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ---------- the notebook on the desk ----------
@@ -438,9 +478,6 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 @media (max-width: 40rem) { .litmus-sketch { display: none; } }
 
 /* the work: index cards with a coral header line, lifted when you reach for one */
-.card { position: relative; }
-.card-head { padding-bottom: var(--space-xs); margin-bottom: var(--space-2xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--mark-ink) 45%, transparent); }
-.card { transition: background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out), translate 400ms var(--ease-out), rotate 400ms var(--ease-out), box-shadow 400ms var(--ease-out); }
 
 /* lists: a hand-drawn arrow points at the row you're on */
 .row { position: relative; }
@@ -458,38 +495,13 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 
 @media (hover: hover) and (pointer: fine) {
   .feature:hover { rotate: 0deg; translate: 0 -3px; box-shadow: 0 2px 4px rgb(0 0 0 / 0.1), 0 26px 44px -20px rgb(0 0 0 / 0.55); }
-  .card:hover, .pcard:hover, .stamp:hover, .talk:hover { translate: 0 -3px; rotate: -0.6deg; box-shadow: 0 16px 30px -18px rgb(0 0 0 / 0.55); }
-  .card:nth-child(even):hover, .pcard:nth-child(odd):hover, .stamp:nth-child(even):hover, .talk:nth-child(even):hover { rotate: 0.6deg; }
+  .stamp:hover, .talk:hover { translate: 0 -3px; rotate: -0.6deg; box-shadow: 0 16px 30px -18px rgb(0 0 0 / 0.55); }
+  .stamp:nth-child(even):hover, .talk:nth-child(even):hover { rotate: 0.6deg; }
   .row:hover::before { opacity: 1; translate: 0 0; }
   .row:hover .row-title { translate: 4px 0; }
   .tag:hover { rotate: -3deg; }
 }
 
-/* projects: a board of index cards; the title's link stretches over the card, the pills sit above it */
-.board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
-.pcard {
-  position: relative; display: flex; flex-direction: column; gap: var(--space-xs);
-  padding: var(--space-md);
-  border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-card);
-  background: var(--color-paper-2);
-  transition: border-color var(--dur-micro) var(--ease-out), translate 400ms var(--ease-out), rotate 400ms var(--ease-out), box-shadow 400ms var(--ease-out);
-}
-.pcard-lead { grid-column: 1 / -1; padding: var(--space-lg); }
-.pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-sm); padding-bottom: var(--space-xs); border-bottom: var(--rule-hair) solid color-mix(in oklab, var(--mark-ink) 45%, transparent); }
-.pcard-title { color: var(--color-ink); font-size: var(--text-md); font-weight: var(--weight-strong); }
-.pcard-lead .pcard-title { font-size: var(--text-lg); }
-.pcard-title a { color: inherit; text-decoration: none; }
-.pcard-title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
-.pcard-note {
-  position: absolute; z-index: 1; right: var(--space-sm); top: calc(-1 * var(--space-xs));
-  padding: 3px 10px 4px; border-radius: 2px;
-  background: var(--paper-note); box-shadow: 0 2px 6px -2px rgb(0 0 0 / 0.35);
-  color: var(--note-ink-paper); font-family: var(--font-hand); font-size: 1.15rem; font-weight: 600; line-height: 1;
-  rotate: 4deg;
-}
-.pcard-desc { flex: 1; color: var(--color-muted); font-size: var(--text-sm); line-height: 1.6; }
-.pcard-lead .pcard-desc { color: var(--color-ink-2); font-size: var(--text-body); }
-.pcard-links { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
 .pill {
   display: inline-flex; align-items: center; gap: var(--space-3xs); min-height: 26px; padding: 0 var(--space-xs);
   border: var(--rule-hair) solid var(--color-rule-strong); border-radius: var(--radius-pill);
@@ -572,7 +584,7 @@ header nav a.active::after { bottom: -7px; height: 6px; mask-size: 26px 6px; ani
 }
 .talk-len { transition: rotate 400ms var(--ease-out); }
 @media (max-width: 40rem) {
-  .board, .stamps, .reel { grid-template-columns: minmax(0, 1fr); }
+  .tiles, .stamps, .reel { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* the avatar is a small photo taped into the corner of the page */
