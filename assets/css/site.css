@@ -871,3 +871,25 @@ main:focus { outline: none; }
 .lightbox-close:focus-visible { outline: 2px solid #ece7df; outline-offset: 2px; }
 html:has(.lightbox[open]) { overflow: hidden; }
 @starting-style { .lightbox[open] { opacity: 0; } .lightbox[open] img { scale: .96; } }
+
+/* the bee: a little voxel bee drawn in CSS 3D (no images) that wanders the page; flown by custom_body.html */
+.bee { position: absolute; top: 0; left: 0; z-index: 40; pointer-events: none; transform-style: preserve-3d; will-change: transform; }
+.bee-model { --l: 30px; --h: 20px; --d: 20px; position: relative; transform-style: preserve-3d; }
+.bee i { position: absolute; display: block; backface-visibility: hidden; }
+.bee .side, .bee .top, .bee .bottom { --stripes: linear-gradient(to right, transparent 0 28%, #2b2219 28% 42%, transparent 42% 60%, #2b2219 60% 74%, transparent 74%); }
+.bee .side { width: var(--l); height: var(--h); left: calc(var(--l) / -2); top: calc(var(--h) / -2); background: var(--stripes), #f0bb2b; }
+.bee .side.r { transform: translateZ(calc(var(--d) / 2)); }
+.bee .side.l { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); }
+.bee .top, .bee .bottom { width: var(--l); height: var(--d); left: calc(var(--l) / -2); top: calc(var(--d) / -2); }
+.bee .top { background: var(--stripes), #ffd75e; transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
+.bee .bottom { background: var(--stripes), #c4911b; transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
+.bee .front, .bee .back { width: var(--d); height: var(--h); left: calc(var(--d) / -2); top: calc(var(--h) / -2); }
+.bee .front { transform: rotateY(90deg) translateZ(calc(var(--l) / 2));
+  background: linear-gradient(#2b2219, #2b2219) 22% 40% / 4px 5px no-repeat, linear-gradient(#2b2219, #2b2219) 78% 40% / 4px 5px no-repeat, #f6c63c; }
+.bee .back { transform: rotateY(-90deg) translateZ(calc(var(--l) / 2)); background: linear-gradient(#2b2219, #2b2219) 50% 55% / 4px 4px no-repeat, #e2ab25; }
+.bee .wing { width: 14px; height: 13px; left: -9px; top: calc(var(--h) / -2); transform-origin: 50% 0; border-radius: 2px 2px 7px 7px;
+  background: rgb(235 245 255 / .75); box-shadow: inset 0 0 0 1px rgb(120 140 160 / .45); backface-visibility: visible; animation: bee-flap 140ms ease-in-out infinite alternate; }
+.bee .wing.r { --side: 1; } .bee .wing.l { --side: -1; }
+@keyframes bee-flap { from { transform: rotateX(calc(var(--side) * -105deg)); } to { transform: rotateX(calc(var(--side) * -160deg)); } }
+.bee .ant { width: 2px; height: 7px; top: calc(var(--h) / -2 - 6px); background: #2b2219; }
+.bee .ant.r { left: 10px; transform: translateZ(5px) rotateZ(20deg); } .bee .ant.l { left: 10px; transform: translateZ(-5px) rotateZ(20deg); }
