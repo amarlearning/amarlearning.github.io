@@ -831,3 +831,32 @@ main:focus { outline: none; }
   .block-head::after, .archive-year::after, header nav a.active::after { animation: none; }
   .intro strong { animation: none; background-size: 100% 100%; }
 }
+
+/* post images: click to open full size in a native <dialog> (wired in custom_body.html) */
+.prose.post img { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0;
+  display: grid; place-items: center; padding: var(--space-2xl) var(--space-lg);
+  border: 0; outline: none; background: transparent; cursor: zoom-out;
+  opacity: 0; transition: opacity var(--dur-short) var(--ease-out), overlay var(--dur-short) allow-discrete, display var(--dur-short) allow-discrete;
+}
+.lightbox:not([open]) { display: none; }
+.lightbox[open] { opacity: 1; }
+.lightbox::backdrop { background: rgb(12 11 10 / .86); backdrop-filter: blur(6px); }
+.lightbox img {
+  max-width: min(100%, 1600px); max-height: 100%; object-fit: contain;
+  border-radius: var(--radius-card); background: #fbfaf7;
+  box-shadow: 0 2px 6px rgb(0 0 0 / .3), 0 30px 80px -20px rgb(0 0 0 / .7);
+  scale: 1; transition: scale var(--dur-short) var(--ease-out);
+}
+.lightbox-close {
+  position: absolute; top: var(--space-md); right: var(--space-md);
+  width: 40px; height: 40px; display: grid; place-items: center; padding: 0;
+  border: 1px solid rgb(255 255 255 / .18); border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / .08); color: #ece7df; font-size: 22px; line-height: 1; cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.lightbox-close:hover { background: rgb(255 255 255 / .18); }
+.lightbox-close:focus-visible { outline: 2px solid #ece7df; outline-offset: 2px; }
+html:has(.lightbox[open]) { overflow: hidden; }
+@starting-style { .lightbox[open] { opacity: 0; } .lightbox[open] img { scale: .96; } }

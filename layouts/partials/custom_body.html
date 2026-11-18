@@ -62,3 +62,24 @@ document.addEventListener("click", function (e) {
   document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
 })();
 </script>
+<script>
+// post images: click (or Enter) opens the full-size image in a dialog; click anywhere or Esc closes it
+(function () {
+  var imgs = document.querySelectorAll(".prose.post img");
+  if (!imgs.length) return;
+  var box = document.createElement("dialog"), big = document.createElement("img");
+  box.className = "lightbox";
+  box.setAttribute("aria-label", "Image");
+  box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>';
+  box.appendChild(big);
+  document.body.appendChild(box);
+  box.addEventListener("click", function () { box.close(); });
+  imgs.forEach(function (img) {
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    function open() { big.src = img.currentSrc || img.src; big.alt = img.alt; box.showModal(); }
+    img.addEventListener("click", open);
+    img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+})();
+</script>
