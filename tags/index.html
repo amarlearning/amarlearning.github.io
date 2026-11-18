@@ -99,11 +99,11 @@
   
   <a class="tag" href="/tags/spark/">#spark <span class="tag-count">4</span></a>
   
-  <a class="tag" href="/tags/big-data/">#big-data <span class="tag-count">3</span></a>
+  <a class="tag" href="/tags/big-data/">#big data <span class="tag-count">3</span></a>
   
   <a class="tag" href="/tags/clean-code/">#clean-code <span class="tag-count">3</span></a>
   
-  <a class="tag" href="/tags/data-engineering/">#data-engineering <span class="tag-count">3</span></a>
+  <a class="tag" href="/tags/data-engineering/">#data engineering <span class="tag-count">3</span></a>
   
   <a class="tag" href="/tags/functional-programming/">#functional-programming <span class="tag-count">3</span></a>
   
@@ -461,15 +461,12 @@ document.addEventListener("click", function (e) {
 <script>
 
 (function () {
-  var ctx;
+  var click = new Audio("/sounds/click.mp3");
+  click.preload = "auto";
   document.addEventListener("pointerdown", function (e) {
     if (e.button) return;
-    try { ctx = ctx || new AudioContext(); } catch (err) { return; }
-    var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
-    o.type = "triangle";
-    o.frequency.setValueAtTime(1500, t); o.frequency.exponentialRampToValueAtTime(400, t + 0.045);
-    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
-    o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.07);
+    var a = click.cloneNode(); a.volume = 0.5;
+    a.play().catch(function () {});
   }, { passive: true });
 })();
 </script>
