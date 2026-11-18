@@ -38,7 +38,7 @@
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <link rel="alternate" type="application/rss+xml" href="https://amarpandey.me/tags/codesmells/index.xml" title="Amar’s space: data, open source & side quests" />
-  <link rel="stylesheet" href="/css/main.min.7be1c09c1e3704592f060e13d159adc49e72b1d47ed12c64fac0f96283644095.css" integrity="sha256-e&#43;HAnB43BFkvBg4T0VmtxJ5ysdR&#43;0Sxk&#43;sD5YoNkQJU=">
+  <link rel="stylesheet" href="/css/main.min.8a9ebd2deb7a000ce878c71abb448d68f47d88bcb8816ff58341a619e026159f.css" integrity="sha256-ip69Let6AAzoeMcau0SNaPR9iLy4gW/1g0GmGeAmFZ8=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -180,6 +180,27 @@ document.addEventListener("click", function (e) {
     });
   }, { rootMargin: "0px 0px -70% 0px" });
   document.querySelectorAll(".prose h2[id], .prose h3[id]").forEach(function (h) { io.observe(h); });
+})();
+</script>
+<script>
+
+(function () {
+  var imgs = document.querySelectorAll(".prose.post img");
+  if (!imgs.length) return;
+  var box = document.createElement("dialog"), big = document.createElement("img");
+  box.className = "lightbox";
+  box.setAttribute("aria-label", "Image");
+  box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>';
+  box.appendChild(big);
+  document.body.appendChild(box);
+  box.addEventListener("click", function () { box.close(); });
+  imgs.forEach(function (img) {
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+    function open() { big.src = img.currentSrc || img.src; big.alt = img.alt; box.showModal(); }
+    img.addEventListener("click", open);
+    img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
 })();
 </script>
 </body>
