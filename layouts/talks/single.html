@@ -10,7 +10,7 @@
     <div class="reel">
     {{ range .Site.Data.talks }}
         {{ $id := path.Base (urls.Parse .url).Path }}
-        <a class="talk" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <a class="talk" href="{{ .url }}" target="_blank" rel="noopener noreferrer" data-video="{{ $id }}">
             <span class="talk-thumb">
                 {{- /* hq720 is 16:9 with no letterbox; YouTube answers a missing size with a 120px placeholder, so step down to hqdefault, and if that is missing too the video is gone: draw a placeholder instead */}}
                 <img src="https://i.ytimg.com/vi/{{ $id }}/hq720.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onload="if (this.naturalWidth >= 200) return; if (this.src.includes('hq720')) this.src = this.src.replace('hq720', 'hqdefault'); else this.parentNode.classList.add('no-thumb')">

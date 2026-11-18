@@ -870,6 +870,8 @@ main:focus { outline: none; }
 .lightbox-close:hover { background: rgb(255 255 255 / .18); }
 .lightbox-close:focus-visible { outline: 2px solid #ece7df; outline-offset: 2px; }
 html:has(.lightbox[open]) { overflow: hidden; }
+/* talks play in the same dialog: a 16:9 YouTube player as large as fits */
+.lightbox iframe { width: min(100%, 1200px, (100dvh - 2 * var(--space-2xl)) * 16 / 9); aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius-card); background: #000; box-shadow: 0 2px 6px rgb(0 0 0 / .3), 0 30px 80px -20px rgb(0 0 0 / .7); cursor: auto; }
 @starting-style { .lightbox[open] { opacity: 0; } .lightbox[open] img { scale: .96; } }
 
 /* the bee: a little voxel bee drawn in CSS 3D (no images) that wanders the page; flown by custom_body.html */

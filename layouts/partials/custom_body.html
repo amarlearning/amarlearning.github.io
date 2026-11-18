@@ -198,3 +198,30 @@ document.addEventListener("click", function (e) {
   }, { passive: true });
 })();
 </script>
+<script>
+// talks: play the video in a dialog on this page instead of leaving for YouTube (new-tab clicks still go to YouTube); closing removes the player so it stops
+(function () {
+  var talks = document.querySelectorAll("a.talk[data-video]");
+  if (!talks.length) return;
+  var box = document.createElement("dialog");
+  box.className = "lightbox";
+  box.setAttribute("aria-label", "Video");
+  box.innerHTML = '<button class="lightbox-close" type="button" aria-label="Close">&times;</button>';
+  document.body.appendChild(box);
+  box.addEventListener("click", function () { box.close(); });
+  box.addEventListener("close", function () { var f = box.querySelector("iframe"); if (f) f.remove(); });
+  talks.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+      e.preventDefault();
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(a.dataset.video) + "?autoplay=1&rel=0";
+      f.title = a.querySelector(".talk-title").textContent;
+      f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      f.allowFullscreen = true;
+      box.appendChild(f);
+      box.showModal();
+    });
+  });
+})();
+</script>
