@@ -38,7 +38,7 @@
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <link rel="alternate" type="application/rss+xml" href="https://amarpandey.me/tags/tech-tradeoffs/index.xml" title="Amar’s space: data, open source & side quests" />
-  <link rel="stylesheet" href="/css/main.min.8a9ebd2deb7a000ce878c71abb448d68f47d88bcb8816ff58341a619e026159f.css" integrity="sha256-ip69Let6AAzoeMcau0SNaPR9iLy4gW/1g0GmGeAmFZ8=">
+  <link rel="stylesheet" href="/css/main.min.df2956d104f3ce6016667e4e7470cc8f5bf764e95d770d06a042ce94b8d9a34d.css" integrity="sha256-3ylW0QTzzmAWZn5OdHDMj1v3ZOlddw0GoELOlLjZo00=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -99,7 +99,8 @@
 </div>
 
   </main>
-  <footer><div class="footer-meta">
+  <footer><pre class="footer-art" aria-hidden="true"></pre>
+<div class="footer-meta">
   <span>© 2026 Amar Prakash Pandey</span>
   <span class="footer-links">
   <a href="https://github.com/amarlearning" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
@@ -201,6 +202,80 @@ document.addEventListener("click", function (e) {
     img.addEventListener("click", open);
     img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
   });
+})();
+</script>
+<script>
+
+(function () {
+  var pre = document.querySelector(".footer-art");
+  if (!pre) return;
+  var W = 200, H = 30, AX = 0.6;           
+  var PW = W * AX, RAMP = ".:-=+*x%#@";
+  var seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  function vine(px) { return 18 + 3.2 * Math.sin(px * 0.075) + 1.4 * Math.sin(px * 0.21 + 1); }
+  function taper(px) { return Math.pow(Math.sin(Math.PI * Math.min(Math.max(px / PW, 0), 1)), 0.6); }
+  var leaves = [], blooms = [], noise = [];
+  function leaf(px, up, t) { leaves.push({ x: px, a: up ? -(0.3 + rnd() * 1.0) : 0.25 + rnd() * 0.9, L: (4 + rnd() * 6) * t + 1.5, w: (1.2 + rnd() * 1.3) * t + 0.5, flip: rnd() < 0.3 }); }
+  for (var px = 2; px < PW - 2; px += 1.2 + rnd() * 1.4) {
+    var t = taper(px);
+    if (rnd() < 0.12) continue;            
+    leaf(px, rnd() < 0.55, t);
+    if (rnd() < 0.45) leaf(px + rnd(), rnd() < 0.5, t);
+    if (rnd() < 0.2 && t > 0.35) blooms.push({ x: px + rnd() * 2, dy: -2 - rnd() * 4, r: 1.2 + rnd() * 1.4 });
+  }
+  for (var i = 0; i < W * H; i++) noise.push(rnd());
+  var val = new Float32Array(W * H), kind = new Uint8Array(W * H);
+
+  function frame(time) {
+    val.fill(0); kind.fill(0);
+    leaves.forEach(function (lf) {
+      var bx = lf.x, by = vine(bx), a = lf.a + 0.14 * Math.sin(time * 0.0011 - bx * 0.09);
+      if (lf.flip) a = Math.PI - a;
+      var dx = Math.cos(a), dy = Math.sin(a), ex = bx + dx * lf.L, ey = by + dy * lf.L, pad = lf.w + 1;
+      var c0 = Math.max(0, Math.floor((Math.min(bx, ex) - pad) / AX)), c1 = Math.min(W - 1, Math.ceil((Math.max(bx, ex) + pad) / AX));
+      var r0 = Math.max(0, Math.floor(Math.min(by, ey) - pad)), r1 = Math.min(H - 1, Math.ceil(Math.max(by, ey) + pad));
+      for (var r = r0; r <= r1; r++) for (var c = c0; c <= c1; c++) {
+        var qx = c * AX - bx, qy = r - by, u = (qx * dx + qy * dy) / lf.L;
+        if (u <= 0 || u >= 1) continue;
+        var half = lf.w * Math.pow(Math.sin(Math.PI * u), 0.8), v = 1 - Math.abs(qx * dy - qy * dx) / half, k = r * W + c;
+        if (v > val[k]) { val[k] = v; kind[k] = 1; }
+      }
+    });
+    blooms.forEach(function (b, n) {
+      var bx = b.x + 0.4 * Math.sin(time * 0.0013 + n), by = vine(b.x) + b.dy;
+      for (var r = Math.floor(by - b.r - 1); r <= by + b.r + 1; r++) for (var c = Math.floor((bx - b.r - 1) / AX); c <= (bx + b.r + 1) / AX; c++) {
+        if (r < 0 || r >= H || c < 0 || c >= W) continue;
+        var v = 1 - Math.hypot(c * AX - bx, r - by) / b.r, k = r * W + c;
+        if (v > 0) { val[k] = Math.max(v, 0.35); kind[k] = 2; }
+      }
+    });
+    for (var c = 0; c < W; c++) {        
+      var y = vine(c * AX), r = Math.round(y), k = r * W + c, s = vine(c * AX + AX) - y;
+      if (taper(c * AX) > 0.15 && !kind[k]) { kind[k] = 3; val[k] = s > 0.25 ? 0.1 : s < -0.25 ? 0.2 : 0.3; }
+    }
+    var out = "";
+    for (var r = 0; r < H; r++) {
+      var cls = "", run = "";
+      for (var c = 0; c < W; c++) {
+        var k = r * W + c, v = val[k], n = noise[k], ch = " ", cl = "";
+        if (kind[k] === 3) { ch = v < 0.15 ? "\\" : v < 0.25 ? "/" : "~"; cl = "st"; }
+        else if (kind[k] && v > n * 0.3) {
+          ch = RAMP[Math.min(RAMP.length - 1, Math.floor((v * 0.8 + n * 0.3) * RAMP.length))];
+          cl = kind[k] === 2 ? (v > 0.45 ? "b2" : "b1") : v > 0.6 ? "l3" : v > 0.3 ? "l2" : "l1";
+        }
+        if (cl !== cls) { out += cls ? '<span class="' + cls + '">' + run + "</span>" : run; cls = cl; run = ""; }
+        run += ch;
+      }
+      out += (cls ? '<span class="' + cls + '">' + run + "</span>" : run) + "\n";
+    }
+    pre.innerHTML = out;
+  }
+
+  frame(0);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var on = false, last = 0;
+  function loop(t) { if (!on) return; if (t - last > 90) { last = t; frame(t); } requestAnimationFrame(loop); }
+  new IntersectionObserver(function (e) { var was = on; on = e[0].isIntersecting; if (on && !was) requestAnimationFrame(loop); }).observe(pre);
 })();
 </script>
 </body>
