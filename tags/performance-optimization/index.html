@@ -38,7 +38,7 @@
 <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <link rel="alternate" type="application/rss+xml" href="https://amarpandey.me/tags/performance-optimization/index.xml" title="Amar’s space: data, open source & side quests" />
-  <link rel="stylesheet" href="/css/main.min.df2956d104f3ce6016667e4e7470cc8f5bf764e95d770d06a042ce94b8d9a34d.css" integrity="sha256-3ylW0QTzzmAWZn5OdHDMj1v3ZOlddw0GoELOlLjZo00=">
+  <link rel="stylesheet" href="/css/main.min.b7e5c0b9dd6a1abd1fed378d1554ce8449298f82e365500502ed9c9f9080b098.css" integrity="sha256-t&#43;XAud1qGr0f7TeNFVTOhEkpj4LjZVAFAu2cn5CAsJg=">
 <script>try{if(sessionStorage.getItem("seen"))document.documentElement.classList.add("turned");sessionStorage.setItem("seen","1")}catch(e){}</script>
 <script>var t="dark";try{var s=localStorage.getItem("theme");if(s==="light")t=s}catch(e){}document.documentElement.dataset.theme=t</script>
 <meta name="color-scheme" content="dark light">
@@ -281,6 +281,50 @@ document.addEventListener("click", function (e) {
   var on = false, last = 0;
   function loop(t) { if (!on) return; if (t - last > 90) { last = t; frame(t); } requestAnimationFrame(loop); }
   new IntersectionObserver(function (e) { var was = on; on = e[0].isIntersecting; if (on && !was) requestAnimationFrame(loop); }).observe(pre);
+})();
+</script>
+<script>
+
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var bee = document.createElement("div");
+  bee.className = "bee"; bee.setAttribute("aria-hidden", "true");
+  bee.innerHTML = '<div class="bee-model"><i class="side r"></i><i class="side l"></i><i class="top"></i><i class="bottom"></i><i class="front"></i><i class="back"></i><i class="ant r"></i><i class="ant l"></i><i class="wing r"></i><i class="wing l"></i></div>';
+  document.body.appendChild(bee);
+  var model = bee.firstChild, W = function () { return document.documentElement.clientWidth; };
+  var x = W() * 0.85, y = scrollY + innerHeight * 0.75, vx = 0, vy = 0, tx = x, ty = y, rest = 1, yaw = -30, last = performance.now();
+  function pick() { tx = 30 + Math.random() * (W() - 60); ty = scrollY + 50 + Math.random() * (innerHeight - 100); }
+  function step(now) {
+    var dt = Math.min((now - last) / 1000, 0.05); last = now;
+    if (Math.abs(y - (scrollY + innerHeight / 2)) > innerHeight * 0.8 && rest > 0.3) rest = 0.3;   
+    if (rest > 0) { rest -= dt; vx *= 0.92; vy *= 0.92; if (rest <= 0) pick(); }
+    else {
+      var dx = tx - x, dy = ty - y, d = Math.hypot(dx, dy), k = Math.min(1, dt * 2.2), sp = Math.min(110, 40 + d);
+      if (d < 10) rest = 0.6 + Math.random() * 2.4;
+      else { vx += (dx / d * sp - vx) * k; vy += (dy / d * sp - vy) * k; }
+    }
+    x += vx * dt; y += vy * dt;
+    if (Math.abs(vx) > 6) yaw += ((vx > 0 ? -30 : -150) - yaw) * Math.min(1, dt * 4);   
+    bee.style.transform = "translate3d(" + x.toFixed(1) + "px," + (y + Math.sin(now / 170) * 3).toFixed(1) + "px,0)";
+    model.style.transform = "rotateX(-20deg) rotateY(" + yaw.toFixed(1) + "deg) rotateZ(" + (-vy * 0.08).toFixed(1) + "deg)";
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+</script>
+<script>
+
+(function () {
+  var ctx;
+  document.addEventListener("pointerdown", function (e) {
+    if (e.button) return;
+    try { ctx = ctx || new AudioContext(); } catch (err) { return; }
+    var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = "triangle";
+    o.frequency.setValueAtTime(1500, t); o.frequency.exponentialRampToValueAtTime(400, t + 0.045);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+    o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.07);
+  }, { passive: true });
 })();
 </script>
 </body>
