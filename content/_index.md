@@ -13,6 +13,6 @@ Outside work, I've contributed to {{< org "Apache Airflow" >}}, maintained {{< o
 
 When a problem annoys me enough, I turn it into a tool, like [spot-optimizer](https://github.com/amarlearning/spot-optimizer) (11k+ downloads) or [uv-bundler](https://github.com/amarlearning/uv-bundler), and I [write](/blog/) about Spark internals, databases, and functional programming.
 
-Always happy to talk data, open source, or side projects.
+Always happy to talk data, open source, or {{< doodle "especially these" >}}side projects.{{< /doodle >}}
 
 {{< social >}}[GitHub](https://github.com/amarlearning) [Medium](https://medium.com/@amarlearning) [LinkedIn](https://in.linkedin.com/in/amarlearning) [Twitter](https://x.com/iamarpandey) [Email](mailto:amarpandey.sh@gmail.com){{< /social >}}

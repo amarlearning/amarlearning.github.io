@@ -1,0 +1,2 @@
+{{- /* a phrase circled in pen with a handwritten aside after it: {{< doodle "the note" >}}phrase{{< /doodle >}}. Styles in assets/css/site.css (.doodle). Use sparingly, once a page. */ -}}
+<span class="doodle">{{ .Inner | markdownify }}<svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M58 3C30 1 4 7 3 20c-1 13 26 18 52 17 25-1 43-7 42-19C96 6 70 2 44 4"/></svg></span><span class="doodle-note" aria-hidden="true">{{ .Get 0 }}</span>

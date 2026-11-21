@@ -895,3 +895,24 @@ html:has(.lightbox[open]) { overflow: hidden; }
 @keyframes bee-flap { from { transform: rotateX(calc(var(--side) * -105deg)); } to { transform: rotateX(calc(var(--side) * -160deg)); } }
 .bee .ant { width: 2px; height: 7px; top: calc(var(--h) / -2 - 6px); background: #2b2219; }
 .bee .ant.r { left: 10px; transform: translateZ(5px) rotateZ(20deg); } .bee .ant.l { left: 10px; transform: translateZ(-5px) rotateZ(20deg); }
+
+/* doodle: a phrase circled in pen, with a handwritten aside after it */
+.doodle { position: relative; white-space: nowrap; }
+.doodle svg {
+  position: absolute; inset: -7px -9px -6px -8px; width: calc(100% + 17px); height: calc(100% + 13px);
+  overflow: visible; pointer-events: none;
+}
+.doodle path {
+  fill: none; stroke: var(--mark-ink); stroke-width: 1.6; stroke-linecap: round; opacity: 0.75;
+  vector-effect: non-scaling-stroke; stroke-dasharray: 1;
+}
+.doodle-note {
+  display: inline-block; margin-left: 12px; rotate: -3deg;
+  color: var(--note-ink); font-family: var(--font-hand); font-size: 1.3rem; font-weight: 600; line-height: 1;
+}
+.doodle-note::before { content: "\2190\00a0"; }@keyframes doodle-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .doodle path { animation: doodle-draw linear both; animation-timeline: view(); animation-range: entry 30% cover 45%; }
+  }
+}
